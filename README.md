@@ -5,10 +5,10 @@ This is a team project for CEN 3031 and the application we are making is called 
 * Beau Bakken
   * Project Manager
 * Nicholas Laughlin
- * Scrum Master
+  * Scrum Master
 * Michael Klein
- * Front-End
+  * Front-End
 * Erica Hetrick
- * Front-End
+  * Front-End
 * Minato Myers
- * Back-End
+  * Back-End
