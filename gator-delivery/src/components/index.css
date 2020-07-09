@@ -7,7 +7,20 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+  box-sizing: border-box;
+}
+
+/* ### First row ### */
+
+/* Main Title */
+.main-title {
+  float: left;
+  width: 75%;
+}
+
+/* Login and Sign up buttons */
+.register {
+  display: flex;
+  float: right;
 }
