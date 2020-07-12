@@ -1,17 +1,28 @@
 import React, {useState, useEffect} from 'react';
 import '../index.css';
 import Login from '../sign-in/Login'
+import AddTask from '../add-task/AddTask'
+import "bootstrap/dist/css/bootstrap.min.css"
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Navbar from "../navbar/Navbar"
+import TaskList from "../tasklist/TaskList"
+import CreateTask from "../createtask/CreateTask"
 
-function App() {
+const App = (props) => {
+
+/*const taskAdd = (task) => {
+  console.log("Will add to database");
+};*/
+
   return (
-    <div className="overall-div">
-      <div className="main-title">
-        <h1>Gator Delivery</h1>
+    <Router>
+      <div className="container">
+        <Navbar />
+        <br />
+        <Route path="/" exact component={TaskList} />
+        <Route path="/create" component={CreateTask} />
       </div>
-      <div className="row-1 sign-in">
-        <Login/>
-      </div>
-    </div>
+    </Router>
   );
 }
 
