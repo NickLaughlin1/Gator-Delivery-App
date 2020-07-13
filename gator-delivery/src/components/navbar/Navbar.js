@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 
+import * as ROUTES from '../../constants/routes';
+
 const Navbar = (props) => {
     return (
         <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
@@ -13,6 +15,13 @@ const Navbar = (props) => {
                     <li className="navbar-item">
                         <Link to="/community" className="nav-link">Community Board</Link>
                     </li>
+                    <li>
+                        <Link to={ROUTES.SIGN_IN} className="nav-link">Login</Link>
+                    </li>
+                    <li>
+                        <Link to={ROUTES.SIGN_UP} className="nav-link">Sign Up</Link>
+                    </li>
+
                 </ul>
             </div>
         </nav>
@@ -22,4 +31,4 @@ const Navbar = (props) => {
 
 };
 
-export default Navbar;
+export default Navbar;        
