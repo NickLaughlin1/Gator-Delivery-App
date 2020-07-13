@@ -11,7 +11,7 @@ const INITIAL_STATE = {
     passwordTwo: '',
     error: null
   }
-const [signUpInfo, setSignUpInfo] = useState(INITIAL_STATE);
+const [signUpInfo, setSignUpInfo] = useState({INITIAL_STATE});
 
 const SignUpPage = () => (
     <div>
@@ -33,7 +33,11 @@ const SignUpForm = (props) => {
 
     return(
         <form onSubmit={onSubmit.bind(this)}>
-
+            <input
+             name="username"
+             value={name}
+             onChange={onChange.bind(this)}>
+            </input>
         </form>
     );
 }
