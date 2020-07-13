@@ -11,9 +11,13 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
+<<<<<<< HEAD
     "react-scripts": "3.4.1",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.88.2"
+=======
+    "react-scripts": "3.4.1"
+>>>>>>> c0a602a62b796ce7de9b85fed3b7e7343780ef7d
   },
   "scripts": {
     "start": "react-scripts start",
