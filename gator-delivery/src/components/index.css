@@ -13,6 +13,7 @@ body {
 
 /* ### First row ### */
 
+
 /* Main Title */
 .main-title {
   float: left;
@@ -23,4 +24,15 @@ body {
 .register {
   display: flex;
   float: right;
+}
+
+/* ### Second Row ### */
+
+.body {
+  padding: 10px;
+}
+
+.task-form {
+  width: 50%;
+  margin: 0 auto;
 }

@@ -1,23 +1,27 @@
 import React, {useState, useEffect} from 'react';
 import '../index.css';
 import Login from '../sign-in/Login'
+import AddTask from '../add-task/AddTask'
+import "bootstrap/dist/css/bootstrap.min.css"
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Navbar from "../navbar/Navbar"
+import TaskList from "../tasklist/TaskList"
+import CreateTask from "../createtask/CreateTask"
 import Board from '../community/Board'
 
-function App() {
+const App = (props) => {
+
   return (
-    <div className="overall-div">
-      <div className="main-title">
-        <h1>Gator Delivery</h1>
-          <div className="column-1 community">
-          <br></br>
-          <h3>Community Board</h3>
-          <Board/>
-          </div>
-      </div>
-      <div className="row-1 sign-in">
+    <Router>
+      <div className="container">
+        <Navbar />
         <Login/>
+        <br />
+        <Route path="/" exact component={TaskList} />
+        <Route path="/create" component={CreateTask} />
+        <Route path="/community" component={Board} />    
       </div>
-    </div>
+    </Router>
   );
 }
 
