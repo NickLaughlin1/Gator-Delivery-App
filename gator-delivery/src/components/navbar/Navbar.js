@@ -27,6 +27,9 @@ const NavAuth = () => (
                 <li className="navbar-item">
                     <Link to="/community" className="nav-link">Community Board</Link>
                 </li>
+                <li className="navbar-item">
+						        <Link to="/calendar" className="nav-link">Calendar</Link>
+					      </li>
                 <li>
                     <SignOutButton className="navbar-item"/>
                 </li>
@@ -49,6 +52,9 @@ const NavUnAuth = () => (
                 <li className="navbar-item">
                     <Link to="/community" className="nav-link">Community Board</Link>
                 </li>
+                <li className="navbar-item">
+						        <Link to="/calendar" className="nav-link">Calendar</Link>
+					      </li>
                 <li>
                     <Link to={ROUTES.SIGN_IN} className="nav-link">Login</Link>
                 </li>
