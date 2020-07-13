@@ -84,7 +84,7 @@ class App extends Component {
       authUser: null,
     }
   }
->>>>>>> upstream/development
+
 
   componentDidMount() {
     this.listener = this.props.firebase.auth.onAuthStateChanged(authUser => {
@@ -121,6 +121,4 @@ class App extends Component {
   };
 }
 export default withFirebase(App);
->>>>>>> upstream/development
-=======
->>>>>>> upstream/development
+
