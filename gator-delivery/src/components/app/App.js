@@ -1,5 +1,7 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
+// import FireBase from '../firebase/firebase'
+import {withFirebase} from '../firebase'
  
 import * as ROUTES from '../../constants/routes';
 
@@ -21,28 +23,47 @@ import Board from '../community/Board'
 //npm install react-calendar or yarn add react-calendar
 import Calendar from '../calendar/Calendar'
 
-const App = (props) => {
+class App extends Component {
 
-  return (
-    <Router>
-      <div className="container">
-        <Navbar />
-        <br />
-        <Route path="/" exact component={TaskList} />
-        <Route path="/create" component={CreateTask} />
-        <Route path="/community" component={Board} />
-		<Route path="/calendar" component={Calendar} />
-        <hr />
-          <Route exact path={ROUTES.LANDING} component={LandingPage} />
-          <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
-          <Route path={ROUTES.SIGN_IN} component={SignInPage} />
-          <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
-          <Route path={ROUTES.HOME} component={HomePage} />
-          <Route path={ROUTES.ACCOUNT} component={AccountPage} />
-          <Route path={ROUTES.ADMIN} component={AdminPage} />  
-      </div>
-    </Router>
-  );
+  constructor(props) {
+    super(props);
+    this.state = {
+      authUser: null,
+    }
+  }
+
+  componentDidMount() {
+    this.listener = this.props.firebase.auth.onAuthStateChanged(authUser => {
+      authUser ? this.setState({authUser}) : this.setState({authUser: null});
+    });
+  }
+
+  // To prevent memory leaks
+  componentWillUnmount() {
+    this.listener();
+  }
+
+  render() {
+    return (
+      <Router>
+        <div className="container">
+          <Navbar authUser={this.state.authUser}/>
+          <br />
+          <Route path="/" exact component={TaskList} />
+          <Route path="/create" component={CreateTask} />
+          <Route path="/community" component={Board} />
+          <Route path="/calendar" component={Calendar} />
+          <hr />
+            <Route exact path={ROUTES.LANDING} component={LandingPage} />
+            <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
+            <Route path={ROUTES.SIGN_IN} component={SignInPage} />
+            <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
+            <Route path={ROUTES.HOME} component={HomePage} />
+            <Route path={ROUTES.ACCOUNT} component={AccountPage} />
+            <Route path={ROUTES.ADMIN} component={AdminPage} />  
+        </div>
+      </Router>
+    )
+  };
 }
-
-export default App;
+export default withFirebase(App);
