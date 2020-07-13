@@ -1,6 +1,8 @@
 import React from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
- 
+// import FireBase from '../firebase/firebase'
+import {withFirebase} from '../firebase'
+
 import * as ROUTES from '../../constants/routes';
 
 import LandingPage from '../landing';
@@ -18,6 +20,8 @@ import Navbar from "../navbar/Navbar";
 import TaskList from "../tasklist/TaskList";
 import CreateTask from "../createtask/CreateTask";
 import Board from '../community/Board';
+//npm install react-calendar or yarn add react-calendar
+import Calendar from '../calendar/Calendar'
 import {withAuthentication} from '../session';
 
 const App = () => (
@@ -27,7 +31,8 @@ const App = () => (
       <br />
       <Route path="/" exact component={TaskList} />
       <Route path="/create" component={CreateTask} />
-      <Route path="/community" component={Board} />  
+      <Route path="/community" component={Board} />
+      <Route path="/calendar" component={Calendar} />
       <hr />
         <Route exact path={ROUTES.LANDING} component={LandingPage} />
         <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
