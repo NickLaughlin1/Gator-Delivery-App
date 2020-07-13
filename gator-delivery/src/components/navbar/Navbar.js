@@ -6,12 +6,9 @@ const Navbar = (props) => {
         <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
             <Link to="/" className="navbar-brand">Home Order</Link>
             <div className="collpase navbar-collapse">
-                <ul className="navbar-nav mr-auto">
+                <ul className="navbar-nav mr-auto">   
                     <li className="navbar-item">
-                        <Link to="/" className="nav-link">View Tasks</Link>
-                    </li>
-                    <li className="navbar-item">
-                        <Link to="/create" className="nav-link">Create Task</Link>
+                        <Link to="/list" className="nav-link">View Tasks</Link>
                     </li>
                     <li className="navbar-item">
                         <Link to="/community" className="nav-link">Community Board</Link>

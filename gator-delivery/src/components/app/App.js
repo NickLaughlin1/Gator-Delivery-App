@@ -17,8 +17,8 @@ const App = (props) => {
         <Navbar />
         <Login/>
         <br />
-        <Route path="/" exact component={TaskList} />
-        <Route path="/create" component={CreateTask} />
+        <Route path="/" exact component={CreateTask} />
+        <Route path="/list" component={TaskList} />
         <Route path="/community" component={Board} />    
       </div>
     </Router>
