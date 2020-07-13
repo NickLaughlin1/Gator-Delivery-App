@@ -17,7 +17,7 @@ cd gator-delivery
 npm install
 npm start
 ```
-6. After running `npm install` in both folder once, you do not need to repeat the steps
+6. After running `npm install` in both folders for the first time, you do not need to repeat the steps
 
 
 ## Team Members: ##
