@@ -1,7 +1,9 @@
-import React, {Component, useState} from 'react';
-import {Link} from 'react-router-dom';
+import React, {Component} from 'react';
+import {Link, withRouter} from 'react-router-dom';
 
 import * as ROUTES from '../../constants/routes';
+import { withFirebase } from '../firebase';
+import {compose} from 'recompose';
 
 // Initial state of the Sign Up info
 const INITIAL_STATE = {
@@ -11,7 +13,6 @@ const INITIAL_STATE = {
     passwordTwo: '',
     error: null
   }
-const [signUpInfo, setSignUpInfo] = useState({INITIAL_STATE});
 
 const SignUpPage = () => (
     <div>
@@ -21,25 +22,80 @@ const SignUpPage = () => (
 );
 
 // Handles all the sign up information
-const SignUpForm = (props) => {
-    let state = {INITIAL_STATE};
-    let onSubmit = event => {
-        
-    };
+class SignUpFormBase extends Component {
+    constructor(props) {
+      super(props);
+      this.state = {...INITIAL_STATE};
+    }
+   
+    onSubmit = event => {
+        const {name, email, passwordOne} = this.state;
 
-    let onChange = event => {
-        setSignUpInfo({[event.target.name]: event.target.value});
-    };
+        this.props.firebase.doCreateUserWithEmailAndPassword(email, passwordOne)
+        .then(authUser => {
+            this.setState({...INITIAL_STATE});
+            this.props.history.push(ROUTES.HOME);
+        }).catch(error => {
+            this.setState({error});
+        });
 
-    return(
-        <form onSubmit={onSubmit.bind(this)}>
+        event.preventDefault();
+    }
+   
+    onChange = event => {
+        this.setState({[event.target.name]: event.target.value});
+    };
+   
+    render() {
+        const {
+            name,
+            email,
+            passwordOne,
+            passwordTwo,
+            error,
+        } = this.state;
+
+        const isInvalid = 
+            passwordOne !== passwordTwo ||
+            passwordOne === '' ||
+            email === '' ||
+            name === '';
+        return (
+        <form onSubmit={this.onSubmit}>
             <input
-             name="username"
-             value={name}
-             onChange={onChange.bind(this)}>
-            </input>
+            name="name"
+            value={name}
+            onChange={this.onChange}
+            type="text"
+            placeholder="Full Name"
+            />
+            <input
+            name="email"
+            value={email}
+            onChange={this.onChange}
+            type="text"
+            placeholder="Email Address"
+            />
+            <input
+            name="passwordOne"
+            value={passwordOne}
+            onChange={this.onChange}
+            type="password"
+            placeholder="Password"
+            />
+            <input
+            name="passwordTwo"
+            value={passwordTwo}
+            onChange={this.onChange}
+            type="password"
+            placeholder="Confirm Password"
+            />
+            <button disabled={isInvalid} type="submit">Sign Up</button>
+    
+            {error && <p>{error.message}</p>}
         </form>
-    );
+      );
+    }
 }
 
 const SignUpLink = () => (
@@ -47,6 +103,14 @@ const SignUpLink = () => (
         Don't have an account? <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
     </p>
 );
+
+
+//This makes it so the Sign up form doesn't need to know about the firebase instance
+// Using compose organizes the higher-order components
+const SignUpForm = compose(
+    withRouter,
+    withFirebase,
+)(SignUpFormBase);
 
 export default SignUpPage;
 
