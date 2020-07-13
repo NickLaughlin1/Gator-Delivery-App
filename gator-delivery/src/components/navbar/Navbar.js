@@ -3,9 +3,14 @@ import { Link } from 'react-router-dom';
 
 import * as ROUTES from '../../constants/routes';
 import SignOutButton from '../sign-out';
+import {AuthUserContext} from '../session'
 
 const Navbar = (props) => (
-<div>{props.authUser ? <NavAuth /> : <NavUnAuth />}</div>
+    <div>
+        <AuthUserContext.Consumer>
+            {authUser => authUser ? <NavAuth /> : <NavUnAuth />}
+        </AuthUserContext.Consumer>
+    </div>
 );
 
 const NavAuth = () => (
