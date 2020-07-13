@@ -23,8 +23,8 @@ const NavAuth = () => (
                     <Link to="/community" className="nav-link">Community Board</Link>
                 </li>
                 <li className="navbar-item">
-						        <Link to="/calendar" className="nav-link">Calendar</Link>
-					      </li>
+					<Link to="/calendar" className="nav-link">Calendar</Link>
+				</li>
                 <li>
                     <SignOutButton className="navbar-item"/>
                 </li>
