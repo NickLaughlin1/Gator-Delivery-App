@@ -12,7 +12,6 @@ import AccountPage from '../account';
 import AdminPage from '../admin';
 
 import '../index.css';
-<<<<<<< HEAD
 import AddTask from '../add-task/AddTask';
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "../navbar/Navbar";
@@ -42,6 +41,7 @@ const App = () => (
 );
 
 export default withAuthentication(App);
+<<<<<<< HEAD
 =======
 import AddTask from '../add-task/AddTask'
 import "bootstrap/dist/css/bootstrap.min.css"
@@ -121,4 +121,6 @@ class App extends Component {
   };
 }
 export default withFirebase(App);
+>>>>>>> upstream/development
+=======
 >>>>>>> upstream/development
