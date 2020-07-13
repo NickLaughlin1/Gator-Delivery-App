@@ -12,10 +12,9 @@ import AccountPage from '../account';
 import AdminPage from '../admin';
 
 import '../index.css';
-import Login from '../sign-in/Login'
+import Login from '../sign-in/signIn'
 import AddTask from '../add-task/AddTask'
 import "bootstrap/dist/css/bootstrap.min.css"
-import { BrowserRouter as Router, Route } from "react-router-dom";
 import Navbar from "../navbar/Navbar"
 import TaskList from "../tasklist/TaskList"
 import CreateTask from "../createtask/CreateTask"
@@ -27,7 +26,6 @@ const App = (props) => {
     <Router>
       <div className="container">
         <Navbar />
-        <Login/>
         <br />
         <Route path="/" exact component={TaskList} />
         <Route path="/create" component={CreateTask} />
