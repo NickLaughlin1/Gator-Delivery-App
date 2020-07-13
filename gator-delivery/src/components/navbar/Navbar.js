@@ -13,6 +13,9 @@ const Navbar = (props) => {
                     <li className="navbar-item">
                         <Link to="/create" className="nav-link">Create Task</Link>
                     </li>
+                    <li className="navbar-item">
+                        <Link to="/community" className="nav-link">Community Board</Link>
+                    </li>
                 </ul>
             </div>
         </nav>

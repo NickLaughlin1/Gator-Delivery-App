@@ -7,20 +7,19 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Navbar from "../navbar/Navbar"
 import TaskList from "../tasklist/TaskList"
 import CreateTask from "../createtask/CreateTask"
+import Board from '../community/Board'
 
 const App = (props) => {
-
-/*const taskAdd = (task) => {
-  console.log("Will add to database");
-};*/
 
   return (
     <Router>
       <div className="container">
         <Navbar />
+        <Login/>
         <br />
         <Route path="/" exact component={TaskList} />
         <Route path="/create" component={CreateTask} />
+        <Route path="/community" component={Board} />    
       </div>
     </Router>
   );
