@@ -13,6 +13,7 @@ body {
 
 /* ### First row ### */
 
+
 /* Main Title */
 .main-title {
   float: left;
@@ -43,4 +44,13 @@ body {
 
 .existing-post {
   margin-left: 1em;
+/* ### Second Row ### */
+
+.body {
+  padding: 10px;
+}
+
+.task-form {
+  width: 50%;
+  margin: 0 auto;
 }

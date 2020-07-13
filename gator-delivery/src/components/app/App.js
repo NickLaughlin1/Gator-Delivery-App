@@ -1,23 +1,45 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
+ 
+import * as ROUTES from '../../constants/routes';
+
+import LandingPage from '../landing';
+import SignUpPage from '../sign-up';
+import SignInPage from '../sign-in';
+import PasswordForgetPage from '../password-forgot';
+import HomePage from '../home';
+import AccountPage from '../account';
+import AdminPage from '../admin';
+
 import '../index.css';
-import Login from '../sign-in/Login'
+import Login from '../sign-in/signIn'
+import AddTask from '../add-task/AddTask'
+import "bootstrap/dist/css/bootstrap.min.css"
+import Navbar from "../navbar/Navbar"
+import TaskList from "../tasklist/TaskList"
+import CreateTask from "../createtask/CreateTask"
 import Board from '../community/Board'
 
-function App() {
+const App = (props) => {
+
   return (
-    <div className="overall-div">
-      <div className="main-title">
-        <h1>Gator Delivery</h1>
-          <div className="column-1 community">
-          <br></br>
-          <h3>Community Board</h3>
-          <Board/>
-          </div>
+    <Router>
+      <div className="container">
+        <Navbar />
+        <br />
+        <Route path="/" exact component={TaskList} />
+        <Route path="/create" component={CreateTask} />
+        <Route path="/community" component={Board} />  
+        <hr />
+          <Route exact path={ROUTES.LANDING} component={LandingPage} />
+          <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
+          <Route path={ROUTES.SIGN_IN} component={SignInPage} />
+          <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
+          <Route path={ROUTES.HOME} component={HomePage} />
+          <Route path={ROUTES.ACCOUNT} component={AccountPage} />
+          <Route path={ROUTES.ADMIN} component={AdminPage} />  
       </div>
-      <div className="row-1 sign-in">
-        <Login/>
-      </div>
-    </div>
+    </Router>
   );
 }
 
