@@ -23,4 +23,4 @@ yarn-debug.log*
 yarn-error.log*
 
 # config files
-#backend/server/config/config.js
+backend/server/config/config.js
