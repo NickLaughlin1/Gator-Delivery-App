@@ -1,8 +1,10 @@
 import React from 'react';
+import Post from './Post';
+import Firebase from '../firebase/firebase'
 
 const Board = (props) => {
 
-
+    //var db = Firebase.database();
     return(
         // <section>
         //     <textbox classname="register ask">Ask a question</textbox>
@@ -17,6 +19,12 @@ const Board = (props) => {
         //     <button className="register ask">Submit</button>
         // </section>
         <div>
+            <h1>
+                Community Board
+            </h1>
+            <h3>
+                Ask questions and get answers from experts in your area
+            </h3>
             <div className="card existing-post">
                 <div className="card-body">
                     Existing post
@@ -28,17 +36,11 @@ const Board = (props) => {
                     </div>
                 </div>
             </div>
-                
-            <div className="card post-editor">
-                <div className="card-body">
-                    Ask a question
-                    <textarea className="form-control post-editor-input"/>
-                    <button className="btn btn-primary post-editor-submit">Submit Post</button>
-                </div>
-            </div>
+
+            <Post/>
+
         </div>
-
-
+            
 
     );
 };

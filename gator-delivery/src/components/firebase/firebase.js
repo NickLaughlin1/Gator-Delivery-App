@@ -1,5 +1,6 @@
 import app from 'firebase/app';
 import 'firebase/auth';
+import 'firebase/database';
 
 var firebaseConfig = {
     apiKey: "AIzaSyBLMSlM0gcFg3sO2cgRGZYFoPK00DvWSNY",
@@ -17,6 +18,7 @@ var firebaseConfig = {
           app.initializeApp(firebaseConfig);  //Initializes the firebase connection
           // Allows for authentication
           this.auth = app.auth();
+          this.database = app.database();
       }
 
       // Authentication API
