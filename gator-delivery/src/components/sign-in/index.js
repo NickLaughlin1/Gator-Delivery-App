@@ -2,13 +2,13 @@ import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
 import {compose} from 'recompose';
 
-import {SignUpLink, SignUpForm} from '../sign-up';
+import {SignUpLink} from '../sign-up';
 import {withFirebase} from '../firebase';
 import * as ROUTES from '../../constants/routes';
 
 const SignInPage = () => (
     <div>
-        <h1>Sign In</h1>
+        <h1>Login</h1>
         <SignInForm />
         <SignUpLink />  {/* This allows to still reach the sign up page even when trying to login */}
     </div>
@@ -30,9 +30,13 @@ class SignInFormBase extends Component {
     onSubmit = event => {
         const {email, password} = this.state;
         // Calls the sign in function in the firebase API
-        this.props.firebase.doSignInWithEmailAndPassword(email, password).then(() => {
+        this.props.firebase
+        .doSignInWithEmailAndPassword(email, password)
+        .then(() => {
             this.setState({...INITIAL_STATE});
-            this.props.history.push(ROUTES.HOME); // Makes the user go back to the home page
+            // this.props.history.push(ROUTES.HOME); // Makes the user go back to the home page
+            window.location = '/';
+            console.log(window.location);
         }).catch(error => {
             this.setState({error}); // Basic error handling
         });
@@ -49,23 +53,29 @@ class SignInFormBase extends Component {
         const isInvalid = password === '' || email === '';
         return (
             <form onSubmit={this.onSubmit}>
-                <input
-                  name="email"
-                  value={email}
-                  onChange={this.onChange}
-                  type="text"
-                  placeholder="Email Address"
-                />
-                <input
-                  name="password"
-                  value={password}
-                  onChange={this.onChange}
-                  type="password"
-                  placeholder="Password"
-                />
-                <button disabled={isInvalid} type="submit">
-                    Login
-                </button>
+                <div className="form-row">
+                    <div className="form-group col-md-6">
+                        <input
+                        name="email"
+                        value={email}
+                        onChange={this.onChange}
+                        type="email"
+                        placeholder="Email Address"
+                        className="form-control"
+                        />
+                    </div>
+                    <div className="form-group col-md-6">
+                        <input
+                        name="password"
+                        value={password}
+                        onChange={this.onChange}
+                        type="password"
+                        placeholder="Password"
+                        className="form-control"
+                        />
+                    </div>
+                </div>
+                <button disabled={isInvalid} type="submit" className="btn btn-primary">Login</button>
             </form>
         );
     };

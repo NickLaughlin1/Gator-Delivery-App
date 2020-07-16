@@ -28,7 +28,10 @@ var firebaseConfig = {
           this.auth.signInWithEmailAndPassword(email, password);
       }
 
-      doSignOut = () => this.auth.signOut();
+      doSignOut = () => {
+          this.auth.signOut();
+          console.log("signed out!!");
+      }
 
       doPasswordReset = email => this.auth.sendPasswordResetEmail(email);
 
