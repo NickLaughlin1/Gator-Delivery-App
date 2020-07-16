@@ -21,6 +21,7 @@ import coordinates from './coordinatesController.js';
  */
 
 /* Create a listing */
+
 export const create = async (req, res) => {
     /* Instantiate a Listing */
     /* save the coordinates from the coordinatesController (located in req.results if there is an address property) */

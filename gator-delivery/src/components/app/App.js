@@ -1,7 +1,6 @@
 import React from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
-// import FireBase from '../firebase/firebase'
-import {withFirebase} from '../firebase'
+import {AuthProvider} from "../session/withAuthentication";
 
 import * as ROUTES from '../../constants/routes';
 
@@ -22,27 +21,29 @@ import CreateTask from "../createtask/CreateTask";
 import Board from '../community/Board';
 //npm install react-calendar or yarn add react-calendar
 import Calendar from '../calendar/Calendar'
-import {withAuthentication} from '../session';
 
-const App = () => (
-  <Router>
-    <div className="container">
-      <Navbar />
-      <br />
-      <Route path="/" exact component={TaskList} />
-      <Route path="/create" component={CreateTask} />
-      <Route path="/community" component={Board} />
-      <Route path="/calendar" component={Calendar} />
-      <hr />
-        <Route exact path={ROUTES.LANDING} component={LandingPage} />
-        <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
-        <Route path={ROUTES.SIGN_IN} component={SignInPage} />
-        <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
-        <Route path={ROUTES.HOME} component={HomePage} />
-        <Route path={ROUTES.ACCOUNT} component={AccountPage} />
-        <Route path={ROUTES.ADMIN} component={AdminPage} />  
-    </div>
-  </Router>
-);
-
-export default withAuthentication(App);
+const App = () => {
+  return(
+    <AuthProvider>
+      <Router>
+        <div className="container">
+          <Navbar />
+          <br />
+          <Route path="/" exact component={TaskList} />
+          <Route path="/create" component={CreateTask} />
+          <Route path="/community" component={Board} />
+          <Route path="/calendar" component={Calendar} />
+          <hr />
+          <Route exact path={ROUTES.LANDING} component={LandingPage} />
+          <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
+          <Route path={ROUTES.SIGN_IN} component={SignInPage} />
+          {/* <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} /> */}
+          <Route path={ROUTES.HOME} component={HomePage} />
+          {/* <Route path={ROUTES.ACCOUNT} component={AccountPage} /> */}
+          {/* <Route path={ROUTES.ADMIN} component={AdminPage} />   */}
+        </div>
+      </Router>
+    </AuthProvider>
+  );
+}
+export default App;
