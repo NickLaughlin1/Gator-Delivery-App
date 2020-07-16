@@ -1,43 +1,67 @@
-import React from 'react';
-import Post from './Post';
-import Firebase from '../firebase/firebase'
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import Post from './Post'
 
 const Board = (props) => {
+    const [post, setPost] = useState('');
+    const [postList, setPostList] = useState([]);
 
-    //var db = Firebase.database();
+    useEffect(() => {
+        axios.get('http://localhost:5000/posts/')
+            .then(response => {
+                setPostList(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }, []);
+
+
+    const PostList = () => {
+        return postList.map(currPost => {
+            return <Post post={currPost} key={currPost._id}/>;
+        });
+    };
+
+    const createPost = (e) => {
+        e.preventDefault();
+        let newPost = {
+            text: post
+        };
+        axios.post('http://localhost:5000/posts/add', newPost);  
+        
+        window.location = '/community';
+        setPost('');
+        
+    };
+    
     return(
-        // <section>
-        //     <textbox classname="register ask">Ask a question</textbox>
-        //     <form action="" method="">
-        //         <br></br><textarea rows="5" cols="36"></textarea>
-        //     </form>
-        //     <button className="register ask">Submit</button>
-        //     <br></br><br></br><textbox classname="register answer">Answer a question</textbox>
-        //     <form action="" method="">
-        //         <br></br><textarea rows="5" cols="36"></textarea>
-        //     </form>
-        //     <button className="register ask">Submit</button>
-        // </section>
         <div>
             <h1>
                 Community Board
             </h1>
             <h3>
                 Ask questions and get answers from experts in your area
-            </h3>
-            <div className="card existing-post">
+            </h3>          
+
+            <div className="card post-editor">
                 <div className="card-body">
-                    Existing post
-                    <div className="input-group mb-3">
-                        <input type="text" className="form-control" placeholder="Answer this question" aria-label="Answer" aria-describedby="button-addon2"></input>
-                        <div className="input-group-append">
-                            <button class="btn btn-secondary" type="button" id="button-addon2">Submit reply</button>
+                    Ask a question
+                    <form onSubmit={createPost}>
+                        <div className="form-group">
+                            <textarea className="form-control post-editor-input"
+                                value={post}
+                                onChange={e => setPost(e.target.value)}    
+                            />
                         </div>
-                    </div>
+                        <div className="form-group">
+                            <input type="submit" value="Submit Post" className="btn btn-primary" />
+                        </div>
+                    </form>
                 </div>
             </div>
 
-            <Post/>
+            { PostList() }
 
         </div>
             

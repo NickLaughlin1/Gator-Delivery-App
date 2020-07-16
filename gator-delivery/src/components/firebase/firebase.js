@@ -1,6 +1,5 @@
-import app from 'firebase/app';
+import app, { firestore } from 'firebase/app';
 import 'firebase/auth';
-import 'firebase/database';
 
 var firebaseConfig = {
     apiKey: "AIzaSyBLMSlM0gcFg3sO2cgRGZYFoPK00DvWSNY",
@@ -11,32 +10,31 @@ var firebaseConfig = {
     messagingSenderId: "749620819788",
     appId: "1:749620819788:web:da02f015b54b84629b01e9",
     measurementId: "G-EXRYHP947Q"
-  };
+};
 
-  class Firebase {
-      constructor() {
-          app.initializeApp(firebaseConfig);  //Initializes the firebase connection
-          // Allows for authentication
-          this.auth = app.auth();
-          this.database = app.database();
-      }
+class Firebase {
+    constructor() {
+        app.initializeApp(firebaseConfig);  //Initializes the firebase connection
+        // Allows for authentication
+        this.auth = app.auth();
+    }
 
-      // Authentication API
-      doCreateUserWithEmailAndPassword = (email, password) => {
-          this.auth.createUserWithEmailAndPassword(email, password);
-      }
+    // Authentication API
+    doCreateUserWithEmailAndPassword = (email, password) => {
+        this.auth.createUserWithEmailAndPassword(email, password);
+    }
 
-      doSignInWithEmailAndPassword = (email, password) => {
-          this.auth.signInWithEmailAndPassword(email, password);
-      }
+    doSignInWithEmailAndPassword = (email, password) => {
+        this.auth.signInWithEmailAndPassword(email, password);
+    }
 
-      doSignOut = () => this.auth.signOut();
+    doSignOut = () => this.auth.signOut();
 
-      doPasswordReset = email => this.auth.sendPasswordResetEmail(email);
+    doPasswordReset = email => this.auth.sendPasswordResetEmail(email);
 
-      doPasswordUpdate = password => {
-          this.auth.currentUser.updatePassword(password);
-      }
-  }
+    doPasswordUpdate = password => {
+        this.auth.currentUser.updatePassword(password);
+    }
+}
 
-  export default Firebase;
+export default Firebase;

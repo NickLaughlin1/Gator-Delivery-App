@@ -1,18 +1,20 @@
 import React from 'react';
 
 const Post = (props) => {
-
-    const addPost = (newPost) => {
-
-    };
     
     return (
         <div className="card post-editor">
-                <div className="card-body">
-                    Ask a question
-                    <textarea className="form-control post-editor-input"/>
-                    <button className="btn btn-primary post-editor-submit" onClick={addPost}> Submit Post</button>
+            <div className="card-body">
+                
+                    {props.post.text}
+        
+                <div className="input-group mb-3">
+                    <input type="text" className="form-control" placeholder="Answer this question" aria-label="Answer" aria-describedby="button-addon2"></input>
+                    <div className="input-group-append">
+                        <button className="btn btn-secondary" type="button" id="button-addon2">Submit reply</button>
+                    </div>
                 </div>
+            </div>
         </div>
     );
 };

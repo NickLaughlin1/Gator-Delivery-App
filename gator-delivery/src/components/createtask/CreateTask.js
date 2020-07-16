@@ -3,8 +3,6 @@ import axios from 'axios';
 
 const CreateTask = (props) => {
 
-   
-
     const [name, setName] = useState('');
     const [task, setTask] = useState('');
     
