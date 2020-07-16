@@ -1,21 +1,25 @@
-import React, {useState} from 'react';
+import React, {useContext} from 'react';
 import { Link } from 'react-router-dom';
 
 import * as ROUTES from '../../constants/routes';
 import SignOutButton from '../sign-out';
-import {AuthUserContext} from '../session'
-import { auth } from 'firebase';
+import {AuthContext} from '../session/withAuthentication';
+// import {AuthUserContext} from '../session'
+// import { auth } from 'firebase';
+import app from '../firebase/firebase'
 
-const Navbar = ({authUser}) => (
-    
-    <div>
-        {/* <AuthUserContext.Consumer>
-            {authUser => authUser ? <NavAuth /> : <NavUnAuth />}
-        </AuthUserContext.Consumer> */}
-        {authUser ? <NavAuth /> : <NavUnAuth />}
-        {console.log(authUser)}
-    </div>
-);
+const Navbar = () => {
+    const {currentUser} = useContext(AuthContext);
+    return(
+        <div>
+            {/* <AuthUserContext.Consumer>
+                {authUser => authUser ? <NavAuth /> : <NavUnAuth />}
+            </AuthUserContext.Consumer> */}
+            {currentUser ? <NavAuth /> : <NavUnAuth />}
+            {console.log(currentUser)}
+        </div>
+    );
+};
 
 const NavAuth = () => (
     <nav className="navbar navbar-dark bg-dark navbar-expand-lg">

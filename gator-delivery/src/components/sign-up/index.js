@@ -1,91 +1,44 @@
-import React, {Component} from 'react';
+import React, {useCallback} from 'react';
 import {Link, withRouter} from 'react-router-dom';
 
 import * as ROUTES from '../../constants/routes';
-import { withFirebase } from '../firebase';
-import {compose} from 'recompose';
-import firebase from '../firebase'
+import app from '../firebase/firebase'
 
-// Initial state of the Sign Up info
-const INITIAL_STATE = {
-    name: '',
-    email: '',
-    passwordOne: '',
-    passwordTwo: '',
-    addressOne: '',
-    addressTwo: '',
-    city: '',
-    state: '',
-    zip: '',
-    role: '',
-    error: null
-  }
 
-const SignUpPage = () => (
-    <div>
-        <h1>SignUp</h1>
-        <SignUpForm />
-    </div>
-);
-
-// Handles all the sign up information
-class SignUpFormBase extends Component {
-    constructor(props) {
-      super(props);
-      this.state = {...INITIAL_STATE};
-    }
-   
-    onSubmit = event => {
-        const {name, email, passwordOne} = this.state;
-
-        this.props.firebase.doCreateUserWithEmailAndPassword(email, passwordOne)
-        .then(authUser => {
-            console.log("signed up");
-            this.setState({...INITIAL_STATE});
-            this.props.history.push(ROUTES.HOME);
-        }).catch(error => {
-            this.setState({error});
-        });
-
+const SignUpPage = ({history}) => {
+    const handleSignUp = useCallback(async event => {
         event.preventDefault();
-    }
-   
-    onChange = event => {
-        this.setState({[event.target.name]: event.target.value});
-    };
-   
-    render() {
-        const {
-            name,
-            email,
-            passwordOne,
-            passwordTwo,
-            addressOne,
-            addressTwo,
-            city,
-            state,
-            zip,
-            role,
-            error,
-        } = this.state;
+        const {name, email, passwordOne} = event.target.elements;
+        try {
+            await app
+                .auth()
+                .createUserWithEmailAndPassword(email.value, passwordOne.value);
+                history.push(ROUTES.HOME);
+        } catch (error) {
+            alert(error);
+        }
+    }, [history]);
 
-        const isInvalid = 
-            passwordOne !== passwordTwo ||
-            passwordOne === '' ||
-            email === '' ||
-            name === '' ||
-            addressOne === '' ||
-            city === '' ||
-            state === '' ||
-            zip === '';
-        return (
-        <form onSubmit={this.onSubmit}>
+    // const isInvalid = 
+    //     passwordOne !== passwordTwo ||
+    //     passwordOne === '' ||
+    //     email === '' ||
+    //     name === '' ||
+    //     addressOne === '' ||
+    //     city === '' ||
+    //     state === '' ||
+    //     zip === '';
+
+    return (
+        <div>
+            <h1>Sign Up</h1>
+            <form onSubmit={handleSignUp.bind(this)}>
             <div className="form-group">
                 <label htmlFor="inputName">Name *</label>
                 <input
                 name="name"
-                value={name}
-                onChange={this.onChange}
+                //value={name}
+                //onChange={this.onChange}
                 type="text"
                 placeholder="Full Name"
                 className="form-control"
@@ -96,8 +49,8 @@ class SignUpFormBase extends Component {
                 <label htmlFor="inputEmail4">Email *</label>
                 <input
                 name="email"
-                value={email}
-                onChange={this.onChange}
+                //value={email}
+                //onChange={this.onChange}
                 type="email"
                 placeholder="Email Address"
                 className="form-control"
@@ -109,8 +62,8 @@ class SignUpFormBase extends Component {
                     <label htmlFor="inputPassword4">Password *</label>
                     <input
                     name="passwordOne"
-                    value={passwordOne}
-                    onChange={this.onChange}
+                    //value={passwordOne}
+                    //onChange={this.onChange}
                     type="password"
                     placeholder="Password"
                     className="form-control"
@@ -121,8 +74,8 @@ class SignUpFormBase extends Component {
                     <label htmlFor="inputPassword5">Confirm Password *</label>
                     <input
                     name="passwordTwo"
-                    value={passwordTwo}
-                    onChange={this.onChange}
+                    //value={passwordTwo}
+                    //onChange={this.onChange}
                     type="password"
                     placeholder="Re-enter Password"
                     className="form-control"
@@ -134,8 +87,8 @@ class SignUpFormBase extends Component {
                 <label htmlFor="inputAddress1">Address *</label>
                 <input
                 name="addressOne"
-                value={addressOne}
-                onChange={this.onChange}
+                //value={addressOne}
+                //onChange={this.onChange}
                 type="text"
                 placeholder="1234 Main St"
                 className="form-control"
@@ -146,8 +99,8 @@ class SignUpFormBase extends Component {
                 <label htmlFor="inputAddress2">Address 2</label>
                 <input
                 name="addressTwo"
-                value={addressTwo}
-                onChange={this.onChange}
+                //value={addressTwo}
+                //onChange={this.onChange}
                 type="text"
                 placeholder="Apartment, studio, or floor"
                 className="form-control"
@@ -159,8 +112,8 @@ class SignUpFormBase extends Component {
                     <label htmlFor="inputCity">City *</label>
                     <input 
                     name="city"
-                    value={city}
-                    onChange={this.onChange}
+                    //value={city}
+                    //onChange={this.onChange}
                     type="text" 
                     className="form-control" 
                     id="inputCity"
@@ -168,7 +121,7 @@ class SignUpFormBase extends Component {
                 </div>
                 <div className="form-group col-md-4">
                     <label htmlFor="inputState">State *</label>
-                    <select id="inputState" className="form-control" name="state" value={state} onChange={this.onChange}>
+                    <select id="inputState" className="form-control" name="state" /*value={state} onChange={this.onChange}*/>
                         <option defaultValue>Choose...</option>
                         <option value="AL">Alabama</option>
                         <option value="AK">Alaska</option>
@@ -227,8 +180,8 @@ class SignUpFormBase extends Component {
                     <label htmlFor="inputZip">Zip *</label>
                     <input 
                     name="zip"
-                    value={zip}
-                    onChange={this.onChange}
+                    //value={zip}
+                    //onChange={this.onChange}
                     type="text" 
                     className="form-control" 
                     id="inputZip"
@@ -238,34 +191,25 @@ class SignUpFormBase extends Component {
             <div className="form-row">
                 <div className="form-group col-md-6">
                     <label htmlFor="inputRole">User Role *</label>
-                    <select id="inputRole" className="form-control" name="role" value={role} onChange={this.onChange}>
+                    <select id="inputRole" className="form-control" name="role" /*value={role} onChange={this.onChange}*/>
                         <option defaultValue>Chose role...</option>
                         <option value="cs">Regular Customer</option>
                         <option value="volunteer">Volunteer</option>
                     </select>
                 </div>
             </div>
-            <button disabled={isInvalid} type="submit" className="btn btn-primary">Sign Up</button>    
-            {error && <p>{error.message}</p>}
+            <button type="submit" className="btn btn-primary">Sign Up</button>    
         </form>
-      );
-    }
+    </div>
+    )
 }
 
+// Gives users a link to sign up if they do not have an accoutn already
 const SignUpLink = () => (
     <p>
         Don't have an account? <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
     </p>
 );
 
-
-//This makes it so the Sign up form doesn't need to know about the firebase instance
-// Using compose organizes the higher-order components
-const SignUpForm = compose(
-    withRouter,
-    withFirebase,
-)(SignUpFormBase);
-
-export default SignUpPage;
-
-export {SignUpForm, SignUpLink};
+export default withRouter(SignUpPage);
+export {SignUpLink};
