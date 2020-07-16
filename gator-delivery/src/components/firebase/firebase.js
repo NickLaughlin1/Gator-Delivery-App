@@ -1,40 +1,13 @@
-import app from 'firebase/app';
-import 'firebase/auth';
+import * as firebase from "firebase/app";
+import "firebase/auth";
 
-var firebaseConfig = {
-    apiKey: "AIzaSyBLMSlM0gcFg3sO2cgRGZYFoPK00DvWSNY",
-    authDomain: "gator-delivery.firebaseapp.com",
-    databaseURL: "https://gator-delivery.firebaseio.com",
-    projectId: "gator-delivery",
-    storageBucket: "gator-delivery.appspot.com",
-    messagingSenderId: "749620819788",
-    appId: "1:749620819788:web:da02f015b54b84629b01e9",
-    measurementId: "G-EXRYHP947Q"
-  };
+const app = firebase.initializeApp({
+    apiKey: process.env.REACT_APP_FIREBASE_KEY,
+    authDomain: process.env.REACT_APP_FIREBASE_DOMAIN,
+    databaseURL: process.env.REACT_APP_FIREBASE_DATABASE,
+    projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_FIREBASE_SENDER_ID
+});
 
-  class Firebase {
-      constructor() {
-          app.initializeApp(firebaseConfig);  //Initializes the firebase connection
-          // Allows for authentication
-          this.auth = app.auth();
-      }
-
-      // Authentication API
-      doCreateUserWithEmailAndPassword = (email, password) => {
-          this.auth.createUserWithEmailAndPassword(email, password);
-      }
-
-      doSignInWithEmailAndPassword = (email, password) => {
-          this.auth.signInWithEmailAndPassword(email, password);
-      }
-
-      doSignOut = () => this.auth.signOut();
-
-      doPasswordReset = email => this.auth.sendPasswordResetEmail(email);
-
-      doPasswordUpdate = password => {
-          this.auth.currentUser.updatePassword(password);
-      }
-  }
-
-  export default Firebase;
+export default app;
