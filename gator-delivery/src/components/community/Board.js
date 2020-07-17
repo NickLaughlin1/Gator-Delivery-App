@@ -30,7 +30,6 @@ const Board = (props) => {
         };
         axios.post('http://localhost:5000/posts/add', newPost);  
         
-<<<<<<< HEAD
         <section>
             <section>
             <h3>Community Board</h3>
@@ -46,45 +45,6 @@ const Board = (props) => {
             <input type="text" class="form-control" placeholder="Last name"></input>
         </section>
         </section>
-=======
-        window.location = '/community';
-        setPost('');
-        
-    };
-    
-    return(
-        <div>
-            <h1>
-                Community Board
-            </h1>
-            <h3>
-                Ask questions and get answers from experts in your area
-            </h3>          
-
-            <div className="card post-editor">
-                <div className="card-body">
-                    Ask a question
-                    <form onSubmit={createPost}>
-                        <div className="form-group">
-                            <textarea className="form-control post-editor-input"
-                                value={post}
-                                onChange={e => setPost(e.target.value)}    
-                            />
-                        </div>
-                        <div className="form-group">
-                            <input type="submit" value="Submit Post" className="btn btn-primary" />
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-            { PostList() }
-
-        </div>
-            
-
->>>>>>> upstream/master
-    );
 };
-
+}
 export default Board;
