@@ -1,12 +1,25 @@
-import React, {useState} from 'react';
+import React, {useContext} from 'react';
 import { Link } from 'react-router-dom';
 
 import * as ROUTES from '../../constants/routes';
 import SignOutButton from '../sign-out';
+import {AuthContext} from '../session/withAuthentication';
+// import {AuthUserContext} from '../session'
+// import { auth } from 'firebase';
+import app from '../firebase/firebase'
 
-const Navbar = (props) => (
-<div>{props.authUser ? <NavAuth /> : <NavUnAuth />}</div>
-);
+const Navbar = () => {
+    const {currentUser} = useContext(AuthContext);
+    return(
+        <div>
+            {/* <AuthUserContext.Consumer>
+                {authUser => authUser ? <NavAuth /> : <NavUnAuth />}
+            </AuthUserContext.Consumer> */}
+            {currentUser ? <NavAuth /> : <NavUnAuth />}
+            {console.log(currentUser)}
+        </div>
+    );
+};
 
 const NavAuth = () => (
     <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
@@ -23,10 +36,11 @@ const NavAuth = () => (
                     <Link to="/community" className="nav-link">Community Board</Link>
                 </li>
                 <li className="navbar-item">
-						        <Link to="/calendar" className="nav-link">Calendar</Link>
-					      </li>
-                <li>
-                    <SignOutButton className="navbar-item"/>
+					<Link to="/calendar" className="nav-link">Calendar</Link>
+				</li>
+                <li className="navbar-item">
+                    <div><p>Hello, User!</p></div>
+                    <SignOutButton />
                 </li>
             </ul>
         </div>
@@ -48,8 +62,8 @@ const NavUnAuth = () => (
                     <Link to="/community" className="nav-link">Community Board</Link>
                 </li>
                 <li className="navbar-item">
-						        <Link to="/calendar" className="nav-link">Calendar</Link>
-					      </li>
+					<Link to="/calendar" className="nav-link">Calendar</Link>
+				</li>
                 <li>
                     <Link to={ROUTES.SIGN_IN} className="nav-link">Login</Link>
                 </li>

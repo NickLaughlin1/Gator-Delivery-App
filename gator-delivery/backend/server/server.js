@@ -5,12 +5,13 @@ import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import config from './config/config.js';
 import tasksRouter from './routes/tasksRouter.js';
-import getCoordinates from './controllers/coordinatesController.js';
+import postsRouter from './routes/postsRouter.js';
 
 //connect to database
 mongoose.connect(config.db.uri, {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false}).then(() => {
     console.log(`Successfully connected to mongoose database.`)
 });
+
 
 //initialize app
 const app = express();
@@ -37,6 +38,7 @@ app.use('/', express.static('./../../client'));
 
 app.use('/tasks', tasksRouter);
 
+app.use('/posts', postsRouter);
 /* The next three middleware are important to the API that we are building */
 
 /* Request Handler for route /api/listings
