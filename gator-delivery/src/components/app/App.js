@@ -28,10 +28,38 @@ const App = () => {
       <Router>
         <div className="container">
           <Navbar />
+          <div class="dropdown">
+          <button class="dropbtn">Social</button>
+            <div class="dropdown-content">
+              <a href="/reviews">Volunteer Reviews</a>
+              <a href="/community">Community Board</a>
+              <a href="/faq">FAQ</a>
+          </div>
+            </div>
+          <div class="dropdown">
+          <button class="dropbtn">Tasks</button>
+            <div class="dropdown-content">
+              <a href="/create">Create Task</a>
+              <a href="/">View Tasks</a>
+            </div>
+          </div>
+          <div class="dropdown">
+          <button class="dropbtn">Calendar</button>
+            <div class="dropdown-content">
+              <a href="/calendar">Calendar</a>
+            </div>
+          </div>
+          <div class="dropdown">
+          <button class="dropbtn">Account</button>
+            <div class="dropdown-content">
+              <a href="/signin">Login</a>
+              <a href="/signup">Sign-up</a>
+            </div>
+          </div>
           <br />
           <Route path="/" exact component={TaskList} />
           <Route path="/create" component={CreateTask} />
-          <Route path="/community" component={Board} />
+          <Route path="/community" component={Board}/>
           <Route path="/calendar" component={Calendar} />
           <hr />
           <Route exact path={ROUTES.LANDING} component={LandingPage} />
