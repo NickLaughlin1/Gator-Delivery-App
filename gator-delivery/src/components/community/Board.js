@@ -34,7 +34,6 @@ const Board = (props) => {
         setPost('');
         
     };
-    
     return(
         <div>
             <h1>
@@ -63,10 +62,8 @@ const Board = (props) => {
 
             { PostList() }
 
-        </div>
-            
-
+        </div>  
     );
-};
+    }
 
 export default Board;
