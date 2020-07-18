@@ -13,7 +13,6 @@ import AccountPage from '../account';
 import AdminPage from '../admin';
 
 import '../index.css';
-import AddTask from '../add-task/AddTask';
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "../navbar/Navbar";
 import TaskList from "../tasklist/TaskList";
@@ -57,10 +56,9 @@ const App = () => {
             </div>
           </div>
           <br />
-          <Route path="/" exact component={TaskList} />
-          <Route path="/create" component={CreateTask} />
-          <Route path="/community" component={Board}/>
-          <Route path="/calendar" component={Calendar} />
+          <Route path={ROUTES.CREATE} component={CreateTask} />
+          <Route path={ROUTES.COMMUNITY} component={Board}/>
+          <Route path={ROUTES.CALENDAR} component={Calendar} />
           <hr />
           <Route exact path={ROUTES.LANDING} component={LandingPage} />
           <Route path={ROUTES.SIGN_UP} component={SignUpPage} />

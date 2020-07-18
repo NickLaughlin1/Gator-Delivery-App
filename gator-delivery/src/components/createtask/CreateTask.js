@@ -26,7 +26,7 @@ const CreateTask = (props) => {
     return (
         
         <div>
-            <h1>Create New Task</h1>
+            <h1>Post a job</h1>
             <form onSubmit={createTask}>
                 <div className="form-group">
                 <label>Name</label>
