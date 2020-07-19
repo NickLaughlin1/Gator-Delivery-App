@@ -12,7 +12,14 @@ body {
 }
 
 /* ### First row ### */
+.site-header {
+  position: relative;
+  z-index: 1000;
+}
 
+.navbar {
+
+}
 
 /* Main Title */
 .main-title {
@@ -103,10 +110,17 @@ body {
   margin-left: auto;
 }
 
+.container, .navbar-static-top .container, 
+.navbar-fixed-top .container, 
+.navbar-fixed-bottom .container {
+    width: 988px;
+}
+
 .row {
   margin-left: -21px;
 }
 
+/* Displaying listed jobs */
 .layout-content {
   float: left;
   margin-left: 20px;
@@ -118,4 +132,37 @@ body {
   margin-left: 20px;
   width: 316px;
   min-height: 1px;
+}
+
+.mb-panel {
+  padding: 20px;
+  background-color: rgb(238, 238, 238);
+  margin-bottom: 20px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+
+.mb-panel_header {
+  padding: 10px 20px;  
+  border-radius: 4px 4px 0 0;
+  margin: -20px -20px 20px;
+  background-color: #4990e2;
+  color: #fff;
+  position: relative;
+}
+
+.heading-caps {
+  font-family: 'sofia_probold',"Trebuchet MS",
+    "Segoe UI",Candara,"Bitstream Vera Sans",
+    "DejaVu Sans","Bitstream Vera Sans",Verdana,
+    "Verdana Ref",sans-serif;
+  font-size: 14px;
+  line-height: 2em;
+  margin: 0;
+}
+
+.actions {
+  padding-top: 1em;
+  margin: 0;
 }

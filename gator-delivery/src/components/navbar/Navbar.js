@@ -10,7 +10,7 @@ import app from '../firebase/firebase'
 const Navbar = () => {
     const {currentUser} = useContext(AuthContext);
     return(
-        <div>
+        <div className='site-header'>
             {/* <AuthUserContext.Consumer>
                 {authUser => authUser ? <NavAuth /> : <NavUnAuth />}
             </AuthUserContext.Consumer> */}

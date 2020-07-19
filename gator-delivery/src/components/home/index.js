@@ -26,10 +26,17 @@ const Home = (props) => {
                 </div>
               </div>
               <div className='layout-sidebar'>
-                <h3>Sidebar panel</h3>
-                <Link to={ROUTES.CREATE} className="nav-link">
-                  <button type="button" class="btn btn-primary btn-lg">Post a job</button>
-                </Link> 
+                <div className='mb-panel'>
+                  <div className='mb-panel_header'>
+                    <h3 className='heading-caps'>Sidebar panel</h3>
+                  </div> 
+                  <p>Click here to add a task</p>
+                  <div className="actions">
+                    <Link to={ROUTES.CREATE} className="nav-link">
+                      <button type="button" class="btn btn-primary btn-lg">Post a job</button>
+                    </Link>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
