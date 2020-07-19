@@ -1,6 +1,9 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import axios from 'axios';
+import * as firebase from "firebase/app";
+import * as ROUTES from '../../constants/routes';
 
+//https://css-tricks.com/the-magic-of-react-based-multi-step-forms/
 const CreateTask = (props) => {
 
     const [currentStep, setCurrentStep] = useState(1);
@@ -8,13 +11,32 @@ const CreateTask = (props) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
+    useEffect(() => {
+      firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+          //console.log("signed in");
+          //console.log(user.email);
+          setEmail(user.email);
+        } 
+      });
+      }, []);
+
     const handleSubmit = (e) => {
         e.preventDefault();
+      
         let newSubmission = {
-            email: email,
-            username: username,
-            password: password
+            name: username,
+            task: password,
+            email: email
         };
+        //console.log(newSubmission);
+        axios.post('http://localhost:5000/tasks/add', newSubmission);
+
+        window.location = ROUTES.HOME;
+        setCurrentStep(1);
+        setEmail('');
+        setUsername('');
+        setPassword('');
     };
 
     const _next = () => {
@@ -95,7 +117,8 @@ const Step1 = (props) => {
     }
 
     return (
-        <div className="form-group">
+      <h3>you will be submitting a task</h3>
+        /*<div className="form-group">
             <label htmlFor="email">Email address</label>
             <input
             className="form-control"
@@ -106,7 +129,8 @@ const Step1 = (props) => {
             value={props.email} // Prop: The email input data
             onChange={e => props.setEmail(e.target.value)} // Prop: Puts data into state
             />
-        </div>
+          </div> */
+         
     );
 };
 

@@ -98,3 +98,24 @@ body {
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {background-color: #227f96;}
 
+.container {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.row {
+  margin-left: -21px;
+}
+
+.layout-content {
+  float: left;
+  margin-left: 20px;
+  width: 652px;
+}
+
+.layout-sidebar {
+  float: left;
+  margin-left: 20px;
+  width: 316px;
+  min-height: 1px;
+}

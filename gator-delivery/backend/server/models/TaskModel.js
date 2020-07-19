@@ -7,7 +7,8 @@ import mongoose from 'mongoose';
   */
 const taskSchema = new mongoose.Schema({
   name: {type: String, required: true},
-  task: {type: String, required: true}
+  task: {type: String, required: true},
+  email: {type: String, require: true}
 });
 
 /* Use your schema to instantiate a Mongoose model

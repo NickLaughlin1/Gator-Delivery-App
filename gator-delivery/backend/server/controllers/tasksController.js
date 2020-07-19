@@ -29,7 +29,8 @@ export const create = async (req, res) => {
 
     let newTask = new Task({
         name: req.body.name,
-        task: req.body.task
+        task: req.body.task,
+        email: req.body.email
     });
 
     newTask.save(function(err) {
