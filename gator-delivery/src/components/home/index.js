@@ -18,8 +18,8 @@ const Home = (props) => {
           <div className='row'>
             <div className='layout-content-sidebar'>
               <div className='layout-content'>
-                <div className='posted-job-panel' id='my-posted-jobs'>
-                  <h1 className='heading'>
+                <div className='mb-panel posted-jobs' id='my-posted-jobs'>
+                  <h1 className='heading-large'>
                     My posted jobs
                   </h1>
                   <TaskList/>

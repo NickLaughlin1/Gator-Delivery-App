@@ -17,9 +17,6 @@ body {
   z-index: 1000;
 }
 
-.navbar {
-
-}
 
 /* Main Title */
 .main-title {
@@ -165,4 +162,47 @@ body {
 .actions {
   padding-top: 1em;
   margin: 0;
+}
+
+.heading-large {
+  margin-bottom: 30px;
+  font-size: 30px;
+  margin: 0 0 30px;
+}
+
+h1 {
+  margin-block-start: 0.67em;
+  margin-block-end: 0.67em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
+.posted-jobs_list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.posted-jobs_list-item {
+  border: 0;
+  margin: 0;
+  padding: 0 0 10px;
+  margin-bottom: 15px;
+}
+
+.posted-box {
+  background-color: #ffffff;
+}
+
+.li {
+  line-height: 20px;
+}
+
+.heading {
+  color: #464c5b;
+  font-weight: bold;
+  margin: 0 0 .778em;
+  font-size: 1.286em;
+  line-height: 1.5em;
+  display: block;
 }

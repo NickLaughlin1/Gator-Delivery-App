@@ -1,13 +1,13 @@
 import mongoose from 'mongoose';
 import Task from '../models/TaskModel.js';
-import coordinates from './coordinatesController.js';
 
 /* Create a listing */
 export const create = async (req, res) => {
 
     let newTask = new Task({
-        name: req.body.name,
+        headline: req.body.headline,
         task: req.body.task,
+        date: Date.parse(req.body.date),
         email: req.body.email
     });
 

@@ -9,10 +9,12 @@ import * as firebase from "firebase/app";
 // Individual list components for each task
 const Task =(props) => {
     return (
-        <tr>
-            <td>{props.task.name}</td>
-            <td>{props.task.task}</td>
-        </tr>
+        <div className='posted-box'>
+        <li className='posted-jobs_list-item'>
+            <h3 className='heading heading-small'>{props.task.task}</h3>
+            <span>{props.task.date.substring(0,10)}</span>
+        </li>
+        </div>
     );
 };
 
@@ -55,18 +57,9 @@ const TaskList = (props) => {
 
     return (
         <div>
-            <h3>Logged Tasks</h3>
-            <table className="table">
-                <thead className="thead-light">
-                    <tr>
-                        <th>Name</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    { TaskList() }
-                </tbody>
-            </table>
+            <ul className='posted-jobs_list'>
+                { TaskList() }
+            </ul>
         </div>
     );
 
