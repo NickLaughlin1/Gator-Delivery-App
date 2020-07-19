@@ -1,3 +1,6 @@
+/*
+ * This file loads the form for users to submit tasks.
+*/
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import * as firebase from "firebase/app";
@@ -140,13 +143,13 @@ const Step2 = (props) => {
     } 
     return(
       <div className="form-group">
-        <label htmlFor="username">Username</label>
+        <label htmlFor="username">Name</label>
         <input
           className="form-control"
           id="username"
           name="username"
           type="text"
-          placeholder="Enter username"
+          placeholder="Enter name"
           value={props.username}
           onChange={e => props.setUsername(e.target.value)}
           />
@@ -161,18 +164,18 @@ const Step3 = (props) => {
     return(
       <React.Fragment>
       <div className="form-group">
-        <label htmlFor="password">Password</label>
+        <label htmlFor="password">Task</label>
         <input
           className="form-control"
           id="password"
           name="password"
-          type="password"
-          placeholder="Enter password"
+          type="text"
+          placeholder="Enter task"
           value={props.password}
           onChange={e => props.setPassword(e.target.value)}
           />      
       </div>
-      <button className="btn btn-success btn-block">Sign up</button>
+      <button className="btn btn-success btn-block">Submit task</button>
       </React.Fragment>
     );
   };

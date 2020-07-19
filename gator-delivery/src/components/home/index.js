@@ -2,23 +2,13 @@
  *  This will load the page for logged in users to view their open tasks. It will list all currently open tasks
  *  for the user and will also have a sidebar option to create another task.
  */
-
-import React, {useContext} from 'react';
+import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
 import * as firebase from "firebase/app";
+import TaskList from "../tasklist/TaskList";
   
 const Home = (props) => {
-
-  // Grabs the current user so we can get their email
-  firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
-      //console.log("signed in");
-      //console.log(user.email);
-    } 
-  });
-
-
 
   return (
     <div>
@@ -32,7 +22,7 @@ const Home = (props) => {
                   <h1 className='heading'>
                     My posted jobs
                   </h1>
-                  
+                  <TaskList/>
                 </div>
               </div>
               <div className='layout-sidebar'>
