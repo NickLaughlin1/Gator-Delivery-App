@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  border: 6px solid #1feb3a;
 }
 
 * {
@@ -36,10 +37,12 @@ body {
 .post-editor-text {
   margin-top: 1em;
   margin-left: 1.5em;
+  
 }
 .post-editor-submit {
   float: right;
   margin-top: 1em;
+  
 }
 
 .existing-post {
@@ -54,6 +57,8 @@ body {
 .task-form {
   width: 50%;
   margin: 0 auto;
+  
+  
 }
 
 /* Dropdown Button */
@@ -71,7 +76,7 @@ body {
   display: inline-block;
 }
 
-/* Dropdown Content (Hidden by Default) */
+/* What's in each dropdown */
 .dropdown-content {
   display: none;
   position: absolute;
@@ -89,12 +94,12 @@ body {
   display: block;
 }
 
-/* Change color of dropdown links on hover */
+/* Hover Color */
 .dropdown-content a:hover {background-color: #ddd;}
 
-/* Show the dropdown menu on hover */
+/* Displays the parts of each dropdown */
 .dropdown:hover .dropdown-content {display: block;}
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn {background-color: #227f96;}
+.dropdown:hover .dropbtn {background-color: #289fbd;}
 
