@@ -6,8 +6,12 @@ import mongoose from 'mongoose';
      See also https://scotch.io/tutorials/using-mongoosejs-in-node-js-and-mongodb-applications
   */
 const taskSchema = new mongoose.Schema({
-  name: {type: String, required: true},
-  task: {type: String, required: true}
+  headline: {type: String, required: true},
+  task: {type: String, required: true},
+  date: {type: Date, required: true},
+  email: {type: String, require: true}
+}, {
+  timestamps: true,
 });
 
 /* Use your schema to instantiate a Mongoose model

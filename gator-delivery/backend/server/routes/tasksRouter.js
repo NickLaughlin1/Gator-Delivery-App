@@ -10,7 +10,9 @@ import express from 'express'; //refers to Express the middleware helper for Nod
 const tasksRouter = express.Router();
 
 tasksRouter.post('/add', tasks.create);
-tasksRouter.get('/', tasks.list);
+tasksRouter.get('/:listingEmail', tasks.list);
+
+//tasksRouter.get('/:listingEmail', tasks.);
 /* 
   These method calls are responsible for routing requests to the correct request handler.
   Take note that it is possible for different controller functions to handle requests to the same route.
