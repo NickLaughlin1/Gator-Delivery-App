@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  border: 6px solid #1feb3a;
+  border: 8px solid #1feb3a;
 }
 
 * {
@@ -61,6 +61,12 @@ body {
   
 }
 
+.faqprofile {
+line-height: 5pt;
+position: relative;
+display: inline-block;
+}
+
 /* Dropdown Button */
 .dropbtn {
   background-color: #0f31a0;
@@ -69,7 +75,7 @@ body {
   font-size: 16px;
   border: none;
 }
-/*////////
+
 /* The container <div> - needed to position the dropdown content */
 .dropdown {
   position: relative;

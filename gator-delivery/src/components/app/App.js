@@ -19,6 +19,7 @@ import Navbar from "../navbar/Navbar";
 import TaskList from "../tasklist/TaskList";
 import CreateTask from "../createtask/CreateTask";
 import Board from '../community/Board';
+import faq from '../faq/faq';
 //npm install react-calendar or yarn add react-calendar
 import Calendar from '../calendar/Calendar'
 
@@ -28,39 +29,12 @@ const App = () => {
       <Router>
         <div className="container">
           <Navbar />
-          <div class="dropdown">
-          <button class="dropbtn">Social</button>
-            <div class="dropdown-content">
-              <a href="/reviews">Volunteer Reviews</a>
-              <a href="/community">Community Board</a>
-              <a href="/faq">FAQ</a>
-          </div>
-            </div>
-          <div class="dropdown">
-          <button class="dropbtn">Tasks</button>
-            <div class="dropdown-content">
-              <a href="/create">Create Task</a>
-              <a href="/">View Tasks</a>
-            </div>
-          </div>
-          <div class="dropdown">
-          <button class="dropbtn">Calendar</button>
-            <div class="dropdown-content">
-              <a href="/calendar">Calendar</a>
-            </div>
-          </div>
-          <div class="dropdown">
-          <button class="dropbtn">Account</button>
-            <div class="dropdown-content">
-              <a href="/signin">Login</a>
-              <a href="/signup">Sign-up</a>
-            </div>
-          </div>
           <br />
           <Route path="/" exact component={TaskList} />
           <Route path="/create" component={CreateTask} />
           <Route path="/community" component={Board}/>
           <Route path="/calendar" component={Calendar} />
+          <Route path="/faq" component={faq} />
           <hr />
           <Route exact path={ROUTES.LANDING} component={LandingPage} />
           <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
