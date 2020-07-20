@@ -82,7 +82,7 @@ const CreateTask = (props) => {
         if(currStep < 3) {
           return (
             <button 
-              className="btn btn-dark float-right" 
+              className="btn btn-primary float-right" 
               type="button" onClick={_next}>
                 Continue
             </button>        

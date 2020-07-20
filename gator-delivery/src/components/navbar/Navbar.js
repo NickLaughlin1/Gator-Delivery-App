@@ -23,23 +23,25 @@ const Navbar = () => {
 const NavAuth = () => (
     <nav className="navbar navbar-dark bg-primary navbar-expand-lg navbar-fixed-top">
         <div className='container'>
-        <Link to={ROUTES.HOME} className="navbar-brand">Home Order</Link>
+        <a className='navbar-brand' href={ROUTES.HOME}> Home Order</a>
         <div className="collpase navbar-collapse">
             <ul className="navbar-nav mr-auto">
-                <li className="navbar-item">
-                    <Link to="/create" className="nav-link">Create Job</Link>
-                </li>
+                  
+                    <Link to="/create" className="nav-link">
+                        <button type='button' className='btn btn-light'>Create Job</button>
+                    </Link>
+                
                 <li className="navbar-item">
                     <Link to="/community" className="nav-link">Community</Link>
                 </li>
                 <li className="navbar-item">
 					<Link to="/calendar" className="nav-link">Calendar</Link>
 				</li>
-                <li className="navbar-item">
-                    <div><p>Hello, User!</p></div>
-                    <SignOutButton />
-                </li>
             </ul>
+            <p>Hello, User!</p>
+            <li className="navbar-item">
+                    <SignOutButton />
+            </li>
         </div>
         </div>
     </nav>
