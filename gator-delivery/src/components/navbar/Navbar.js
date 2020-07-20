@@ -10,7 +10,7 @@ import app from '../firebase/firebase'
 const Navbar = () => {
     const {currentUser} = useContext(AuthContext);
     return(
-        <div className='site-header'>
+        <div className='header'>
             {/* <AuthUserContext.Consumer>
                 {authUser => authUser ? <NavAuth /> : <NavUnAuth />}
             </AuthUserContext.Consumer> */}
@@ -21,18 +21,16 @@ const Navbar = () => {
 };
 
 const NavAuth = () => (
-    <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
-        <Link to="/" className="navbar-brand">Home Order</Link>
+    <nav className="navbar navbar-dark bg-primary navbar-expand-lg navbar-fixed-top">
+        <div className='container'>
+        <Link to={ROUTES.HOME} className="navbar-brand">Home Order</Link>
         <div className="collpase navbar-collapse">
             <ul className="navbar-nav mr-auto">
                 <li className="navbar-item">
-                    <Link to="/" className="nav-link">View Tasks</Link>
+                    <Link to="/create" className="nav-link">Create Job</Link>
                 </li>
                 <li className="navbar-item">
-                    <Link to="/create" className="nav-link">Create Task</Link>
-                </li>
-                <li className="navbar-item">
-                    <Link to="/community" className="nav-link">Community Board</Link>
+                    <Link to="/community" className="nav-link">Community</Link>
                 </li>
                 <li className="navbar-item">
 					<Link to="/calendar" className="nav-link">Calendar</Link>
@@ -42,6 +40,7 @@ const NavAuth = () => (
                     <SignOutButton />
                 </li>
             </ul>
+        </div>
         </div>
     </nav>
 );

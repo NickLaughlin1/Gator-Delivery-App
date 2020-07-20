@@ -23,10 +23,11 @@ import Calendar from '../calendar/Calendar'
 
 const App = () => {
   return(
+    <div className='page'>
     <AuthProvider>
       <Router>
-        <div className="container">
-          <Navbar />
+        <div className='c'>
+            <Navbar />
           <div class="dropdown">
           <button class="dropbtn">Social</button>
             <div class="dropdown-content">
@@ -56,6 +57,7 @@ const App = () => {
             </div>
           </div>
           <br />
+          <div className='body'>
           <Route path={ROUTES.CREATE} component={CreateTask} />
           <Route path={ROUTES.COMMUNITY} component={Board}/>
           <Route path={ROUTES.CALENDAR} component={Calendar} />
@@ -67,9 +69,17 @@ const App = () => {
           <Route path={ROUTES.HOME} component={HomePage} />
           {/* <Route path={ROUTES.ACCOUNT} component={AccountPage} /> */}
           {/* <Route path={ROUTES.ADMIN} component={AdminPage} />   */}
+          </div>
         </div>
       </Router>
     </AuthProvider>
+    
+    <footer className='site-footer'>
+      <div className='container'>
+        <h3>This is the footer</h3>
+      </div>
+    </footer>
+    </div>
   );
 }
 export default App;

@@ -6,7 +6,7 @@ const Landing = (props) => {
 
 
   return (
-    <div>
+    <div className='container landing-page'>
     <h1>Insert image here</h1>
 
     <Link to={ROUTES.SIGN_IN} className="nav-link">

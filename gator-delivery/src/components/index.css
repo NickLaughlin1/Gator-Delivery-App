@@ -12,17 +12,11 @@ body {
 }
 
 /* ### First row ### */
-.site-header {
-  position: relative;
-  z-index: 1000;
+.container {
+  max-width: 1024px;
 }
 
 
-/* Main Title */
-.main-title {
-  float: left;
-  width: 75%;
-}
 
 /* Login and Sign up buttons */
 .register {
@@ -107,11 +101,7 @@ body {
   margin-left: auto;
 }
 
-.container, .navbar-static-top .container, 
-.navbar-fixed-top .container, 
-.navbar-fixed-bottom .container {
-    width: 988px;
-}
+
 
 .row {
   margin-left: -21px;
@@ -144,7 +134,7 @@ body {
   padding: 10px 20px;  
   border-radius: 4px 4px 0 0;
   margin: -20px -20px 20px;
-  background-color: #4990e2;
+  background-color: #007bff;
   color: #fff;
   position: relative;
 }
@@ -198,11 +188,8 @@ h1 {
   line-height: 20px;
 }
 
-.heading {
-  color: #464c5b;
-  font-weight: bold;
-  margin: 0 0 .778em;
-  font-size: 1.286em;
-  line-height: 1.5em;
-  display: block;
+footer {
+  color: white;
+  margin-top: 3em;
+  background: #343944;
 }

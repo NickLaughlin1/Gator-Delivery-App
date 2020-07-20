@@ -82,7 +82,7 @@ const CreateTask = (props) => {
         if(currStep < 3) {
           return (
             <button 
-              className="btn btn-primary float-right" 
+              className="btn btn-dark float-right" 
               type="button" onClick={_next}>
                 Continue
             </button>        
@@ -93,6 +93,7 @@ const CreateTask = (props) => {
 
     return (
         <React.Fragment>
+          <div className='container'>
             <h1>Task form</h1>              
             <form onSubmit={handleSubmit}>
                 <Step1 
@@ -113,6 +114,7 @@ const CreateTask = (props) => {
               
                 {nextButton()} 
             </form>
+          </div>
         </React.Fragment>
     );
 

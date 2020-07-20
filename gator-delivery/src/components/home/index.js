@@ -28,9 +28,9 @@ const Home = (props) => {
               <div className='layout-sidebar'>
                 <div className='mb-panel'>
                   <div className='mb-panel_header'>
-                    <h3 className='heading-caps'>Sidebar panel</h3>
+                    <h3 className='heading-caps'>Post a new job</h3>
                   </div> 
-                  <p>Click here to add a task</p>
+                  <p>Click here to create a new job and let volunteers near you see!</p>
                   <div className="actions">
                     <Link to={ROUTES.CREATE} className="nav-link">
                       <button type="button" class="btn btn-primary btn-lg">Post a job</button>
