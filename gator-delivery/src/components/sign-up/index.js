@@ -204,7 +204,7 @@ const SignUpPage = ({history}) => {
     )
 }
 
-// Gives users a link to sign up if they do not have an accoutn already
+// Gives users a link to sign up if they do not have an account already
 const SignUpLink = () => (
     <p>
         Don't have an account? <Link to={ROUTES.SIGN_UP}>Sign Up</Link>

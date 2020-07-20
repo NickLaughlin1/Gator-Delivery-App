@@ -8,3 +8,4 @@ export const PASSWORD_FORGET = '/forgotPassword';
 export const CREATE = '/create';
 export const COMMUNITY = '/community'
 export const CALENDAR = '/calendar';
+export const REVIEWS = '/reviews';
