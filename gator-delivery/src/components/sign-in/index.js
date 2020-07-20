@@ -1,5 +1,7 @@
 import React, {useCallback, useContext} from 'react';
 import {withRouter, Redirect} from 'react-router-dom';
+import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn } from 'mdbreact';
+
 
 import {SignUpLink} from '../sign-up';
 import * as ROUTES from '../../constants/routes';
@@ -60,6 +62,23 @@ const SignInForm = ({history}) => {
             </div>
             <button /*disabled={isInvalid}*/ type="submit" className="btn btn-primary">Login</button>
         </form>
+        // <MDBContainer>
+        //     <MDBRow>
+        //         <MDBCol md="6">
+        //         <form onSubmit={handleLogin}>
+        //             <p className="h5 text-center mb-4">Sign in</p>
+        //             <div className="grey-text">
+        //             <MDBInput label="Type your email" icon="envelope" group type="email" validate error="wrong"
+        //                 success="right" />
+        //             <MDBInput label="Type your password" icon="lock" group type="password" validate />
+        //             </div>
+        //             <div className="text-center">
+        //             <MDBBtn type="submit">Login</MDBBtn>
+        //             </div>
+        //         </form>
+        //         </MDBCol>
+        //     </MDBRow>
+        // </MDBContainer>
     );
 }
 

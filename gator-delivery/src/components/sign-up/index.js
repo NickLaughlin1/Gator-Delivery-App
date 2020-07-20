@@ -1,23 +1,35 @@
 import React, {useCallback} from 'react';
 import {Link, withRouter} from 'react-router-dom';
+import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn } from 'mdbreact';
 
 import * as ROUTES from '../../constants/routes';
 import app from '../firebase/firebase'
 
 
 const SignUpPage = ({history}) => {
+    // All of the possible variables that a user could provide
     const handleSignUp = useCallback(async event => {
         event.preventDefault();
-        const {name, email, passwordOne} = event.target.elements;
+        const {name, email, passwordOne, passwordTwo, addressOne, addressTwo, city, state, zip, role} = event.target.elements;
         try {
             await app
                 .auth()
                 .createUserWithEmailAndPassword(email.value, passwordOne.value);
-                history.push(ROUTES.HOME);
+                console.log(role.value);
+                if(role.value === 'volunteer') {
+                    console.log("hi");
+                    history.push(ROUTES.SIGN_UP_VOL);
+                } else {
+                    history.push(ROUTES.HOME);
+                }
         } catch (error) {
             alert(error);
         }
     }, [history]);
+
+    // const isVolunteer = () => {
+    //     history.push(ROUTES.SIGN_UP_VOL);
+    // }
 
     // const isInvalid = 
     //     passwordOne !== passwordTwo ||

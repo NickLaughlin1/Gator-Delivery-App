@@ -48,7 +48,7 @@ const NavAuth = () => (
 );
 
 const NavUnAuth = () => (
-    <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
+    <nav className="navbar navbar-dark bg-dark navbar-expand-sm stick-top">
         <Link to="/" className="navbar-brand">Home Order</Link>
         <div className="collpase navbar-collapse">
             <ul className="navbar-nav mr-auto">
