@@ -14,7 +14,6 @@ import AccountPage from '../account';
 import AdminPage from '../admin';
 
 import '../index.css';
-import AddTask from '../add-task/AddTask';
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "../navbar/Navbar";
 import TaskList from "../tasklist/TaskList";
@@ -25,16 +24,16 @@ import Calendar from '../calendar/Calendar'
 
 const App = () => {
   return(
+    <div className='page'>
     <AuthProvider>
       <Router>
-        <div className="container">
+        <div className='c'>
           <Navbar />
-          
           <br />
-          <Route path="/" exact component={TaskList} />
-          <Route path="/create" component={CreateTask} />
-          <Route path="/community" component={Board}/>
-          <Route path="/calendar" component={Calendar} />
+          <div className='body'>
+          <Route path={ROUTES.CREATE} component={CreateTask} />
+          <Route path={ROUTES.COMMUNITY} component={Board}/>
+          <Route path={ROUTES.CALENDAR} component={Calendar} />
           <hr />
           <Route exact path={ROUTES.LANDING} component={LandingPage} />
           <Route exact path={ROUTES.SIGN_UP} component={SignUpPage} />
@@ -44,9 +43,17 @@ const App = () => {
           <Route path={ROUTES.HOME} component={HomePage} />
           {/* <Route path={ROUTES.ACCOUNT} component={AccountPage} /> */}
           {/* <Route path={ROUTES.ADMIN} component={AdminPage} />   */}
+          </div>
         </div>
       </Router>
     </AuthProvider>
+    
+    <footer className='site-footer'>
+      <div className='container'>
+        <h3>This is the footer</h3>
+      </div>
+    </footer>
+    </div>
   );
 }
 export default App;

@@ -1,49 +1,27 @@
-/* Dependencies */
 import mongoose from 'mongoose';
 import Task from '../models/TaskModel.js';
-import coordinates from './coordinatesController.js';
-
-/*
-  In this file, you should use Mongoose queries in order to retrieve/add/remove/update listings.
-  On an error you should send a 404 status code, as well as the error message. 
-  On success (aka no error), you should send the listing(s) as JSON in the response.
-
-  HINT: if you are struggling with implementing these functions refer back to this tutorial 
-  https://www.callicoder.com/node-js-express-mongodb-restful-crud-api-tutorial/
-  or
-  https://medium.com/@dinyangetoh/how-to-build-simple-restful-api-with-nodejs-expressjs-and-mongodb-99348012925d
-  
-
-  If you are looking for more understanding of exports and export modules - 
-  https://developer.mozilla.org/en-US/docs/web/javascript/reference/statements/export
-  or
-  https://medium.com/@etherealm/named-export-vs-default-export-in-es6-affb483a0910
- */
 
 /* Create a listing */
-
 export const create = async (req, res) => {
-    /* Instantiate a Listing */
-    /* save the coordinates from the coordinatesController (located in req.results if there is an address property) */
-    /* Then save the listing to the database */
 
     let newTask = new Task({
-        name: req.body.name,
-        task: req.body.task
+        headline: req.body.headline,
+        task: req.body.task,
+        date: Date.parse(req.body.date),
+        email: req.body.email
     });
 
     newTask.save(function(err) {
         if (err) return res.status(400).send(err);
         res.json(newTask);
     });
-    
-
 };
 
-/* Retreive all the directory listings, sorted alphabetically by listing code */
+/* Retreive all the directory listings */
 export const list = (req, res) => {
     
-    Task.find({}).exec(function(err,task) {
+    let currEmail = req.params.listingEmail;
+    Task.find({email: currEmail}).exec(function(err,task) {
         if (err) return res.status(400).send(err);
         res.json(task);
     });
