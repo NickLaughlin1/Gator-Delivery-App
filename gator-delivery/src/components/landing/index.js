@@ -10,7 +10,7 @@ const Landing = (props) => {
     <h1>Insert image here</h1>
 
     <Link to={ROUTES.SIGN_IN} className="nav-link">
-      <button type="button" class="btn btn-primary btn-lg">Post a job</button>
+      <button type="button" className="btn btn-primary btn-lg">Post a job</button>
     </Link>
     
     
