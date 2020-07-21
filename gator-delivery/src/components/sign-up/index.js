@@ -14,9 +14,14 @@ const SignUpPage = ({history}) => {
         try {
             await app
                 .auth()
-                .createUserWithEmailAndPassword(email.value, passwordOne.value);
+                .createUserWithEmailAndPassword(email.value, passwordOne.value).then((result) => {
+                    const user = app.auth().currentUser;
+                    return user.updateProfile({
+                        displayName: name.value
+                    });
+                });
                 console.log(role.value);
-                if(role.value === 'volunteer') {
+                if(role.value === 'volunteerH') {
                     console.log("hi");
                     history.push(ROUTES.SIGN_UP_VOL);
                 } else {
@@ -206,7 +211,8 @@ const SignUpPage = ({history}) => {
                     <select id="inputRole" className="form-control" name="role" /*value={role} onChange={this.onChange}*/>
                         <option defaultValue>Chose role...</option>
                         <option value="cs">Regular Customer</option>
-                        <option value="volunteer">Volunteer</option>
+                        <option value="volunteerD">Volunteer Driver</option>
+                        <option value="volunteerH">Volunteer Handyman</option>
                     </select>
                 </div>
             </div>
