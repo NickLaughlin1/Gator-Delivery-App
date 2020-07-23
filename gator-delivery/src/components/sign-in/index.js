@@ -58,7 +58,7 @@ const SignInForm = ({history}) => {
                     />
                 </div>
             </div>
-            <button /*disabled={isInvalid}*/ type="submit" className="btn btn-primary">Login</button>
+            <button type="submit" className="btn btn-primary">Login</button>
         </form>
     );
 }

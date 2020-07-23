@@ -7,7 +7,7 @@ const SignOutButton = ({history}) => {
     const handleSignOut = () => {
         try {
             app.auth().signOut();
-            history.push(ROUTES.LANDING)
+            history.push(ROUTES.LANDING); // Makes sure the person gets back to the landing page after logout
         } catch (error) {
             alert(error);
         } 

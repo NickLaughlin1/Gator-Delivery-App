@@ -69,16 +69,6 @@ const SignUpPage = (props) => {
             </div>
         </React.Fragment>
     );
-
-    // const isInvalid = 
-    //     passwordOne !== passwordTwo ||
-    //     passwordOne === '' ||
-    //     email === '' ||
-    //     name === '' ||
-    //     addressOne === '' ||
-    //     city === '' ||
-    //     state === '' ||
-    //     zip === '';
 };
 
 const NormalSignUp = (props) => {
@@ -284,23 +274,6 @@ const SignUpVol = (props) => {
             props.setIsInvalid(false);
         }
     }
-
-    // const handleVol = useCallback(async event => {
-    //     event.preventDefault();
-    //     const {skill, business, businessWeb} = event.target.elements;
-    //     try {
-            
-    //         props.setSkills(skill);
-    //         if(!props.isInvalid) {  //Makes sure that the user does have a business before trying to add it to their account
-    //             props.setBusinessName(business);
-    //             props.setBusinessWebsite(businessWeb);
-    //         }
-    //         props.history.push(ROUTES.HOME);
-    //     } catch(error) {
-
-    //     }
-
-    // }, [props]);
 
     return(
         <div>

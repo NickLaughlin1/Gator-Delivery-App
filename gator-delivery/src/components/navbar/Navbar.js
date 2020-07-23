@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
 import SignOutButton from '../sign-out';
 import {AuthContext} from '../session/withAuthentication';
-// import {AuthUserContext} from '../session'
-// import { auth } from 'firebase';
 import app from '../firebase/firebase'
 
 
