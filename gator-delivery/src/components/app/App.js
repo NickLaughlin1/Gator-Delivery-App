@@ -13,7 +13,6 @@ import AccountPage from '../account';
 import AdminPage from '../admin';
 
 import '../index.css';
-import AddTask from '../add-task/AddTask';
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "../navbar/Navbar";
 import TaskList from "../tasklist/TaskList";
@@ -24,54 +23,34 @@ import Calendar from '../calendar/Calendar'
 
 const App = () => {
   return(
+    <div className='page'>
     <AuthProvider>
       <Router>
-        <div className="container">
+        <div className='c'>
           <Navbar />
-          <div class="dropdown">
-          <button class="dropbtn">Social</button>
-            <div class="dropdown-content">
-              <a href="/reviews">Volunteer Reviews</a>
-              <a href="/community">Community Board</a>
-              <a href="/faq">FAQ</a>
-          </div>
-            </div>
-          <div class="dropdown">
-          <button class="dropbtn">Tasks</button>
-            <div class="dropdown-content">
-              <a href="/create">Create Task</a>
-              <a href="/">View Tasks</a>
-            </div>
-          </div>
-          <div class="dropdown">
-          <button class="dropbtn">Calendar</button>
-            <div class="dropdown-content">
-              <a href="/calendar">Calendar</a>
-            </div>
-          </div>
-          <div class="dropdown">
-          <button class="dropbtn">Account</button>
-            <div class="dropdown-content">
-              <a href="/signin">Login</a>
-              <a href="/signup">Sign-up</a>
-            </div>
-          </div>
           <br />
-          <Route path="/" exact component={TaskList} />
-          <Route path="/create" component={CreateTask} />
-          <Route path="/community" component={Board}/>
-          <Route path="/calendar" component={Calendar} />
-          <hr />
+          <div className='body'>
+          <Route path={ROUTES.CREATE} component={CreateTask} />
+          <Route path={ROUTES.COMMUNITY} component={Board}/>
+          <Route path={ROUTES.CALENDAR} component={Calendar} />
           <Route exact path={ROUTES.LANDING} component={LandingPage} />
-          <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
+          <Route exact path={ROUTES.SIGN_UP} component={SignUpPage} />
           <Route path={ROUTES.SIGN_IN} component={SignInPage} />
           {/* <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} /> */}
           <Route path={ROUTES.HOME} component={HomePage} />
-          {/* <Route path={ROUTES.ACCOUNT} component={AccountPage} /> */}
+          <Route path={ROUTES.ACCOUNT} component={AccountPage} />
           {/* <Route path={ROUTES.ADMIN} component={AdminPage} />   */}
+          </div>
         </div>
       </Router>
     </AuthProvider>
+    
+    <footer className='site-footer'>
+      <div className='container'>
+        <h3>This is the footer</h3>
+      </div>
+    </footer>
+    </div>
   );
 }
 export default App;
