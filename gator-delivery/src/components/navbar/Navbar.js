@@ -36,9 +36,9 @@ const NavAuth = () => (
 					<Link to="/calendar" className="nav-link">Calendar</Link>
 				</li>
             </ul>
-            <p>Hello, {app.auth().currentUser.displayName}!</p> {/* shows the logged in users name */}
+            <span className="navbar-text">Hello, {app.auth().currentUser.displayName}!</span> {/* shows the logged in users name */}
             <li className="navbar-item">
-                    <SignOutButton className='btn btn-light'/>
+                <SignOutButton className='btn btn-light'/>
             </li>
         </div>
         </div>

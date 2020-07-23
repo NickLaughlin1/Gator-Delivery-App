@@ -4,7 +4,7 @@
  * any other information about their business (if they have one)
  */
 
-
+//  TODO: Once user schema is created start to add skills, businessName, and businessWebsite to mongo
 
 import React, {useState, useCallback} from 'react';
 import {Link, withRouter} from 'react-router-dom';

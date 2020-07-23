@@ -1,6 +1,5 @@
 import React, {useCallback} from 'react';
 import {Link, withRouter} from 'react-router-dom';
-import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn } from 'mdbreact';
 
 import * as ROUTES from '../../constants/routes';
 import app from '../firebase/firebase'

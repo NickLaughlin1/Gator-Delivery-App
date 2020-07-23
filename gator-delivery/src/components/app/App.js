@@ -34,7 +34,6 @@ const App = () => {
           <Route path={ROUTES.CREATE} component={CreateTask} />
           <Route path={ROUTES.COMMUNITY} component={Board}/>
           <Route path={ROUTES.CALENDAR} component={Calendar} />
-          <hr />
           <Route exact path={ROUTES.LANDING} component={LandingPage} />
           <Route exact path={ROUTES.SIGN_UP} component={SignUpPage} />
           <Route exact path={ROUTES.SIGN_UP_VOL} component={SignUpVol} />
