@@ -78,18 +78,18 @@ const CreateTask = (props) => {
     }
       
     const nextButton = () => {
-        let currStep = currentStep;
-        if(currStep < 3) {
-          return (
-            <button 
-              className="btn btn-primary float-right" 
-              type="button" onClick={_next}>
-                Continue
-            </button>        
-          );
-        };
-        return null;
+      let currStep = currentStep;
+      if(currStep < 3) {
+        return (
+          <button 
+            className="btn btn-primary float-right" 
+            type="button" onClick={_next}>
+              Continue
+          </button>        
+        );
       };
+      return null;
+    };
 
     return (
         <React.Fragment>
