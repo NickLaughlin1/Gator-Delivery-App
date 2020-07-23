@@ -33,13 +33,12 @@ const App = () => {
           <Route path={ROUTES.CREATE} component={CreateTask} />
           <Route path={ROUTES.COMMUNITY} component={Board}/>
           <Route path={ROUTES.CALENDAR} component={Calendar} />
-          <hr />
           <Route exact path={ROUTES.LANDING} component={LandingPage} />
-          <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
+          <Route exact path={ROUTES.SIGN_UP} component={SignUpPage} />
           <Route path={ROUTES.SIGN_IN} component={SignInPage} />
           {/* <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} /> */}
           <Route path={ROUTES.HOME} component={HomePage} />
-          {/* <Route path={ROUTES.ACCOUNT} component={AccountPage} /> */}
+          <Route path={ROUTES.ACCOUNT} component={AccountPage} />
           {/* <Route path={ROUTES.ADMIN} component={AdminPage} />   */}
           </div>
         </div>

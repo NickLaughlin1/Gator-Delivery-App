@@ -3,17 +3,13 @@ import { Link } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
 import SignOutButton from '../sign-out';
 import {AuthContext} from '../session/withAuthentication';
-// import {AuthUserContext} from '../session'
-// import { auth } from 'firebase';
 import app from '../firebase/firebase'
+
 
 const Navbar = () => {
     const {currentUser} = useContext(AuthContext);
     return(
         <div className='header'>
-            {/* <AuthUserContext.Consumer>
-                {authUser => authUser ? <NavAuth /> : <NavUnAuth />}
-            </AuthUserContext.Consumer> */}
             {currentUser ? <NavAuth /> : <NavUnAuth />}
             {console.log(currentUser)}
         </div>
@@ -38,9 +34,9 @@ const NavAuth = () => (
 					<Link to="/calendar" className="nav-link">Calendar</Link>
 				</li>
             </ul>
-            <p>Hello, User!</p>
+            <span className="navbar-text">Hello, {app.auth().currentUser.displayName}!</span> {/* shows the logged in users name */}
             <li className="navbar-item">
-                    <SignOutButton />
+                <SignOutButton className='btn btn-light'/>
             </li>
         </div>
         </div>
@@ -48,7 +44,7 @@ const NavAuth = () => (
 );
 
 const NavUnAuth = () => (
-    <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
+    <nav className="navbar navbar-dark bg-dark navbar-expand-sm stick-top">
         <Link to="/" className="navbar-brand">Home Order</Link>
         <div className="collpase navbar-collapse">
             <ul className="navbar-nav mr-auto">

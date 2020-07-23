@@ -33,7 +33,7 @@ const Home = (props) => {
                   <p>Click here to create a new job and let volunteers near you see!</p>
                   <div className="actions">
                     <Link to={ROUTES.CREATE} className="nav-link">
-                      <button type="button" class="btn btn-primary btn-lg">Post a job</button>
+                      <button type="button" className="btn btn-primary btn-lg">Post a job</button>
                     </Link>
                   </div>
                 </div>

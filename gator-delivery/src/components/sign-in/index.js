@@ -24,11 +24,11 @@ const SignInForm = ({history}) => {
                 await app  
                     .auth()
                     .signInWithEmailAndPassword(email.value, password.value);
-                    history.push(ROUTES.LANDING);
+                    //history.push(ROUTES.LANDING);
             } catch (error) {
                 alert(error);
             }
-        }, [history]);
+        }, []);
 
     const {currentUser} = useContext(AuthContext);
 
@@ -58,7 +58,7 @@ const SignInForm = ({history}) => {
                     />
                 </div>
             </div>
-            <button /*disabled={isInvalid}*/ type="submit" className="btn btn-primary">Login</button>
+            <button type="submit" className="btn btn-primary">Login</button>
         </form>
     );
 }
