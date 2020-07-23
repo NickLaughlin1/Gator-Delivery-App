@@ -7,7 +7,6 @@ import * as ROUTES from '../../constants/routes';
 import LandingPage from '../landing';
 import SignUpPage from '../sign-up';
 import SignInPage from '../sign-in';
-import SignUpVol from '../sign-up/singUpVol'
 import PasswordForgetPage from '../password-forgot';
 import HomePage from '../home';
 import AccountPage from '../account';
@@ -36,7 +35,6 @@ const App = () => {
           <Route path={ROUTES.CALENDAR} component={Calendar} />
           <Route exact path={ROUTES.LANDING} component={LandingPage} />
           <Route exact path={ROUTES.SIGN_UP} component={SignUpPage} />
-          <Route exact path={ROUTES.SIGN_UP_VOL} component={SignUpVol} />
           <Route path={ROUTES.SIGN_IN} component={SignInPage} />
           {/* <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} /> */}
           <Route path={ROUTES.HOME} component={HomePage} />
