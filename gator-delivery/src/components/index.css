@@ -139,12 +139,16 @@ body {
   position: relative;
 }
 
+.cont-body {
+  font-size: 16px;
+}
+
 .heading-caps {
   font-family: 'sofia_probold',"Trebuchet MS",
-    "Segoe UI",Candara,"Bitstream Vera Sans",
-    "DejaVu Sans","Bitstream Vera Sans",Verdana,
-    "Verdana Ref",sans-serif;
-  font-size: 14px;
+  "Segoe UI",Candara,"Bitstream Vera Sans",
+  "DejaVu Sans","Bitstream Vera Sans",Verdana,
+  "Verdana Ref",sans-serif;
+  font-size: 16px;
   line-height: 2em;
   margin: 0;
 }
@@ -186,6 +190,17 @@ h1 {
 
 .li {
   line-height: 20px;
+}
+
+.form-container {
+  max-width: 600px;
+  box-sizing: border-box;
+  padding: 1.5em 1em;
+  margin: 0px auto 1em;
+}
+
+.form-group {
+  font-size: 16px;
 }
 
 /* .overlay {
