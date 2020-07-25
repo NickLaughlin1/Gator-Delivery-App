@@ -7,6 +7,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+body > #root > div {
+  height: 300px;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -16,7 +20,17 @@ body {
   max-width: 1024px;
 }
 
-
+.new-container {
+  flex-wrap: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 75%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
 
 /* Login and Sign up buttons */
 .register {
@@ -97,8 +111,7 @@ body {
 .dropdown:hover .dropbtn {background-color: #227f96;}
 
 .container {
-  margin-right: auto;
-  margin-left: auto;
+  width: 75%
 }
 
 
@@ -111,13 +124,13 @@ body {
 .layout-content {
   float: left;
   margin-left: 20px;
-  width: 652px;
+  width: 800px;
 }
 
 .layout-sidebar {
   float: left;
   margin-left: 20px;
-  width: 316px;
+  width: 310px;
   min-height: 1px;
 }
 
@@ -207,6 +220,26 @@ h1 {
   font-size: 16px;
 }
 
+.viewjob-header {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.edit-sidebar {
+  float: left;
+  width: 316px;
+  margin-right: 20px; 
+}
+
+.viewjob-main {
+  width: 800px;
+}
+
+.right-marg {
+  width: 780px;
+  margin-right: 20px;
+}
+
 /* .overlay {
   position: fixed;
   background-image: url('https://greenindustryplatform.org/sites/default/files/styles/large/public/learning-resources/image/sol-518339-unsplash.jpg?itok=B4GJAY6_');
@@ -221,4 +254,7 @@ footer {
   color: white;
   margin-top: 3em;
   background: #343944;
+  box-shadow: 0 50vh 0 50vh;
+  height: 100%;
+  padding-top: 20px;
 }

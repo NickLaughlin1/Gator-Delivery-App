@@ -73,24 +73,26 @@ const TaskList = (props) => {
 
 const List = (props) => {
 
-    const handleClick = () => {
-        
-    };
-
     return props.tasks.map(currtask => {
         return (
             <div className='card mb-3'>
                 <Task task={currtask} key={currtask._id}/>
                 <div className='card-body text-left'>
-                    <button type="button" className="btn btn-success btn-sm" onClick={() => {props.setSelectedID(currtask._id)}}>View job</button>
-                    <Edit ID={currtask._id} selectedID={props.selectedID}/>
+                    <Link to={
+                        {
+                            pathname: '/job/' + currtask._id,
+                            id: currtask._id
+                        }
+                     } className="nav-link">
+                        <button type="button" className="btn btn-success btn-sm" onClick={() => {props.setSelectedID(currtask._id)}}>View job</button>
+                    </Link>
                 </div>
             </div>
         );
     });
 };
 
-const Edit = (props) => {
+/*const Edit = (props) => {
     console.log("made into editing");
     console.log(props.editing);
     if (props.ID !== props.selectedID) {
@@ -102,6 +104,6 @@ const Edit = (props) => {
             <p>Editing option chosen</p>
         </div>
     );
-}
+}*/
 
 export default TaskList;
