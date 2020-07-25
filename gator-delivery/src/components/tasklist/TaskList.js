@@ -5,18 +5,17 @@ import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import * as firebase from "firebase/app";
+import * as ROUTES from '../../constants/routes';
 
 // Individual list components for each task
 const Task =(props) => {
     return (
-        <div className='card mb-3'>
-            <div className='card-header bg-light'>{props.task.headline}</div>
+        <div>
+            <div className='card-header bg-light card-head font-weight-bold'>{props.task.headline}</div>
             <div className='card-body'>
-                <h5 className='card-title'>Created on {props.task.createdAt.substring(0,10)}</h5>
-                <p className='card-text'>{props.task.task}</p>
+                <p className='card-title'>{props.task.task}</p>
+                <h5 className='card-text'>Created on {props.task.createdAt.substring(0,10)}</h5>  
             </div>
-
-        
         </div>
     );
 };
@@ -25,19 +24,21 @@ const TaskList = (props) => {
 
     const [tasks, setTasks] = useState([]);
     const [email, setEmail] = useState('');
+    const [editing, setEditing] = useState(false);
+    const [selectedID, setSelectedID] = useState('');
 
     // Runs only once. Gets current users email and sends get request to database for all listings
     // with that email
     useEffect(() => {
         firebase.auth().onAuthStateChanged(user => {
             if (user) {
-            console.log("signed in");
-            console.log(user.email);
+            //console.log("signed in");
+            //console.log(user.email);
             setEmail(user.email);
             let url = 'http://localhost:5000/tasks/';
             let search = url.concat(user.email);
             //console.log(email);
-            console.log(search);
+            //console.log(search);
             axios.get(search)
             .then(response => {
                 let asc_task = response.data;
@@ -52,20 +53,55 @@ const TaskList = (props) => {
     }, []);
 
     // Create a row for each task 
-    const TaskList = () => {
-        return tasks.map(currtask => {
-            return <Task task={currtask} key={currtask._id}/>;
-        });
-    };
+    
 
     return (
         <div>
             <ul className='posted-jobs_list'>
-                { TaskList() }
+                <List 
+                    tasks={tasks} 
+                    editing={editing} 
+                    setEditing={setEditing}
+                    selectedID={selectedID}
+                    setSelectedID={setSelectedID} 
+                />
             </ul>
         </div>
     );
 
 };
+
+const List = (props) => {
+
+    const handleClick = () => {
+        
+    };
+
+    return props.tasks.map(currtask => {
+        return (
+            <div className='card mb-3'>
+                <Task task={currtask} key={currtask._id}/>
+                <div className='card-body text-left'>
+                    <button type="button" className="btn btn-success btn-sm" onClick={() => {props.setSelectedID(currtask._id)}}>View job</button>
+                    <Edit ID={currtask._id} selectedID={props.selectedID}/>
+                </div>
+            </div>
+        );
+    });
+};
+
+const Edit = (props) => {
+    console.log("made into editing");
+    console.log(props.editing);
+    if (props.ID !== props.selectedID) {
+        return null;
+    }
+
+    return (
+        <div>
+            <p>Editing option chosen</p>
+        </div>
+    );
+}
 
 export default TaskList;
