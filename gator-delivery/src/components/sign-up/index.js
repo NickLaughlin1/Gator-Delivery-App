@@ -1,55 +1,91 @@
-import React, {useCallback} from 'react';
+import React, {useCallback, useState} from 'react';
 import {Link, withRouter} from 'react-router-dom';
-import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn } from 'mdbreact';
 
 import * as ROUTES from '../../constants/routes';
 import app from '../firebase/firebase'
 
 
-const SignUpPage = ({history}) => {
-    // All of the possible variables that a user could provide
+const SignUpPage = (props) => {
+    const [isInvalid, setIsInvalid] = useState(true);
+    const [skills, setSkills] = useState([]);
+    const [businessName, setBusinessName] = useState('');
+    const [businessWebsite, setBusinessWebsite] = useState('');
+    const [currentStep, setCurrentStep] = useState(1);
+    const [isVol, setVol] = useState('');
+
+    // handles everything that happens on signup
     const handleSignUp = useCallback(async event => {
         event.preventDefault();
         const {name, email, passwordOne, passwordTwo, addressOne, addressTwo, city, state, zip, role} = event.target.elements;
         try {
+            // This is so a volunteer user account isn't created before finishing the signup
             await app
-                .auth()
-                .createUserWithEmailAndPassword(email.value, passwordOne.value).then((result) => {
-                    const user = app.auth().currentUser;
-                    return user.updateProfile({
-                        displayName: name.value
-                    });
+            .auth()
+            .createUserWithEmailAndPassword(email.value, passwordOne.value).then((result) => {
+                const user = app.auth().currentUser;
+                return user.updateProfile({
+                    displayName: name.value
                 });
-                console.log(role.value);
-                if(role.value === 'volunteerH') {
-                    console.log("hi");
-                    history.push(ROUTES.SIGN_UP_VOL);
-                } else {
-                    history.push(ROUTES.HOME);
-                }
+            });
+            console.log(role.value);
+            props.history.push(ROUTES.HOME);
+            
         } catch (error) {
             alert(error);
         }
-    }, [history]);
+    }, [props.history]);
 
-    // const isVolunteer = () => {
-    //     history.push(ROUTES.SIGN_UP_VOL);
-    // }
+    const _next = () => {
+        let tempStep = currentStep;
+        // If the current step is 1, then add one to it
+        tempStep = tempStep >= 2 ? 2: tempStep + 1;
+        setCurrentStep(tempStep);
+    }
 
-    // const isInvalid = 
-    //     passwordOne !== passwordTwo ||
-    //     passwordOne === '' ||
-    //     email === '' ||
-    //     name === '' ||
-    //     addressOne === '' ||
-    //     city === '' ||
-    //     state === '' ||
-    //     zip === '';
+    const nextButton = () => {
+        let tempStep = currentStep;
+        if(tempStep < 2) {
+            return (
+                <button 
+                    className="btn btn-primary"
+                    type="button"
+                    onClick={_next}>
+                    Continue
+                </button>
+            );
+        };
+        return null;
+    }
 
     return (
-        <div>
-            <h1>Sign Up</h1>
-            <form onSubmit={handleSignUp.bind(this)}>
+        <React.Fragment>
+            <div>
+                <h1>Sign Up</h1>
+                <form onSubmit={handleSignUp}>
+                    <NormalSignUp currentStep={currentStep} setVol={setVol} isVol={isVol}/>
+                    <SignUpVol currentStep={currentStep} setIsInvalid={setIsInvalid} isInvalid={isInvalid}/>
+                    {nextButton()}
+                </form>
+            </div>
+        </React.Fragment>
+    );
+};
+
+const NormalSignUp = (props) => {
+    if(props.currentStep < 1) {
+        return null;
+    }
+    const checkVol = (e) => {
+        const {isVolunteer} = e.target.value;
+        props.setVol(isVolunteer);
+        if(props.isVol === 'volunteerH') {
+            props.setCurrentStep(2);
+        }
+        
+    }
+
+    return (
+        <div>            
             <div className="form-group">
                 <label htmlFor="inputName">Name *</label>
                 <input
@@ -208,7 +244,7 @@ const SignUpPage = ({history}) => {
             <div className="form-row">
                 <div className="form-group col-md-6">
                     <label htmlFor="inputRole">User Role *</label>
-                    <select id="inputRole" className="form-control" name="role" /*value={role} onChange={this.onChange}*/>
+                    <select id="inputRole" className="form-control" name="role" /*value={role}*/ onChange={checkVol}>
                         <option defaultValue>Chose role...</option>
                         <option value="cs">Regular Customer</option>
                         <option value="volunteerD">Volunteer Driver</option>
@@ -216,9 +252,89 @@ const SignUpPage = ({history}) => {
                     </select>
                 </div>
             </div>
-            <button type="submit" className="btn btn-primary">Sign Up</button>    
-        </form>
+            
     </div>
+    )
+};
+
+
+const SignUpVol = (props) => {
+    // Makes sure the extra volunteer info doesn't need to be shown if the user isn't a volunteer
+    if(props.currentStep < 2) {
+        return null;
+    }
+
+    
+
+    // Makes the other options about entering business info disabled if person selects No to having a personal business
+    const makeDisabled = (event) => {
+        if(event.target.value === "No") {
+            props.setIsInvalid(true);
+        } else {
+            props.setIsInvalid(false);
+        }
+    }
+
+    return(
+        <div>
+            <div className="form-row">
+                <div className="form-group col-md-2">
+                    <label htmlFor="inputSkill">Skill *</label>
+                    <select id="inputSkill" className="form-control" name="skill">
+                        <option defaultValue>Choose Skill...</option>
+                    </select>
+                </div>
+            </div>
+            <div className="form-row">
+                <label htmlFor="option1 option2">Do you have a personal business? *</label>
+            </div>
+            <div className="form-check form-check-inline">
+                <input 
+                    className="form-check-input" 
+                    type="radio"
+                    name="inlineRadioOptions"
+                    id="inlineRadioYes"
+                    value="Yes"
+                    onChange={makeDisabled}
+                />
+                <label className="form-check-lable" htmlFor="inlineRadioYes">Yes</label>
+            </div>
+            <div className="form-check form-check-inline">
+                <input 
+                    className="form-check-input" 
+                    type="radio"
+                    name="inlineRadioOptions"
+                    id="inlineRadioNo"
+                    value="No"
+                    onChange={makeDisabled}
+                />
+                <label className="form-check-lable" htmlFor="inlineRadioYes">No</label>
+            </div>
+            <div className="form-row">
+                <div className="form-group col-md-6">
+                    <label htmlFor="business-name">Name of Business</label>
+                    <input
+                        name="business"
+                        type="text"
+                        placeholder="(Optional)"
+                        className="form-control"
+                        id="business"
+                        disabled={props.isInvalid}
+                    />
+                </div>
+                <div className="form-group col-md-6">
+                    <label htmlFor="business-website">Business website</label>
+                    <input  
+                        className="form-control"
+                        name="website"
+                        placeholder="(Optional)"
+                        id="businessWeb"
+                        disabled={props.isInvalid}
+                    />
+                </div>
+            </div>
+            <button type="submit" className="btn btn-primary">Finish Sign Up</button>
+        </div>
     )
 }
 

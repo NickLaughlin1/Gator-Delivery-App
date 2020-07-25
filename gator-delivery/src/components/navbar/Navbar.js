@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
 import SignOutButton from '../sign-out';
 import {AuthContext} from '../session/withAuthentication';
-// import {AuthUserContext} from '../session'
-// import { auth } from 'firebase';
 import app from '../firebase/firebase'
 
 
@@ -36,9 +34,9 @@ const NavAuth = () => (
 					<Link to="/calendar" className="nav-link">Calendar</Link>
 				</li>
             </ul>
-            <p>Hello, {app.auth().currentUser.displayName}!</p> {/* shows the logged in users name */}
+            <span className="navbar-text">Hello, {app.auth().currentUser.displayName}!</span> {/* shows the logged in users name */}
             <li className="navbar-item">
-                    <SignOutButton className='btn btn-light'/>
+                <SignOutButton className='btn btn-light'/>
             </li>
         </div>
         </div>
