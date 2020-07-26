@@ -65,9 +65,17 @@ position: relative;
 display: inline-block;
 }
 
+  .lonk{
+    background-color: #007bff;
+    color: white;
+    padding: 15px;
+    font-size: 17px;
+    border: none;
+    position: absolute;
+  }
 /* Dropdown Button */
 .dropbtn {
-  background-color: #0f31a0;
+  background-color: #007bff;
   color: white;
   padding: 16px;
   font-size: 16px;
@@ -93,7 +101,7 @@ display: inline-block;
 /* Links inside the dropdown */
 .dropdown-content a {
   color: black;
-  padding: 10px 16px;
+  padding: 14px 16px;
   text-decoration: none;
   display: block;
 }

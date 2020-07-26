@@ -19,20 +19,13 @@ const Navbar = () => {
 const NavAuth = () => (
     <nav className="navbar navbar-dark bg-primary navbar-expand-lg navbar-fixed-top">
         <div className='container'>
-        <a className='navbar-brand' href={ROUTES.HOME}> Home Order</a> *
+        <a className='navbar-brand' href={ROUTES.HOME}> Home Order</a>
         <div className="collpase navbar-collapse">
             <ul className="navbar-nav mr-auto">
                   
                     <Link to="/create" className="nav-link">
                         <button type='button' className='btn btn-light'>Create Job</button>
                     </Link>
-                
-                <li className="navbar-item">
-                    <Link to="/community" className="nav-link">Community</Link>
-                </li>
-                <li className="navbar-item">
-					<Link to="/calendar" className="nav-link">Calendar</Link>
-				</li>
                 <div class="dropdown">
                     <button class="dropbtn">Social</button>
                     <div class="dropdown-content">
@@ -44,13 +37,16 @@ const NavAuth = () => (
                 <div class="dropdown">
                     <button class="dropbtn">User Account</button>
                     <div class="dropdown-content">
-                        <a href="/signin">Control Panel</a>
-                        <a href="/signup">Edit Profile</a>
+                        <a href="/settings/general">Control Panel</a>
+                        <a href="/settings/profile">Edit Profile</a>
                     </div>
+                </div>
+                <div class="dropdown">
+                    <Link to="/calendar" class="lonk">Calendar</Link>
                 </div>
             </ul>
             <span className="navbar-text">Hello, {app.auth().currentUser.displayName}!</span> {/* shows the logged in users name */}
-            <li className="navbar-item">
+            <li className="navbar-text">
                 <SignOutButton className='btn btn-light'/>
             </li>
         </div>

@@ -34,6 +34,7 @@ const App = () => {
           <Route path={ROUTES.CREATE} component={CreateTask} />
           <Route path={ROUTES.COMMUNITY} component={Board}/>
           <Route path={ROUTES.CALENDAR} component={Calendar} />
+          <Route path={ROUTES.FAQ} component={faq} />
           <Route exact path={ROUTES.LANDING} component={LandingPage} />
           <Route exact path={ROUTES.SIGN_UP} component={SignUpPage} />
           <Route path={ROUTES.SIGN_IN} component={SignInPage} />
@@ -48,7 +49,7 @@ const App = () => {
     
     <footer className='site-footer'>
       <div className='container'>
-        <h3>This is the footer</h3>
+        <h3>The page was made possible by Gator Delivery</h3>
       </div>
     </footer>
     </div>
