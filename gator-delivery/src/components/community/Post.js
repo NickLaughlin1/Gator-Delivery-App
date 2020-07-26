@@ -11,7 +11,7 @@ const Post = (props) => {
                 <div className="input-group mb-3">
                     <input type="text" className="form-control" placeholder="Answer this question" aria-label="Answer" aria-describedby="button-addon2"></input>
                     <div className="input-group-append">
-                        <button className="btn btn-secondary" type="button" id="button-addon2">Submit reply</button>
+                        <button className="btn btn-primary" type="button" id="button-addon2">Submit reply</button>
                     </div>
                 </div>
             </div>
