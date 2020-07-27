@@ -28,7 +28,7 @@ const ViewJob = (props) => {
             .then(response => {
                 let tasks_list = response.data;
                 let curr_task = tasks_list.filter(t => t._id === props.location.id);
-                console.log(curr_task[0].task);
+                //console.log(curr_task[0].task);
                 setHeadline(curr_task[0].headline);
                 setTask(curr_task[0].task);
                 setDate(curr_task[0].date);
@@ -41,6 +41,36 @@ const ViewJob = (props) => {
             } 
         });
     }, []);
+
+    const handleDelete = (e) => {
+        //e.preventDefault();
+
+        let ID = props.location.id;
+        let url = 'http://localhost:5000/tasks/';
+        let search = url.concat(ID);
+        console.log(search);
+      
+        axios.delete(search)
+            .then(res => {
+                console.log(res.data)
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+        
+            
+
+        console.log('###########');
+
+        window.location = ROUTES.HOME;
+       
+        setEmail('');
+        setHeadline('');
+        setTasks([]);
+        setTask('');
+        setDate(new Date());
+        setCreated('');
+    };
 
     return (
         <div className='container page'>
@@ -56,7 +86,7 @@ const ViewJob = (props) => {
                         <div className='mb-panel'>
                             <div className='mb-panel-header'>
                                 <p className='cont-body'>Edit job</p>
-                                <p className='cont-body'>Cancel job</p>
+                                <a href='#' onClick={()=>{handleDelete()}} >Delete job</a>
                             </div>
                         </div>
                     </div>
