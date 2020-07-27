@@ -72,24 +72,32 @@ const TaskList = (props) => {
 };
 
 const List = (props) => {
-
-    return props.tasks.map(currtask => {
+    console.log(props.tasks);
+    if (props.tasks.length === 0) {
+        console.log("here");
         return (
-            <div className='card mb-3'>
-                <Task task={currtask} key={currtask._id}/>
-                <div className='card-body text-left'>
-                    <Link to={
-                        {
-                            pathname: '/job/' + currtask._id,
-                            id: currtask._id
-                        }
-                     } className="nav-link">
-                        <button type="button" className="btn btn-success btn-sm" onClick={() => {props.setSelectedID(currtask._id)}}>View job</button>
-                    </Link>
+            <p>No jobs posted</p>
+        )
+
+    } else {
+        return props.tasks.map(currtask => {
+            return (
+                <div className='card mb-3'>
+                    <Task task={currtask} key={currtask._id}/>
+                    <div className='card-body text-left'>
+                        <Link to={
+                            {
+                                pathname: '/job/' + currtask._id,
+                                id: currtask._id
+                            }
+                        } className="nav-link">
+                            <button type="button" className="btn btn-success btn-sm" onClick={() => {props.setSelectedID(currtask._id)}}>View job</button>
+                        </Link>
+                    </div>
                 </div>
-            </div>
-        );
-    });
+            );
+        });
+    }
 };
 
 /*const Edit = (props) => {
