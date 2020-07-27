@@ -9,11 +9,11 @@ function AddReview(props) {
     
     const createReview = (e) => {
         e.preventDefault();
-        let newPost = {
-            text: post
+        let newReview = {
+            text: review
         };
 
-        axios.post('http://localhost:5000/posts/add', newPost);
+        axios.post('http://localhost:5000/reviews/add', newReview);
             
         
         window.location = '/reviews';
@@ -25,9 +25,9 @@ function AddReview(props) {
         <div className="card post-editor">
             <div className="card-body">
                 Post a review
-                <div className="form-group" onSubmit={createPost}>
+                <div className="form-group" onSubmit={createReview}>
                     <textarea className="form-control post-editor-input"
-                        value={post}
+                        value={review}
                         onChange={e => setReview(e.target.value)}  
                         
                     />
@@ -39,4 +39,4 @@ function AddReview(props) {
     );
 }
 
-export default AddPost;
+export default AddReview;
