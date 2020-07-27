@@ -50,6 +50,8 @@ body {
 
 .body {
   padding: 10px;
+  display: flex;
+  justify-content: center;
 }
 
 .task-form {
