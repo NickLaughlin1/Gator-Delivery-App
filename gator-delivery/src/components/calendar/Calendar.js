@@ -45,29 +45,31 @@ const CalendarComponent = (props) => {
 	}
 	return(
 		<div>
-			<div style = {{boxShadow: "5px 5px 10px #4aa7ff"}}>
-				<Calendar 
-					onChange = {onChange}
-					selectRange = {true}
-					value = {date}
-				/>
+			<div class = "donk">
+				<div>
+					<Calendar 
+						onChange = {onChange}
+						selectRange = {true}
+						value = {date}
+					/>
+				</div>
 			</div>
 			<div>
 				&nbsp;
 			</div>
-			<div>
+			<div class = "donk">
 				Click on a date twice or select a range of dates.
 			</div>
 			<div>
 				&nbsp;
 			</div>
-			<div>
-				--
+			<div class = "donk">
+			----------------------------------------------------------------------------------
 			</div>
 			{/* check if date is null to prevent errors */}
 			{date.length > 1 && date[0].toLocaleString().substring(0, date[0].toLocaleString().indexOf(",")) == date[1].toLocaleString().substring(0, date[1].toLocaleString().indexOf(",")) ? (
 				/* same day */
-				<div>
+				<div class = "donk">
 					<div>
 						Selected day:
 					</div>
@@ -127,7 +129,7 @@ const CalendarComponent = (props) => {
 				/* range of dates */
 				/* add the dropdown boxes */
 				date[1] == null ? (
-					<div>
+					<div class = "donk">
 						<div>
 							Selected day(s):
 						</div>
@@ -139,7 +141,7 @@ const CalendarComponent = (props) => {
 						</div>
 					</div>
 				) : (
-					<div>
+					<div class = "donk">
 						<div>
 							<div>
 								Selected days:
@@ -209,13 +211,13 @@ const CalendarComponent = (props) => {
 					</div>
 				)
 			)}
-			<div>
-				--
+			<div class = "donk">
+				----------------------------------------------------------------------------------
 			</div>
 			<div>
 				&nbsp;
 			</div>
-			<div><button className="btn btn-primary" onClick = {confirmChoice}>Submit</button></div>
+			<div class = "lenk"><button className="btn btn-primary" onClick = {confirmChoice}>Submit</button></div>
 		</div>
 	);
 };

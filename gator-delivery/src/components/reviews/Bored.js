@@ -7,7 +7,7 @@ const Bored = (props) => {
     const [reviewList, setReviewList] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:5000/posts/')
+        axios.get('http://localhost:5000/reviews/')
             .then(response => {
                 setReviewList(response.data);
             })
@@ -46,10 +46,10 @@ const Bored = (props) => {
             <div className="card post-editor">
                 <div className="card-body">
                     Post a Review
-                    <form onSubmit={createPost}>
+                    <form onSubmit={createReview}>
                         <div className="form-group">
                             <textarea className="form-control post-editor-input"
-                                value={post}
+                                value={review}
                                 onChange={e => setReview(e.target.value)}    
                             />
                         </div>
