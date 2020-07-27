@@ -16,8 +16,7 @@ const Home = (props) => {
       <div className='container page'>
         <div className='content'>
           <div className='row'>
-            <div className='layout-content-sidebar'>
-              <div className='layout-content'>
+              <div className='viewjob-main right-marg'>
                 <div className='mb-panel posted-jobs' id='my-posted-jobs'>
                   <h1 className='heading-large'>
                     My posted jobs
@@ -25,20 +24,20 @@ const Home = (props) => {
                   <TaskList/>
                 </div>
               </div>
-              <div className='layout-sidebar'>
+              <div className='edit-sidebar'>
                 <div className='mb-panel'>
                   <div className='mb-panel_header'>
                     <h3 className='heading-caps'>Post a new job</h3>
                   </div> 
-                  <p>Click here to create a new job and let volunteers near you see!</p>
+                  <p className='cont-body'>Click here to create a new job and let volunteers near you see!</p>
                   <div className="actions">
                     <Link to={ROUTES.CREATE} className="nav-link">
-                      <button type="button" className="btn btn-primary btn-lg">Post a job</button>
+                      <button type="button" className="btn btn-success btn-lg">Post a job</button>
                     </Link>
                   </div>
                 </div>
               </div>
-            </div>
+
           </div>
         </div>
       </div>

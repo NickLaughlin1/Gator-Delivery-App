@@ -28,6 +28,18 @@ export const list = (req, res) => {
 
 };
 
+export const remove = (req,res) => {
+    let ID = req.params.taskid;
+    Task.findByIdAndRemove(ID.toString(), function(err,task) {
+        if (err) return res.status(400).send(err);
+        if (!task) {
+            res.json({error : "Task not found"});
+        } else {
+            res.json(task);
+        }
+    });
+};
+
 /* Show the current listing */
 //export const read = (req, res) => {
     /* send back the listing as json from the request */
