@@ -1,4 +1,4 @@
-import React, {useState, Component} from 'react';
+import React, {useState/*, Component*/} from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 
@@ -23,29 +23,41 @@ const CalendarComponent = (props) => {
 		
 	};*/
 	
+	var error = "";
+	
+	function outputError() {
+		return (
+			<div>
+				{error}
+			</div>
+		);
+	}
+	var outputError = outputError();
+	
 	const confirmChoice = () => {
 		console.log(date);
 		var values = [hr1, min1, sec1, hr2, min2, sec2];
-		var pass = true;
 		for(var i = 0; i < values.length; i++){
 			console.log(values[i]);
 			if(Number(values[i]) === parseInt(Number(values[i]), 10)){
 				if(values[i] < 0 || values[i] > 12){
-					pass = false;
-					console.log("Error: input is out of bounds. Enter an integer in between 0 and 12");
+					error = "Error: input is out of bounds. Enter an integer in between 0 and 12";
+					console.log(error);
+				}else{
+					//correct input
+					values[i] = Number(values[i]);
 				}
 			}else{
-				pass = false;
-				console.log("Error: input is not an integer.");
+				error = "Error: input is not an integer.";
+				console.log(error);
 			}
 		}
-		
 		console.log(before)
 		console.log(after)
 	}
 	return(
 		<div>
-			<div style = {{boxShadow: "5px 5px 10px #4aa7ff"}}>
+			<div style = {{boxShadow: "5px 5px 10px #007bff"}}>
 				<Calendar 
 					onChange = {onChange}
 					selectRange = {true}
@@ -65,7 +77,7 @@ const CalendarComponent = (props) => {
 				--
 			</div>
 			{/* check if date is null to prevent errors */}
-			{date.length > 1 && date[0].toLocaleString().substring(0, date[0].toLocaleString().indexOf(",")) == date[1].toLocaleString().substring(0, date[1].toLocaleString().indexOf(",")) ? (
+			{date.length > 1 && date[0].toLocaleString().substring(0, date[0].toLocaleString().indexOf(",")) === date[1].toLocaleString().substring(0, date[1].toLocaleString().indexOf(",")) ? (
 				/* same day */
 				<div>
 					<div>
@@ -76,7 +88,9 @@ const CalendarComponent = (props) => {
 					</div>
 					<div>
 						&nbsp;&nbsp;&nbsp;&nbsp;{date[0].toLocaleString().substring(0, date[0].toLocaleString().indexOf(","))}
-						&nbsp;&nbsp;--&nbsp;&nbsp;
+						<div>
+							&nbsp;
+						</div>&nbsp;&nbsp;&nbsp;&nbsp;
 						<input
 							style = {{width: 25}}
 							type = "numeric"
@@ -121,11 +135,13 @@ const CalendarComponent = (props) => {
 							<option defaultValue>PM</option>
 							<option value="AM">AM</option>
 						</select>
+						<div>
+							&nbsp;
+						</div>
 					</div>
 				</div>
 			) : (
 				/* range of dates */
-				/* add the dropdown boxes */
 				date[1] == null ? (
 					<div>
 						<div>
@@ -215,7 +231,13 @@ const CalendarComponent = (props) => {
 			<div>
 				&nbsp;
 			</div>
-			<div><button className="btn btn-primary" onClick = {confirmChoice}>Submit</button></div>
+			<div>
+				<button className="btn btn-primary" onClick = {confirmChoice}>
+					Submit
+				</button>
+			</div>
+			{/* Output Error if there is one */}
+			{outputError}
 		</div>
 	);
 };
