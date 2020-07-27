@@ -22,8 +22,52 @@ const CalendarComponent = (props) => {
 	/*const onClickDay = day => {
 		
 	};*/
+	const [error, setError] = useState("");
+	const [changed, setChanged] = useState(false);
 	
-	var error = "";
+	const confirmChoice = () => {
+		console.log(date);
+		/* check if input was not changed */
+		if(!changed){
+			setError("Error: input not changed. Enter integers in between 0 and 12 or 0 and 59.");
+			console.log("Error: input not changed. Enter integers in between 0 and 12 or 0 and 59.");
+		}else{
+			/* check if prev time comes before after time */
+			if(before === "PM" && after === "AM"){
+				setError("Error: invalid timespan. Enter times in chronological order.");
+				console.log("Error: invalid timespan. Enter times in chronological order.");
+			}else{
+				var values = [hr1, min1, sec1, hr2, min2, sec2];
+				var valid = true;
+				for(var i = 0; i < values.length; i++){
+					console.log(values[i]);
+					if(Number(values[i]) === parseInt(Number(values[i]), 10)){
+						if(i % 3 === 0 && (values[i] < 1 || values[i] > 12) || i % 3 !== 0 && (values[i] < 0 || values[i] > 59)){
+							setError("Error: input is out of bounds. Enter integers in between 1 and 12 or 0 and 59.");
+							console.log("Error: input is out of bounds. Enter integers in between 1 and 12 or 0 and 59.");
+							valid = false;
+							break;
+						}
+					}else{
+						setError("Error: input is not an integer.");
+						console.log("Error: input is not an integer.");
+						valid = false;
+						break;
+					}
+				}
+				if(valid === true){
+					for(var i = 0; i < values.length; i++){
+						//correct input
+						setError("Hours added!");
+						console.log("Hours added!");
+						values[i] = Number(values[i]);
+					}
+				}
+				console.log(before);
+				console.log(after);
+			}
+		}
+	}
 	
 	function outputError() {
 		return (
@@ -34,27 +78,6 @@ const CalendarComponent = (props) => {
 	}
 	var outputError = outputError();
 	
-	const confirmChoice = () => {
-		console.log(date);
-		var values = [hr1, min1, sec1, hr2, min2, sec2];
-		for(var i = 0; i < values.length; i++){
-			console.log(values[i]);
-			if(Number(values[i]) === parseInt(Number(values[i]), 10)){
-				if(values[i] < 0 || values[i] > 12){
-					error = "Error: input is out of bounds. Enter an integer in between 0 and 12";
-					console.log(error);
-				}else{
-					//correct input
-					values[i] = Number(values[i]);
-				}
-			}else{
-				error = "Error: input is not an integer.";
-				console.log(error);
-			}
-		}
-		console.log(before)
-		console.log(after)
-	}
 	return(
 		<div>
 			<div style = {{boxShadow: "5px 5px 10px #007bff"}}>
@@ -95,19 +118,19 @@ const CalendarComponent = (props) => {
 							style = {{width: 25}}
 							type = "numeric"
 							placeholder = "12"
-							onChange={e => setHour1(e.target.value)}
+							onChange={e => setHour1(e.target.value), () => setChanged(true)}
 						/>:
 						<input
 							style = {{width: 25}}
 							type = "numeric"
 							placeholder = "00"
-							onChange={e => setMin1(e.target.value)}
+							onChange={e => setMin1(e.target.value), () => setChanged(true)}
 						/>:
 						<input
 							style = {{width: 25}}
 							type = "numeric"
 							placeholder = "00"
-							onChange={e => setSec1(e.target.value)}
+							onChange={e => setSec1(e.target.value), () => setChanged(true)}
 						/>&nbsp;
 						<select id="inputAMPM1" onChange={e => setBefore(e.target.value)}>
 							<option defaultValue>AM</option>
@@ -117,19 +140,19 @@ const CalendarComponent = (props) => {
 							style = {{width: 25}}
 							type = "numeric"
 							placeholder = "11"
-							onChange={e => setHour2(e.target.value)}
+							onChange={e => setHour2(e.target.value), () => setChanged(true)}
 						/>:
 						<input
 							style = {{width: 25}}
 							type = "numeric"
 							placeholder = "59"
-							onChange={e => setMin2(e.target.value)}
+							onChange={e => setMin2(e.target.value), () => setChanged(true)}
 						/>:
 						<input
 							style = {{width: 25}}
 							type = "numeric"
 							placeholder = "59"
-							onChange={e => setSec2(e.target.value)}
+							onChange={e => setSec2(e.target.value), () => setChanged(true)}
 						/>&nbsp;
 						<select id="inputAMPM2" onChange={e => setAfter(e.target.value)}>
 							<option defaultValue>PM</option>
@@ -170,19 +193,19 @@ const CalendarComponent = (props) => {
 									style = {{width: 25}}
 									type = "numeric"
 									placeholder = "12"
-									onChange={e => setHour1(e.target.value)}
+									onChange={e => setHour1(e.target.value), () => setChanged(true)}
 								/>:
 								<input
 									style = {{width: 25}}
 									type = "numeric"
 									placeholder = "00"
-									onChange={e => setMin1(e.target.value)}
+									onChange={e => setMin1(e.target.value), () => setChanged(true)}
 								/>:
 								<input
 									style = {{width: 25}}
 									type = "numeric"
 									placeholder = "00"
-									onChange={e => setSec1(e.target.value)}
+									onChange={e => setSec1(e.target.value), () => setChanged(true)}
 								/>&nbsp;
 								<select id="inputAMPM3" onChange={e => setBefore(e.target.value)}>
 									<option defaultValue>AM</option>
@@ -199,19 +222,19 @@ const CalendarComponent = (props) => {
 									style = {{width: 25}}
 									type = "numeric"
 									placeholder = "11"
-									onChange={e => setHour2(e.target.value)}
+									onChange={e => setHour2(e.target.value), () => setChanged(true)}
 								/>:
 								<input
 									style = {{width: 25}}
 									type = "numeric"
 									placeholder = "59"
-									onChange={e => setMin2(e.target.value)}
+									onChange={e => setMin2(e.target.value), () => setChanged(true)}
 								/>:
 								<input
 									style = {{width: 25}}
 									type = "numeric"
 									placeholder = "59"
-									onChange={e => setSec2(e.target.value)}
+									onChange={e => setSec2(e.target.value), () => setChanged(true)}
 								/>&nbsp;
 								<select id="inputAMPM4" onChange={e => setAfter(e.target.value)}>
 									<option defaultValue>PM</option>
@@ -237,6 +260,9 @@ const CalendarComponent = (props) => {
 				</button>
 			</div>
 			{/* Output Error if there is one */}
+			<div>
+				&nbsp;
+			</div>
 			{outputError}
 		</div>
 	);
