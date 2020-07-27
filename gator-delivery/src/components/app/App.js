@@ -21,6 +21,8 @@ import Board from '../community/Board';
 import faq from '../faq/faq';
 //npm install react-calendar or yarn add react-calendar
 import Calendar from '../calendar/Calendar'
+import ViewJob from '../viewjob/ViewJob'
+import path from 'path'
 
 const App = () => {
   return(
@@ -41,6 +43,7 @@ const App = () => {
           {/* <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} /> */}
           <Route path={ROUTES.HOME} component={HomePage} />
           <Route path={ROUTES.ACCOUNT} component={AccountPage} />
+          <Route path={path.join("/job", ":id?")} component={ViewJob} />
           {/* <Route path={ROUTES.ADMIN} component={AdminPage} />   */}
           </div>
         </div>
