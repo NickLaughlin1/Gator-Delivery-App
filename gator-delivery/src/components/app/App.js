@@ -18,6 +18,7 @@ import Navbar from "../navbar/Navbar";
 import TaskList from "../tasklist/TaskList";
 import CreateTask from "../createtask/CreateTask";
 import Board from '../community/Board';
+import faq from '../faq/faq';
 //npm install react-calendar or yarn add react-calendar
 import Calendar from '../calendar/Calendar'
 import ViewJob from '../viewjob/ViewJob'
@@ -35,6 +36,7 @@ const App = () => {
           <Route path={ROUTES.CREATE} component={CreateTask} />
           <Route path={ROUTES.COMMUNITY} component={Board}/>
           <Route path={ROUTES.CALENDAR} component={Calendar} />
+          <Route path={ROUTES.FAQ} component={faq} />
           <Route exact path={ROUTES.LANDING} component={LandingPage} />
           <Route exact path={ROUTES.SIGN_UP} component={SignUpPage} />
           <Route path={ROUTES.SIGN_IN} component={SignInPage} />
@@ -50,7 +52,7 @@ const App = () => {
     
     <footer className='site-footer'>
       <div className='container'>
-        <h3>This is the footer</h3>
+        <h3>The page was made possible by Gator Delivery</h3>
       </div>
     </footer>
     </div>

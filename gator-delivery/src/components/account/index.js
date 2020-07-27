@@ -53,7 +53,7 @@ const AccountPage = (props) => {
     // Return your Settings Pane
     return (
         <SettingsPane items={menu} index="/settings/general" settings={settings} onPaneLeave={leavePaneHandler}>
-        <SettingsMenu headline="General Settings" />
+        <SettingsMenu headline="Settings" />
         <SettingsContent closeButtonClass="secondary" saveButtonClass="primary" header={true}>
             <SettingsPage handler="/settings/general">
             <fieldset className="form-group">
