@@ -1,3 +1,7 @@
+/*
+ * code for the skeleton of the settings page can be found here: https://github.com/dstuecken/react-settings-pane
+ */
+
 import React from 'react';
 import {SettingsPane, SettingsPage, SettingsContent, SettingsMenu} from 'react-settings-pane';
 import './style.css';
