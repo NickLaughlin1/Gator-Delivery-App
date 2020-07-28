@@ -62,6 +62,8 @@ body > #root > div {
 /* ### Second Row ### */
 
 .body {
+  margin-left: 5em;
+  margin-right: 5em;
   padding: 10px;
   position: relative;
   justify-content: center;
@@ -89,10 +91,14 @@ display: inline-block;
     position: absolute;
 }
 
-.lenk
+.lenk{
+  margin-right: 29em;
+  display: flex;
+  justify-content: center;
+}
 
 .donk{
-  margin-left: 20px;
+  padding: 5px;
   display: flex;
   justify-content: center;
 }

@@ -64,7 +64,7 @@ const CalendarComponent = (props) => {
 				&nbsp;
 			</div>
 			<div class = "donk">
-			----------------------------------------------------------------------------------
+			--------------------------------------------------------------------------------------------------
 			</div>
 			{/* check if date is null to prevent errors */}
 			{date.length > 1 && date[0].toLocaleString().substring(0, date[0].toLocaleString().indexOf(",")) == date[1].toLocaleString().substring(0, date[1].toLocaleString().indexOf(",")) ? (
@@ -212,7 +212,7 @@ const CalendarComponent = (props) => {
 				)
 			)}
 			<div class = "donk">
-				----------------------------------------------------------------------------------
+				--------------------------------------------------------------------------------------------------
 			</div>
 			<div>
 				&nbsp;
