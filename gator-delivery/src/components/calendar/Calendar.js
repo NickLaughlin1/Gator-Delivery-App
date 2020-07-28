@@ -256,10 +256,7 @@ const CalendarComponent = (props) => {
 			<div>
 				&nbsp;
 			</div>
-<<<<<<< HEAD
-			<div class = "lenk"><button className="btn btn-primary" onClick = {confirmChoice}>Submit</button></div>
-=======
-			<div>
+			<div class = "donk">
 				<button className="btn btn-primary" onClick = {confirmChoice}>
 					Submit
 				</button>
@@ -268,8 +265,9 @@ const CalendarComponent = (props) => {
 			<div>
 				&nbsp;
 			</div>
+			<div class = "donk">
 			{outputError}
->>>>>>> d23e96149e909b2e1206e812aecbaf19bf12a87f
+			</div>
 		</div>
 	);
 };
