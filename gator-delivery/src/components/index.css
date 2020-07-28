@@ -5,10 +5,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-<<<<<<< HEAD
-=======
-  
->>>>>>> upstream/development
 }
 body > #root > div {
   height: 300px;
@@ -64,21 +60,13 @@ body > #root > div {
 }
 /* ### Second Row ### */
 
-<<<<<<< HEAD
-/* .body {
-  padding: 10px;
-  display: flex;
-  justify-content: center
-} */
-=======
 .body {
-  margin-left: 5em;
-  margin-right: 5em;
-  padding: 10px;
+  /* margin-left: 5em;
+  margin-right: 5em; */
+  /* padding: 10px;  */
   position: relative;
   justify-content: center;
 }
->>>>>>> upstream/development
 
 .task-form {
   width: 50%;
@@ -88,20 +76,6 @@ body > #root > div {
 }
 
 .faqprofile {
-<<<<<<< HEAD
-  line-height: 5pt;
-  position: relative;
-  display: inline-block;
-}
-
-.lonk{
-  background-color: #007bff;
-  color: white;
-  padding: 15px;
-  font-size: 17px;
-  border: none;
-  position: absolute;
-=======
 line-height: 5pt;
 position: relative;
 display: inline-block;
@@ -126,7 +100,6 @@ display: inline-block;
   padding: 5px;
   display: flex;
   justify-content: center;
->>>>>>> upstream/development
 }
 /* Dropdown Button */
 .dropbtn {

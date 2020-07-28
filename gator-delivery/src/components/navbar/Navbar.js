@@ -25,7 +25,6 @@ const NavAuth = () => {
           Home Order
         </a>
         <div className="collpase navbar-collapse">
-<<<<<<< HEAD
           <ul className="navbar-nav mr-auto">
             <Link to="/create" className="nav-link">
               <button type="button" className="btn btn-light">
@@ -73,36 +72,6 @@ const NavAuth = () => {
             </button>
           </div>
           <li className="navbar-text"></li>
-=======
-            <ul className="navbar-nav mr-auto">
-                    <Link to="/create" className="nav-link">
-                        <button type='button' className='btn btn-light'>Create Job</button>
-                    </Link>
-                <div className="dropdown">
-                    <button className="dropbtn">Social</button>
-                    <div className="dropdown-content">
-                        <a href="/reviews">Volunteer Reviews</a>
-                        <a href="/community">Community Board</a>
-                        <a href="/faq">FAQ</a>
-                    </div>
-                </div>
-                <div className="dropdown">
-                    <button className="dropbtn">User Account</button>
-                    <div className="dropdown-content">
-                        <a href="/settings/general">Control Panel</a>
-                        <a href="/settings/profile">Edit Profile</a>
-                    </div>
-                </div>
-                <div className="dropdown">
-                    <Link to="/calendar" className="lonk">Calendar</Link>
-                </div>
-            </ul>
-            <span className="navbar-text">Hello, {app.auth().currentUser.displayName}!</span> {/* shows the logged in users name */}
-            <li className="navbar-text">
-                <SignOutButton className='btn btn-light'/>
-            </li>
-        </div>
->>>>>>> upstream/development
         </div>
       </div>
     </nav>
@@ -110,13 +79,12 @@ const NavAuth = () => {
 };
 
 const NavUnAuth = () => (
-<<<<<<< HEAD
   <nav
     className="navbar navbar-dark bg-primary navbar-expand-sm navbar-fixed-top"
     fixed
   >
     <div className="container">
-      <a className="navbar-brand" href={ROUTES.HOME}>
+      <a className="navbar-brand" href={ROUTES.LANDING}>
         {" "}
         Home Order
       </a>
@@ -148,40 +116,6 @@ const NavUnAuth = () => (
             <a href="/signin">Sign-In</a>
             <a href="/signup">Sign-Up</a>
           </div>
-=======
-    <nav className="navbar navbar-dark bg-primary navbar-expand-sm stick-top">
-        <div className='container'>
-        <a className='navbar-brand' href={ROUTES.HOME}> Home Order</a>
-        <div className="collpase navbar-collapse">
-            <ul className="navbar-nav mr-auto">
-                <Link to="/create" className="nav-link">
-                    <button type='button' className='btn btn-light'>Create Job</button>
-                </Link>
-            <div className="dropdown">
-                <button className="dropbtn">Social</button>
-                <div className="dropdown-content">
-                    <a href="/reviews">Volunteer Reviews</a>
-                    <a href="/community">Community Board</a>
-                    <a href="/faq">FAQ</a>
-                </div>
-            </div>
-            <div className="dropdown">
-                <button className="dropbtn">Calendar</button>
-                <div className="dropdown-content">
-                    <a href="/calendar">Calendar</a>
-                </div>
-            </div>
-            
-            </ul>
-            <div className="dropdown">
-                <button className="dropbtn">Account</button>
-                <div className="dropdown-content">
-                    <a href="/signin">Sign-In</a>
-                    <a href="/signup">Sign-Up</a>
-                </div>
-            </div>
-        </div>
->>>>>>> upstream/development
         </div>
       </div>
     </div>
