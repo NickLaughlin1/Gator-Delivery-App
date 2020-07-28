@@ -18,6 +18,7 @@ import Navbar from "../navbar/Navbar";
 import TaskList from "../tasklist/TaskList";
 import CreateTask from "../createtask/CreateTask";
 import Board from '../community/Board';
+import Bored from '../reviews/Bored';
 import faq from '../faq/faq';
 //npm install react-calendar or yarn add react-calendar
 import Calendar from '../calendar/Calendar'
@@ -35,6 +36,7 @@ const App = () => {
           <div className='body'>
           <Route path={ROUTES.CREATE} component={CreateTask} />
           <Route path={ROUTES.COMMUNITY} component={Board}/>
+          <Route path={ROUTES.REVIEWS} component={Bored} />
           <Route path={ROUTES.CALENDAR} component={Calendar} />
           <Route path={ROUTES.FAQ} component={faq} />
           <Route exact path={ROUTES.LANDING} component={LandingPage} />
