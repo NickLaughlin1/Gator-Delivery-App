@@ -9,3 +9,6 @@ export const PASSWORD_FORGET = '/forgotPassword';
 export const CREATE = '/create';
 export const COMMUNITY = '/community'
 export const CALENDAR = '/calendar';
+export const VIEWJOB = '/viewjob';
+export const FAQ = '/faq';
+export const REVIEWS = '/reviews';
