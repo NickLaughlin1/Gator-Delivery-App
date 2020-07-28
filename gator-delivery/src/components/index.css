@@ -5,9 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  border: 8px solid #ffffff;
 }
-
 body > #root > div {
   height: 300px;
 }
@@ -63,9 +61,11 @@ body > #root > div {
 /* ### Second Row ### */
 
 .body {
-  padding: 10px;
-  display: flex;
-  justify-content: center
+  /* margin-left: 5em;
+  margin-right: 5em; */
+  /* padding: 10px;  */
+  position: relative;
+  justify-content: center;
 }
 
 .task-form {
@@ -81,14 +81,26 @@ position: relative;
 display: inline-block;
 }
 
-  .lonk{
+.lonk{
     background-color: #007bff;
     color: white;
     padding: 15px;
     font-size: 17px;
     border: none;
     position: absolute;
-  }
+}
+
+.lenk{
+  margin-right: 29em;
+  display: flex;
+  justify-content: center;
+}
+
+.donk{
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+}
 /* Dropdown Button */
 .dropbtn {
   background-color: #007bff;
@@ -270,6 +282,11 @@ h1 {
   background-size: cover;
   background-position: center;
 } */
+
+.profile-pic {
+  width: 2em;
+  height: 2em;
+}
 
 footer {
   color: white;
