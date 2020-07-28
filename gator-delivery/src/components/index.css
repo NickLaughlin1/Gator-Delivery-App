@@ -5,7 +5,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
 }
 body > #root > div {
   height: 300px;
@@ -62,9 +61,9 @@ body > #root > div {
 /* ### Second Row ### */
 
 .body {
-  margin-left: 5em;
-  margin-right: 5em;
-  padding: 10px;
+  /* margin-left: 5em;
+  margin-right: 5em; */
+  /* padding: 10px;  */
   position: relative;
   justify-content: center;
 }
@@ -283,6 +282,11 @@ h1 {
   background-size: cover;
   background-position: center;
 } */
+
+.profile-pic {
+  width: 2em;
+  height: 2em;
+}
 
 footer {
   color: white;
