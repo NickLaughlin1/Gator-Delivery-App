@@ -18,9 +18,12 @@ import Navbar from "../navbar/Navbar";
 import TaskList from "../tasklist/TaskList";
 import CreateTask from "../createtask/CreateTask";
 import Board from '../community/Board';
+import Bored from '../reviews/Bored';
 import faq from '../faq/faq';
 //npm install react-calendar or yarn add react-calendar
 import Calendar from '../calendar/Calendar'
+import ViewJob from '../viewjob/ViewJob'
+import path from 'path'
 
 const App = () => {
   return(
@@ -33,6 +36,7 @@ const App = () => {
           <div className='body'>
           <Route path={ROUTES.CREATE} component={CreateTask} />
           <Route path={ROUTES.COMMUNITY} component={Board}/>
+          <Route path={ROUTES.REVIEWS} component={Bored} />
           <Route path={ROUTES.CALENDAR} component={Calendar} />
           <Route path={ROUTES.FAQ} component={faq} />
           <Route exact path={ROUTES.LANDING} component={LandingPage} />
@@ -41,6 +45,7 @@ const App = () => {
           {/* <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} /> */}
           <Route path={ROUTES.HOME} component={HomePage} />
           <Route path={ROUTES.ACCOUNT} component={AccountPage} />
+          <Route path={path.join("/job", ":id?")} component={ViewJob} />
           {/* <Route path={ROUTES.ADMIN} component={AdminPage} />   */}
           </div>
         </div>

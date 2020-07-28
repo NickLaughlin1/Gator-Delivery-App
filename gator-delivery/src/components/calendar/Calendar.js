@@ -119,7 +119,7 @@ const CalendarComponent = (props) => {
 	
 	return(
 		<div>
-			<div className = "donk">
+      <div className = "donk">
 				<div>
 					<Calendar 
 						onChange = {onChange}
@@ -131,19 +131,19 @@ const CalendarComponent = (props) => {
 			<div>
 				&nbsp;
 			</div>
-			<div className = "donk">
+      <div className = "donk">
 				Click on a date twice or select a range of dates.
 			</div>
 			<div>
 				&nbsp;
 			</div>
-			<div className = "donk">
+      <div className = "donk">
 				--------------------------------------------------------------------------------------------------
 			</div>
 			{/* check if date is null to prevent errors */}
 			{date.length > 1 && date[0].toLocaleString().substring(0, date[0].toLocaleString().indexOf(",")) === date[1].toLocaleString().substring(0, date[1].toLocaleString().indexOf(",")) ? (
 				/* same day */
-				<div className = "donk">
+        <div className = "donk">
 					<div>
 						Selected day:
 					</div>
@@ -207,7 +207,7 @@ const CalendarComponent = (props) => {
 			) : (
 				/* range of dates */
 				date[1] == null ? (
-					<div>
+          <div>
 						<div className = "donk">
 							Selected day(s):
 						</div>
@@ -219,7 +219,7 @@ const CalendarComponent = (props) => {
 						</div>
 					</div>
 				) : (
-					<div className = "donk">
+          <div className = "donk">
 						<div>
 							<div>
 								Selected days:
@@ -289,13 +289,13 @@ const CalendarComponent = (props) => {
 					</div>
 				)
 			)}
-			<div className = "donk">
+      <div className = "donk">
 				--------------------------------------------------------------------------------------------------
 			</div>
 			<div>
 				&nbsp;
 			</div>
-			<div className = "donk">
+      <div className = "donk">
 				<button className="btn btn-primary" onClick = {confirmChoice}>
 					Submit
 				</button>
@@ -304,7 +304,7 @@ const CalendarComponent = (props) => {
 			<div>
 				&nbsp;
 			</div>
-			<div className = "donk">
+      <div className = "donk">
 				{outputError}
 			</div>
 		</div>
