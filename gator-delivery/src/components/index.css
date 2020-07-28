@@ -5,7 +5,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  border: 8px solid #ffffff;
+  
+}
+body > #root > div {
+  height: 300px;
 }
 
 * {
@@ -17,7 +20,17 @@ body {
   max-width: 1024px;
 }
 
-
+.new-container {
+  flex-wrap: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 75%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
 
 /* Login and Sign up buttons */
 .register {
@@ -49,9 +62,11 @@ body {
 /* ### Second Row ### */
 
 .body {
+  margin-left: 5em;
+  margin-right: 5em;
   padding: 10px;
-  display: flex;
-  justify-content: center
+  position: relative;
+  justify-content: center;
 }
 
 .task-form {
@@ -67,14 +82,26 @@ position: relative;
 display: inline-block;
 }
 
-  .lonk{
+.lonk{
     background-color: #007bff;
     color: white;
     padding: 15px;
     font-size: 17px;
     border: none;
     position: absolute;
-  }
+}
+
+.lenk{
+  margin-right: 29em;
+  display: flex;
+  justify-content: center;
+}
+
+.donk{
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+}
 /* Dropdown Button */
 .dropbtn {
   background-color: #007bff;
@@ -118,8 +145,7 @@ display: inline-block;
 .dropdown:hover .dropbtn {background-color: #289fbd;}
 
 .container {
-  margin-right: auto;
-  margin-left: auto;
+  width: 75%
 }
 
 
@@ -132,13 +158,13 @@ display: inline-block;
 .layout-content {
   float: left;
   margin-left: 20px;
-  width: 652px;
+  width: 800px;
 }
 
 .layout-sidebar {
   float: left;
   margin-left: 20px;
-  width: 316px;
+  width: 310px;
   min-height: 1px;
 }
 
@@ -160,12 +186,16 @@ display: inline-block;
   position: relative;
 }
 
+.cont-body {
+  font-size: 16px;
+}
+
 .heading-caps {
   font-family: 'sofia_probold',"Trebuchet MS",
-    "Segoe UI",Candara,"Bitstream Vera Sans",
-    "DejaVu Sans","Bitstream Vera Sans",Verdana,
-    "Verdana Ref",sans-serif;
-  font-size: 14px;
+  "Segoe UI",Candara,"Bitstream Vera Sans",
+  "DejaVu Sans","Bitstream Vera Sans",Verdana,
+  "Verdana Ref",sans-serif;
+  font-size: 16px;
   line-height: 2em;
   margin: 0;
 }
@@ -201,12 +231,47 @@ h1 {
   margin-bottom: 15px;
 }
 
+.card-head {
+  font-size: 16px;
+}
+
 .posted-box {
   background-color: #ffffff;
 }
 
 .li {
   line-height: 20px;
+}
+
+.form-container {
+  max-width: 600px;
+  box-sizing: border-box;
+  padding: 1.5em 1em;
+  margin: 0px auto 1em;
+}
+
+.form-group {
+  font-size: 16px;
+}
+
+.viewjob-header {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.edit-sidebar {
+  float: left;
+  width: 316px;
+  margin-right: 20px; 
+}
+
+.viewjob-main {
+  width: 800px;
+}
+
+.right-marg {
+  width: 780px;
+  margin-right: 20px;
 }
 
 /* .overlay {
@@ -223,4 +288,7 @@ footer {
   color: white;
   margin-top: 3em;
   background: #343944;
+  box-shadow: 0 50vh 0 50vh;
+  height: 100%;
+  padding-top: 20px;
 }

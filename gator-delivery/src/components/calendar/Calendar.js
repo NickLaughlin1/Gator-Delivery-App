@@ -118,30 +118,32 @@ const CalendarComponent = (props) => {
 	var outputError = outputError();
 	
 	return(
-		<div /*className = " test"*/>
-			<div style = {{boxShadow: "5px 5px 10px #007bff"}}>
-				<Calendar 
-					onChange = {onChange}
-					selectRange = {true}
-					value = {date}
-				/>
+		<div>
+			<div className = "donk">
+				<div>
+					<Calendar 
+						onChange = {onChange}
+						selectRange = {true}
+						value = {date}
+					/>
+				</div>
 			</div>
 			<div>
 				&nbsp;
 			</div>
-			<div>
+			<div className = "donk">
 				Click on a date twice or select a range of dates.
 			</div>
 			<div>
 				&nbsp;
 			</div>
-			<div>
-				--
+			<div className = "donk">
+				--------------------------------------------------------------------------------------------------
 			</div>
 			{/* check if date is null to prevent errors */}
 			{date.length > 1 && date[0].toLocaleString().substring(0, date[0].toLocaleString().indexOf(",")) === date[1].toLocaleString().substring(0, date[1].toLocaleString().indexOf(",")) ? (
 				/* same day */
-				<div>
+				<div className = "donk">
 					<div>
 						Selected day:
 					</div>
@@ -206,7 +208,7 @@ const CalendarComponent = (props) => {
 				/* range of dates */
 				date[1] == null ? (
 					<div>
-						<div>
+						<div className = "donk">
 							Selected day(s):
 						</div>
 						<div>
@@ -217,7 +219,7 @@ const CalendarComponent = (props) => {
 						</div>
 					</div>
 				) : (
-					<div>
+					<div className = "donk">
 						<div>
 							<div>
 								Selected days:
@@ -287,13 +289,13 @@ const CalendarComponent = (props) => {
 					</div>
 				)
 			)}
-			<div>
-				--
+			<div className = "donk">
+				--------------------------------------------------------------------------------------------------
 			</div>
 			<div>
 				&nbsp;
 			</div>
-			<div>
+			<div className = "donk">
 				<button className="btn btn-primary" onClick = {confirmChoice}>
 					Submit
 				</button>
@@ -302,7 +304,9 @@ const CalendarComponent = (props) => {
 			<div>
 				&nbsp;
 			</div>
-			{outputError}
+			<div className = "donk">
+				{outputError}
+			</div>
 		</div>
 	);
 };
