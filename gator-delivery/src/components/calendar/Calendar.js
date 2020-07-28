@@ -27,17 +27,17 @@ const CalendarComponent = (props) => {
 	const confirmChoice = () => {
 		console.log(date);
 		/* check if input was not changed */
-		if(hr1 === -1 || hr2 === -1 || min1 === -1 || min2 === -1 || sec1 === -1 || sec2 === -1){
+		if(date[0].toLocaleString().substring(0, date[0].toLocaleString().indexOf(",")) === date[1].toLocaleString().substring(0, date[1].toLocaleString().indexOf(",")) && hr1 === -1 || hr2 === -1 || min1 === -1 || min2 === -1 || sec1 === -1 || sec2 === -1){
 			setError("Error: input not changed. Enter integers in between 0 and 12 or 0 and 59.");
 			console.log("Error: input not changed. Enter integers in between 0 and 12 or 0 and 59.");
 		}else{
 			/* check if prev time comes before after time */
-			if(before === "PM" && after === "AM"){
+			if(date[0].toLocaleString().substring(0, date[0].toLocaleString().indexOf(",")) === date[1].toLocaleString().substring(0, date[1].toLocaleString().indexOf(",")) && before === "PM" && after === "AM"){
 				setError("Error: invalid timespan. Enter times in chronological order.");
 				console.log("Error: invalid timespan. Enter times in chronological order.");
 			}else{
 				var values = [hr1, min1, sec1, hr2, min2, sec2];
-				if(before === after && (Number(hr1) != 12 && Number(hr2) != 12) && ((Number(hr1) > Number(hr2)) || ((Number(hr1) <= Number(hr2)) 
+				if(date[0].toLocaleString().substring(0, date[0].toLocaleString().indexOf(",")) === date[1].toLocaleString().substring(0, date[1].toLocaleString().indexOf(",")) && before === after && (Number(hr1) != 12 && Number(hr2) != 12) && ((Number(hr1) > Number(hr2)) || ((Number(hr1) <= Number(hr2)) 
 					&& (Number(min1) > Number(min2))) || ((Number(hr1) <= Number(hr2)) && 
 					(Number(min1) <= Number(min2)) && (Number(sec1) > Number(sec2))) || 
 					((Number(hr1) === Number(hr2)) && (Number(min1) === Number(min2)) && 
@@ -47,25 +47,25 @@ const CalendarComponent = (props) => {
 					console.log("Error: invalid timespan. Enter times in chronological order.");
 				}else{
 					//Check AMs
-					if(before === "AM" && after === "AM" && (Number(hr1) === 12 && Number(hr2) === 12) && 
+					if(date[0].toLocaleString().substring(0, date[0].toLocaleString().indexOf(",")) === date[1].toLocaleString().substring(0, date[1].toLocaleString().indexOf(",")) && before === "AM" && after === "AM" && (Number(hr1) === 12 && Number(hr2) === 12) && 
 						((Number(min1) > Number(min2)) || ((Number(min1) <= Number(min2)) && (Number(sec1) > Number(sec2))) || 
 						((Number(min1) === Number(min2)) && (Number(sec1) === Number(sec2))))){
 						
 						setError("Error: invalid timespan. Enter times in chronological order.");
 						console.log("Error: invalid timespan. Enter times in chronological order.");
 					}else{
-						if(before === "AM" && after === "AM" && (Number(hr1) != 12 && Number(hr2) === 12)){
+						if(date[0].toLocaleString().substring(0, date[0].toLocaleString().indexOf(",")) === date[1].toLocaleString().substring(0, date[1].toLocaleString().indexOf(",")) && before === "AM" && after === "AM" && (Number(hr1) != 12 && Number(hr2) === 12)){
 							
 							setError("Error: invalid timespan. Enter times in chronological order.");
 							console.log("Error: invalid timespan. Enter times in chronological order.");
 						}else{
 							//Check PMs
-							if(before === "PM" && after === "PM" && (Number(hr1) === 12 && Number(hr2) != 12)){
+							if(date[0].toLocaleString().substring(0, date[0].toLocaleString().indexOf(",")) === date[1].toLocaleString().substring(0, date[1].toLocaleString().indexOf(",")) && before === "PM" && after === "PM" && (Number(hr1) === 12 && Number(hr2) != 12)){
 								
 								setError("Error: invalid timespan. Enter times in chronological order.");
 								console.log("Error: invalid timespan. Enter times in chronological order.");
 							}else{
-								if(before === "PM" && after === "PM" && (Number(hr1) === 12 && Number(hr2) === 12) && 
+								if(date[0].toLocaleString().substring(0, date[0].toLocaleString().indexOf(",")) === date[1].toLocaleString().substring(0, date[1].toLocaleString().indexOf(",")) && before === "PM" && after === "PM" && (Number(hr1) === 12 && Number(hr2) === 12) && 
 									((Number(min1) > Number(min2)) || ((Number(min1) <= Number(min2)) && (Number(sec1) > Number(sec2))) || 
 									((Number(min1) === Number(min2)) && (Number(sec1) === Number(sec2))))){
 									
