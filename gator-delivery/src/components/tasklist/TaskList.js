@@ -91,7 +91,7 @@ const List = (props) => {
                                 id: currtask._id
                             }
                         } className="nav-link">
-                            <button type="button" className="btn btn-success btn-sm" onClick={() => {props.setSelectedID(currtask._id)}}>View job</button>
+                            <button type="button" className="btn btn-primary btn-sm" onClick={() => {props.setSelectedID(currtask._id)}}>View job</button>
                         </Link>
                     </div>
                 </div>

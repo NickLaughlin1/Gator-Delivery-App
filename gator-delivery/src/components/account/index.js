@@ -107,7 +107,7 @@ const AccountPage = () => {
           <fieldset className="form-group">
             <label htmlFor="profileRole">Role: </label>
             <select>
-              <option>Regular user</option>
+              <option>Customer</option>
               <option>Volunteer Handyman</option>
               <option>Volunteer Driver</option>
             </select>

@@ -18,12 +18,13 @@ import Navbar from "../navbar/Navbar";
 // import TaskList from "../tasklist/TaskList";
 import CreateTask from "../createtask/CreateTask";
 import Board from "../community/Board";
-import Bored from "../reviews/Bored";
+import RB from "../reviews/Rored";
 import faq from "../faq/faq";
 //npm install react-calendar or yarn add react-calendar
 import Calendar from "../calendar/Calendar";
 import ViewJob from "../viewjob/ViewJob";
 import path from "path";
+import Rored from "../reviews/Rored";
 
 const App = () => {
   return (
@@ -36,6 +37,7 @@ const App = () => {
             <div className="body">
               <Route path={ROUTES.CREATE} component={CreateTask} />
               <Route path={ROUTES.COMMUNITY} component={Board} />
+              <Route path={ROUTES.REVIEWS} component ={Rored} />
               <Route path={ROUTES.CALENDAR} component={Calendar} />
               <Route path={ROUTES.FAQ} component={faq} />
               <Route exact path={ROUTES.LANDING} component={LandingPage} />
@@ -54,7 +56,7 @@ const App = () => {
 
       <footer className="site-footer">
         <div className="container">
-          <h3>The page was made possible by Gator Delivery</h3>
+          <h4>&copy; 2020 Home Order | CEN3031 - Gator Delivery. All Rights Reserved.</h4>
         </div>
       </footer>
 

@@ -40,13 +40,6 @@ const NavAuth = () => {
               </div>
             </div>
             <div className="dropdown">
-              <button className="dropbtn">User Account</button>
-              <div className="dropdown-content">
-                <a href="/settings/general">Control Panel</a>
-                <a href="/settings/profile">Edit Profile</a>
-              </div>
-            </div>
-            <div className="dropdown">
               <Link to="/calendar" class="lonk">
                 Calendar
               </Link>

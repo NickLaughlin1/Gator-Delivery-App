@@ -17,6 +17,8 @@ body > #root > div {
 /* ### First row ### */
 .container {
   max-width: 1024px;
+  position: relative;
+  bottom: 0;
 }
 
 .new-container {
@@ -66,6 +68,7 @@ body > #root > div {
   /* padding: 10px;  */
   position: relative;
   justify-content: center;
+  padding: 10px;
 }
 
 .task-form {
@@ -79,6 +82,10 @@ body > #root > div {
 line-height: 5pt;
 position: relative;
 display: inline-block;
+}
+
+.react-calendar{
+  width: 621px;
 }
 
 .lonk{
@@ -121,7 +128,7 @@ display: inline-block;
   display: none;
   position: absolute;
   background-color: #f1f1f1;
-  min-width: 160px;
+  min-width: 180px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
 }
@@ -288,10 +295,12 @@ h1 {
 }
 
 footer {
+  margin-bottom: -2em;
+  margin-top: 2em;
   color: white;
-  margin-top: 3em;
   background: #343944;
   box-shadow: 0 50vh 0 50vh;
-  height: 100%;
-  padding-top: 20px;
+  height: 40px;
+  width: 100%;
+  
 }

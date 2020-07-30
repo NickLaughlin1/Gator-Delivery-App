@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Review from './Review'
 
-const Bored = (props) => {
+const Rored = (props) => {
     const [review, setReview] = useState('');
     const [reviewList, setReviewList] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:5000/reviews/')
+        axios.get('http://localhost:5000/review/')
             .then(response => {
                 setReviewList(response.data);
             })
@@ -26,9 +26,10 @@ const Bored = (props) => {
     const createReview = (e) => {
         e.preventDefault();
         let newReview = {
-            text: review
+            text: review,
+           /* rate: rate */
         };
-        axios.post('http://localhost:5000/reviews/add', newReview);  
+        axios.post('http://localhost:5000/review/add', newReview);  
         
         window.location = '/reviews';
         setReview('');
@@ -66,4 +67,4 @@ const Bored = (props) => {
     );
     }
 
-export default Bored;
+export default Rored;
