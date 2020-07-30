@@ -62,10 +62,22 @@ body > #root > div {
 
 .body {
   /* margin-left: 5em;
-  margin-right: 5em; */
-  /* padding: 10px;  */
+  margin-right: 5em;
+  padding: 10px;  */
   position: relative;
   justify-content: center;
+}
+
+.sign-up {
+  padding: 10px;
+  margin: 10px;
+}
+
+.sign-in {
+  /* display: flex;
+  justify-content: center; */
+  padding: 10px;
+  margin: 10px;
 }
 
 .task-form {
@@ -97,7 +109,9 @@ display: inline-block;
 }
 
 .donk{
-  padding: 5px;
+  padding: 10px;
+  margin-left: 5em;
+  margin-right: 5em;
   display: flex;
   justify-content: center;
 }

@@ -5,9 +5,10 @@ import { SignUpLink } from "../sign-up";
 import * as ROUTES from "../../constants/routes";
 import { AuthContext } from "../session/withAuthentication";
 import app from "../firebase/firebase";
+import "../index.css";
 
 const SignInPage = () => (
-  <div>
+  <div className="sign-in">
     <h1>Login</h1>
     <SignInForm />
     <SignUpLink />{" "}

@@ -2,6 +2,7 @@
 import React, { useCallback, useState } from "react";
 import { Link, withRouter } from "react-router-dom";
 import axios from "axios";
+import "../index.css";
 
 import * as ROUTES from "../../constants/routes";
 import app from "../firebase/firebase";
@@ -93,7 +94,7 @@ const SignUpPage = (props) => {
 
   return (
     <React.Fragment>
-      <div>
+      <div className="sign-up">
         <h1>Sign Up</h1>
         <form onSubmit={handleSignUp}>
           <NormalSignUp

@@ -7,6 +7,7 @@ import * as ROUTES from "../../constants/routes";
 import LandingPage from "../../views/LandingPage/LandingPage.js";
 import SignUpPage from "../sign-up";
 import SignInPage from "../sign-in";
+import ReviewPage from "../reviews/Bored.js";
 // import PasswordForgetPage from "../password-forgot";
 import HomePage from "../home";
 import AccountPage from "../account";
@@ -18,7 +19,7 @@ import Navbar from "../navbar/Navbar";
 // import TaskList from "../tasklist/TaskList";
 import CreateTask from "../createtask/CreateTask";
 import Board from "../community/Board";
-import Bored from "../reviews/Bored";
+// import Bored from "../reviews/Bored";
 import faq from "../faq/faq";
 //npm install react-calendar or yarn add react-calendar
 import Calendar from "../calendar/Calendar";
@@ -46,6 +47,7 @@ const App = () => {
               <Route path={ROUTES.ACCOUNT} component={AccountPage} />
               <Route path={ROUTES.PROFILE_SETTINGS} component={AccountPage} />
               <Route path={path.join("/job", ":id?")} component={ViewJob} />
+              <Route path={ROUTES.REVIEWS} component={ReviewPage} />
               {/* <Route path={ROUTES.ADMIN} component={AdminPage} />   */}
             </div>
           </div>
