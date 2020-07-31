@@ -14,6 +14,7 @@ const CreateTask = (props) => {
     const [currentStep, setCurrentStep] = useState(1);
     const [email, setEmail] = useState('');
     const [headline, setHeadline] = useState('');
+    const [trade, setTrade] = useState('');
     const [task, setTask] = useState('');
     const [date, setDate] = useState(new Date());
 
@@ -43,6 +44,7 @@ const CreateTask = (props) => {
         setCurrentStep(1);
         setEmail('');
         setHeadline('');
+        setTrade('');
         setTask('');
         setDate(new Date());
     };
@@ -52,7 +54,7 @@ const CreateTask = (props) => {
     const _next = () => {
         let currStep = currentStep
         // If the current step is 1 or 2, then add one on "next" button click
-        currStep = currStep >= 3 ? 3: currStep + 1
+        currStep = currStep >= 4 ? 4: currStep + 1
         setCurrentStep(currStep);
     };
         
@@ -79,12 +81,12 @@ const CreateTask = (props) => {
       
     const nextButton = () => {
       let currStep = currentStep;
-      if(currStep < 3) {
+      if(currStep < 4) {
         return (
           <button 
-            className="btn btn-primary float-right" 
+            className="btn btn-danger btn-lg btn-block" 
             type="button" onClick={_next}>
-              Continue
+              Next step
           </button>        
         );
       };
@@ -93,25 +95,29 @@ const CreateTask = (props) => {
 
     return (
         <React.Fragment>
-          <div className='container'>
-            <h1>Task form</h1>              
+          <div className='form-container'>
+            <h1>Post a job</h1>              
             <form onSubmit={handleSubmit}>
                 <Step1 
                 currentStep={currentStep} 
-                setHeadline={setHeadline}
-                headline={headline}
+                setTrade={setTrade}
+                trade={trade}
                 />
                 <Step2 
                 currentStep={currentStep} 
                 setTask={setTask}
                 task={task}
                 />
-                <Step3 
+                <Step3
+                currentStep={currentStep} 
+                setHeadline={setHeadline}
+                headline={headline}
+                />
+                <Step4 
                 currentStep={currentStep} 
                 setDate={handleDateChange}
                 date={date}
                 />
-              
                 {nextButton()} 
             </form>
           </div>
@@ -120,8 +126,6 @@ const CreateTask = (props) => {
 
 };
 
-
-
 const Step1 = (props) => {
     if (props.currentStep < 1) {
         return null;
@@ -129,16 +133,35 @@ const Step1 = (props) => {
 
     return (
         <div className="form-group">
-            <label>Headline of task</label>
-            <input
-            className="form-control"
-            id="headline"
-            name="headline"
-            type="text"
-            placeholder="Ex. Install new washing machine and dispose of old one"
-            value={props.headline} 
-            onChange={e => props.setHeadline(e.target.value)} 
-            />
+            <label className='form-question' for='select-trade'>What type of work do you need help with?</label>
+            <select
+            className="custom-select"
+            id="select-trade"
+            name='select-trade'
+            value={props.trade} 
+            onChange={e => props.setTrade(e.target.value)}
+            required='required'>
+              <option selected disabled value=''>Choose a category</option>
+              <option>Carpentry</option>
+              <option>Electrical</option>
+              <option>Fencing</option>
+              <option>Heating and Air Conditioning</option>
+              <option>Driveway</option>
+              <option>Guttering</option>
+              <option>Handyman</option>
+              <option>Insulation</option>
+              <option>Painting and Decorating</option>
+              <option>Locksmith</option>
+              <option>Appliances</option>
+              <option>Security Systems</option>
+              <option>Plumbing</option>
+              <option>Roofing</option>
+              <option>Windows</option>
+              <option>Pool</option>
+              <option>Gardening and Landscaping</option>
+              <option>I'm not sure what to pick</option>
+            </select>
+            <div className='invalid-tooltip'>Please select an option</div>
           </div> 
     );
 };
@@ -150,7 +173,7 @@ const Step2 = (props) => {
     return(
       <div className="form-group">
         <label>Describe the task in detail</label>
-        <input
+        <textarea
           className="form-control"
           id="task"
           name="task"
@@ -162,9 +185,29 @@ const Step2 = (props) => {
       </div>
     );
   };
-  
-const Step3 = (props) => {
+
+  const Step3 = (props) => {
     if (props.currentStep < 3) {
+      return null
+    } 
+    return(
+      <div className="form-group">
+        <label>Create a headline for your job</label>
+        <input
+          className="form-control"
+          id="headline"
+          name="headline"
+          type="text"
+          placeholder="New washing machine installed"
+          value={props.headline}
+          onChange={e => props.setHeadline(e.target.value)}
+          />
+      </div>
+    );
+  };
+  
+const Step4 = (props) => {
+    if (props.currentStep < 4) {
       return null
     } 
     return(

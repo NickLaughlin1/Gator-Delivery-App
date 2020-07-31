@@ -36,13 +36,11 @@ const Board = (props) => {
     };
     return(
         <div>
-            <h1>
-                Community Board
-            </h1>
-            <h3>
-                Ask questions and get answers from experts in your area
-            </h3>          
-
+            <br></br>
+            <h1>Community Board</h1>
+            <br></br>
+            <h4>Ask questions and get answers from experts in your area</h4>          
+            <br></br>
             <div className="card post-editor">
                 <div className="card-body">
                     Ask a question
