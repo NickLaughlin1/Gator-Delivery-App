@@ -59,7 +59,7 @@ app.use("/posts", postsRouter);
 
 app.use("/users", userRouter);
 
-app.use("/reviews", reviewsRouter);
+app.use("/review", reviewsRouter);
 /* The next three middleware are important to the API that we are building */
 
 /* Request Handler for route /api/listings

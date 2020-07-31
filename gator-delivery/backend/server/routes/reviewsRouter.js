@@ -1,7 +1,7 @@
-import * as reviews from '../controllers/reviewsController.js';
+import * as review from '../controllers/reviewsController.js';
 import express from 'express'; //refers to Express the middleware helper for Node.js
 const reviewsRouter = express.Router();
 
-reviewsRouter.post('/add', reviews.create);
-reviewsRouter.get('/', reviews.list);
+reviewsRouter.post('/sub', review.create);
+reviewsRouter.get('/', review.list);
 export default reviewsRouter;

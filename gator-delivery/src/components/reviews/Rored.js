@@ -29,9 +29,9 @@ const Rored = (props) => {
             text: review,
            /* rate: rate */
         };
-        axios.post('http://localhost:5000/review/add', newReview);  
+        axios.post('http://localhost:5000/review/sub', newReview);  
         
-        window.location = '/reviews';
+        window.location = '/vreviews';
         setReview('');
         
     };

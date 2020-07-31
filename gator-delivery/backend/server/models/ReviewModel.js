@@ -7,4 +7,4 @@ const reviewSchema = new mongoose.Schema({
 /* Use your schema to instantiate a Mongoose model
 Export the model to make it avaiable to other parts of your Node application */
 //Check out - https://mongoosejs.com/docs/guide.html#models
-export default mongoose.model('reviews', reviewSchema);
+export default mongoose.model('review', reviewSchema);

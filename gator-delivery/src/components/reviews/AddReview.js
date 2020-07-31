@@ -16,7 +16,7 @@ function AddReview(props) {
         axios.post('http://localhost:5000/reviews/add', newReview);
             
         
-        window.location = '/reviews';
+        window.location = '/vreviews';
         //setUser('');
         setReview('');
     };
