@@ -17,6 +17,8 @@ body > #root > div {
 /* ### First row ### */
 .container {
   max-width: 1024px;
+  position: relative;
+  bottom: 0;
 }
 
 .new-container {
@@ -66,6 +68,7 @@ body > #root > div {
   padding: 10px;  */
   position: relative;
   justify-content: center;
+  padding: 10px;
 }
 
 .sign-up {
@@ -135,7 +138,7 @@ display: inline-block;
   display: none;
   position: absolute;
   background-color: #f1f1f1;
-  min-width: 160px;
+  min-width: 180px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
 }
@@ -155,12 +158,11 @@ display: inline-block;
 .dropdown:hover .dropdown-content {display: block;}
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn {background-color: #289fbd;}
+.dropdown:hover .dropbtn {background-color: #0f31a0;}
 
 .container {
   width: 75%
 }
-
 
 
 .row {
@@ -303,10 +305,13 @@ h1 {
 }
 
 footer {
+  margin-bottom: -2em;
+  margin-top: 2em;
   color: white;
-  margin-top: 3em;
   background: #343944;
   box-shadow: 0 50vh 0 50vh;
-  height: 100%;
-  padding-top: 20px;
+  height: 40px;
+  width: 100%;
+  text-align: center;
+  
 }

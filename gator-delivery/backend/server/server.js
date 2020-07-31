@@ -7,6 +7,7 @@ import config from "./config/config.js";
 import tasksRouter from "./routes/tasksRouter.js";
 import postsRouter from "./routes/postsRouter.js";
 import userRouter from "./routes/userRouter.js";
+import reviewsRouter from "./routes/reviewsRouter.js";
 
 //connect to database
 mongoose
@@ -57,6 +58,8 @@ app.use("/tasks", tasksRouter);
 app.use("/posts", postsRouter);
 
 app.use("/users", userRouter);
+
+app.use("/reviews", reviewsRouter);
 /* The next three middleware are important to the API that we are building */
 
 /* Request Handler for route /api/listings

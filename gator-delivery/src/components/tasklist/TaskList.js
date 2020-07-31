@@ -95,7 +95,7 @@ const List = (props) => {
             >
               <button
                 type="button"
-                className="btn btn-success btn-sm"
+                className="btn btn-primary btn-sm"
                 onClick={() => {
                   props.setSelectedID(currtask._id);
                 }}

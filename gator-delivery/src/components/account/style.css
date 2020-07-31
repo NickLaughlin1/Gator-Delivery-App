@@ -220,7 +220,7 @@
     padding-top: 20px;
     padding-left: 18px;
     padding-bottom: 20px;
-    box-shadow: 0 1px 0 rgba(0, 196, 245, 0.05), inset 0 -1px 0 rgba(0, 196, 245, 0.1);
+    box-shadow: 0 1px 0 #0f31a0, inset 0 -1px 0 rgba(0, 196, 245, 0.1);
     box-sizing: border-box;
     white-space: normal;
   }

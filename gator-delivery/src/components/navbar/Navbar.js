@@ -34,16 +34,9 @@ const NavAuth = () => {
             <div className="dropdown">
               <button className="dropbtn">Social</button>
               <div className="dropdown-content">
-                <a href="/reviews">Volunteer Reviews</a>
+                <a href="/vreviews">Volunteer Reviews</a>
                 <a href="/community">Community Board</a>
                 <a href="/faq">FAQ</a>
-              </div>
-            </div>
-            <div className="dropdown">
-              <button className="dropbtn">User Account</button>
-              <div className="dropdown-content">
-                <a href="/settings/general">Control Panel</a>
-                <a href="/settings/profile">Edit Profile</a>
               </div>
             </div>
             <div className="dropdown">
@@ -65,8 +58,7 @@ const NavAuth = () => {
                 className="profile-pic"
               />
               <div className="dropdown-content">
-                <a href="/settings/general">Control Panel</a>
-                <a href="/settings/profile">Edit Profile</a>
+                <a href="/settings/general">Account Settings</a>
                 <SignOutButton />
               </div>
             </button>
