@@ -84,10 +84,6 @@ position: relative;
 display: inline-block;
 }
 
-.react-calendar{
-  width: 621px;
-}
-
 .lonk{
     background-color: #007bff;
     color: white;
@@ -302,5 +298,6 @@ footer {
   box-shadow: 0 50vh 0 50vh;
   height: 40px;
   width: 100%;
+  text-align: center;
   
 }

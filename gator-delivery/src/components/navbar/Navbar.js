@@ -58,8 +58,7 @@ const NavAuth = () => {
                 className="profile-pic"
               />
               <div className="dropdown-content">
-                <a href="/settings/general">Control Panel</a>
-                <a href="/settings/profile">Edit Profile</a>
+                <a href="/settings/general">Account Settings</a>
                 <SignOutButton />
               </div>
             </button>
