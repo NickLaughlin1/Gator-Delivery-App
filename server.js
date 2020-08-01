@@ -40,7 +40,7 @@ app.use(function(req, res, next) {
  });
 
 /* serve static files - see http://expressjs.com/en/starter/static-files.html */
-app.use('/', express.static('.'));
+//app.use('/', express.static('.'));
 
 app.use('/tasks', tasksRouter);
 
