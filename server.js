@@ -3,12 +3,11 @@ import express from 'express';
 import mongoose from 'mongoose';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
-import config from './config/config.js';
 import tasksRouter from './routes/tasksRouter.js';
 import postsRouter from './routes/postsRouter.js';
 
-const PORT = process.env.PORT || config.port;
-const URI = process.env.DB_URI || config.db.uri;
+const PORT = process.env.PORT || 5000;
+const URI = process.env.DB_URI || require('./config/config.js').db.uri;
 
 //connect to database
 mongoose.connect(URI, {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false}).then(() => {
