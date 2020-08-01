@@ -50,7 +50,7 @@ app.use('/posts', postsRouter);
    res.sendFile(path.resolve('client/index.html'));
 });*/
 
-let __dirname = path.resolve();
+
 
 if (process.env.NODE_ENV === 'production') {
    app.use('/', express.static('client/build'));
