@@ -10,13 +10,13 @@ function AddReview(props) {
     const createReview = (e) => {
         e.preventDefault();
         let newReview = {
-            text: review
+            mes: review
         };
 
         axios.post('http://localhost:5000/reviews/add', newReview);
             
         
-        window.location = '/reviews';
+        window.location = '/vreviews';
         //setUser('');
         setReview('');
     };

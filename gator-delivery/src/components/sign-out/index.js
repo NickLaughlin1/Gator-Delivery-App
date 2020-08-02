@@ -14,7 +14,7 @@ const SignOutButton = ({history}) => {
     };
 
     return (
-    <button type="button" onClick={handleSignOut.bind(this)}>
+    <button type="button" className="btn btn-primary" onClick={handleSignOut.bind(this)}>
          Sign Out
      </button>
     )

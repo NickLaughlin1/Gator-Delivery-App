@@ -5,7 +5,7 @@ const Review = (props) => {
     return (
         <div className="card post-editor">
             <div className="card-body"> 
-                    {props.review.text}
+                    {props.review.mes}
             </div>
         </div>
     );
