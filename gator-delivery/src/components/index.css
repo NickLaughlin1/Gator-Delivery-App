@@ -68,7 +68,7 @@ body > #root > div {
   padding: 10px;  */
   position: relative;
   justify-content: center;
-  padding: 10px;
+  /* padding: 10px; */
 }
 
 .sign-up {

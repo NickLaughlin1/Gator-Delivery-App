@@ -7,7 +7,6 @@ import * as ROUTES from "../../constants/routes";
 import LandingPage from "../../views/LandingPage/LandingPage.js";
 import SignUpPage from "../sign-up";
 import SignInPage from "../sign-in";
-import ReviewPage from "../reviews/Bored.js";
 // import PasswordForgetPage from "../password-forgot";
 import HomePage from "../home";
 import AccountPage from "../account";
