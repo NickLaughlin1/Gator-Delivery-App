@@ -81,7 +81,7 @@ const NavAuth = () => {
 const NavUnAuth = () => (
   <nav
     className="navbar navbar-dark bg-primary navbar-expand-sm navbar-fixed-top"
-    fixed
+    
   >
     <div className="container">
       <a className="navbar-brand" href={ROUTES.LANDING}>

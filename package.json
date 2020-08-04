@@ -1,7 +1,7 @@
 {
-  "name": "bootcamp3",
-  "version": "3.1.0",
-  "description": "Routing server-side requests using ExpressJS",
+  "name": "homeorder",
+  "version": "1.0.0",
+  "description": "Project for CEN 3031",
   "type": "module",
   "main": "server.js",
   "scripts": {
@@ -13,9 +13,11 @@
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "authors": [
-    "Jonathan Conlin",
-    "Dakota Rennemann",
-    "Bao Nyguen"
+    "Nicholas Laughlin",
+    "Beau Bakken",
+    "Erica Hetrick",
+    "Sky Myers",
+    "Michael Klein"
   ],
   "license": "MIT",
   "dependencies": {
