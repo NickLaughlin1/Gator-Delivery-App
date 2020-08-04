@@ -89,11 +89,11 @@
   }
   
   .settings .settings-left {
-    border-radius: 5px 0 0 5px;
-    background-color: #3f3f3f;
+    /* border-radius: 5px 0 0 5px; */
+    background-color: #007bff;
     color: #fff;
     font-weight: 600;
-    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 0 rgba(0, 36, 199, 0.05), inset 0 -1px 0 rgba(0, 181, 236, 0.1);
     box-sizing: border-box;
     width: 190px;
     flex-shrink: 0;
@@ -220,7 +220,7 @@
     padding-top: 20px;
     padding-left: 18px;
     padding-bottom: 20px;
-    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 0 rgba(0, 196, 245, 0.05), inset 0 -1px 0 rgba(0, 196, 245, 0.1);
     box-sizing: border-box;
     white-space: normal;
   }

@@ -13,7 +13,7 @@ function AddPost(props) {
             text: post
         };
 
-        axios.post('/posts/add', newPost);
+        axios.post('http://localhost:5000/posts/add', newPost);
             
         
         window.location = '/community';

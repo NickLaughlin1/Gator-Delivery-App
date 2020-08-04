@@ -7,7 +7,7 @@ const Board = (props) => {
     const [postList, setPostList] = useState([]);
 
     useEffect(() => {
-        axios.get('/posts/')
+        axios.get('http://localhost:5000/posts/')
             .then(response => {
                 setPostList(response.data);
             })
@@ -28,7 +28,7 @@ const Board = (props) => {
         let newPost = {
             text: post
         };
-        axios.post('/posts/add', newPost);  
+        axios.post('http://localhost:5000/posts/add', newPost);  
         
         window.location = '/community';
         setPost('');
