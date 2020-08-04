@@ -144,9 +144,7 @@ display: inline-block;
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {background-color: #289fbd;}
 
-.container {
-  width: 75%
-}
+
 
 
 
@@ -271,7 +269,7 @@ h1 {
 }
 
 .right-marg {
-  width: 780px;
+  width: 65%;
   margin-right: 20px;
 }
 
