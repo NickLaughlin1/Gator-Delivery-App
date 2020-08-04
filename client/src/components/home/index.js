@@ -21,7 +21,11 @@ const Home = (props) => {
                   <h1 className='heading-large'>
                     My posted jobs
                   </h1>
-                  <TaskList/>
+                  
+                    
+                      <TaskList/>
+                    
+                  
                 </div>
               </div>
               <div className='edit-sidebar'>
@@ -37,7 +41,6 @@ const Home = (props) => {
                   </div>
                 </div>
               </div>
-
           </div>
         </div>
       </div>

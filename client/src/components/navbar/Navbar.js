@@ -44,7 +44,7 @@ const NavAuth = () => (
                     <Link to="/calendar" class="lonk">Calendar</Link>
                 </div>
             </ul>
-            <span className="navbar-text">Hello, {app.auth().currentUser.displayName}!</span> {/* shows the logged in users name */}
+            
             <li className="navbar-text">
                 <SignOutButton className='btn btn-light'/>
             </li>

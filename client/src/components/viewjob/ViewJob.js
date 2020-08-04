@@ -11,6 +11,8 @@ const ViewJob = (props) => {
     const [date, setDate] = useState(new Date());
     const [created, setCreated] = useState('');
     const [email, setEmail] = useState('');
+    const [editing, setEditing] = useState(false);
+    const [taskID, setTaskID] = useState(props.location.id);
     //const [editing, setEditing] = useState(false);
     //const [selectedID, setSelectedID] = useState('');
 
@@ -42,6 +44,8 @@ const ViewJob = (props) => {
         });
     }, []);
 
+    //console.log("THis is task ID", taskID);
+
     const handleDelete = (e) => {
         //e.preventDefault();
 
@@ -57,10 +61,6 @@ const ViewJob = (props) => {
             .catch((error) => {
                 console.log(error);
             })
-        
-            
-
-        console.log('###########');
 
         window.location = ROUTES.HOME;
        
@@ -70,6 +70,14 @@ const ViewJob = (props) => {
         setTask('');
         setDate(new Date());
         setCreated('');
+    };
+
+    const handleEdit = (e) => {
+        let ID = props.location.id;
+        let url = '/tasks/';
+        let search = url.concat(ID);
+
+        setEditing(true);
     };
 
     return (
@@ -85,25 +93,104 @@ const ViewJob = (props) => {
                     <div className='edit-sidebar'>
                         <div className='mb-panel'>
                             <div className='mb-panel-header'>
-                                <p className='cont-body'>Edit job</p>
-                                <a href='#' onClick={()=>{handleDelete()}} >Delete job</a>
+                                <div className='mb-row1'> 
+                                    <a href='#' onClick={()=>{handleEdit()}} >Edit job</a>
+                                </div>
+                                <div className='mb-row2'>
+                                    <a href='#' onClick={()=>{handleDelete()}} >Delete job</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div className='viewjob-main'>
                         <div className='mb-panel'>
-                            <div className='card mb-3'>
-                                <div className='card-header bg-light card-head font-weight-bold'>Job description</div>
-                                <div className='card-body'>
-                                    <p className='card-title'>{task}</p> 
-                                </div>
-                            </div>
+                            <Display
+                                editing={editing}
+                                task={task}
+                            />
+                            <Editing
+                                editing={editing}
+                                setEditing={setEditing}
+                                handleEdit={handleEdit}
+                                headline={headline}
+                                setHeadline={setHeadline}
+                                task={task}
+                                ID={taskID}
+                                date={date}
+                                task={task}
+                                setTask={setTask}
+                            />
                         </div>
                     </div>
                     
                 </div>
             </div>
         </div>
+    );
+};
+
+const Display = (props) => {
+    if (props.editing === true) {
+        return null;
+    }
+
+    return (
+        <div className='card mb-3'>
+            <div className='card-header bg-light card-head font-weight-bold'>Job description</div>
+            <div className='card-body'>
+                <p className='card-title'>{props.task}</p> 
+            </div>
+        </div>
+    );
+};
+
+const Editing = (props) => {
+    if (props.editing === false) {
+        return null;
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        let newSubmission = {
+            headline: props.headline,
+            task: props.task,
+            email: props.email,
+            date: props.date
+        };
+        //console.log(newSubmission);
+        //axios.put('/tasks/', newSubmission);
+
+        let id = props.ID;
+        let url = '/tasks/';
+        let search = url.concat(id);
+        //console.log(search);
+      
+        axios.put(search,newSubmission)
+            .then(res => {
+                console.log(res.data)
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+
+            props.setEditing(false);
+    };
+
+    //console.log(props.ID);
+
+    return (
+        <form onSubmit={handleSubmit}>
+            <div class="form-group">
+                <label for="headline">Headline</label>
+                <input className="form-control" id="headline" value={props.headline} onChange={e => props.setHeadline(e.target.value)}></input>
+            </div>
+            <div class="form-group">
+                <label for="taskBody">Task details</label>
+                <input className="form-control" id="taskBody" value={props.task} onChange={e => props.setTask(e.target.value)}></input>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
     );
 };
 

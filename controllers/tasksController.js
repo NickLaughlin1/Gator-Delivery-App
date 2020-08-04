@@ -40,6 +40,24 @@ export const remove = (req,res) => {
     });
 };
 
+export const update = (req,res) => {
+
+    let update = {$set: {headline : req.body.headline,
+        task : req.body.task,
+        date : req.body.datae}};
+    let options = {returnOriginal: false};
+
+    let ID = req.params.taskid;
+    Task.findByIdAndUpdate(ID.toString(), update, options, function(err,listing) {
+        if (err) return res.status(400).send(err);
+        if (!listing) {
+            res.json({ error : "Id not found" });
+        } else {
+            res.json(listing);
+        }
+      });
+};
+
 /* Show the current listing */
 //export const read = (req, res) => {
     /* send back the listing as json from the request */

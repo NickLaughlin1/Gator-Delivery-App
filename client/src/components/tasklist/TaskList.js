@@ -56,8 +56,8 @@ const TaskList = (props) => {
     
 
     return (
-        <div>
-            <ul className='posted-jobs_list'>
+        <div className='table-wrapper'>
+            <div className='posted-jobs_list'>
                 <List 
                     tasks={tasks} 
                     editing={editing} 
@@ -65,7 +65,7 @@ const TaskList = (props) => {
                     selectedID={selectedID}
                     setSelectedID={setSelectedID} 
                 />
-            </ul>
+            </div>
         </div>
     );
 
@@ -83,17 +83,19 @@ const List = (props) => {
         return props.tasks.map(currtask => {
             return (
                 <div className='card mb-3'>
-                    <Task task={currtask} key={currtask._id}/>
-                    <div className='card-body text-left'>
-                        <Link to={
-                            {
-                                pathname: '/job/' + currtask._id,
-                                id: currtask._id
-                            }
-                        } className="nav-link">
-                            <button type="button" className="btn btn-success btn-sm" onClick={() => {props.setSelectedID(currtask._id)}}>View job</button>
-                        </Link>
-                    </div>
+                    
+                        <Task task={currtask} key={currtask._id}/>
+                        <div className='card-body text-left'>
+                            <Link to={
+                                {
+                                    pathname: '/job/' + currtask._id,
+                                    id: currtask._id
+                                }
+                            } className="nav-link">
+                                <button type="button" className="btn btn-success btn-sm" onClick={() => {props.setSelectedID(currtask._id)}}>View job</button>
+                            </Link>
+                        </div>
+                    
                 </div>
             );
         });
