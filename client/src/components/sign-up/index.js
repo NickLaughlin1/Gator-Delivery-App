@@ -9,75 +9,76 @@ import app from "../firebase/firebase";
 
 const SignUpPage = (props) => {
   const [isInvalid, setIsInvalid] = useState(true);
-  // const [skills, setSkills] = useState([]);
-  // const [businessName, setBusinessName] = useState('');
-  // const [businessWebsite, setBusinessWebsite] = useState('');
+  const [isClicked, setIsClicked] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [passwordOne, setPasswordOne] = useState("");
+  const [passwordTwo, setPasswordTwo] = useState("");
+  const [addressOne, setAddressOne] = useState("");
+  const [addressTwo, setAddressTwo] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+  const [zip, setZip] = useState("");
+  const [role, setRole] = useState("");
+  const [skills, setSkills] = useState([]);
+  const [businessName, setBusinessName] = useState("");
+  const [businessWebsite, setBusinessWebsite] = useState("");
   const [currentStep, setCurrentStep] = useState(1);
   const [isVol, setVol] = useState("");
 
   // handles everything that happens on signup
-  const handleSignUp = useCallback(
-    async (event) => {
-      event.preventDefault();
-      const {
-        name,
-        email,
-        passwordOne,
-        passwordTwo,
-        addressOne,
-        addressTwo,
-        city,
-        state,
-        zip,
-        role,
-        skill,
-        business,
-        businessWeb,
-      } = event.target.elements;
-      try {
-        // This is so a volunteer user account isn't created before finishing the signup
-        await app
-          .auth()
-          .createUserWithEmailAndPassword(email.value, passwordOne.value)
-          .then((result) => {
-            const user = app.auth().currentUser;
-            return user.updateProfile({
-              displayName: name.value,
-            });
+  const handleSignUp = (event) => {
+    event.preventDefault();
+    let newUser = {
+      name: name,
+      email: email,
+      passwordOne: passwordOne,
+      address: {
+        addressOne: addressOne,
+        addressTwo: addressTwo || null,
+        city: city,
+        state: state,
+        zip: zip,
+      },
+      role: role,
+      skill: skills || null,
+      businessName: businessName || null,
+      businessWebsite: businessWebsite || null,
+    };
+    SignIn(newUser);
+    axios.post("http://localhost:5000/users/create", newUser);
+  }
+
+  const SignIn = async (newUser) => {
+    try {
+      // This is so a volunteer user account isn't created before finishing the signup
+      
+      await app
+        .auth()
+        .createUserWithEmailAndPassword(email, passwordOne)
+        .then((result) => {
+          const user = app.auth().currentUser;
+          return user.updateProfile({
+            displayName: name,
           });
-        const newUser = {
-          userId: null,
-          name: name,
-          email: email,
-          password: "",
-          address: {
-            addressOne: addressOne,
-            addressTwo: addressTwo,
-            city: city,
-            state: state,
-            zip: zip,
-          },
-          role: role,
-          skill: skill,
-          businessName: business,
-          businessWebsite: businessWeb,
-        };
-        axios.post("http://localhost:5000/users/create", newUser);
-        // eslint-disable-next-line react/prop-types
-        props.history.push(ROUTES.HOME);
-      } catch (error) {
-        alert(error);
-      }
-    },
+        });
+      
+      
+      // eslint-disable-next-line react/prop-types
+      props.history.push(ROUTES.HOME);
+    } catch (error) {
+      alert(error);
+    }
+  };
     // eslint-disable-next-line react/prop-types
-    [props.history]
-  );
+  
 
   const _next = () => {
     let tempStep = currentStep;
     // If the current step is 1, then add one to it
     tempStep = tempStep >= 2 ? 2 : tempStep + 1;
     setCurrentStep(tempStep);
+    setIsClicked(!isClicked)
   };
 
   const nextButton = () => {
@@ -101,11 +102,39 @@ const SignUpPage = (props) => {
             currentStep={currentStep}
             setVol={setVol}
             isVol={isVol}
+            name={name}
+            setName={setName}
+            email={email}
+            setEmail={setEmail}
+            passwordOne={passwordOne}
+            setPasswordOne={setPasswordOne}
+            passwordTwo={passwordTwo}
+            setPasswordTwo={setPasswordTwo}
+            addressOne={addressOne}
+            setAddressOne={setAddressOne}
+            addressTwo={addressTwo}
+            setAddressTwo={setAddressTwo}
+            city={city}
+            setCity={setCity}
+            state={state}
+            setState={setState}
+            zip={zip}
+            setZip={setZip}
+            role={role}
+            setRole={setRole}
+            isClicked={isClicked}
+            setIsClicked={setIsClicked}
           />
           <SignUpVol
             currentStep={currentStep}
             setIsInvalid={setIsInvalid}
             isInvalid={isInvalid}
+            skills={skills}
+            setSkills={setSkills}
+            businessName={businessName}
+            setBusinessName={setBusinessName}
+            businessWebsite={businessWebsite}
+            setBusinessWebsite={setBusinessWebsite}
           />
           {nextButton()}
         </form>
@@ -119,12 +148,17 @@ const NormalSignUp = (props) => {
     return null;
   }
   const checkVol = (e) => {
-    const { isVolunteer } = e.target.value;
-    props.setVol(isVolunteer);
-    if (props.isVol === "volunteerH") {
+    console.log(e.target.value);
+    props.setVol(e.target.value);
+    props.setRole(e.target.value)
+    if (props.isVol === "volunteer Handyman" && props.isClicked) {
       props.setCurrentStep(2);
     }
   };
+
+  const checkEmail = (e) => {
+    props.setEmail(e.target.value);
+  }
 
   return (
     <div>
@@ -132,8 +166,8 @@ const NormalSignUp = (props) => {
         <label htmlFor="inputName">Name *</label>
         <input
           name="name"
-          //value={name}
-          //onChange={this.onChange}
+          value={props.name}
+          onChange={(e) => props.setName(e.target.value)}
           type="text"
           placeholder="Full Name"
           className="form-control"
@@ -144,8 +178,8 @@ const NormalSignUp = (props) => {
         <label htmlFor="inputEmail4">Email *</label>
         <input
           name="email"
-          //value={email}
-          //onChange={this.onChange}
+          value={props.email}
+          onChange={checkEmail/*(e) => props.setEmail(e.target.value)*/}
           type="email"
           placeholder="Email Address"
           className="form-control"
@@ -157,8 +191,8 @@ const NormalSignUp = (props) => {
           <label htmlFor="inputPassword4">Password *</label>
           <input
             name="passwordOne"
-            //value={passwordOne}
-            //onChange={this.onChange}
+            value={props.passwordOne}
+            onChange={(e) => props.setPasswordOne(e.target.value)}
             type="password"
             placeholder="Password"
             className="form-control"
@@ -169,8 +203,8 @@ const NormalSignUp = (props) => {
           <label htmlFor="inputPassword5">Confirm Password *</label>
           <input
             name="passwordTwo"
-            //value={passwordTwo}
-            //onChange={this.onChange}
+            value={props.passwordTwo}
+            onChange={(e) => props.setPasswordTwo(e.target.value)}
             type="password"
             placeholder="Re-enter Password"
             className="form-control"
@@ -182,8 +216,8 @@ const NormalSignUp = (props) => {
         <label htmlFor="inputAddress1">Address *</label>
         <input
           name="addressOne"
-          //value={addressOne}
-          //onChange={this.onChange}
+          value={props.addressOne}
+          onChange={(e) => props.setAddressOne(e.target.value)}
           type="text"
           placeholder="1234 Main St"
           className="form-control"
@@ -194,8 +228,8 @@ const NormalSignUp = (props) => {
         <label htmlFor="inputAddress2">Address 2</label>
         <input
           name="addressTwo"
-          //value={addressTwo}
-          //onChange={this.onChange}
+          value={props.addressTwo}
+          onChange={(e) => props.setAddressTwo(e.target.value)}
           type="text"
           placeholder="Apartment, studio, or floor"
           className="form-control"
@@ -207,8 +241,8 @@ const NormalSignUp = (props) => {
           <label htmlFor="inputCity">City *</label>
           <input
             name="city"
-            //value={city}
-            //onChange={this.onChange}
+            value={props.city}
+            onChange={(e) => props.setCity(e.target.value)}
             type="text"
             className="form-control"
             id="inputCity"
@@ -219,7 +253,7 @@ const NormalSignUp = (props) => {
           <select
             id="inputState"
             className="form-control"
-            name="state" /*value={state} onChange={this.onChange}*/
+            name="state" value={props.state} onChange={(e) => props.setState(e.target.value)}
           >
             <option defaultValue>Choose...</option>
             <option value="AL">Alabama</option>
@@ -279,8 +313,8 @@ const NormalSignUp = (props) => {
           <label htmlFor="inputZip">Zip *</label>
           <input
             name="zip"
-            //value={zip}
-            //onChange={this.onChange}
+            value={props.zip}
+            onChange={(e) => props.setZip(e.target.value)}
             type="text"
             className="form-control"
             id="inputZip"
@@ -294,12 +328,12 @@ const NormalSignUp = (props) => {
             id="inputRole"
             className="form-control"
             name="role"
-            /*value={role}*/ onChange={checkVol}
+            value={props.role} onChange={checkVol}
           >
             <option defaultValue>Chose role...</option>
-            <option value="cs">Regular Customer</option>
-            <option value="volunteerD">Volunteer Driver</option>
-            <option value="volunteerH">Volunteer Handyman</option>
+            <option value="Regular Customer">Regular Customer</option>
+            <option value="volunteer Driver">Volunteer Driver</option>
+            <option value="volunteer Handyman">Volunteer Handyman</option>
           </select>
         </div>
       </div>
@@ -327,7 +361,7 @@ const SignUpVol = (props) => {
       <div className="form-row">
         <div className="form-group col-md-2">
           <label htmlFor="inputSkill">Skill *</label>
-          <select id="inputSkill" className="form-control" name="skill">
+          <select id="inputSkill" className="form-control" name="skill" value={props.skill} onChange={(e) => props.setSkills(e.target.value)}>
             <option defaultValue>Choose Skill...</option>
             <option>Carpentry</option>
             <option>Electrical</option>
@@ -390,6 +424,8 @@ const SignUpVol = (props) => {
             className="form-control"
             id="business"
             disabled={props.isInvalid}
+            value={props.businessName}
+            onChange={(e) => props.setBusinessName(e.target.value)}
           />
         </div>
         <div className="form-group col-md-6">
@@ -400,6 +436,8 @@ const SignUpVol = (props) => {
             placeholder="(Optional)"
             id="businessWeb"
             disabled={props.isInvalid}
+            value={props.businessWebsite}
+            onChange={(e) => props.setBusinessWebsite(e.target.value)}
           />
         </div>
       </div>
@@ -411,9 +449,9 @@ const SignUpVol = (props) => {
 };
 
 // Gives users a link to sign up if they do not have an account already
-const SignUpLink = () => (
+const SignUpLink = (props) => (
   <p>
-    Don't have an account? <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
+    Don't have an account? <Link to={ROUTES.SIGN_UP} onClick={() => props.setShowModal(false)}>Sign Up</Link>
   </p>
 );
 

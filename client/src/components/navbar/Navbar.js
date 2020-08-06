@@ -1,125 +1,71 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import * as ROUTES from "../../constants/routes";
 import SignOutButton from "../sign-out";
 import { AuthContext } from "../session/withAuthentication";
+import Navbar from "react-bootstrap/Navbar";
+import NavDropdown from "react-bootstrap/NavDropdown";
+import Nav from "react-bootstrap/Nav";
+import {Button} from "react-bootstrap";
 import "../index.css";
+import { HelpOutline } from "@material-ui/icons";
+import SignIn from "../sign-in";
+//import "bootstrap/dist/css/bootstrap.min.css";
 
-const Navbar = () => {
+const Navbar1 = () => {
   const { currentUser } = useContext(AuthContext);
   return (
-    <div className="header">
-      {currentUser ? <NavAuth /> : <NavUnAuth />}
-      {console.log(currentUser)}
-    </div>
+    // <div className="header">
+    //   {currentUser ? <NavAuth /> : <NavUnAuth />}
+    // </div>
+    <Navbar collapseOnSelect expand="lg" bg="primary" fixed="top" className="navbar-dark nav-fix">
+      <Navbar.Brand href={currentUser ? ROUTES.HOME : ROUTES.LANDING}>Home Order</Navbar.Brand>
+      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+      <Navbar.Collapse id="responsive-navbar-nav">
+        <Nav className="mr-auto">
+          <Nav.Link href="/create" className="nav-text">Create Job</Nav.Link>
+          <NavDropdown title="Social" id="collasible-nav-dropdown">
+            <NavDropdown.Item href={ROUTES.REVIEWS}>Volunteer Reviews</NavDropdown.Item>
+            <NavDropdown.Item href={ROUTES.COMMUNITY}>Community Board</NavDropdown.Item>
+            <NavDropdown.Item href={ROUTES.FAQ}>FAQ</NavDropdown.Item>
+          </NavDropdown>
+          <Nav.Link href={ROUTES.CALENDAR} className="nav-text">Calendar</Nav.Link>
+        </Nav>
+        {currentUser ? <NavAuth /> : <NavUnAuth />}
+      </Navbar.Collapse>
+    </Navbar>
   );
 };
 
 const NavAuth = () => {
   const { currentUser } = useContext(AuthContext);
   return (
-    <nav className="navbar navbar-dark bg-primary navbar-expand-lg navbar-fixed-top">
-      <div className="container">
-        <a className="navbar-brand" href={ROUTES.HOME}>
-          {" "}
-          Home Order
-        </a>
-        <div className="collpase navbar-collapse">
-          <ul className="navbar-nav mr-auto">
-            <Link to="/create" className="nav-link">
-              <button type="button" className="btn btn-light">
-                Create Job
-              </button>
-            </Link>
-            <div className="dropdown">
-              <button className="dropbtn">Social</button>
-              <div className="dropdown-content">
-                <a href="/reviews">Volunteer Reviews</a>
-                <a href="/community">Community Board</a>
-                <a href="/faq">FAQ</a>
-              </div>
-            </div>
-            <div className="dropdown">
-              <button className="dropbtn">User Account</button>
-              <div className="dropdown-content">
-                <a href="/settings/general">Control Panel</a>
-                <a href="/settings/profile">Edit Profile</a>
-              </div>
-            </div>
-            <div className="dropdown">
-              <Link to="/calendar" class="lonk">
-                Calendar
-              </Link>
-            </div>
-          </ul>
-          <span className="navbar-text">Hello, {currentUser.displayName}!</span>{" "}
-          {/* shows the logged in users name */}
-          <div className="dropdown">
-            <button
-              className="btn btn-default dropdown-toggle"
-              type="button"
-              id="account-pic"
-            >
-              <img
-                src="https://cdn0.iconfinder.com/data/icons/basic-user-interface-6/100/account-512.png"
-                className="profile-pic"
-              />
-              <div className="dropdown-content">
-                <a href="/settings/general">Control Panel</a>
-                <a href="/settings/profile">Edit Profile</a>
-                <SignOutButton />
-              </div>
-            </button>
-          </div>
-          <li className="navbar-text"></li>
-        </div>
-      </div>
-    </nav>
+    <Nav>
+      <Navbar.Text className="nav-text">
+        Hello, {currentUser.displayName}!
+      </Navbar.Text>
+      <NavDropdown title={
+        <img
+          src="https://cdn0.iconfinder.com/data/icons/basic-user-interface-6/100/account-512.png"
+          className="profile-pic"
+        />
+        } id="collasible-nav-dropdown" alignRight>
+        <NavDropdown.Item href={ROUTES.ACCOUNT}>General Settings</NavDropdown.Item>
+        <NavDropdown.Item href={ROUTES.PROFILE_SETTINGS}>Profile Settings</NavDropdown.Item>
+        <NavDropdown.Divider />
+        <SignOutButton />
+      </NavDropdown>
+    </Nav>
   );
-};
+  
+}
 
-const NavUnAuth = () => (
-  <nav
-    className="navbar navbar-dark bg-primary navbar-expand-sm navbar-fixed-top"
-    
-  >
-    <div className="container">
-      <a className="navbar-brand" href={ROUTES.LANDING}>
-        {" "}
-        Home Order
-      </a>
-      <div className="collpase navbar-collapse">
-        <ul className="navbar-nav mr-auto">
-          <Link to="/create" className="nav-link">
-            <button type="button" className="btn btn-light">
-              Create Job
-            </button>
-          </Link>
-          <div className="dropdown">
-            <button className="dropbtn">Social</button>
-            <div className="dropdown-content">
-              <a href="/reviews">Volunteer Reviews</a>
-              <a href="/community">Community Board</a>
-              <a href="/faq">FAQ</a>
-            </div>
-          </div>
-          <div className="dropdown">
-            <button className="dropbtn">Calendar</button>
-            <div className="dropdown-content">
-              <a href="/calendar">Calendar</a>
-            </div>
-          </div>
-        </ul>
-        <div className="dropdown">
-          <button className="dropbtn">Account</button>
-          <div className="dropdown-content">
-            <a href="/signin">Sign-In</a>
-            <a href="/signup">Sign-Up</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </nav>
+const NavUnAuth = (props) => (
+    <Nav>
+      <Nav.Link href={ROUTES.SIGN_UP} className="signUp-text">Sign Up</Nav.Link>
+      {/* <Nav.Link href={ROUTES.SIGN_IN} className="signIn-text">Sign In</Nav.Link> */}
+      <SignIn />
+    </Nav>
 );
 
-export default Navbar;
+export default Navbar1;
