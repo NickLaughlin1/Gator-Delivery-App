@@ -64,8 +64,10 @@ body > #root > div {
   /* margin-left: 5em;
   margin-right: 5em;
   padding: 10px;  */
+  padding-top: 50px;
   position: relative;
   justify-content: center;
+  min-height: 100vh;
 }
 
 .sign-up {
@@ -83,8 +85,33 @@ body > #root > div {
 .task-form {
   width: 50%;
   margin: 0 auto;
-  
-  
+}
+
+/* CSS for navbar elements */
+.nav-text {
+  color: white !important;
+}
+
+.nav-text:hover {
+  color: rgb(90, 195, 199) !important;
+}
+
+.signUp-text {
+  color: white;
+  font-weight: bold;
+}
+
+.signIn-text {
+  color: white;
+  font-weight: bold;
+}
+
+#collasible-nav-dropdown {
+  color: white;
+}
+
+#collasible-nav-dropdown:hover {
+  color: rgb(90, 195, 199) !important;
 }
 
 .faqprofile {

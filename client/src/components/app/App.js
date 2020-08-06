@@ -8,6 +8,7 @@ import LandingPage from "../../views/LandingPage/LandingPage.js";
 import SignUpPage from "../sign-up";
 import SignInPage from "../sign-in";
 import ReviewPage from "../reviews/Bored.js";
+import Footer from "..//Footer/Footer.js";
 // import PasswordForgetPage from "../password-forgot";
 import HomePage from "../home";
 import AccountPage from "../account";
@@ -15,7 +16,7 @@ import AccountPage from "../account";
 
 import "../index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Navbar from "../navbar/Navbar";
+import Navbar1 from "../navbar/Navbar";
 // import TaskList from "../tasklist/TaskList";
 import CreateTask from "../createtask/CreateTask";
 import Board from "../community/Board";
@@ -26,13 +27,14 @@ import Calendar from "../calendar/Calendar";
 import ViewJob from "../viewjob/ViewJob";
 import path from "path";
 
+
 const App = () => {
   return (
     <div className="page">
       <AuthProvider>
         <Router>
           <div className="c">
-            <Navbar className="navbar-fixed-top" />
+            <Navbar1 />
 
             <div className="body">
               <Route path={ROUTES.CREATE} component={CreateTask} />
@@ -50,15 +52,10 @@ const App = () => {
               <Route path={ROUTES.REVIEWS} component={ReviewPage} />
               {/* <Route path={ROUTES.ADMIN} component={AdminPage} />   */}
             </div>
+            <Footer />
           </div>
         </Router>
       </AuthProvider>
-
-      <footer className="site-footer">
-        <div className="container">
-          <h3>The page was made possible by Gator Delivery</h3>
-        </div>
-      </footer>
     </div>
   );
 };
