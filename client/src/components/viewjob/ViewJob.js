@@ -3,6 +3,26 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import * as firebase from "firebase/app";
 import * as ROUTES from '../../constants/routes';
+import Modal from 'react-bootstrap/Modal'
+
+const PopUp = (props) => {
+    return(
+      <Modal show={props.show} onHide={props.handleClose}>
+          <Modal.Header closeButton>
+             <Modal.Title>Delete job</Modal.Title>
+           </Modal.Header>
+           <Modal.Body>Are you sure you want to delete this job?</Modal.Body>
+           <Modal.Footer>
+              <button className='btn btn-primary' onClick={props.handleClose}>
+                  Close
+               </button>
+                <button className='btn btn-primary' onClick={props.handleDelete}>
+                    Yes, delete this job
+                </button>
+            </Modal.Footer>
+    </Modal>
+    );
+  };
 
 const ViewJob = (props) => {
     const [task, setTask] = useState('');
@@ -15,6 +35,10 @@ const ViewJob = (props) => {
     const [taskID, setTaskID] = useState(props.location.id);
     //const [editing, setEditing] = useState(false);
     //const [selectedID, setSelectedID] = useState('');
+    const [show, setShow] = useState(false)
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     useEffect(() => {
         firebase.auth().onAuthStateChanged(user => {
@@ -31,6 +55,7 @@ const ViewJob = (props) => {
                 let tasks_list = response.data;
                 let curr_task = tasks_list.filter(t => t._id === props.location.id);
                 //console.log(curr_task[0].task);
+                setTaskID(props.location.id);
                 setHeadline(curr_task[0].headline);
                 setTask(curr_task[0].task);
                 setDate(curr_task[0].date);
@@ -49,7 +74,9 @@ const ViewJob = (props) => {
     const handleDelete = (e) => {
         //e.preventDefault();
 
-        let ID = props.location.id;
+        handleClose();
+
+        let ID = taskID;
         let url = '/tasks/';
         let search = url.concat(ID);
         console.log(search);
@@ -62,8 +89,10 @@ const ViewJob = (props) => {
                 console.log(error);
             })
 
-        window.location = ROUTES.HOME;
+        window.location = ROUTES.DELETE;
        
+        //props.setShow(true);
+
         setEmail('');
         setHeadline('');
         setTasks([]);
@@ -97,7 +126,11 @@ const ViewJob = (props) => {
                                     <a href='#' onClick={()=>{handleEdit()}} >Edit job</a>
                                 </div>
                                 <div className='mb-row2'>
-                                    <a href='#' onClick={()=>{handleDelete()}} >Delete job</a>
+                                    <a href='#' onClick={handleShow}>Delete job</a>
+                                    <PopUp
+                                        show={show}
+                                        handleDelete={handleDelete}
+                                        handleClose={handleClose}/>
                                 </div>
                             </div>
                         </div>

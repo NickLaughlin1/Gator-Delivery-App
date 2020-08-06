@@ -283,6 +283,18 @@ h1 {
   background-position: center;
 } */
 
+.form-question-head {
+  padding-bottom: 20px;
+}
+
+.question {
+  margin-right: 4px;
+}
+
+.card-question {
+  padding-bottom: 20px;
+}
+
 .table-wrapper {
   max-height: 480px;
 	overflow: auto;

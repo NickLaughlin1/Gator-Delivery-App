@@ -8,7 +8,7 @@ import LandingPage from '../landing';
 import SignUpPage from '../sign-up';
 import SignInPage from '../sign-in';
 import PasswordForgetPage from '../password-forgot';
-import HomePage from '../home';
+import HomePage from '../userhomepage';
 import AccountPage from '../account';
 import AdminPage from '../admin';
 
@@ -20,6 +20,7 @@ import CreateTask from "../createtask/CreateTask";
 import Board from '../community/Board';
 import Bored from '../reviews/Bored';
 import faq from '../faq/faq';
+import Delete from '../delete'
 //npm install react-calendar or yarn add react-calendar
 import Calendar from '../calendar/Calendar'
 import ViewJob from '../viewjob/ViewJob'
@@ -42,6 +43,7 @@ const App = () => {
           <Route exact path={ROUTES.LANDING} component={LandingPage} />
           <Route exact path={ROUTES.SIGN_UP} component={SignUpPage} />
           <Route path={ROUTES.SIGN_IN} component={SignInPage} />
+          <Route path={ROUTES.DELETE} component={Delete} />
           {/* <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} /> */}
           <Route path={ROUTES.HOME} component={HomePage} />
           <Route path={ROUTES.ACCOUNT} component={AccountPage} />

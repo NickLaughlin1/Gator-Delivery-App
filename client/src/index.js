@@ -4,7 +4,7 @@ import './components/index.css';
 import App from './components/app/App.js';
 
 import 'semantic-ui-css/semantic.min.css';
-
+import 'bootstrap/dist/css/bootstrap.css';
 import * as serviceWorker from './serviceWorker';
 
 

@@ -12,3 +12,4 @@ export const CALENDAR = '/calendar';
 export const VIEWJOB = '/viewjob';
 export const FAQ = '/faq';
 export const REVIEWS = '/reviews';
+export const DELETE = '/delete';

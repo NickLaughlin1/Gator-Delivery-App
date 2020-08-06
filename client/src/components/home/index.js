@@ -7,8 +7,14 @@ import { Link } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
 import * as firebase from "firebase/app";
 import TaskList from "../tasklist/TaskList";
+import Modal from 'react-bootstrap/Modal'
   
 const Home = (props) => {
+
+  const [show, setShow] = useState(false)
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   return (
     <div>
@@ -23,7 +29,9 @@ const Home = (props) => {
                   </h1>
                   
                     
-                      <TaskList/>
+                      <TaskList
+                      handleShow={handleShow}
+                      setShow={setShow}/>
                     
                   
                 </div>
