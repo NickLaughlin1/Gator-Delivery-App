@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 // nodejs library that concatenates classes
 import classNames from "classnames";
 // @material-ui/core components
@@ -14,6 +14,7 @@ import GridItem from "../../components/Grid/GridItem.js";
 import Button from "../../components/CustomButtons/Button.js";
 import HeaderLinks from "../../components/Header/HeaderLinks.js";
 import Parallax from "../../components/Parallax/Parallax.js";
+import SignInLanding from "../../components/sign-in/index.js";
 
 import * as ROUTES from "../../constants/routes";
 import { Link } from "react-router-dom";
@@ -30,6 +31,7 @@ const dashboardRoutes = [];
 const useStyles = makeStyles(styles);
 
 export default function LandingPage(props) {
+  const [isLanding, setIsLanding] = useState(true);
   const classes = useStyles();
   const { ...rest } = props;
   return (
@@ -44,8 +46,8 @@ export default function LandingPage(props) {
                 local volunteers click the Get Started button right below!{" "}
               </h4>
               <br />
-              <Link to={ROUTES.SIGN_IN} className="nav-link">
-                <Button
+              
+                {/* <Button
                   color="danger"
                   size="lg"
                   target={ROUTES.SIGN_IN}
@@ -53,8 +55,9 @@ export default function LandingPage(props) {
                 >
                   <i className="fas fa-play" />
                   Get Started
-                </Button>
-              </Link>
+                </Button> */}
+                <SignInLanding />
+              
             </GridItem>
           </GridContainer>
         </div>
