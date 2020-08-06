@@ -5,7 +5,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
 }
 body > #root > div {
   height: 300px;
@@ -62,18 +61,57 @@ body > #root > div {
 /* ### Second Row ### */
 
 .body {
-  margin-left: 5em;
+  /* margin-left: 5em;
   margin-right: 5em;
-  padding: 10px;
+  padding: 10px;  */
+  padding-top: 50px;
   position: relative;
   justify-content: center;
+  min-height: 100vh;
+}
+
+.sign-up {
+  padding: 10px;
+  margin: 10px;
+}
+
+.sign-in {
+  /* display: flex;
+  justify-content: center; */
+  padding: 10px;
+  margin: 10px;
 }
 
 .task-form {
   width: 50%;
   margin: 0 auto;
-  
-  
+}
+
+/* CSS for navbar elements */
+.nav-text {
+  color: white !important;
+}
+
+.nav-text:hover {
+  color: rgb(90, 195, 199) !important;
+}
+
+.signUp-text {
+  color: white;
+  font-weight: bold;
+}
+
+.signIn-text {
+  color: white;
+  font-weight: bold;
+}
+
+#collasible-nav-dropdown {
+  color: white;
+}
+
+#collasible-nav-dropdown:hover {
+  color: rgb(90, 195, 199) !important;
 }
 
 .faqprofile {
@@ -98,7 +136,9 @@ display: inline-block;
 }
 
 .donk{
-  padding: 5px;
+  padding: 10px;
+  margin-left: 5em;
+  margin-right: 5em;
   display: flex;
   justify-content: center;
 }
@@ -283,6 +323,11 @@ h1 {
   background-size: cover;
   background-position: center;
 } */
+
+.profile-pic {
+  width: 2em;
+  height: 2em;
+}
 
 footer {
   color: white;
