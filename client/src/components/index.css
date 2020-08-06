@@ -263,6 +263,11 @@ h1 {
   margin-right: 20px; 
 }
 
+.edit-commands {
+  width: 35%;
+  margin-right: 20px;
+}
+
 .viewjob-main {
   width: 800px;
   
@@ -289,6 +294,17 @@ h1 {
 
 .question {
   margin-right: 4px;
+}
+
+.success {
+  padding-top: 25px;
+}
+.suc-header {
+  margin-bottom: 10px;
+}
+
+.lower {
+  margin-top: 15px;
 }
 
 .card-question {

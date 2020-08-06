@@ -15,9 +15,10 @@ const Delete = (props) => {
 
     return(
         <div className='form-container'>
-            <p>DELETED</p>
-            <Link to={ROUTES.HOME} className="nav-link">
-                <button className='btn btn-primary btn-lg btn-block'>View my jobs</button>
+            <h2 className='suc-header'>Your job has succesfully been deleted.</h2> 
+            <h4>Your job will no longer be visible to volunteers.</h4>
+            <Link to={ROUTES.HOME} className="nav-link lower">
+                <button className='btn btn-success btn-lg btn-block'>View My posted jobs</button>
             </Link>
         </div>
     );

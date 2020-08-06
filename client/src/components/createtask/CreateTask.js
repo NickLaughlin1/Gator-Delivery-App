@@ -194,7 +194,7 @@ const Step1 = (props) => {
             <OverlayTrigger trigger="hover" placement="right" overlay={
               <Popover id="popover-basic">
                 <Popover.Content>
-                  Choose the category that best describes the type of job you need completed.
+                  Choose the category that best describes the type of job you need completed. This will help with finding you the best volunteer who knows your type of job.
                 </Popover.Content>
               </Popover>}>
               <div className='float-right'>
@@ -262,6 +262,7 @@ const Step2 = (props) => {
           placeholder="E.g. I need a new washing machine installed on the first floor, and the old washing machine disposed of."
           value={props.task}
           onChange={e => props.setTask(e.target.value)}
+          required='required'
           />
       </div>
       </div>
@@ -281,7 +282,7 @@ const Step2 = (props) => {
         <OverlayTrigger trigger="hover" placement="right" overlay={
               <Popover id="popover-basic">
                 <Popover.Content>
-                  Create a short title that summarizes the job you need completed. It should be about 1 sentence.
+                  Create a short title that summarizes the job you need completed. It should be about 1 sentence. This is what the volunteers will see first about your job.
                 </Popover.Content>
               </Popover>}>
             <div className='float-right'>
@@ -296,6 +297,7 @@ const Step2 = (props) => {
           placeholder="E.g. New washing machine installed"
           value={props.headline}
           onChange={e => props.setHeadline(e.target.value)}
+          required='required'
           />
       </div>
     );
@@ -327,6 +329,7 @@ const Step2 = (props) => {
           placeholder="E.g. 32607"
           value={props.zip}
           onChange={e => props.setZip(e.target.value)}
+          required='required'
           />  
       </div>
       </React.Fragment>
@@ -345,7 +348,7 @@ const Step5 = (props) => {
         <OverlayTrigger trigger="hover" placement="right" overlay={
               <Popover id="popover-basic">
                 <Popover.Content>
-                  Choose the date that you would like your job to be completed on.
+                  Choose the date that you would like your job to be completed.
                 </Popover.Content>
               </Popover>}>
             <div className='float-right'>
@@ -354,7 +357,8 @@ const Step5 = (props) => {
           </OverlayTrigger>
         <DatePicker
           selected={props.date}
-          onChange={props.setDate}   
+          onChange={props.setDate}
+          required='required'   
         />   
       </div>
       </div>

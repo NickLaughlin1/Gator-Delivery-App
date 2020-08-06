@@ -4,6 +4,7 @@ import axios from 'axios';
 import * as firebase from "firebase/app";
 import * as ROUTES from '../../constants/routes';
 import Modal from 'react-bootstrap/Modal'
+import DatePicker from 'react-datepicker';
 
 const PopUp = (props) => {
     return(
@@ -13,10 +14,10 @@ const PopUp = (props) => {
            </Modal.Header>
            <Modal.Body>Are you sure you want to delete this job?</Modal.Body>
            <Modal.Footer>
-              <button className='btn btn-primary' onClick={props.handleClose}>
+              <button className='btn btn-secondary' onClick={props.handleClose}>
                   Close
                </button>
-                <button className='btn btn-primary' onClick={props.handleDelete}>
+                <button className='btn btn-danger' onClick={props.handleDelete}>
                     Yes, delete this job
                 </button>
             </Modal.Footer>
@@ -29,6 +30,7 @@ const ViewJob = (props) => {
     const [tasks, setTasks] = useState([]);
     const [headline, setHeadline] = useState('');
     const [date, setDate] = useState(new Date());
+    const [freshdate, setFreshdate] = useState(new Date());
     const [created, setCreated] = useState('');
     const [email, setEmail] = useState('');
     const [editing, setEditing] = useState(false);
@@ -109,6 +111,8 @@ const ViewJob = (props) => {
         setEditing(true);
     };
 
+    const handleDateChange = date => setFreshdate(date);
+
     return (
         <div className='container page'>
             <div className='content'>
@@ -132,10 +136,13 @@ const ViewJob = (props) => {
                                         handleDelete={handleDelete}
                                         handleClose={handleClose}/>
                                 </div>
+                                <div className='mb-row2'>      
+                                        <a href={ROUTES.HOME}>View my other jobs</a>                 
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div className='viewjob-main'>
+                    <div className='viewjob-main right-marg'>
                         <div className='mb-panel'>
                             <Display
                                 editing={editing}
@@ -149,7 +156,8 @@ const ViewJob = (props) => {
                                 setHeadline={setHeadline}
                                 task={task}
                                 ID={taskID}
-                                date={date}
+                                date={freshdate}
+                                setDate={handleDateChange}
                                 task={task}
                                 setTask={setTask}
                             />
@@ -208,6 +216,7 @@ const Editing = (props) => {
             })
 
             props.setEditing(false);
+            props.setDate(new Date());
     };
 
     //console.log(props.ID);
@@ -222,7 +231,18 @@ const Editing = (props) => {
                 <label for="taskBody">Task details</label>
                 <input className="form-control" id="taskBody" value={props.task} onChange={e => props.setTask(e.target.value)}></input>
             </div>
+            <React.Fragment>
+            <div className="form-group card-question">
+                <label>When would you like the job done?</label>
+                <div>
+                    <DatePicker
+                        selected={props.date}
+                        onChange={props.setDate}
+                    />   
+                </div>
+            </div>
             <button type="submit" class="btn btn-primary">Submit</button>
+            </React.Fragment>  
         </form>
     );
 };

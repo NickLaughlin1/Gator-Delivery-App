@@ -14,10 +14,11 @@ const Success = (props) => {
     }
 
     return(
-        <div>
-            <p>SUCCESS</p>
-            <Link to={ROUTES.HOME} className="nav-link">
-                <button className='btn btn-primary btn-lg btn-block'>View my jobs</button>
+        <div className='success'>
+            <h2 className='suc-header'>You have succesffuly submitted a job!</h2> 
+            <h4>We will notify volunteers in your area of your recent post, and you should check back here to see when a volunteer chooses your job!</h4>
+            <Link to={ROUTES.HOME} className="nav-link lower">
+                <button className='btn btn-success btn-lg btn-block'>View My posted jobs</button>
             </Link>
         </div>
     );
