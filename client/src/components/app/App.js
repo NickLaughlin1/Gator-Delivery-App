@@ -43,7 +43,7 @@ const App = () => {
               <Route path={ROUTES.FAQ} component={faq} />
               <Route exact path={ROUTES.LANDING} component={LandingPage} />
               <Route exact path={ROUTES.SIGN_UP} component={SignUpPage} />
-              <Route path={ROUTES.SIGN_IN} component={SignInPage} />
+              {/* <Route path={ROUTES.SIGN_IN} component={SignInPage} /> */}
               {/* <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} /> */}
               <Route path={ROUTES.HOME} component={HomePage} />
               <Route path={ROUTES.ACCOUNT} component={AccountPage} />

@@ -23,6 +23,25 @@ const SignInPage = (props) => {
   );
 }
 
+const SignInLanding = (props) => {
+  const [showModal, setShowModal] = useState(false);
+  return (
+    <>
+    <Button
+      color="danger"
+      size="lg"
+      onChange={() => setShowModal(true)}
+      // target={ROUTES.SIGN_IN}
+      // rel="noopener noreferrer"
+    >
+      <i className="fas fa-play" />
+      Get Started
+    </Button> 
+    <SignInForm setShowModal={setShowModal} show={showModal} onHide={() => setShowModal(false)}/>
+  </>
+  );
+}
+
 const SignInForm = (props) => {
   const handleLogin = useCallback(async (event) => {
     event.preventDefault();
@@ -87,5 +106,5 @@ const SignInForm = (props) => {
   );
 };
 
-export default withRouter(SignInPage);
+export default withRouter(SignInPage, SignInLanding);
 export { SignInForm };
