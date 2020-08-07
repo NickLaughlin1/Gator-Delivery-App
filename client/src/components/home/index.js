@@ -2,9 +2,9 @@
  *  This will load the page for logged in users to view their open tasks. It will list all currently open tasks
  *  for the user and will also have a sidebar option to create another task.
  */
-import React, {useEffect, useState} from 'react';
-import { Link } from 'react-router-dom';
-import * as ROUTES from '../../constants/routes';
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import * as ROUTES from "../../constants/routes";
 import * as firebase from "firebase/app";
 import TaskList from "../tasklist/TaskList";
 import Modal from 'react-bootstrap/Modal'
@@ -36,17 +36,22 @@ const Home = (props) => {
                   
                 </div>
               </div>
-              <div className='edit-sidebar'>
-                <div className='mb-panel'>
-                  <div className='mb-panel_header'>
-                    <h3 className='heading-caps'>Post a new job</h3>
-                  </div> 
-                  <p className='cont-body'>Click here to create a new job and let volunteers near you see!</p>
-                  <div className="actions">
-                    <Link to={ROUTES.CREATE} className="nav-link">
-                      <button type="button" className="btn btn-success btn-lg">Post a job</button>
-                    </Link>
-                  </div>
+            </div>
+            <div className="edit-sidebar">
+              <div className="mb-panel">
+                <div className="mb-panel_header">
+                  <h3 className="heading-caps">Post a new job</h3>
+                </div>
+                <p className="cont-body">
+                  Click here to create a new job and let volunteers near you
+                  see!
+                </p>
+                <div className="actions">
+                  <Link to={ROUTES.CREATE} className="nav-link">
+                    <button type="button" className="btn btn-success btn-lg">
+                      Post a job
+                    </button>
+                  </Link>
                 </div>
               </div>
           </div>
@@ -55,5 +60,5 @@ const Home = (props) => {
     </div>
   );
 };
- 
+
 export default Home;

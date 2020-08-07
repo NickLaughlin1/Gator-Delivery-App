@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
 import * as firebase from "firebase/app";
 import * as ROUTES from '../../constants/routes';
 import Modal from 'react-bootstrap/Modal'
@@ -165,11 +165,16 @@ const ViewJob = (props) => {
                     </div>
                     
                 </div>
+              </div>
             </div>
+          </div>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
+<<<<<<< HEAD
 const Display = (props) => {
     if (props.editing === true) {
         return null;
@@ -248,3 +253,6 @@ const Editing = (props) => {
 };
 
 export default ViewJob;
+=======
+export default ViewJob;
+>>>>>>> upstream/master_deploy

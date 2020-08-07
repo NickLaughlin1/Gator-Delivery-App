@@ -1,8 +1,8 @@
-import React from 'react';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
-import {AuthProvider} from "../session/withAuthentication";
+import React from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { AuthProvider } from "../session/withAuthentication";
 
-import * as ROUTES from '../../constants/routes';
+import * as ROUTES from "../../constants/routes";
 
 import LandingPage from '../landing';
 import SignUpPage from '../sign-up';
@@ -11,20 +11,29 @@ import PasswordForgetPage from '../password-forgot';
 import HomePage from '../userhomepage';
 import AccountPage from '../account';
 import AdminPage from '../admin';
+import LandingPage from "../../views/LandingPage/LandingPage.js";
+import ReviewPage from "../reviews/Bored.js";
+import Footer from "..//Footer/Footer.js";
+// import PasswordForgetPage from "../password-forgot";
+import HomePage from "../home";
+import AccountPage from "../account";
+// import AdminPage from "../admin";
 
-import '../index.css';
+import "../index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Navbar from "../navbar/Navbar";
-import TaskList from "../tasklist/TaskList";
+import Navbar1 from "../navbar/Navbar";
+// import TaskList from "../tasklist/TaskList";
 import CreateTask from "../createtask/CreateTask";
 import Board from '../community/Board';
 import Bored from '../reviews/Bored';
 import faq from '../faq/faq';
 import Delete from '../delete'
+// import Bored from "../reviews/Bored";
 //npm install react-calendar or yarn add react-calendar
-import Calendar from '../calendar/Calendar'
-import ViewJob from '../viewjob/ViewJob'
-import path from 'path'
+import Calendar from "../calendar/Calendar";
+import ViewJob from "../viewjob/ViewJob";
+import path from "path";
+
 
 const App = () => {
   return(
@@ -48,6 +57,9 @@ const App = () => {
           <Route path={ROUTES.HOME} component={HomePage} />
           <Route path={ROUTES.ACCOUNT} component={AccountPage} />
           <Route path={path.join("/job", ":id?")} component={ViewJob} />
+          <Route path={ROUTES.PROFILE_SETTINGS} component={AccountPage} />
+              
+          <Route path={ROUTES.REVIEWS} component={ReviewPage} />
           {/* <Route path={ROUTES.ADMIN} component={AdminPage} />   */}
           </div>
         </div>
@@ -61,5 +73,5 @@ const App = () => {
     </footer>
     </div>
   );
-}
+};
 export default App;

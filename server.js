@@ -5,9 +5,10 @@ import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import tasksRouter from './routes/tasksRouter.js';
 import postsRouter from './routes/postsRouter.js';
+import userRouter from './routes/userRouter.js';
 
 const PORT = process.env.PORT || 5000;
-const URI = process.env.DB_URI || 'mongodb+srv://user:test@cen3031-summer-2020-jqavu.mongodb.net/<dbname>?retryWrites=true&w=majority';
+const URI = process.env.DB_URI || "mongodb+srv://user:test@cen3031-summer-2020-jqavu.mongodb.net/<dbname>?retryWrites=true&w=majority";
 
 //connect to database
 mongoose.connect(URI, {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false}).then(() => {
@@ -45,6 +46,8 @@ app.use(function(req, res, next) {
 app.use('/tasks', tasksRouter);
 
 app.use('/posts', postsRouter);
+
+app.use('/users', userRouter);
 
 /*app.all('/*', (req, res) => {
    res.sendFile(path.resolve('client/index.html'));
