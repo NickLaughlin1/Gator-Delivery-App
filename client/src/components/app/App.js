@@ -4,14 +4,18 @@ import { AuthProvider } from "../session/withAuthentication";
 
 import * as ROUTES from "../../constants/routes";
 
+
+import SignUpPage from '../sign-up';
+import SignInPage from '../sign-in';
+import PasswordForgetPage from '../password-forgot';
+import HomePage from '../userhomepage';
+import AccountPage from '../account';
+import AdminPage from '../admin';
 import LandingPage from "../../views/LandingPage/LandingPage.js";
-import SignUpPage from "../sign-up";
-import SignInPage from "../sign-in";
 import ReviewPage from "../reviews/Bored.js";
 import Footer from "..//Footer/Footer.js";
 // import PasswordForgetPage from "../password-forgot";
-import HomePage from "../home";
-import AccountPage from "../account";
+
 // import AdminPage from "../admin";
 
 import "../index.css";
@@ -19,9 +23,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar1 from "../navbar/Navbar";
 // import TaskList from "../tasklist/TaskList";
 import CreateTask from "../createtask/CreateTask";
-import Board from "../community/Board";
+import Board from '../community/Board';
+import Bored from '../reviews/Bored';
+import faq from '../faq/faq';
+import Delete from '../delete'
 // import Bored from "../reviews/Bored";
-import faq from "../faq/faq";
 //npm install react-calendar or yarn add react-calendar
 import Calendar from "../calendar/Calendar";
 import ViewJob from "../viewjob/ViewJob";
@@ -58,6 +64,13 @@ const App = () => {
         </Router>
       </AuthProvider>
     </div>
+    
+    /* // <footer className='footer'>
+    //   <div className='container'>
+    //     <h3>The page was made possible by Gator Delivery</h3>
+    //   </div>
+    // </footer>
+    </div> */
   );
 };
 export default App;

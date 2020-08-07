@@ -7,20 +7,36 @@ import { Link } from "react-router-dom";
 import * as ROUTES from "../../constants/routes";
 import * as firebase from "firebase/app";
 import TaskList from "../tasklist/TaskList";
-
+import Modal from 'react-bootstrap/Modal'
+  
 const Home = (props) => {
+
+  const [show, setShow] = useState(false)
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
     <div>
       <h1></h1>
-      <div className="container page">
-        <div className="content">
-          <div className="row">
-            <div className="viewjob-main right-marg">
-              <div className="mb-panel posted-jobs" id="my-posted-jobs">
-                <h1 className="heading-large">My posted jobs</h1>
-                <TaskList />
+      <div className='container page'>
+        <div className='content'>
+          <div className='row'>
+              <div className='viewjob-main right-marg'>
+                <div className='mb-panel posted-jobs' id='my-posted-jobs'>
+                  <h1 className='heading-large'>
+                    My posted jobs
+                  </h1>
+                  
+                    
+                      <TaskList
+                      handleShow={handleShow}
+                      setShow={setShow}/>
+                    
+                  
+                </div>
               </div>
-            </div>
+            
             <div className="edit-sidebar">
               <div className="mb-panel">
                 <div className="mb-panel_header">
@@ -38,7 +54,7 @@ const Home = (props) => {
                   </Link>
                 </div>
               </div>
-            </div>
+          </div>
           </div>
         </div>
       </div>
