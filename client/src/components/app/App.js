@@ -26,6 +26,7 @@ import faq from "../faq/faq";
 import Calendar from "../calendar/Calendar";
 import ViewJob from "../viewjob/ViewJob";
 import path from "path";
+import 'semantic-ui-css/semantic.min.css'
 
 
 const App = () => {
@@ -45,7 +46,7 @@ const App = () => {
               <Route exact path={ROUTES.SIGN_UP} component={SignUpPage} />
               {/* <Route path={ROUTES.SIGN_IN} component={SignInPage} /> */}
               {/* <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} /> */}
-              <Route path={ROUTES.HOME} component={HomePage} />
+              <Route exact path={ROUTES.HOME} component={HomePage} />
               <Route path={ROUTES.ACCOUNT} component={AccountPage} />
               <Route path={ROUTES.PROFILE_SETTINGS} component={AccountPage} />
               <Route path={path.join("/job", ":id?")} component={ViewJob} />
