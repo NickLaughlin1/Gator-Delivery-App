@@ -7,8 +7,8 @@ import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
   // Ensures that the firebase connection/instance only happens once
-  <React.StrictMode>
+  <StrictMode>
     <App />
-  </React.StrictMode>,
+  </StrictMode>,
   document.getElementById("root")
 );
