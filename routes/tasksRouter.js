@@ -11,6 +11,7 @@ const tasksRouter = express.Router();
 tasksRouter.post('/add', tasks.create);
 tasksRouter.get('/:listingEmail', tasks.list);
 tasksRouter.delete('/:taskid', tasks.remove);
+tasksRouter.put('/:taskid', tasks.update);
 
 //tasksRouter.get('/:listingEmail', tasks.);
 /* 

@@ -184,9 +184,7 @@ display: inline-block;
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {background-color: #289fbd;}
 
-.container {
-  width: 75%
-}
+
 
 
 
@@ -305,12 +303,18 @@ h1 {
   margin-right: 20px; 
 }
 
+.edit-commands {
+  width: 35%;
+  margin-right: 20px;
+}
+
 .viewjob-main {
-  width: 800px;
+  width: 600px;
+  
 }
 
 .right-marg {
-  width: 780px;
+  width: 60%;
   margin-right: 20px;
 }
 
@@ -324,16 +328,54 @@ h1 {
   background-position: center;
 } */
 
+.form-question-head {
+  padding-bottom: 20px;
+}
+
+.question {
+  margin-right: 4px;
+}
+
+.success {
+  padding-top: 25px;
+}
+.suc-header {
+  margin-bottom: 10px;
+}
+
+.lower {
+  margin-top: 15px;
+}
+
+.card-question {
+  padding-bottom: 20px;
+}
+
+.table-wrapper {
+  max-height: 480px;
+	overflow: auto;
+	scroll-behavior: smooth;
+}
+
+.mb-row2 {
+  width: 100%;
+  margin-top: 10px;
+}
+
+
 .profile-pic {
   width: 2em;
   height: 2em;
 }
 
-footer {
+.footer {
   color: white;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   margin-top: 3em;
   background: #343944;
   box-shadow: 0 50vh 0 50vh;
-  height: 100%;
+  height: 60px;
   padding-top: 20px;
 }
