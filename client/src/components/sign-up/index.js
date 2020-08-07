@@ -449,11 +449,16 @@ const SignUpVol = (props) => {
 };
 
 // Gives users a link to sign up if they do not have an account already
-const SignUpLink = (props) => (
-  <p>
-    Don't have an account? <Link to={ROUTES.SIGN_UP} onClick={() => props.setShowModal(false)}>Sign Up</Link>
-  </p>
-);
+const SignUpLink = (props) => {
+  let styling = {
+    padding: '20px'
+  }
+  return (
+    <p style={styling}>
+      Don't have an account? <Link to={ROUTES.SIGN_UP} onClick={() => props.setShowModal(false)}>Sign Up</Link>
+    </p>
+  );
+}
 
 export default withRouter(SignUpPage);
 export { SignUpLink };
