@@ -36,7 +36,7 @@ const Home = (props) => {
                   
                 </div>
               </div>
-            </div>
+            
             <div className="edit-sidebar">
               <div className="mb-panel">
                 <div className="mb-panel_header">
@@ -54,6 +54,7 @@ const Home = (props) => {
                   </Link>
                 </div>
               </div>
+          </div>
           </div>
         </div>
       </div>

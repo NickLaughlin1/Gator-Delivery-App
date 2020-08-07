@@ -165,16 +165,14 @@ const ViewJob = (props) => {
                     </div>
                     
                 </div>
-              </div>
+              
             </div>
-          </div>
+         
         </div>
-      </div>
-    </div>
+      
   );
 };
 
-<<<<<<< HEAD
 const Display = (props) => {
     if (props.editing === true) {
         return null;
@@ -253,6 +251,3 @@ const Editing = (props) => {
 };
 
 export default ViewJob;
-=======
-export default ViewJob;
->>>>>>> upstream/master_deploy

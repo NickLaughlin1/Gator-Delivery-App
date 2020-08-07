@@ -4,7 +4,7 @@ import { AuthProvider } from "../session/withAuthentication";
 
 import * as ROUTES from "../../constants/routes";
 
-import LandingPage from '../landing';
+
 import SignUpPage from '../sign-up';
 import SignInPage from '../sign-in';
 import PasswordForgetPage from '../password-forgot';
@@ -15,8 +15,7 @@ import LandingPage from "../../views/LandingPage/LandingPage.js";
 import ReviewPage from "../reviews/Bored.js";
 import Footer from "..//Footer/Footer.js";
 // import PasswordForgetPage from "../password-forgot";
-import HomePage from "../home";
-import AccountPage from "../account";
+
 // import AdminPage from "../admin";
 
 import "../index.css";
@@ -41,7 +40,7 @@ const App = () => {
     <AuthProvider>
       <Router>
         <div className='c'>
-          <Navbar />
+          <Navbar1 />
           <br />
           <div className='body'>
           <Route path={ROUTES.CREATE} component={CreateTask} />
