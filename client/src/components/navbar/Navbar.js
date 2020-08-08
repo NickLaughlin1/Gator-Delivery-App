@@ -1,21 +1,23 @@
 import React, { useContext, useState } from "react";
-import { withRouter, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import * as ROUTES from "../../constants/routes";
+import SignOutButton from "../sign-out";
 import { AuthContext } from "../session/withAuthentication";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Nav from "react-bootstrap/Nav";
+import {Button} from "react-bootstrap";
 import "../index.css";
-import SignIn from "../sign-in/index";
-// import LoginPage from "../../views/LoginPage/LoginPage";
-import app from "../firebase";
+import { HelpOutline } from "@material-ui/icons";
+import SignIn from "../sign-in";
 //import "bootstrap/dist/css/bootstrap.min.css";
 
-const Navbar1 = ({history}) => {
+const Navbar1 = () => {
   const { currentUser } = useContext(AuthContext);
-  const [user, setUser] = useState(null);
-  console.log(user);
   return (
+    // <div className="header">
+    //   {currentUser ? <NavAuth /> : <NavUnAuth />}
+    // </div>
     <Navbar collapseOnSelect expand="lg" bg="primary" fixed="top" className="navbar-dark nav-fix">
       <Navbar.Brand href={currentUser ? ROUTES.HOME : ROUTES.LANDING}>Home Order</Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -23,32 +25,20 @@ const Navbar1 = ({history}) => {
         <Nav className="mr-auto">
           <Nav.Link href="/create" className="nav-text">Create Job</Nav.Link>
           <NavDropdown title="Social" id="collasible-nav-dropdown">
-            <NavDropdown.Item tag={Link} href={ROUTES.REVIEWS}>Volunteer Reviews</NavDropdown.Item>
-            <NavDropdown.Item tag={Link} href={ROUTES.COMMUNITY}>Community Board</NavDropdown.Item>
-            <NavDropdown.Item tag={Link} href={ROUTES.FAQ}>FAQ</NavDropdown.Item>
+            <NavDropdown.Item href={ROUTES.REVIEWS}>Volunteer Reviews</NavDropdown.Item>
+            <NavDropdown.Item href={ROUTES.COMMUNITY}>Community Board</NavDropdown.Item>
+            <NavDropdown.Item href={ROUTES.FAQ}>FAQ</NavDropdown.Item>
           </NavDropdown>
-          <Nav.Link tag={Link} href={ROUTES.CALENDAR} className="nav-text">Calendar</Nav.Link>
+          <Nav.Link href={ROUTES.CALENDAR} className="nav-text">Calendar</Nav.Link>
         </Nav>
-        {currentUser ? <NavAuth user={user} setUser={setUser}/> : <NavUnAuth />}
+        {currentUser ? <NavAuth /> : <NavUnAuth />}
       </Navbar.Collapse>
     </Navbar>
   );
 };
 
-const NavAuth = (props) => {
+const NavAuth = () => {
   const { currentUser } = useContext(AuthContext);
-  const handleSignOut = () => {
-    try {
-      console.log("signout");
-      app.auth().signOut();
-      props.setUser(null);
-      // Makes sure the person gets back to the landing page after logout
-      //history.push(ROUTES.LANDING);
-      console.log("done");
-    } catch (error) {
-        alert(error);
-    } 
-  };
   return (
     <Nav>
       <Navbar.Text className="nav-text">
@@ -60,12 +50,10 @@ const NavAuth = (props) => {
           className="profile-pic"
         />
         } id="collasible-nav-dropdown" alignRight>
-        <NavDropdown.Item tag={Link} href={ROUTES.ACCOUNT}>General Settings</NavDropdown.Item>
-        <NavDropdown.Item tag={Link} href={ROUTES.PROFILE_SETTINGS}>Profile Settings</NavDropdown.Item>
+        <NavDropdown.Item href={ROUTES.ACCOUNT}>General Settings</NavDropdown.Item>
+        <NavDropdown.Item href={ROUTES.PROFILE_SETTINGS}>Profile Settings</NavDropdown.Item>
         <NavDropdown.Divider />
-        <NavDropdown.Item tag={Link} onClick={handleSignOut} href={ROUTES.LANDING}>
-          Sign Out
-        </NavDropdown.Item>
+        <SignOutButton />
       </NavDropdown>
     </Nav>
   );
@@ -77,8 +65,7 @@ const NavUnAuth = (props) => (
       <Nav.Link href={ROUTES.SIGN_UP} className="signUp-text">Sign Up</Nav.Link>
       {/* <Nav.Link href={ROUTES.SIGN_IN} className="signIn-text">Sign In</Nav.Link> */}
       <SignIn />
-      {/* <LoginPage /> */}
     </Nav>
 );
 
-export default withRouter(Navbar1);
+export default Navbar1;
