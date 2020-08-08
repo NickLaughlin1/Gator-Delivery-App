@@ -52,7 +52,7 @@ const SignInForm = (props) => {
     try {
       const {email, password} = event.target.elements; //gets the email and password values
       await app.auth().signInWithEmailAndPassword(email.value, password.value);
-      return <Redirect to={ROUTES.HOME} />;
+      window.location = ROUTES.HOME;
     } catch (error) {
       alert(error);
     }

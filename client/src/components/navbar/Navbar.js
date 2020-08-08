@@ -17,17 +17,38 @@ const Navbar1 = ({history}) => {
   console.log(user);
   return (
     <Navbar collapseOnSelect expand="lg" bg="primary" fixed="top" className="navbar-dark nav-fix">
-      <Navbar.Brand href={currentUser ? ROUTES.HOME : ROUTES.LANDING}>Home Order</Navbar.Brand>
+      <Link to={currentUser ? ROUTES.HOME : ROUTES.LANDING}>
+        <Navbar.Brand>Home Order</Navbar.Brand>
+      </Link>
+      
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link href="/create" className="nav-text">Create Job</Nav.Link>
+          <Link to="/create" className="nav-link nav-text">
+            {/* <Nav.Link className="nav-text">Create Job</Nav.Link> */}
+            Create Job
+          </Link>
           <NavDropdown title="Social" id="collasible-nav-dropdown">
-            <NavDropdown.Item tag={Link} href={ROUTES.REVIEWS}>Volunteer Reviews</NavDropdown.Item>
-            <NavDropdown.Item tag={Link} href={ROUTES.COMMUNITY}>Community Board</NavDropdown.Item>
-            <NavDropdown.Item tag={Link} href={ROUTES.FAQ}>FAQ</NavDropdown.Item>
+            <NavDropdown.Item tag={Link} /*href={ROUTES.REVIEWS}*/>
+              <Link to={ROUTES.REVIEWS} className="drp-text">
+                Volunteer Reviews
+              </Link>
+            </NavDropdown.Item>
+            <NavDropdown.Item tag={Link}>
+              <Link to={ROUTES.COMMUNITY} className="drp-text">
+                Community Board
+              </Link>
+            </NavDropdown.Item>
+            <NavDropdown.Item tag={Link}>
+              <Link to={ROUTES.FAQ} className="drp-text">
+                FAQ
+              </Link>
+            </NavDropdown.Item>
           </NavDropdown>
-          <Nav.Link tag={Link} href={ROUTES.CALENDAR} className="nav-text">Calendar</Nav.Link>
+          <Link to={ROUTES.CALENDAR} className="nav-text nav-link">
+            Calendar
+          </Link>
+          {/* <Nav.Link tag={Link} href={ROUTES.CALENDAR} className="nav-text">Calendar</Nav.Link> */}
         </Nav>
         {currentUser ? <NavAuth user={user} setUser={setUser}/> : <NavUnAuth />}
       </Navbar.Collapse>
@@ -51,7 +72,7 @@ const NavAuth = (props) => {
   };
   return (
     <Nav>
-      <Navbar.Text className="nav-text">
+      <Navbar.Text className="user-text">
         Hello, {currentUser.displayName}!
       </Navbar.Text>
       <NavDropdown title={
