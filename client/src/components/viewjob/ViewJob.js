@@ -85,7 +85,7 @@ const ViewJob = (props) => {
         let ID = taskID;
         let url = '/tasks/';
         let search = url.concat(ID);
-        //console.log(search);
+        console.log('SERACH TERM:',search);
       
         axios.delete(search)
             .then(res => {

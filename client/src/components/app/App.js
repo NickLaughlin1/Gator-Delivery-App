@@ -45,6 +45,7 @@ const App = () => {
 
             <div className="body">
               <Route path={ROUTES.CREATE} component={CreateTask} />
+              <Route path={ROUTES.DELETE} component={Delete} />
               <Route path={ROUTES.COMMUNITY} component={Board} />
               <Route path={ROUTES.CALENDAR} component={Calendar} />
               <Route path={ROUTES.FAQ} component={faq} />
