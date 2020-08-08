@@ -187,9 +187,15 @@ display: inline-block;
 <<<<<<< HEAD
 .dropdown:hover .dropbtn {background-color: #0f31a0;}
 
+<<<<<<< HEAD
 =======
 .dropdown:hover .dropbtn {background-color: #289fbd;}
 
+.container {
+  width: 75%
+}
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
+=======
 .container {
   width: 75%
 }
