@@ -32,41 +32,46 @@ import Delete from '../delete'
 import Calendar from "../calendar/Calendar";
 import ViewJob from "../viewjob/ViewJob";
 import path from "path";
+import 'semantic-ui-css/semantic.min.css'
 
 
 const App = () => {
-  return(
-    <div className='page'>
-    <AuthProvider>
-      <Router>
-        <div className='c'>
-          <Navbar1 />
-          <br />
-          <div className='body'>
-          <Route path={ROUTES.CREATE} component={CreateTask} />
-          <Route path={ROUTES.COMMUNITY} component={Board}/>
-          <Route path={ROUTES.REVIEWS} component={Bored} />
-          <Route path={ROUTES.CALENDAR} component={Calendar} />
-          <Route path={ROUTES.FAQ} component={faq} />
-          <Route exact path={ROUTES.LANDING} component={LandingPage} />
-          <Route exact path={ROUTES.SIGN_UP} component={SignUpPage} />
-          <Route path={ROUTES.SIGN_IN} component={SignInPage} />
-          <Route path={ROUTES.DELETE} component={Delete} />
-          {/* <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} /> */}
-          <Route path={ROUTES.HOME} component={HomePage} />
-          <Route path={ROUTES.ACCOUNT} component={AccountPage} />
-          <Route path={path.join("/job", ":id?")} component={ViewJob} />
-          <Route path={ROUTES.PROFILE_SETTINGS} component={AccountPage} />
-              
-          <Route path={ROUTES.REVIEWS} component={ReviewPage} />
-          {/* <Route path={ROUTES.ADMIN} component={AdminPage} />   */}
+  return (
+    <div className="page">
+      <AuthProvider>
+        <Router>
+          <div className="c">
+            <Navbar1 />
+
+            <div className="body">
+              <Route path={ROUTES.CREATE} component={CreateTask} />
+              <Route path={ROUTES.COMMUNITY} component={Board} />
+              <Route path={ROUTES.CALENDAR} component={Calendar} />
+              <Route path={ROUTES.FAQ} component={faq} />
+              <Route exact path={ROUTES.LANDING} component={LandingPage} />
+              <Route exact path={ROUTES.SIGN_UP} component={SignUpPage} />
+              {/* <Route path={ROUTES.SIGN_IN} component={SignInPage} /> */}
+              {/* <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} /> */}
+              <Route exact path={ROUTES.HOME} component={HomePage} />
+              <Route path={ROUTES.ACCOUNT} component={AccountPage} />
+              <Route path={ROUTES.PROFILE_SETTINGS} component={AccountPage} />
+              <Route path={path.join("/job", ":id?")} component={ViewJob} />
+              <Route path={ROUTES.REVIEWS} component={ReviewPage} />
+              {/* <Route path={ROUTES.ADMIN} component={AdminPage} />   */}
+            </div>
+            <Footer />
           </div>
-        </div>
-      </Router>
-    </AuthProvider>
-    
-    
+        </Router>
+      </AuthProvider>
     </div>
+    
+    /* // <footer className='footer'>
+    //   <div className='container'>
+    //     <h3>The page was made possible by Gator Delivery</h3>
+    //   </div>
+    // </footer>
+    </div> */
   );
 };
 export default App;
+

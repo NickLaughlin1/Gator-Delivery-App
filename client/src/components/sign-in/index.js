@@ -1,12 +1,27 @@
-import React, { useCallback, useContext, useState } from "react";
+import React, { useCallback, useContext, useState, useEffect } from "react";
 import { withRouter, Redirect } from "react-router-dom";
 
 import { SignUpLink } from "../sign-up";
-import {Modal, Button} from "react-bootstrap";
+import { makeStyles } from "@material-ui/core/styles";
+import {Modal, Container, Col} from "react-bootstrap";
+import Button1 from "react-bootstrap/Button";
 import * as ROUTES from "../../constants/routes";
 import { AuthContext } from "../session/withAuthentication";
+import CustomInput from "../../components/CustomInput/CustomInput.js";
+import Email from "@material-ui/icons/Email";
+import LockIcon from "@material-ui/icons/Lock";
+import {Icon} from "semantic-ui-react";
+import InputAdornment from "@material-ui/core/InputAdornment";
 import app from "../firebase/firebase";
+import GridContainer from "../../components/Grid/GridContainer.js";
+import GridItem from "../../components/Grid/GridItem.js";
+import Button from "../../components/CustomButtons/Button.js";
+import Card from "../../components/Card/Card.js";
+import CardBody from "../../components/Card/CardBody.js";
+import CardHeader from "../../components/Card/CardHeader.js";
+import CardFooter from "../../components/Card/CardFooter.js";
 import "../index.css";
+import styles from "../../assets/jss/material-kit-react/views/loginPage.js";
 
 const SignInPage = (props) => {
   const [showModal, setShowModal] = useState(false);
@@ -17,48 +32,31 @@ const SignInPage = (props) => {
     //   {/* This allows to still reach the sign up page even when trying to login */}
     // {/* </div> */}
     <>
-    <Button variant="primary" onClick={() => setShowModal(true)}>Sign In</Button>
-    <SignInForm setShowModal={setShowModal} show={showModal} onHide={() => setShowModal(false)}/>
+    <Button1 variant="primary" onClick={() => setShowModal(true)}>Sign In</Button1>
+    <SignInForm show={showModal} setShowModal={setShowModal} onHide={() => setShowModal(false)}/>
     </>
   );
 }
 
-const SignInLanding = (props) => {
-  const [showModal, setShowModal] = useState(false);
-  return (
-    <>
-    <Button
-      color="danger"
-      size="lg"
-      onChange={() => setShowModal(true)}
-      // target={ROUTES.SIGN_IN}
-      // rel="noopener noreferrer"
-    >
-      <i className="fas fa-play" />
-      Get Started
-    </Button> 
-    <SignInForm setShowModal={setShowModal} show={showModal} onHide={() => setShowModal(false)}/>
-  </>
-  );
-}
+
 
 const SignInForm = (props) => {
+  const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
+  const useStyles = makeStyles(styles);
+  setTimeout(function() {
+    setCardAnimation("");
+  }, 700);
+  const classes = useStyles();
   const handleLogin = useCallback(async (event) => {
     event.preventDefault();
-    // these variable bind to the names given to the input boxes
-    const { email, password } = event.target.elements;
     try {
+      const {email, password} = event.target.elements; //gets the email and password values
       await app.auth().signInWithEmailAndPassword(email.value, password.value);
+      return <Redirect to={ROUTES.HOME} />;
     } catch (error) {
       alert(error);
     }
   }, []);
-
-  const { currentUser } = useContext(AuthContext);
-
-  if (currentUser) {
-    return <Redirect to={ROUTES.HOME} />;
-  }
 
   return (
     <Modal
@@ -66,45 +64,78 @@ const SignInForm = (props) => {
     size="lg"
     aria-labelledby="contained-modal-title-vcenter"
     centered>
-      <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-          Sign In
-        </Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <form onSubmit={handleLogin}>
-          <div className="form-row">
-            <div className="form-group col-md-6">
-              <input
-                name="email"
-                //value={email}
-                type="email"
-                placeholder="Email Address"
-                className="form-control"
-              />
-            </div>
-            <div className="form-group col-md-6">
-              <input
-                name="password"
-                //value={password}
-                type="password"
-                placeholder="Password"
-                className="form-control"
-              />
-            </div>
-          </div>
-          <button type="submit" className="btn btn-primary">
-            Login
-          </button>
-        </form>
-      </Modal.Body>
-      <Modal.Footer>
-        <SignUpLink setShowModal={props.setShowModal}/>{" "}
-      </Modal.Footer>
-    </Modal>
-    
+        <GridContainer justify="center">
+          <GridItem xs={12} sm={12} md={12}>
+            <Card className={classes[cardAnimaton]}>
+              <form className={classes.form} onSubmit={handleLogin}>
+                <CardHeader color="info" className={classes.cardHeader}>
+                  <h2>Login</h2>
+                  <div className={classes.socialLine}>
+                    <Button
+                      justIcon
+                      href="#pablo"
+                      target="_blank"
+                      color="transparent"
+                      onClick={e => e.preventDefault()}
+                    >
+                      <Icon link name="google" />
+                    </Button>
+                  </div>
+                </CardHeader>
+                <p className={classes.divider}>Or Email and Password</p>
+                <CardBody>
+                  <CustomInput
+                    name="email1"
+                    labelText="Email..."
+                    id="email"
+                    formControlProps={{
+                      fullWidth: true
+                    }}
+                    inputProps={{
+                      name: "email1",
+                      // value: (email),
+                      // onChange: (e) => printEmail(e),
+                      type: "email",
+                      endAdornment: (
+                        <InputAdornment position="end">
+                          <Email className={classes.inputIconsColor} />
+                        </InputAdornment>
+                      )
+                    }}
+                  />
+                  <CustomInput
+                    labelText="Password"
+                    id="pass"
+                    formControlProps={{
+                      fullWidth: true
+                    }}
+                    inputProps={{
+                      name: "password",
+                      type: "password",
+                      endAdornment: (
+                        <InputAdornment position="end">
+                          <LockIcon className={classes.inputIconsColor}>
+                          </LockIcon>
+                        </InputAdornment>
+                      ),
+                      autoComplete: "off"
+                    }}
+                  />
+                  <SignUpLink setShowModal={props.setShowModal}/>
+                </CardBody>
+                <CardFooter className={classes.cardFooter}>
+                  <Button simple color="info" size="lg" type="submit">
+                    Sign In
+                  </Button>
+                </CardFooter>
+              </form>
+            </Card>
+          </GridItem>
+        </GridContainer>
+      </Modal>
   );
 };
 
-export default withRouter(SignInPage, SignInLanding);
+// export default withRouter(SignInLanding, SignInPage);
+export default withRouter(SignInPage);
 export { SignInForm };
