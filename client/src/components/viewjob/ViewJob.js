@@ -188,6 +188,7 @@ const ViewJob = (props) => {
                                 editing={editing}
                                 task={task}
                                 datestring={datestring}
+                                convert={convert}
                             />
                             <Editing
                                 editing={editing}
@@ -226,7 +227,7 @@ const Display = (props) => {
             <div className='card-header bg-light card-head font-weight-bold'>Job description</div>
             <div className='card-body'>
                 <p className='card-title'>{props.task}</p> 
-                <p className='card-title'>Date to be completed: {props.datestring}</p> 
+                <p className='card-title'>Date to be completed: {props.convert(props.datestring)}</p> 
             </div>
         </div>
     );
