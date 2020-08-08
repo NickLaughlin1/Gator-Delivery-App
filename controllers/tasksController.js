@@ -44,7 +44,7 @@ export const update = (req,res) => {
 
     let update = {$set: {headline : req.body.headline,
         task : req.body.task,
-        date : req.body.datae}};
+        date : Date.parse(req.body.date)}};
     let options = {returnOriginal: false};
 
     let ID = req.params.taskid;

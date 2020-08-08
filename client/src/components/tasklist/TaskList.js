@@ -7,10 +7,38 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import * as firebase from "firebase/app";
-import * as ROUTES from "../../constants/routes";
+
 
 // Individual list components for each task
 const Task = (props) => {
+
+  const convert = (d) => {
+    let day1 = d.substring(8,9);
+    let day2 = d.substring(9,10);
+    let day = Number(day2);
+    if (day1 === '1') {
+        day = day + 10;
+    } else if (day1 === '2') {
+        day = day + 20;
+    };
+    //console.log('LAST DIGIT', day);
+    if (day === 1) {
+        day = 31;
+    } else {
+        day = day - 1;
+    };
+    let nnew = day.toString();
+    //console.log(nnew);
+    if (nnew.length === 1) {
+        let z = '0';
+        nnew = z.concat(day);
+    }
+    let yearmonth = d.substring(0,8);
+    let newdate = yearmonth.concat(nnew);
+    //console.log(newdate);
+    return newdate;
+};
+
   return (
     <div>
       <div className="card-header bg-light card-head font-weight-bold">
@@ -18,9 +46,9 @@ const Task = (props) => {
       </div>
       <div className="card-body">
         <p className="card-title">{props.task.task}</p>
-        <h5 className="card-text">
-          Created on {props.task.createdAt.substring(0, 10)}
-        </h5>
+        <h6 className="card-text lower">
+          Created on {convert(props.task.createdAt.substring(0, 10))}
+        </h6>
       </div>
     </div>
   );
@@ -116,9 +144,9 @@ const TaskList = (props) => {
 };
 
 const List = (props) => {
-    console.log(props.tasks);
+    //console.log(props.tasks);
     if (props.tasks.length === 0) {
-        console.log("here");
+        //console.log("here");
         return (
             <p>No jobs posted</p>
         )

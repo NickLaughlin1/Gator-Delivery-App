@@ -65,11 +65,7 @@ const App = () => {
       </Router>
     </AuthProvider>
     
-    <footer className='footer'>
-      <div className='container'>
-        <h3>The page was made possible by Gator Delivery</h3>
-      </div>
-    </footer>
+    
     </div>
   );
 };

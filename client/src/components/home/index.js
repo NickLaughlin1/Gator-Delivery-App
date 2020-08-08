@@ -19,10 +19,10 @@ const Home = (props) => {
   return (
     <div>
       <h1></h1>
-      <div className='container page'>
+      <div className='container1 page'>
         <div className='content'>
           <div className='row'>
-              <div className='viewjob-main right-marg'>
+              <div className='layout-content'>
                 <div className='mb-panel posted-jobs' id='my-posted-jobs'>
                   <h1 className='heading-large'>
                     My posted jobs
@@ -37,7 +37,7 @@ const Home = (props) => {
                 </div>
               </div>
             
-            <div className="edit-sidebar">
+            <div className="layout-sidebar">
               <div className="mb-panel">
                 <div className="mb-panel_header">
                   <h3 className="heading-caps">Post a new job</h3>

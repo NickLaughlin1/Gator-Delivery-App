@@ -192,18 +192,10 @@ display: inline-block;
   margin-left: -21px;
 }
 
-/* Displaying listed jobs */
-.layout-content {
-  float: left;
-  margin-left: 20px;
-  width: 800px;
-}
-
-.layout-sidebar {
-  float: left;
-  margin-left: 20px;
-  width: 310px;
-  min-height: 1px;
+.container1 {
+    margin-right: auto;
+    margin-left: auto;
+    width: 988px;
 }
 
 .mb-panel {
@@ -293,11 +285,20 @@ h1 {
 }
 
 .viewjob-header {
-  width: 100%;
+  width: 98%;
+  margin: auto;
+  
   margin-bottom: 20px;
 }
 
-.edit-sidebar {
+.edit-sidebar1 {
+  float: left;
+  width: 316px;
+  margin-right: 20px; 
+}
+
+.edit-sidebar2 {
+  margin: left;
   float: left;
   width: 316px;
   margin-right: 20px; 
@@ -310,7 +311,20 @@ h1 {
 
 .viewjob-main {
   width: 600px;
-  
+  margin: right;
+}
+
+.layout-content {
+  float: left;
+  margin-left: 20px;
+  width: 652px;
+}
+
+.layout-sidebar {
+  float: left;
+  margin-left: 20px;
+  width: 316px;
+  min-height: 1px;
 }
 
 .right-marg {
