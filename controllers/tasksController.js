@@ -19,6 +19,7 @@ export const create = async (req, res) => {
 
 /* Retreive all the directory listings */
 export const list = (req, res) => {
+  console.log('YEs');
   let currEmail = req.params.listingEmail;
   Task.find({ email: currEmail }).exec(function (err, task) {
     if (err) return res.status(400).send(err);
@@ -26,7 +27,8 @@ export const list = (req, res) => {
   });
 };
 
-export const all = (req, res) => {
+export const fulllist = (req, res) => {
+  console.log('HERE');
   Task.find({taken: false}).exec(function (err, task) {
     if (err) return res.status(400).send(err);
     res.json(task);
@@ -62,42 +64,3 @@ export const update = (req,res) => {
         }
       });
 };
-
-/* Show the current listing */
-//export const read = (req, res) => {
-    /* send back the listing as json from the request */
-    /* If the listing could _not_ be found, be sure to send back a response in the following format: {error: 'Some message that indicates an error'} */
-//};*/
-
-/* Update a listing - note the order in which this function is called by the router*/
-//export const update = (req, res) => {
-//    const listing = req.listing;
-
-    /* Replace the listings's properties with the new properties found in req.body */
-
-    /*save the coordinates (located in req.results if there is an address property) */
-
-    /* Save the listing */
-
-//};
-
-/* Delete a listing */
-//export const remove = (req, res) => {
-    /* Add your code to remove the listins */
-    /* If the listing could _not_ be found, be sure to send back a response in the following format: {error: 'Some message that indicates an error'} */
-//};
-
-/* Retreive all the directory listings, sorted alphabetically by listing code */
-//export const list = (req, res) => {
-    /* Add your code. Make sure to send the documents as a JSON response.*/
-//};
-
-/* 
-  Middleware: find a listing by its ID, then pass it to the next request handler. 
-
-  HINT: Find the listing using a mongoose query, 
-        bind it to the request object as the property 'listing', 
-        then finally call next
- */
-//export const listingByID = (req, res, next, id) => {
-//};

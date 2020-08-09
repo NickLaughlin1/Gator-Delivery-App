@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import * as firebase from "firebase/app";
-import TaskList from "../tasklist/TaskList";
+import ViewTasks from "../tasklist/ViewAll.js";
 import axios from 'axios';
   
 const VolHome = (props) => {
@@ -46,7 +46,7 @@ const VolHome = (props) => {
                   <h1 className='heading-large'>
                     Available jobs
                   </h1>         
-                      <TaskList/>     
+                      <ViewTasks/>     
               </div>
           </div>
         </div>
