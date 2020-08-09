@@ -29,7 +29,8 @@ export const create = async (req, res) => {
 
 //Gets a users info
 export const get = async (req, res) => {
-  let currUser = req.params.email;
+  let currUser = req.params.email1;
+  console.log(currUser);
   User.find({ email: currUser }).exec(function (err, user) {
     if (err) return res.status(400).send(err);
     res.json(user);

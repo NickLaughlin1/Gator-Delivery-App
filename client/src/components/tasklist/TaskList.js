@@ -86,32 +86,6 @@ const TaskList = (props) => {
       }
     });
   }, []);
-
-    // Runs only once. Gets current users email and sends get request to database for all listings
-    // with that email
-    useEffect(() => {
-        firebase.auth().onAuthStateChanged(user => {
-            if (user) {
-            //console.log("signed in");
-            //console.log(user.email);
-            setEmail(user.email);
-            let url = '/tasks/';
-            let search = url.concat(user.email);
-            //console.log(email);
-            //console.log(search);
-            axios.get(search)
-            .then(response => {
-                let asc_task = response.data;
-                let des_task = asc_task.reverse(); // Show newest tasks first
-                setTasks(des_task);
-            })
-            .catch((error) => {
-                console.log(error);
-            })
-            } 
-        });
-    }, []);
-
     // Create a row for each task 
     
 
