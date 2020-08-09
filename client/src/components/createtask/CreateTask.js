@@ -120,43 +120,61 @@ const CreateTask = (props) => {
 
   const nextButton = () => {
     let currStep = currentStep;
-    if (currStep < 4) {
+    if(currStep < 5 && currStep > 0) {
       return (
-        <button
-          className="btn btn-danger btn-lg btn-block"
-          type="button"
-          onClick={_next}
-        >
-          Next step
-        </button>
+        <button 
+          className="btn btn-danger btn-lg btn-block" 
+          type="button" onClick={_next}>
+            Next step
+        </button>        
       );
-    }
+    };
     return null;
   };
 
   return (
-    <React.Fragment>
-      <div className="form-container">
-        <h1>Post a job</h1>
-        <form onSubmit={handleSubmit}>
-          <Step1 currentStep={currentStep} setTrade={setTrade} trade={trade} />
-          <Step2 currentStep={currentStep} setTask={setTask} task={task} />
-          <Step3
-            currentStep={currentStep}
-            setHeadline={setHeadline}
-            headline={headline}
-          />
-          <Step4
-            currentStep={currentStep}
-            setDate={handleDateChange}
-            date={date}
-          />
-          {nextButton()}
-        </form>
-      </div>
-    </React.Fragment>
+      <React.Fragment>
+        <div className='form-container'>
+          <h1>Post a job</h1>              
+          <form onSubmit={handleSubmit}>
+              <Step1 
+              currentStep={currentStep} 
+              setTrade={setTrade}
+              trade={trade}
+              />
+              <Step2 
+              currentStep={currentStep} 
+              setTask={setTask}
+              task={task}
+              />
+              <Step3
+              currentStep={currentStep} 
+              setHeadline={setHeadline}
+              headline={headline}
+              />
+              <Step4
+              currentStep={currentStep} 
+              setZip={setZip}
+              zip={zip}
+              />
+              <Step5 
+              currentStep={currentStep} 
+              setDate={handleDateChange}
+              date={date}
+              handleShow={handleShow}
+              />
+              <PopUp
+                  show={show}
+                  handleClose={handleClose}/>
+              <Success
+                added={added}
+                />
+              {nextButton()} 
+          </form>
+        </div>
+      </React.Fragment>
   );
-};
+}
 
 const Step1 = (props) => {
   if (props.currentStep < 1) {
@@ -164,98 +182,183 @@ const Step1 = (props) => {
   }
 
   return (
-    <div className="form-group">
-      <label className="form-question" htmlFor="select-trade">
-        What type of work do you need help with?
-      </label>
-      <select
-        className="custom-select"
-        id="select-trade"
-        name="select-trade"
-        value={props.trade}
-        onChange={(e) => props.setTrade(e.target.value)}
-        required="required"
-      >
-        <option selected disabled value="">
-          Choose a category
-        </option>
-        <option>Carpentry</option>
-        <option>Electrical</option>
-        <option>Fencing</option>
-        <option>Heating and Air Conditioning</option>
-        <option>Driveway</option>
-        <option>Guttering</option>
-        <option>Handyman</option>
-        <option>Insulation</option>
-        <option>Painting and Decorating</option>
-        <option>Locksmith</option>
-        <option>Appliances</option>
-        <option>Security Systems</option>
-        <option>Plumbing</option>
-        <option>Roofing</option>
-        <option>Windows</option>
-        <option>Pool</option>
-        <option>Gardening and Landscaping</option>
-        <option>I'm not sure what to pick</option>
-      </select>
-      <div className="invalid-tooltip">Please select an option</div>
-    </div>
+    <div className="form-group card-question">
+
+            
+            <label for='select-trade'>What type of work do you need help with?</label>
+            <OverlayTrigger trigger="hover" placement="right" overlay={
+              <Popover id="popover-basic">
+                <Popover.Content>
+                  Choose the category that best describes the type of job you need completed. This will help with finding you the best volunteer who knows your type of job.
+                </Popover.Content>
+              </Popover>}>
+              <div className='float-right'>
+                
+              <a className='btn btn-outline-info btn-sm'>Explain more</a>
+              </div>
+            </OverlayTrigger>
+            <select
+            className="custom-select"
+            id="select-trade"
+            name='select-trade'
+            value={props.trade} 
+            onChange={e => props.setTrade(e.target.value)}
+            required='required'>
+              <option selected disabled value=''>Choose a category</option>
+              <option>Appliances</option>
+              <option>Carpentry</option>
+              <option>Driveway</option>
+              <option>Electrical</option>
+              <option>Fencing</option>
+              <option>Flooring</option>
+              <option>Gardening and Landscaping</option>
+              <option>Guttering</option>
+              <option>Handyman</option>
+              <option>Heating and Air Conditioning</option>
+              <option>Insulation</option>
+              <option>Locksmith</option>
+              <option>Painting and Decorating</option>
+              <option>Plumbing</option>
+              <option>Pool</option>
+              <option>Pressure washing</option>
+              <option>Roofing</option>  
+              <option>Security Systems</option> 
+              <option>Windows</option>
+              <option>I'm not sure what to pick</option>
+            </select>
+            <div className='invalid-tooltip'>Please select an option</div>
+          </div> 
   );
 };
 
 const Step2 = (props) => {
   if (props.currentStep < 2) {
-    return null;
-  }
-  return (
+    return null
+  } 
+  return(
+    <div className='form-question card-question'>
     <div className="form-group">
-      <label>Describe the task in detail</label>
+      <label>Describe the job in detail</label>
+        <OverlayTrigger trigger="hover" placement="right" overlay={
+            <Popover id="popover-basic">
+              <Popover.Content>
+                Describe in as much detail as possible the job you need completed.
+              </Popover.Content>
+            </Popover>}>
+          <div className='float-right'>
+            <a className='btn btn-outline-info btn-sm'>Explain more</a>
+          </div>
+        </OverlayTrigger>
       <textarea
         className="form-control"
         id="task"
         name="task"
         type="text"
-        placeholder="I need a new washing machine installed on the first floor, and the old washing machine dispose of."
+        placeholder="E.g. I need a new washing machine installed on the first floor, and the old washing machine disposed of."
         value={props.task}
-        onChange={(e) => props.setTask(e.target.value)}
-      />
+        onChange={e => props.setTask(e.target.value)}
+        required='required'
+        />
+    </div>
     </div>
   );
 };
 
 const Step3 = (props) => {
   if (props.currentStep < 3) {
-    return null;
-  }
-  return (
-    <div className="form-group">
-      <label>Create a headline for your job</label>
+    return null
+  } 
+  return(
+    
+    <div className="form-group card-question">
+      <label>
+        <div className='question'>Create a title for your job</div>
+      </label>
+      <OverlayTrigger trigger="hover" placement="right" overlay={
+            <Popover id="popover-basic">
+              <Popover.Content>
+                Create a short title that summarizes the job you need completed. It should be about 1 sentence. This is what the volunteers will see first about your job.
+              </Popover.Content>
+            </Popover>}>
+          <div className='float-right'>
+            <a className='btn btn-outline-info btn-sm'>Explain more</a>
+          </div>
+        </OverlayTrigger>
       <input
         className="form-control"
         id="headline"
         name="headline"
         type="text"
-        placeholder="New washing machine installed"
+        placeholder="E.g. New washing machine installed"
         value={props.headline}
-        onChange={(e) => props.setHeadline(e.target.value)}
-      />
+        onChange={e => props.setHeadline(e.target.value)}
+        required='required'
+        />
     </div>
   );
 };
 
 const Step4 = (props) => {
   if (props.currentStep < 4) {
-    return null;
-  }
-  return (
+    return null
+  } 
+  return(
     <React.Fragment>
-      <div className="form-group">
-        <label>When would you like the task done?</label>
-        <DatePicker selected={props.date} onChange={props.setDate} />
-      </div>
-      <button className="btn btn-success btn-block">Submit task</button>
+    <div className="form-group card-question">
+      <label>What is your zipcode?</label>
+      <OverlayTrigger trigger="hover" placement="right" overlay={
+            <Popover id="popover-basic">
+              <Popover.Content>
+                Please provide your zipcode so we can find you volunteers in your area.
+              </Popover.Content>
+            </Popover>}>
+          <div className='float-right'>
+            <a className='btn btn-outline-info btn-sm'>Explain more</a>
+          </div>
+        </OverlayTrigger>
+      <input
+        className="form-control"
+        id="zip"
+        name="zip"
+        placeholder="E.g. 32607"
+        value={props.zip}
+        onChange={e => props.setZip(e.target.value)}
+        required='required'
+        />  
+    </div>
     </React.Fragment>
   );
 };
+
+const Step5 = (props) => {
+  if (props.currentStep < 5) {
+    return null
+  } 
+  return(
+    <React.Fragment>
+    <div className="form-group card-question">
+      <label>When would you like the job done?</label>
+      <div>
+      <OverlayTrigger trigger="hover" placement="right" overlay={
+            <Popover id="popover-basic">
+              <Popover.Content>
+                Choose the date that you would like your job to be completed.
+              </Popover.Content>
+            </Popover>}>
+          <div className='float-right'>
+            <a className='btn btn-outline-info btn-sm'>Explain more</a>
+          </div>
+        </OverlayTrigger>
+      <DatePicker
+        selected={props.date}
+        onChange={props.setDate}
+        required='required'   
+      />   
+    </div>
+    </div>
+    <button className="btn btn-success btn-block">Submit task</button>
+    </React.Fragment>
+  );
+}
 
 export default CreateTask;
