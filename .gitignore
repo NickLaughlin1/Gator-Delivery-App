@@ -20,7 +20,7 @@
 .eslintrc.js
 .vscode
 
-package-lock.json
+
 client/package-lock.json
 
 npm-debug.log*
