@@ -13,4 +13,4 @@ export const VIEWJOB = "/viewjob";
 export const FAQ = "/faq";
 export const REVIEWS = "/reviews";
 export const PROFILE_SETTINGS = "/settings/profile";
-export const DELETE = '/delete';
+export const DELETE = "/delete";

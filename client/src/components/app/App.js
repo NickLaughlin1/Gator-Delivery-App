@@ -26,7 +26,7 @@ import CreateTask from "../createtask/CreateTask";
 import Board from '../community/Board';
 import Bored from '../reviews/Bored';
 import faq from '../faq/faq';
-import Delete from '../delete'
+import Delete from "../delete";
 // import Bored from "../reviews/Bored";
 //npm install react-calendar or yarn add react-calendar
 import Calendar from "../calendar/Calendar";

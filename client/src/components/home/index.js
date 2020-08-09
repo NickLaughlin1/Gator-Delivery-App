@@ -72,7 +72,7 @@ const Home = (props) => {
                   </Link>
                 </div>
               </div>
-          </div>
+            </div>
           </div>
         </div>
       </div>
