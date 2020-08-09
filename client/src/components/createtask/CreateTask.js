@@ -8,7 +8,7 @@ import axios from "axios";
 import * as firebase from "firebase/app";
 import * as ROUTES from '../../constants/routes';
 import DatePicker from 'react-datepicker';
-import "react-datepicker/dist/react-datepicker.css"
+import "../delete/node_modules/react-datepicker/dist/react-datepicker.css"
 import { Button, OverlayTrigger, Popover } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal'
 import Success from '../success'

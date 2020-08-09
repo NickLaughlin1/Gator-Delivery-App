@@ -194,7 +194,7 @@ display: inline-block;
 /* Change the background color of the dropdown button when the dropdown content is shown */
 
 .dropdown:hover .dropbtn {background-color: #0f31a0;}
-=
+
 .dropdown:hover .dropbtn {background-color: #289fbd;}
 
 .container {
