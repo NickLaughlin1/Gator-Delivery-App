@@ -2,28 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import * as firebase from "firebase/app";
-import * as ROUTES from '../../constants/routes';
-import Modal from 'react-bootstrap/Modal'
-import DatePicker from 'react-datepicker';
-
-const PopUp = (props) => {
-    return(
-      <Modal show={props.show} onHide={props.handleClose}>
-          <Modal.Header closeButton>
-             <Modal.Title>Delete job</Modal.Title>
-           </Modal.Header>
-           <Modal.Body>Are you sure you want to delete this job?</Modal.Body>
-           <Modal.Footer>
-              <button className='btn btn-secondary' onClick={props.handleClose}>
-                  Close
-               </button>
-                <button className='btn btn-danger' onClick={props.handleDelete}>
-                    Yes, delete this job
-                </button>
-            </Modal.Footer>
-    </Modal>
-    );
-  };
+import * as ROUTES from "../../constants/routes";
 
 const PopUp1 = (props) => {
     return(
@@ -296,30 +275,30 @@ const Editing = (props) => {
 
     
 
-    return (
-        <form onSubmit={handleSubmit}>
-            <div class="form-group">
-                <label for="headline">Headline</label>
-                <input className="form-control" id="headline" value={props.headline} onChange={e => props.setHeadline(e.target.value)}></input>
-            </div>
-            <div class="form-group">
-                <label for="taskBody">Task details</label>
-                <input className="form-control" id="taskBody" value={props.task} onChange={e => props.setTask(e.target.value)}></input>
-            </div>
-            <React.Fragment>
-            <div className="form-group card-question">
-                <label>When would you like the job done?</label>
-                <div>
-                    <DatePicker
-                        selected={props.date}
-                        onChange={props.setDate}
-                    />   
-                </div>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-            </React.Fragment>  
-            
-        </form>
+  return (
+    <form onSubmit={handleSubmit}>
+      <div class="form-group">
+          <label for="headline">Headline</label>
+          <input className="form-control" id="headline" value={props.headline} onChange={e => props.setHeadline(e.target.value)}></input>
+      </div>
+      <div class="form-group">
+          <label for="taskBody">Task details</label>
+          <input className="form-control" id="taskBody" value={props.task} onChange={e => props.setTask(e.target.value)}></input>
+      </div>
+      <React.Fragment>
+      <div className="form-group card-question">
+          <label>When would you like the job done?</label>
+          <div>
+              <DatePicker
+                  selected={props.date}
+                  onChange={props.setDate}
+              />   
+          </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+      </React.Fragment>  
+    
+    </form>
     );
 };
 

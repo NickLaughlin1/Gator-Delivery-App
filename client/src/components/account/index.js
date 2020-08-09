@@ -2,7 +2,7 @@
  * code for the skeleton of the settings page can be found here: https://github.com/dstuecken/react-settings-pane
  */
 
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   SettingsPane,
   SettingsPage,
@@ -10,17 +10,42 @@ import {
   SettingsMenu,
 } from "react-settings-pane";
 import { AuthContext } from "../session/withAuthentication";
+import axios from "axios";
 import "./style.css";
+import app from "../firebase"
 
-const AccountPage = () => {
-  const { currentUser } = useContext(AuthContext);
-  let settings = {
-    "mysettings.general.name": "Nicholas Laughlin",
-    "mysettings.general.email": "testing7@gmail.com",
-    "mysettings.general.picture": "earth",
-    "mysettings.profile.firstname": "Nicholas",
-    "mysettings.profile.lastname": "Laughlin",
-  };
+const AccountPage = (props) => {
+  
+  // console.log(currentUser);
+  // let settings = {};
+  const [settings, setSettings] = useState({});
+  
+    // app.auth().onAuthStateChanged((user) => {
+      const { currentUser } = useContext(AuthContext);
+      if(currentUser) {
+        let url = "http://localhost:5000/users/" + currentUser.email;
+        console.log(url);
+        try {
+          axios.get(url).then((res) => {
+            if(!res) {
+              alert("you are not a user");
+            }
+            setSettings({
+              "mysettings.general.name": res.data[0].name,
+              "mysettings.general.email": res.data[0].email,
+              "mysettings.profile.role": res.data[0].role,
+              // "mysettings.profile.firstname": "Nicholas",
+              // "mysettings.profile.lastname": "Laughlin",
+            });
+          })
+        }
+        catch(error) {
+          alert(error);
+        }
+      };
+ 
+  
+  
   // Define your menu
   const menu = [
     {
@@ -106,8 +131,8 @@ const AccountPage = () => {
         >
           <fieldset className="form-group">
             <label htmlFor="profileRole">Role: </label>
-            <select>
-              <option>Regular user</option>
+            <select defaultValue={settings["mysettings.profile.role"]}>
+              <option>Customer</option>
               <option>Volunteer Handyman</option>
               <option>Volunteer Driver</option>
             </select>
