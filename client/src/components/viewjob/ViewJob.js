@@ -3,6 +3,28 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import * as firebase from "firebase/app";
 import * as ROUTES from "../../constants/routes";
+import Modal from 'react-bootstrap/Modal'
+import DatePicker from 'react-datepicker';
+
+const PopUp = (props) => {
+  return(
+    <Modal show={props.show} onHide={props.handleClose}>
+        <Modal.Header closeButton>
+           <Modal.Title>Delete job</Modal.Title>
+         </Modal.Header>
+         <Modal.Body>Are you sure you want to delete this job?</Modal.Body>
+         <Modal.Footer>
+            <button className='btn btn-secondary' onClick={props.handleClose}>
+                Close
+             </button>
+              <button className='btn btn-danger' onClick={props.handleDelete}>
+                  Yes, delete this job
+              </button>
+          </Modal.Footer>
+  </Modal>
+  );
+};
+
 
 const PopUp1 = (props) => {
     return(
