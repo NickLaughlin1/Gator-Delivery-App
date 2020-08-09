@@ -16,7 +16,7 @@ const Board = (props) => {
     useEffect(() => {
         
         if (!currentUser) return;
-        console.log(currentUser);
+        console.log(props.id);
         axiosAuth("get", "/posts/"+props.id, {}, response => {
             let asc_post = response.data;
             let des_post = asc_post.reverse(); 
