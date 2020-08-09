@@ -2,6 +2,26 @@
 import React, { useCallback, useState } from "react";
 import { Link, withRouter } from "react-router-dom";
 import axios from "axios";
+import { makeStyles } from "@material-ui/core/styles";
+import {Modal, Container, Col} from "react-bootstrap";
+import Button1 from "react-bootstrap/Button";
+import * as ROUTES from "../../constants/routes";
+import { AuthContext } from "../session/withAuthentication";
+import CustomInput from "../../components/CustomInput/CustomInput.js";
+import Email from "@material-ui/icons/Email";
+import LockIcon from "@material-ui/icons/Lock";
+import {Icon} from "semantic-ui-react";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import app from "../firebase/firebase";
+import GridContainer from "../../components/Grid/GridContainer.js";
+import GridItem from "../../components/Grid/GridItem.js";
+import Button from "../../components/CustomButtons/Button.js";
+import Card from "../../components/Card/Card.js";
+import CardBody from "../../components/Card/CardBody.js";
+import CardHeader from "../../components/Card/CardHeader.js";
+import CardFooter from "../../components/Card/CardFooter.js";
+import "../index.css";
+import styles from "../../assets/jss/material-kit-react/views/loginPage.js";
 import "../index.css";
 
 import * as ROUTES from "../../constants/routes";
@@ -94,56 +114,106 @@ const SignUpPage = (props) => {
   };
 
   return (
-    <React.Fragment>
-      <div className="sign-up">
-        <h1>Sign Up</h1>
-        <form onSubmit={handleSignUp}>
-          <NormalSignUp
-            currentStep={currentStep}
-            setVol={setVol}
-            isVol={isVol}
-            name={name}
-            setName={setName}
-            email={email}
-            setEmail={setEmail}
-            passwordOne={passwordOne}
-            setPasswordOne={setPasswordOne}
-            passwordTwo={passwordTwo}
-            setPasswordTwo={setPasswordTwo}
-            addressOne={addressOne}
-            setAddressOne={setAddressOne}
-            addressTwo={addressTwo}
-            setAddressTwo={setAddressTwo}
-            city={city}
-            setCity={setCity}
-            state={state}
-            setState={setState}
-            zip={zip}
-            setZip={setZip}
-            role={role}
-            setRole={setRole}
-            isClicked={isClicked}
-            setIsClicked={setIsClicked}
-          />
-          <SignUpVol
-            currentStep={currentStep}
-            setIsInvalid={setIsInvalid}
-            isInvalid={isInvalid}
-            skills={skills}
-            setSkills={setSkills}
-            businessName={businessName}
-            setBusinessName={setBusinessName}
-            businessWebsite={businessWebsite}
-            setBusinessWebsite={setBusinessWebsite}
-          />
-          {nextButton()}
-        </form>
-      </div>
-    </React.Fragment>
+    <>
+    <Button1 variant="primary" onClick={() => setShowModal(true)}>Sign In</Button1>
+    <NormalSignUp
+     show={showModal} 
+     setShowModal={setShowModal} 
+     onHide={() => setShowModal(false)}
+     handleSignUp={handleSignUp}
+     currentStep={currentStep}
+     setVol={setVol}
+     isVol={isVol}
+     name={name}
+     setName={setName}
+     email={email}
+     setEmail={setEmail}
+     passwordOne={passwordOne}
+     setPasswordOne={setPasswordOne}
+     passwordTwo={passwordTwo}
+     setPasswordTwo={setPasswordTwo}
+     addressOne={addressOne}
+     setAddressOne={setAddressOne}
+     addressTwo={addressTwo}
+     setAddressTwo={setAddressTwo}
+     city={city}
+     setCity={setCity}
+     state={state}
+     setState={setState}
+     zip={zip}
+     setZip={setZip}
+     role={role}
+     setRole={setRole}
+     isClicked={isClicked}
+     setIsClicked={setIsClicked}
+    />
+    </>
+    // <React.Fragment>
+    //   <div className="sign-up">
+    //     <h1>Sign Up</h1>
+    //     <form onSubmit={handleSignUp}>
+    //       <NormalSignUp
+    //         currentStep={currentStep}
+    //         setVol={setVol}
+    //         isVol={isVol}
+    //         name={name}
+    //         setName={setName}
+    //         email={email}
+    //         setEmail={setEmail}
+    //         passwordOne={passwordOne}
+    //         setPasswordOne={setPasswordOne}
+    //         passwordTwo={passwordTwo}
+    //         setPasswordTwo={setPasswordTwo}
+    //         addressOne={addressOne}
+    //         setAddressOne={setAddressOne}
+    //         addressTwo={addressTwo}
+    //         setAddressTwo={setAddressTwo}
+    //         city={city}
+    //         setCity={setCity}
+    //         state={state}
+    //         setState={setState}
+    //         zip={zip}
+    //         setZip={setZip}
+    //         role={role}
+    //         setRole={setRole}
+    //         isClicked={isClicked}
+    //         setIsClicked={setIsClicked}
+    //       />
+    //       <SignUpVol
+    //         currentStep={currentStep}
+    //         setIsInvalid={setIsInvalid}
+    //         isInvalid={isInvalid}
+    //         skills={skills}
+    //         setSkills={setSkills}
+    //         businessName={businessName}
+    //         setBusinessName={setBusinessName}
+    //         businessWebsite={businessWebsite}
+    //         setBusinessWebsite={setBusinessWebsite}
+    //       />
+    //       {nextButton()}
+    //     </form>
+    //   </div>
+    // </React.Fragment>
   );
 };
 
 const NormalSignUp = (props) => {
+  const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
+  const useStyles = makeStyles(styles);
+  setTimeout(function() {
+    setCardAnimation("");
+  }, 700);
+  const classes = useStyles();
+  // const handleLogin = useCallback(async (event) => {
+  //   event.preventDefault();
+  //   try {
+  //     const {email, password} = event.target.elements; //gets the email and password values
+  //     await app.auth().signInWithEmailAndPassword(email.value, password.value);
+  //     window.location = ROUTES.HOME;
+  //   } catch (error) {
+  //     alert(error);
+  //   }
+  // }, []);
   if (props.currentStep < 1) {
     return null;
   }
@@ -161,6 +231,81 @@ const NormalSignUp = (props) => {
   }
 
   return (
+    <Modal
+    {...props}
+    size="lg"
+    aria-labelledby="contained-modal-title-vcenter"
+    centered>
+        <GridContainer justify="center">
+          <GridItem xs={12} sm={12} md={12}>
+            <Card className={classes[cardAnimaton]}>
+              <form className={classes.form} onSubmit={handleLogin}>
+                <CardHeader color="info" className={classes.cardHeader}>
+                  <h2>Sign Up</h2>
+                  <div className={classes.socialLine}>
+                    {/* <Button
+                      justIcon
+                      href="#pablo"
+                      target="_blank"
+                      color="transparent"
+                      onClick={e => e.preventDefault()}
+                    >
+                      <Icon link name="google" />
+                    </Button> */}
+                    <SignInLink />
+                  </div>
+                </CardHeader>
+                <p className={classes.divider}>Or Email and Password</p>
+                <CardBody>
+                  <CustomInput
+                    name="email1"
+                    labelText="Email..."
+                    id="email"
+                    formControlProps={{
+                      fullWidth: true
+                    }}
+                    inputProps={{
+                      name: "email1",
+                      // value: (email),
+                      // onChange: (e) => printEmail(e),
+                      type: "email",
+                      endAdornment: (
+                        <InputAdornment position="end">
+                          <Email className={classes.inputIconsColor} />
+                        </InputAdornment>
+                      )
+                    }}
+                  />
+                  <CustomInput
+                    labelText="Password"
+                    id="pass"
+                    formControlProps={{
+                      fullWidth: true
+                    }}
+                    inputProps={{
+                      name: "password",
+                      type: "password",
+                      endAdornment: (
+                        <InputAdornment position="end">
+                          <LockIcon className={classes.inputIconsColor}>
+                          </LockIcon>
+                        </InputAdornment>
+                      ),
+                      autoComplete: "off"
+                    }}
+                  />
+                  <SignUpLink setShowModal={props.setShowModal}/>
+                </CardBody>
+                <CardFooter className={classes.cardFooter}>
+                  <Button simple color="info" size="lg" type="submit">
+                    Sign In
+                  </Button>
+                </CardFooter>
+              </form>
+            </Card>
+          </GridItem>
+        </GridContainer>
+      </Modal>
     <div>
       <div className="form-group">
         <label htmlFor="inputName">Name *</label>
@@ -454,6 +599,12 @@ const SignUpLink = (props) => (
     Don't have an account? <Link to={ROUTES.SIGN_UP} onClick={() => props.setShowModal(false)}>Sign Up</Link>
   </p>
 );
+
+const SignInLink = (props) => {
+  <p>
+    Already have an account ? <Link to
+  </p>
+}
 
 export default withRouter(SignUpPage);
 export { SignUpLink };
