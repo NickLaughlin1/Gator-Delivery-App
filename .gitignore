@@ -18,6 +18,7 @@
 .env.production.local
 .eslintignore
 .eslintrc.js
+.vscode
 
 package-lock.json
 client/package-lock.json
