@@ -31,7 +31,7 @@ export default function Footer(props) {
       <div className={classes.container}>
         <div className={classes.left}>
           <List className={classes.list}>
-            <ListItemText>This page was made possible by Gator Delivery</ListItemText>
+            <ListItemText><h4>&copy; 2020 Home Order | CEN3031 - Gator Delivery. All Rights Reserved.</h4></ListItemText>
             <ListItem className={classes.inlineBlock}>
               <a
                 href="https://www.creative-tim.com/?ref=mkr-footer"
