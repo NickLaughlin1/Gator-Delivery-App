@@ -57,22 +57,22 @@ const TaskList = (props) => {
       }
     });
   }, []);
+    // Create a row for each task 
+    
 
-  // Create a row for each task
-
-  return (
-    <div>
-      <ul className="posted-jobs_list">
-        <List
-          tasks={tasks}
-          editing={editing}
-          setEditing={setEditing}
-          selectedID={selectedID}
-          setSelectedID={setSelectedID}
-        />
-      </ul>
-    </div>
-  );
+    return (
+        <div className='table-wrapper'>
+            <div className='posted-jobs_list'>
+                <List 
+                    tasks={tasks} 
+                    editing={editing} 
+                    setEditing={setEditing}
+                    selectedID={selectedID}
+                    setSelectedID={setSelectedID} 
+                />
+            </div>
+        </div>
+    );
 };
 
 const List = (props) => {

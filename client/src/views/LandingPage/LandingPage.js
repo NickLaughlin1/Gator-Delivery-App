@@ -14,10 +14,9 @@ import GridItem from "../../components/Grid/GridItem.js";
 import Button from "../../components/CustomButtons/Button.js";
 import HeaderLinks from "../../components/Header/HeaderLinks.js";
 import Parallax from "../../components/Parallax/Parallax.js";
-import SignInLanding from "../../components/sign-in/index.js";
+import SignInLanding from "../../components/sign-in/SignInLanding.js";
 
 import * as ROUTES from "../../constants/routes";
-import { Link } from "react-router-dom";
 
 import styles from "../../assets/jss/material-kit-react/views/landingPage.js";
 

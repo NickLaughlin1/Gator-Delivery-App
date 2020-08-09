@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import * as ROUTES from "../../constants/routes";
-import SignOutButton from "../sign-out";
 import { AuthContext } from "../session/withAuthentication";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
@@ -19,17 +18,38 @@ const Navbar1 = () => {
     //   {currentUser ? <NavAuth /> : <NavUnAuth />}
     // </div>
     <Navbar collapseOnSelect expand="lg" bg="primary" fixed="top" className="navbar-dark nav-fix">
-      <Navbar.Brand href={currentUser ? ROUTES.HOME : ROUTES.LANDING}>Home Order</Navbar.Brand>
+      <Link to={currentUser ? ROUTES.HOME : ROUTES.LANDING}>
+        <Navbar.Brand>Home Order</Navbar.Brand>
+      </Link>
+      
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link href="/create" className="nav-text">Create Job</Nav.Link>
+          <Link to="/create" className="nav-link nav-text">
+            {/* <Nav.Link className="nav-text">Create Job</Nav.Link> */}
+            Create Job
+          </Link>
           <NavDropdown title="Social" id="collasible-nav-dropdown">
-            <NavDropdown.Item href={ROUTES.REVIEWS}>Volunteer Reviews</NavDropdown.Item>
-            <NavDropdown.Item href={ROUTES.COMMUNITY}>Community Board</NavDropdown.Item>
-            <NavDropdown.Item href={ROUTES.FAQ}>FAQ</NavDropdown.Item>
+            <NavDropdown.Item tag={Link} /*href={ROUTES.REVIEWS}*/>
+              <Link to={ROUTES.REVIEWS} className="drp-text">
+                Volunteer Reviews
+              </Link>
+            </NavDropdown.Item>
+            <NavDropdown.Item tag={Link}>
+              <Link to={ROUTES.COMMUNITY} className="drp-text">
+                Community Board
+              </Link>
+            </NavDropdown.Item>
+            <NavDropdown.Item tag={Link}>
+              <Link to={ROUTES.FAQ} className="drp-text">
+                FAQ
+              </Link>
+            </NavDropdown.Item>
           </NavDropdown>
-          <Nav.Link href={ROUTES.CALENDAR} className="nav-text">Calendar</Nav.Link>
+          <Link to={ROUTES.CALENDAR} className="nav-text nav-link">
+            Calendar
+          </Link>
+          {/* <Nav.Link tag={Link} href={ROUTES.CALENDAR} className="nav-text">Calendar</Nav.Link> */}
         </Nav>
         {currentUser ? <NavAuth /> : <NavUnAuth />}
       </Navbar.Collapse>
@@ -37,11 +57,21 @@ const Navbar1 = () => {
   );
 };
 
-const NavAuth = () => {
-  const { currentUser } = useContext(AuthContext);
+const NavAuth = (props) => {
+  const { currentUser, SignOut } = useContext(AuthContext);
+  const handleSignOut = () => {
+    try {
+      SignOut();
+      // Makes sure the person gets back to the landing page after logout
+      //history.push(ROUTES.LANDING);
+      console.log("done");
+    } catch (error) {
+        alert(error);
+    } 
+  };
   return (
     <Nav>
-      <Navbar.Text className="nav-text">
+      <Navbar.Text className="user-text">
         Hello, {currentUser.displayName}!
       </Navbar.Text>
       <NavDropdown title={
@@ -50,10 +80,21 @@ const NavAuth = () => {
           className="profile-pic"
         />
         } id="collasible-nav-dropdown" alignRight>
-        <NavDropdown.Item href={ROUTES.ACCOUNT}>General Settings</NavDropdown.Item>
-        <NavDropdown.Item href={ROUTES.PROFILE_SETTINGS}>Profile Settings</NavDropdown.Item>
+        
+        <NavDropdown.Item>
+          <Link to={ROUTES.ACCOUNT} className="drp-text">
+            General Settings
+          </Link>
+        </NavDropdown.Item>
+        <NavDropdown.Item>
+          <Link to={ROUTES.PROFILE_SETTINGS} className="drp-text">
+            Profile Settings
+          </Link>
+        </NavDropdown.Item>
         <NavDropdown.Divider />
-        <SignOutButton />
+        <NavDropdown.Item tag={Link} onClick={handleSignOut} href={ROUTES.LANDING}>
+          Sign Out
+        </NavDropdown.Item>
       </NavDropdown>
     </Nav>
   );

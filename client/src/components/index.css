@@ -98,6 +98,10 @@ body > #root > div {
   color: rgb(90, 195, 199) !important;
 }
 
+.user-text {
+  color: white !important;
+}
+
 .signUp-text {
   color: white;
   font-weight: bold;
@@ -106,6 +110,10 @@ body > #root > div {
 .signIn-text {
   color: white;
   font-weight: bold;
+}
+
+.drp-text {
+  color: black;
 }
 
 #collasible-nav-dropdown {
