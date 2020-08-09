@@ -8,6 +8,7 @@ export const create = async (req, res) => {
     task: req.body.task,
     date: Date.parse(req.body.date),
     email: req.body.email,
+    taken: req.body.taken
   });
 
   newTask.save(function (err) {
@@ -20,6 +21,13 @@ export const create = async (req, res) => {
 export const list = (req, res) => {
   let currEmail = req.params.listingEmail;
   Task.find({ email: currEmail }).exec(function (err, task) {
+    if (err) return res.status(400).send(err);
+    res.json(task);
+  });
+};
+
+export const all = (req, res) => {
+  Task.find({taken: false}).exec(function (err, task) {
     if (err) return res.status(400).send(err);
     res.json(task);
   });

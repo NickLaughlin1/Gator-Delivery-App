@@ -236,6 +236,10 @@ display: inline-block;
   margin: 0;
 }
 
+.task-taken {
+  margin-top: 20px;
+}
+
 .heading-large {
   margin-bottom: 30px;
   font-size: 30px;

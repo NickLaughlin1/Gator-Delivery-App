@@ -12,6 +12,7 @@ tasksRouter.post('/add', tasks.create);
 tasksRouter.get('/:listingEmail', tasks.list);
 tasksRouter.delete('/:taskid', tasks.remove);
 tasksRouter.put('/:taskid', tasks.update);
+tasksRouter.get('/all',tasks.all);
 
 //tasksRouter.get('/:listingEmail', tasks.);
 /* 

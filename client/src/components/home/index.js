@@ -7,14 +7,39 @@ import { Link } from "react-router-dom";
 import * as ROUTES from "../../constants/routes";
 import * as firebase from "firebase/app";
 import TaskList from "../tasklist/TaskList";
-import Modal from 'react-bootstrap/Modal'
+import axios from 'axios';
   
 const Home = (props) => {
 
-  const [show, setShow] = useState(false)
+  const [role, setRole] = useState('');
+    useEffect(() => {
+        firebase.auth().onAuthStateChanged((user) => {
+          if (user) {
+            console.log("signed in");
+            console.log(user.email);
+            //setEmail(user.email);
+            let url = "http://localhost:5000/users/";
+            let search = url.concat(user.email);
+            //console.log(email);
+            console.log(search);
+            axios
+              .get(search)
+              .then((response) => {
+                  let r = response.data[0].role;
+                    console.log('USERS STATUS: ', r);
+                    setRole(r);
+              })
+              .catch((error) => {
+                console.log('ISSUES');
+                console.log(error);
+              });
+          }
+        });
+      }, []);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  if (role !== 'Regular Customer') {
+    return null;
+  }
 
   return (
     <div>
@@ -26,17 +51,10 @@ const Home = (props) => {
                 <div className='mb-panel posted-jobs' id='my-posted-jobs'>
                   <h1 className='heading-large'>
                     My posted jobs
-                  </h1>
-                  
-                    
-                      <TaskList
-                      handleShow={handleShow}
-                      setShow={setShow}/>
-                    
-                  
+                  </h1>                
+                      <TaskList/>
                 </div>
               </div>
-            
             <div className="layout-sidebar">
               <div className="mb-panel">
                 <div className="mb-panel_header">

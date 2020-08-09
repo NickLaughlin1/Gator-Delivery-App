@@ -47,8 +47,9 @@ const Task = (props) => {
       <div className="card-body">
         <p className="card-title">{props.task.task}</p>
         <h6 className="card-text lower">
-          Created on {convert(props.task.createdAt.substring(0, 10))}
+          Created on {props.task.createdAt.substring(0, 10)}
         </h6>
+        <div className='task-taken'>Volunteer Accepted? {props.task.taken ? <h6>Taken</h6> : <h6>No</h6>}</div>
       </div>
     </div>
   );
@@ -127,20 +128,6 @@ const TaskList = (props) => {
             </div>
         </div>
     );
-
-  return (
-    <div>
-      <ul className="posted-jobs_list">
-        <List
-          tasks={tasks}
-          editing={editing}
-          setEditing={setEditing}
-          selectedID={selectedID}
-          setSelectedID={setSelectedID}
-        />
-      </ul>
-    </div>
-  );
 };
 
 const List = (props) => {
@@ -173,19 +160,5 @@ const List = (props) => {
         });
     }
 };
-
-/*const Edit = (props) => {
-    console.log("made into editing");
-    console.log(props.editing);
-    if (props.ID !== props.selectedID) {
-        return null;
-    }
-
-    return (
-        <div>
-            <p>Editing option chosen</p>
-        </div>
-    );
-}*/
 
 export default TaskList;

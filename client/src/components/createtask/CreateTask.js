@@ -12,6 +12,9 @@ import "react-datepicker/dist/react-datepicker.css"
 import { Button, OverlayTrigger, Popover } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal'
 import Success from '../success'
+import moment from "moment-timezone";
+
+
 
 const PopUp = (props) => {
   return(
@@ -67,7 +70,8 @@ const CreateTask = (props) => {
             headline: headline,
             task: task,
             email: email,
-            date: date
+            date: date,
+            taken: false
         };
         //console.log(newSubmission);
         axios.post('/tasks/add', newSubmission);

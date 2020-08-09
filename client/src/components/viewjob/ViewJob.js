@@ -25,6 +25,25 @@ const PopUp = (props) => {
     );
   };
 
+const PopUp1 = (props) => {
+    return(
+      <Modal show={props.show} onHide={props.handleClose}>
+          <Modal.Header closeButton>
+             <Modal.Title>Edit job</Modal.Title>
+           </Modal.Header>
+           <Modal.Body>Do you want to save your changes to your job?</Modal.Body>
+           <Modal.Footer>
+              <button className='btn btn-secondary' onClick={props.handleClose}>
+                  No
+               </button>
+                <button className='btn btn-success' onClick={props.handleSubmit}>
+                    Yes, save changes
+                </button>
+            </Modal.Footer>
+    </Modal>
+    );
+};
+
 const ViewJob = (props) => {
     const [task, setTask] = useState('');
     const [tasks, setTasks] = useState([]);
@@ -42,6 +61,8 @@ const ViewJob = (props) => {
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+    ;
 
     useEffect(() => {
         firebase.auth().onAuthStateChanged(user => {
@@ -160,7 +181,7 @@ const ViewJob = (props) => {
                     <div className='viewjob-header'>
                         <div className='mb-panel'>
                             <h3 className='card-title'>{headline}</h3>
-                            <h5 className='card-text'>Created on {convert(created)}</h5>
+                            <h5 className='card-text'>Created on {created}</h5>
                         </div>
                     </div>
                     <div className='layout-sidebar'>
@@ -227,13 +248,14 @@ const Display = (props) => {
             <div className='card-header bg-light card-head font-weight-bold'>Job description</div>
             <div className='card-body'>
                 <p className='card-title'>{props.task}</p> 
-                <p className='card-title'>Date to be completed: {props.convert(props.datestring)}</p> 
+                <p className='card-title'>Date to be completed: {props.datestring}</p> 
             </div>
         </div>
     );
 };
 
 const Editing = (props) => {
+   
     if (props.editing === false) {
         return null;
     };
@@ -272,12 +294,7 @@ const Editing = (props) => {
             //props.setDate(new Date());
     };
 
-    //console.log(props.ID);
-
-    //const dateChange = (date) => {
-        
-        
-    //}
+    
 
     return (
         <form onSubmit={handleSubmit}>
@@ -301,6 +318,7 @@ const Editing = (props) => {
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
             </React.Fragment>  
+            
         </form>
     );
 };
