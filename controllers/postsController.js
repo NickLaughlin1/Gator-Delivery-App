@@ -31,7 +31,7 @@ export const create = async (req, res) => {
 // filter _id: replyTo
 /* Retreive all the posts*/
 export const list = (req, res) => {
-    //console.log("list");
+  console.log("list");
   Post.find({replyTo: mongoose.Types.ObjectId(req.params.postId)}).exec(function (err, post) {
     if (err) return res.status(400).send(err);
     res.json(post);

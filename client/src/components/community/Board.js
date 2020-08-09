@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { formatDate } from './helper';
 import { Link, useParams } from 'react-router-dom';
-import { AuthContext } from "../session/withAuthentication";
+import { AuthContext } from "../session/withAuthentication.js";
 
 const COMMUNITY_ID = "5f1a297a5e28d64e6c283ea0";
 
@@ -12,19 +12,20 @@ const Board = (props) => {
     const [mainPost, setMainPost] = useState('');
     const { currentUser, axiosAuth } = useContext(AuthContext);
   
-
+    
     useEffect(() => {
         
         if (!currentUser) return;
-        console.log(props.id);
+        //console.log(props.id);
         axiosAuth("get", "/posts/"+props.id, {}, response => {
             let asc_post = response.data;
             let des_post = asc_post.reverse(); 
             // Show newest posts first
+            console.log("axiosAuth");
             setPostList([]);
             setPostList(des_post); 
         }, (err) => {});
-
+        
             if (props.id) {
                 let url = 'http://localhost:5000/posts/post/';
                 let ID = url.concat(props.id);

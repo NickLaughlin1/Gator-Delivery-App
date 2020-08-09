@@ -1,6 +1,6 @@
 import firebaseAdmin from "firebase-admin";
 export const checkAuth = (req, res, next) => {
-  //console.log(req);
+  //console.log(req.headers.authtoken);
     if (req.headers.authtoken) {
       firebaseAdmin.auth().verifyIdToken(req.headers.authtoken)
         .then((decode) => {

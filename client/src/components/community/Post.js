@@ -4,6 +4,14 @@ import { Link } from 'react-router-dom';
 import {getPost, formatDate} from './helper';
 
 const Post = (props) => {
+    const [selectedID, setSelectedID] = useState('');
+    const [post, setPost] = useState(''); 
+    
+    // useEffect(() => {
+    //     getPost(props.post._id)
+
+    // }
+
 
     return (
         <div className="card post-editor">
