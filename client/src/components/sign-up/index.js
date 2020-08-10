@@ -69,6 +69,7 @@ const NormalSignUp = (props) => {
   const [isClicked, setIsClicked] = useState(false);
   const [isVol, setVol] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [password, setPasswrod] = useState('');
   
   const [user, setUserValues] = useState({
     name: '',
@@ -88,7 +89,7 @@ const NormalSignUp = (props) => {
     initialValues: {
       name: '',
       email: '',
-      password: '',
+      password: 'notARealPassword',
       addressOne: '',
       addressTwo: '',
       city: '',
@@ -360,11 +361,6 @@ const NormalSignUp = (props) => {
       label: 'Volunteer Handyman',
       disabled: false,
     },
-    {
-      value: 'Volunteer Driver',
-      label: 'Volunteer Driver',
-      disabled: false,
-    }
   ];
   const userSkills = [
     {
@@ -447,7 +443,6 @@ const NormalSignUp = (props) => {
         .createUserWithEmailAndPassword(newUser.email, newUser.password)
         .then(async (result) => {
           const user = await app.auth().currentUser;
-          alert(JSON.stringify(user, null, 2));
           axios.post("http://localhost:5000/users/create", newUser);
           return user.updateProfile({
             displayName: newUser.name,
@@ -530,8 +525,8 @@ const NormalSignUp = (props) => {
                       <InputLabel htmlFor="standard-adornment-password">Password *</InputLabel>
                       <Input
                         id="password"
-                        value={formik.values.password}
-                        onChange={formik.handleChange}
+                        value={password}
+                        onChange={(e) => setPasswrod(e.target.value)}
                         required={true}
                         inputProps={{
                           type: "password",

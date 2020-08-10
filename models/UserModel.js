@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-import bcrpyt from "bcryptjs";
 
 /* 
  * This could be added too but this is just the bare bones of what we need
@@ -20,23 +19,5 @@ const userSchema = new mongoose.Schema({
 }, {
     timestamps: true,
 });
-
-// userSchema.pre('save', (next) => {
-//     let user = this;
-//     bcrypt.genSalt(10, function(err, salt) {
-//         if(err) {
-//             throw(err);
-//         } else {
-//             bycrypt.hash(user.password, salt, async function(err, hash){
-//             if (err) {
-//                 throw err;
-//             } else {
-//                 user.password = hash;
-//             }
-//             })
-//         }
-//     });
-//     return next();
-// });
 
 export default mongoose.model('user', userSchema);
