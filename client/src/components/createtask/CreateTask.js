@@ -277,7 +277,7 @@ const Step3 = (props) => {
       <OverlayTrigger trigger="hover" placement="right" overlay={
             <Popover id="popover-basic">
               <Popover.Content>
-                Create a short title that summarizes the job you need completed. It should be about 1 sentence. This is what the volunteers will see first about your job.
+                Create a short title that summarizes the job you need completed. It should be about one sentence. This is what the volunteers will see first about your job.
               </Popover.Content>
             </Popover>}>
           <div className='float-right'>

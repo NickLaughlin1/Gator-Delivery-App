@@ -9,6 +9,7 @@ import {Button} from "react-bootstrap";
 import "../index.css";
 import { HelpOutline } from "@material-ui/icons";
 import SignIn from "../sign-in";
+import SignUp from "../sign-up";
 //import "bootstrap/dist/css/bootstrap.min.css";
 
 const Navbar1 = () => {
@@ -17,7 +18,7 @@ const Navbar1 = () => {
     // <div className="header">
     //   {currentUser ? <NavAuth /> : <NavUnAuth />}
     // </div>
-    <Navbar collapseOnSelect expand="lg" bg="primary" fixed="top" className="navbar-dark nav-fix">
+    <Navbar collapseOnSelect expand="lg" bg="primary" fixed="top" className="navbar-dark nav-fix" style={{height: "6vh"}}>
       <Link to={currentUser ? ROUTES.HOME : ROUTES.LANDING}>
         <Navbar.Brand>Home Order</Navbar.Brand>
       </Link>
@@ -101,12 +102,27 @@ const NavAuth = (props) => {
   
 }
 
-const NavUnAuth = (props) => (
+const NavUnAuth = (props) => {
+  const [showSignUp, setShowSignUp] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+
+  const CloseSignUp = () => { // Closes the Sign Up modal and shows the sign in modal 
+    setShowSignUp(false);
+    setShowModal(true);
+  }
+  
+  const CloseSignIn = () => { // Closes the Sign In modal and shows the sign up modal
+    setShowModal(false);
+    setShowSignUp(true);
+  }
+  return (
     <Nav>
-      <Nav.Link href={ROUTES.SIGN_UP} className="signUp-text">Sign Up</Nav.Link>
+      {/* <Nav.Link href={ROUTES.SIGN_UP} className="signUp-text">Sign Up</Nav.Link> */}
       {/* <Nav.Link href={ROUTES.SIGN_IN} className="signIn-text">Sign In</Nav.Link> */}
-      <SignIn />
+      <SignIn showSignUp={showSignUp} showModal={showModal} setShowSignUp={setShowSignUp} setShowModal={setShowModal} CloseSignIn={CloseSignIn}/>
+      <SignUp showSignUp={showSignUp} showModal={showModal} setShowSignUp={setShowSignUp} setShowModal={setShowModal} CloseSignUp={CloseSignUp}/>
     </Nav>
-);
+  );
+}
 
 export default Navbar1;
