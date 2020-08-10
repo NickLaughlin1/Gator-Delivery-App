@@ -10,7 +10,7 @@ return(
 <div class = "faqprofile">
     <br></br><br></br><br></br><br></br>
   <h1>Frequently Asked Questions</h1>
-  <br></br><br></br><br></br><br></br><br></br>
+  <br></br><br></br><br></br><br></br>
         <h4>Q: How do I place an order?</h4>
         <br></br>
         <h6>A: If you click the button above that says "Create Job" it will walk you through the process

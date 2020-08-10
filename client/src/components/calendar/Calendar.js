@@ -236,11 +236,11 @@ const CalendarComponent = (props) => {
       </div>
       <div>&nbsp;</div>
       <div className="donk">
-        Click on a date twice or select a range of dates.
+        <h3>Click on a date twice or select a range of dates.</h3>
       </div>
       <div>&nbsp;</div>
       <div className="donk">
-        --------------------------------------------------------------------------------------------------
+        <h2>--------------------------------------------------------------------------</h2>
       </div>
       {/* check if date is null to prevent errors */}
       {date.length > 1 &&
@@ -252,79 +252,8 @@ const CalendarComponent = (props) => {
           .substring(0, date[1].toLocaleString().indexOf(",")) ? (
         /* same day */
         <div className="donk">
-          <div>Selected day:</div>
-          <div>&nbsp;</div>
           <div>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            {date[0]
-              .toLocaleString()
-              .substring(0, date[0].toLocaleString().indexOf(","))}
-            <div>&nbsp;</div>&nbsp;&nbsp;&nbsp;&nbsp;
-            <input
-              style={{ width: 25 }}
-              type="numeric"
-              placeholder="12"
-              onChange={(e) => setHour1(e.target.value)}
-            />
-            :
-            <input
-              style={{ width: 25 }}
-              type="numeric"
-              placeholder="00"
-              onChange={(e) => setMin1(e.target.value)}
-            />
-            :
-            <input
-              style={{ width: 25 }}
-              type="numeric"
-              placeholder="00"
-              onChange={(e) => setSec1(e.target.value)}
-            />
-            &nbsp;
-            <select id="inputAMPM1" onChange={(e) => setBefore(e.target.value)}>
-              <option defaultValue>AM</option>
-              <option value="PM">PM</option>
-            </select>
-            &nbsp;to&nbsp;
-            <input
-              style={{ width: 25 }}
-              type="numeric"
-              placeholder="11"
-              onChange={(e) => setHour2(e.target.value)}
-            />
-            :
-            <input
-              style={{ width: 25 }}
-              type="numeric"
-              placeholder="59"
-              onChange={(e) => setMin2(e.target.value)}
-            />
-            :
-            <input
-              style={{ width: 25 }}
-              type="numeric"
-              placeholder="59"
-              onChange={(e) => setSec2(e.target.value)}
-            />
-            &nbsp;
-            <select id="inputAMPM2" onChange={(e) => setAfter(e.target.value)}>
-              <option defaultValue>PM</option>
-              <option value="AM">AM</option>
-            </select>
-            <div>&nbsp;</div>
-          </div>
-        </div>
-      ) : /* range of dates */
-      date[1] == null ? (
-        <div>
-          <div className="donk">Selected day(s):</div>
-          <div>&nbsp;</div>
-          <div>None. Please select the same date or a different date.</div>
-        </div>
-      ) : (
-        <div className="donk">
-          <div>
-            <div>Selected days:</div>
+            <div><h5>Selected day:</h5></div>
             <div>&nbsp;</div>
             <div>
               &nbsp;&nbsp;&nbsp;&nbsp;
@@ -361,7 +290,89 @@ const CalendarComponent = (props) => {
                 <option value="PM">PM</option>
               </select>
             </div>
-            <div>&nbsp;&nbsp;&nbsp;&nbsp;to</div>
+            <div className="donk"><h5>to</h5></div>
+            <div>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <input
+                style={{ width: 25 }}
+                type="numeric"
+                placeholder="11"
+                onChange={(e) => setHour2(e.target.value)}
+              />
+              :
+              <input
+                style={{ width: 25 }}
+                type="numeric"
+                placeholder="59"
+                onChange={(e) => setMin2(e.target.value)}
+              />
+              :
+              <input
+                style={{ width: 25 }}
+                type="numeric"
+                placeholder="59"
+                onChange={(e) => setSec2(e.target.value)}
+              />
+              &nbsp;
+              <select
+                id="inputAMPM4"
+                onChange={(e) => setAfter(e.target.value)}
+              >
+                <option defaultValue>PM</option>
+                <option value="AM">AM</option>
+              </select>
+            </div>
+          </div>
+          <div>&nbsp;</div>
+        </div>
+      ) : /* range of dates */
+      date[1] == null ? (
+        <div>
+          <div className="donk"><h5>Selected day(s):</h5></div>
+          <div>&nbsp;</div>
+          <div className="donk">None. Please select the same date or a different date.</div>
+        </div>
+      ) : (
+        <div className="donk">
+          <div>
+            <div><h5>Selected days:</h5></div>
+            <div>&nbsp;</div>
+            <div>
+              &nbsp;&nbsp;&nbsp;&nbsp;
+              {date[0]
+                .toLocaleString()
+                .substring(0, date[0].toLocaleString().indexOf(","))}
+              &nbsp;&nbsp;--&nbsp;&nbsp;
+              <input
+                style={{ width: 25 }}
+                type="numeric"
+                placeholder="12"
+                onChange={(e) => setHour1(e.target.value)}
+              />
+              :
+              <input
+                style={{ width: 25 }}
+                type="numeric"
+                placeholder="00"
+                onChange={(e) => setMin1(e.target.value)}
+              />
+              :
+              <input
+                style={{ width: 25 }}
+                type="numeric"
+                placeholder="00"
+                onChange={(e) => setSec1(e.target.value)}
+              />
+              &nbsp;
+              <select
+                id="inputAMPM3"
+                onChange={(e) => setBefore(e.target.value)}
+              >
+                <option defaultValue>AM</option>
+                <option value="PM">PM</option>
+              </select>
+            </div>
+            <div className="donk"><h5>to</h5></div>
             <div>
               &nbsp;&nbsp;&nbsp;&nbsp;
               {date[1]
@@ -402,7 +413,7 @@ const CalendarComponent = (props) => {
         </div>
       )}
       <div className="donk">
-        --------------------------------------------------------------------------------------------------
+        <h2>--------------------------------------------------------------------------</h2>
       </div>
       <div>&nbsp;</div>
       <div className="donk">

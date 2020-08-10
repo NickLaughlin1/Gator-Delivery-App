@@ -11,5 +11,6 @@ export const COMMUNITY = "/community";
 export const CALENDAR = "/calendar";
 export const VIEWJOB = "/viewjob";
 export const FAQ = "/faq";
-export const REVIEWS = "/reviews";
+export const REVIEWS = "/vreviews";
 export const PROFILE_SETTINGS = "/settings/profile";
+export const DELETE = "/delete";
