@@ -361,11 +361,6 @@ const NormalSignUp = (props) => {
       label: 'Volunteer Handyman',
       disabled: false,
     },
-    {
-      value: 'Volunteer Driver',
-      label: 'Volunteer Driver',
-      disabled: false,
-    }
   ];
   const userSkills = [
     {
