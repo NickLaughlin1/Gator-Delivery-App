@@ -14,7 +14,8 @@ import GridItem from "../../components/Grid/GridItem.js";
 import Button from "../../components/CustomButtons/Button.js";
 import HeaderLinks from "../../components/Header/HeaderLinks.js";
 import Parallax from "../../components/Parallax/Parallax.js";
-import SignInLanding from "../../components/sign-in/SignInLanding.js";
+import SignUpLanding from "../../components/sign-up/index.js";
+import {SignInForm} from "../../components/sign-in/index.js";
 
 import * as ROUTES from "../../constants/routes";
 
@@ -31,6 +32,16 @@ const useStyles = makeStyles(styles);
 
 export default function LandingPage(props) {
   const [isLanding, setIsLanding] = useState(true);
+  const [showSignUp, setShowSignUp] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const CloseSignUp = () => {
+    setShowSignUp(false);
+    setShowModal(true);
+  }
+  const CloseSignIn = () => { // Closes the Sign In modal and shows the sign up modal
+    setShowModal(false);
+    setShowSignUp(true);
+  }
   const classes = useStyles();
   const { ...rest } = props;
   return (
@@ -55,8 +66,8 @@ export default function LandingPage(props) {
                   <i className="fas fa-play" />
                   Get Started
                 </Button> */}
-                <SignInLanding />
-              
+                <SignUpLanding isLanding={isLanding} showSignUp={showSignUp} showModal={showModal} setShowSignUp={setShowSignUp} setShowModal={setShowModal} CloseSignUp={CloseSignUp}/>
+                <SignInForm show={showModal} CloseSignIn={CloseSignIn} onHide={() => setShowModal(false)}/>
             </GridItem>
           </GridContainer>
         </div>
