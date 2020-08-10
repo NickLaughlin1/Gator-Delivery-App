@@ -242,6 +242,11 @@ display: inline-block;
   position: relative;
 }
 
+.mb-row2 {
+  width: 100%;
+  margin-top: 10px;
+}
+
 .cont-body {
   font-size: 16px;
 }
@@ -284,11 +289,21 @@ h1 {
   padding: 0;
 }
 
+.table-wrapper {
+  max-height: 560px;
+	overflow: auto;
+	scroll-behavior: smooth;
+}
+
 .posted-jobs_list-item {
   border: 0;
   margin: 0;
   padding: 0 0 10px;
   margin-bottom: 15px;
+}
+
+.card-question {
+  padding-bottom: 20px;
 }
 
 .card-head {
@@ -317,8 +332,8 @@ h1 {
 .viewjob-header {
   width: 98%;
   margin: auto;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 30px;
+  margin-bottom: 10px;
 }
 
 .edit-sidebar1 {
