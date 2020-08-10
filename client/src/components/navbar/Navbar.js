@@ -30,7 +30,9 @@ const Navbar1 = () => {
             {/* <Nav.Link className="nav-text">Create Job</Nav.Link> */}
             Create Job
           </Link>
-          <NavDropdown title="Social" id="collasible-nav-dropdown">
+          {currentUser &&
+          <>
+            <NavDropdown title="Social" id="collasible-nav-dropdown">
             <NavDropdown.Item tag={Link} /*href={ROUTES.REVIEWS}*/>
               <Link to={ROUTES.REVIEWS} className="drp-text">
                 Volunteer Reviews
@@ -50,6 +52,8 @@ const Navbar1 = () => {
           <Link to={ROUTES.CALENDAR} className="nav-text nav-link">
             Calendar
           </Link>
+          </>}
+          
           {/* <Nav.Link tag={Link} href={ROUTES.CALENDAR} className="nav-text">Calendar</Nav.Link> */}
         </Nav>
         {currentUser ? <NavAuth /> : <NavUnAuth />}
@@ -71,6 +75,9 @@ const NavAuth = (props) => {
     } 
   };
   return (
+    <>
+    
+    
     <Nav>
       <Navbar.Text className="user-text">
         Hello, {currentUser.displayName}!
@@ -98,6 +105,7 @@ const NavAuth = (props) => {
         </NavDropdown.Item>
       </NavDropdown>
     </Nav>
+    </>
   );
   
 }
