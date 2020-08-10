@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useState, useEffect } from "react";
-import { withRouter, Redirect } from "react-router-dom";
+import { withRouter, Redirect, Link } from "react-router-dom";
 
-import { SignUpLink } from "../sign-up";
+//import { SignUpLink } from "../sign-up";
 import { makeStyles } from "@material-ui/core/styles";
 import {Modal, Container, Col} from "react-bootstrap";
 import Button1 from "react-bootstrap/Button";
@@ -24,7 +24,7 @@ import "../index.css";
 import styles from "../../assets/jss/material-kit-react/views/loginPage.js";
 
 const SignInPage = (props) => {
-  const [showModal, setShowModal] = useState(false);
+  
   return (
     // <div className="sign-in">
     //   {/* <h1>Login</h1> */}
@@ -32,8 +32,10 @@ const SignInPage = (props) => {
     //   {/* This allows to still reach the sign up page even when trying to login */}
     // {/* </div> */}
     <>
-    <Button1 variant="primary" onClick={() => setShowModal(true)}>Sign In</Button1>
-    <SignInForm show={showModal} setShowModal={setShowModal} onHide={() => setShowModal(false)}/>
+    <Button1 variant="primary" onClick={() => props.setShowModal(true)}>
+      Sign In
+    </Button1>
+    <SignInForm show={props.showModal} CloseSignIn={props.CloseSignIn} onHide={() => props.setShowModal(false)}/>
     </>
   );
 }
@@ -121,7 +123,9 @@ const SignInForm = (props) => {
                       autoComplete: "off"
                     }}
                   />
-                  <SignUpLink setShowModal={props.setShowModal}/>
+                  <p>
+                    Don't have an account? <Link to="#" onClick={props.CloseSignIn}>Sign Up</Link>
+                  </p>
                 </CardBody>
                 <CardFooter className={classes.cardFooter}>
                   <Button simple color="info" size="lg" type="submit">

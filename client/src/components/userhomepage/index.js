@@ -30,7 +30,7 @@ const UserHomePage = (props) => {
           }
         });
       //}, []);
-      if (role === 'volunteer Handyman') {
+      if (role === 'Volunteer Handyman') {
         return (
             <VolHome
               />

@@ -21,14 +21,14 @@ const AccountPage = (props) => {
   const [settings, setSettings] = useState({});
   
     // app.auth().onAuthStateChanged((user) => {
-      const { currentUser } = useContext(AuthContext);
+    const { currentUser } = useContext(AuthContext);
+    useEffect(() => {
       if(currentUser) {
         let url = "http://localhost:5000/users/" + currentUser.email;
-        console.log(url);
         try {
           axios.get(url).then((res) => {
             if(!res) {
-              alert("you are not a user");
+              alert("Unauthorized!");
             }
             setSettings({
               "mysettings.general.name": res.data[0].name,
@@ -43,6 +43,8 @@ const AccountPage = (props) => {
           alert(error);
         }
       };
+    }, []);
+      
  
   
   
