@@ -30,6 +30,12 @@ const UserHomePage = (props) => {
           }
         });
       //}, []);
+      if (role === 'volunteer Handyman') {
+        return (
+            <VolHome
+              />
+        );
+      };
 
       //if (role === 'Regular Customer') {
         return (
@@ -37,7 +43,7 @@ const UserHomePage = (props) => {
             <Home
                 role={role}
             />
-            <VolHome/>
+            
             </div>
         );
       //} else {

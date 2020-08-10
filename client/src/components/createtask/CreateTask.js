@@ -87,8 +87,6 @@ const CreateTask = (props) => {
         setAdded(true);
     };
 
-<<<<<<< HEAD
-=======
   
 
     const _next = () => {
@@ -104,7 +102,6 @@ const CreateTask = (props) => {
         currStep = currStep <= 1 ? 1: currStep - 1
         setCurrentStep(currStep);
     };
->>>>>>> upstream/master
 
   const handleDateChange = (date) => setDate(date);
 
