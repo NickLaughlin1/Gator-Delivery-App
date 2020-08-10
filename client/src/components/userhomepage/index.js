@@ -13,7 +13,7 @@ const UserHomePage = (props) => {
             //console.log("signed in");
             //console.log(user.email);
             //setEmail(user.email);
-            let url = "http://localhost:5000/users/";
+            let url = "/users/";
             let search = url.concat(user.email);
             //console.log(email);
             //console.log(search);
@@ -30,6 +30,12 @@ const UserHomePage = (props) => {
           }
         });
       //}, []);
+      if (role === 'volunteer Handyman') {
+        return (
+            <VolHome
+              />
+        );
+      };
 
       //if (role === 'Regular Customer') {
         return (
@@ -37,7 +43,7 @@ const UserHomePage = (props) => {
             <Home
                 role={role}
             />
-            <VolHome/>
+            
             </div>
         );
       //} else {
