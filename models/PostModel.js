@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 const postSchema = new mongoose.Schema({
   text: {type: String, require: true},
   date: {type: Date, require: true},
-  user: {type: String, require: true},
+  user: {type: String},
   replyTo: {type: mongoose.Schema.Types.ObjectId},
   repliable: {type: Boolean, require: true},
   edited: {type: Boolean, require: true},

@@ -22,6 +22,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar1 from "../navbar/Navbar";
 // import TaskList from "../tasklist/TaskList";
 import CreateTask from "../createtask/CreateTask";
+import {PostBoard as PostBoard} from "../community/Board";
 import Board from '../community/Board';
 import Rored from '../reviews/Rored';
 import faq from '../faq/faq';
@@ -44,6 +45,7 @@ const App = () => {
 
             <div className="body">
               <Route path={ROUTES.CREATE} component={CreateTask} />
+              {/* <Route path={ROUTES.COMMUNITY} component={CommunityBoard} /> */}
               <Route path={ROUTES.DELETE} component={Delete} />
               <Route path={ROUTES.REVIEWS} component={Rored} />
               <Route path={ROUTES.CALENDAR} component={Calendar} />
@@ -56,6 +58,9 @@ const App = () => {
               <Route path={ROUTES.ACCOUNT} component={AccountPage} />
               <Route path={ROUTES.PROFILE_SETTINGS} component={AccountPage} />
               <Route path={path.join("/job", ":id?")} component={ViewJob} />
+
+              <Route path={path.join("/post", ":id?")} component={PostBoard} />
+              <Route path={ROUTES.REVIEWS} component={ReviewPage} />
               {/* <Route path={ROUTES.ADMIN} component={AdminPage} />   */}
             </div>
             <Footer />
