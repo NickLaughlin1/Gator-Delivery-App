@@ -443,7 +443,7 @@ const NormalSignUp = (props) => {
         .createUserWithEmailAndPassword(newUser.email, newUser.password)
         .then(async (result) => {
           const user = await app.auth().currentUser;
-          axios.post("http://localhost:5000/users/create", newUser);
+          axios.post("/users/create", newUser);
           return user.updateProfile({
             displayName: newUser.name,
           });

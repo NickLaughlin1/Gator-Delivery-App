@@ -1,68 +1,73 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Home Order
+## By Gator Delivery
 
-## Available Scripts
+We are Gator Delivery, a team of five individuals enrolled in CEN3031 Introduction to Software Engineering at the University of Florida during the summer 2020 term.
 
-In the project directory, you can run:
+We have created HomeOrder to provide an easy way for home owners to get jobs done that they are not able to do themselves. We wish to target users who needs a job done in plumbing, flooring, electrical, HVAC, and many other types of work that usually needs a handyman to complete. We also want to provide a platform for handyman that wish to volunteer their free time to help residents in their area. Visit [HomeOrder](https://home-order-gatordelivery.herokuapp.com/).
 
-### `npm start`
+### How to run
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+If you would like to run HomeOrder locally on your machine, execute the following instrucionts once the project is cloned and you are in the project folder:
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+```
+npm install
+npm run client-install
+npm run dev
+```
 
-### `npm test`
+#### How to deploy
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+HomeOrder is fully ready to be deployed on Heroku. Just clone clone the repo and connect your Heroku account with your GithUb repo.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Features
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+HomeOrder contains the following features:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* **Homeowners can create a post describing their job:** 
+Homeowners are able to create a post that will contain a headline of the job, a full description of the job, what trade the job relates to (also an “I don’t know” choice), and a timeframe for when they want the job completed/worked on.
 
-### `npm run eject`
+* **Homeowners can view their job posts:**
+Homeowners can see each job post they have made on their homepage in a list view.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+* **Homeowners can delete their job posts:**
+Homeowners are able to select individual job posts and can delete the job posts at anytime. 
+ 
+* **Homeowners can View FAQ for Assistance:**
+Homeowners can see frequently asked questions if they are having trouble navigating the page, choosing a trade for their job post, or any other miscellaneous topic.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* **Homeowners can post on the community board:**
+Homeowners are able to create a post where they can ask a question about a home project. They can ask for help on what their problem might be and who might be the best handyman to help with that.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+* **Homeowners can view other homeowner's posts on the community board:**
+You can see what other users have posted to create a community within the app to discuss issuer they’re having or to help answer any questions you know.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+* **Sign up as a volunteer or regular customer:**
+Users can choose on the sign up page how they will be using the app, in order to show them the relevant info pertaining to the role. A homeowner will choose regular customer, while a voluntter will choose volunteer handyman.
 
-## Learn More
+* **Users can view their profile settings:**
+Any users can view account settings, such as their name, description, and other PII to then be able to update and change it.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Navigation
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Once logged in as any type of user, the navbar located at the top of the screen will be where any page can be accessed. 
 
-### Code Splitting
+* You will see a "Create job" link where it will redirect you to the job submission form. Here, as a regular customer, you will enter the type of job you need done. You will also enter the details of your job and a short, one sentence title that will act as a headline which volunteers will see first when viewing the jobs. You will aslo enter your zipcode and the date you wish for the job to be completed.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+* You will be able to view a community board where you can ask other homeowners and volunteers any question you might have about your job.
 
-### Analyzing the Bundle Size
+* You will be able to view the FAQ page to look at the most frequently asked questions.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+* You will also be able to view the review board, where you can see indiviudalized reviews on the volunteers who use HomeOrder.
 
-### Making a Progressive Web App
+### API
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+HomeOrder uses the following APIs:
 
-### Advanced Configuration
+* Mongoose
+  * Connection with MongoDB Atlas databse
+* Google Firebase
+  *  Store user account information
+* Axios
+  * Make CRUD requests to information database
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify

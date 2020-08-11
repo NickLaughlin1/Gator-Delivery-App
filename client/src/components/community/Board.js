@@ -18,7 +18,7 @@ const Board = (props) => {
         
         
         //console.log(props.id);
-        axios.get('http://localhost:5000/posts/'+props.id).then(response => {
+        axios.get('/posts/'+props.id).then(response => {
             let asc_post = response.data;
             let des_post = asc_post.reverse(); 
             // Show newest posts first
@@ -39,7 +39,7 @@ const Board = (props) => {
         // }, (err) => {});
         console.log(props);
         if (props.id) {
-            let url = 'http://localhost:5000/posts/post/';
+            let url = '/posts/post/';
             let ID = url.concat(props.id);
             axios.get(ID)
             .then(response => {
@@ -60,8 +60,8 @@ const Board = (props) => {
                 // user: user.id,
                 replyTo: props.id            
             };
-            axios.post('http://localhost:5000/posts/add', newPost);  
-            axios.create('http://localhost:5000/posts/:postId');
+            axios.post('/posts/add', newPost);  
+            axios.create('/posts/:postId');
         // });
         
         // axiosAuth("post", "/posts/add/", newPost, r => {}, err => {});

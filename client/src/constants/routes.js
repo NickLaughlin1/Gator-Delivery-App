@@ -1,3 +1,4 @@
+
 export const LANDING = "/";
 export const SIGN_UP = "/signup";
 export const SIGN_UP_VOL = "/signup/vol";
@@ -14,4 +15,3 @@ export const FAQ = "/faq";
 export const REVIEWS = "/vreviews";
 export const PROFILE_SETTINGS = "/settings/profile";
 export const DELETE = "/delete";
-

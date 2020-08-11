@@ -8,7 +8,7 @@ const Rored = (props) => {
     const [rate, setRate] = useState(1);
 
     useEffect(() => {
-        axios.get('http://localhost:5000/reviews/')
+        axios.get('/reviews/')
             .then(response => {
                 setReviewList(response.data);
             })
@@ -30,7 +30,7 @@ const Rored = (props) => {
             mes: review,
             star: rate,
         };
-        axios.post('http://localhost:5000/reviews/sub', newReview);  
+        axios.post('/reviews/sub', newReview);  
         
         window.location = '/vreviews';
         setReview('');
