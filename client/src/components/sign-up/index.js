@@ -1,53 +1,438 @@
 /* eslint-disable react/prop-types */
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
+import clsx from 'clsx';
 import { Link, withRouter } from "react-router-dom";
 import axios from "axios";
+import { makeStyles } from "@material-ui/core/styles";
+import {Modal} from "react-bootstrap";
+import Button1 from "react-bootstrap/Button";
+// import { AuthContext } from "../session/withAuthentication";
+// import CustomInput from "../../components/CustomInput/CustomInput.js";
+import {useFormik} from 'formik';
+import Email from "@material-ui/icons/Email";
+import AccountCircle from "@material-ui/icons/AccountCircle";
+import LockIcon from "@material-ui/icons/Lock";
+import GridContainer from "../../components/Grid/GridContainer.js";
+import GridItem from "../../components/Grid/GridItem.js";
+import Button from "../../components/CustomButtons/Button.js";
+import Card from "../../components/Card/Card.js";
+import CardBody from "../../components/Card/CardBody.js";
+import CardHeader from "../../components/Card/CardHeader.js";
+import CardFooter from "../../components/Card/CardFooter.js";
 import "../index.css";
+import styles from "../../assets/jss/material-kit-react/views/loginPage.js";
+import "../index.css";
+import TextField from '@material-ui/core/TextField';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import MenuItem from '@material-ui/core/MenuItem';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import InputLabel from '@material-ui/core/InputLabel';
+import Select from '@material-ui/core/Select';
+import FormLabel from '@material-ui/core/FormLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import IconButton from '@material-ui/core/IconButton';
+import Input from '@material-ui/core/Input';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import HomeIcon from '@material-ui/icons/Home';
+import LocationCityIcon from '@material-ui/icons/LocationCity';
+import PinDropIcon from '@material-ui/icons/PinDrop';
+import BuildIcon from '@material-ui/icons/Build';
+import BusinessIcon from '@material-ui/icons/Business';
+import WebIcon from '@material-ui/icons/Web';
 
 import * as ROUTES from "../../constants/routes";
 import app from "../firebase/firebase";
+import { SettingsVoiceOutlined, FormatStrikethroughRounded } from "@material-ui/icons";
 
 const SignUpPage = (props) => {
-  const [isInvalid, setIsInvalid] = useState(true);
-  const [isClicked, setIsClicked] = useState(false);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [passwordOne, setPasswordOne] = useState("");
-  const [passwordTwo, setPasswordTwo] = useState("");
-  const [addressOne, setAddressOne] = useState("");
-  const [addressTwo, setAddressTwo] = useState("");
-  const [city, setCity] = useState("");
-  const [state, setState] = useState("");
-  const [zip, setZip] = useState("");
-  const [role, setRole] = useState("");
-  const [skills, setSkills] = useState([]);
-  const [businessName, setBusinessName] = useState("");
-  const [businessWebsite, setBusinessWebsite] = useState("");
-  const [currentStep, setCurrentStep] = useState(1);
-  const [isVol, setVol] = useState("");
+  return (
+    <>
+    <Button1 variant="primary" onClick={() => props.setShowSignUp(true)}>
+    {props.isLanding ? "Get Started" : "Sign Up"}
+    </Button1>
+    <NormalSignUp
+     show={props.showSignUp} 
+     //setShowSignUp={props.setShowSignUp} 
+     onHide={() => props.setShowSignUp(false)}
+     CloseSignUp={props.CloseSignUp}
+     
+    />
+    </>
+    
+  );
+};
 
-  // handles everything that happens on signup
-  const handleSignUp = (event) => {
-    event.preventDefault();
-    let newUser = {
-      name: name,
-      email: email,
-      passwordOne: passwordOne,
-      address: {
-        addressOne: addressOne,
-        addressTwo: addressTwo || null,
-        city: city,
-        state: state,
-        zip: zip,
-      },
-      role: role,
-      skill: skills || null,
-      businessName: businessName || null,
-      businessWebsite: businessWebsite || null,
-    };
-    SignIn(newUser);
-    axios.post("http://localhost:5000/users/create", newUser);
-  }
+const NormalSignUp = (props) => {
+  const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
+  const [isClicked, setIsClicked] = useState(false);
+  const [isVol, setVol] = useState(false);
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [password, setPasswrod] = useState('');
+  
+  const [user, setUserValues] = useState({
+    name: '',
+    email: '',
+    passwordOne: '',
+    addressOne: '',
+    addressTwo: '',
+    city: '',
+    state: '',
+    zip: '',
+    role: '',
+    skills: '',
+    businessName: '',
+    businessWebsite: '',
+  });
+  const formik = useFormik({
+    initialValues: {
+      name: '',
+      email: '',
+      password: 'notARealPassword',
+      addressOne: '',
+      addressTwo: '',
+      city: '',
+      state: '',
+      zip: '',
+      role: '',
+      skills: '',
+      businessName: '',
+      businessWebsite: '',
+    },
+    onSubmit: values => {
+      
+      SignIn(values);
+    }
+  })
+  const useStyles = makeStyles(styles);
+  // Css themes that are easily accessable 
+  const formStyles = makeStyles((theme) => ({
+    root: {
+      display: 'flex',
+      flexWrap: 'wrap',
+      justifyContent: 'center',
+    },
+    margin: {
+      margin: theme.spacing(1),
+    },
+    withoutLabel: {
+      marginTop: theme.spacing(3),
+    },
+    textField: {
+      width: '48ch',
+    },
+    addressField: {
+      width: '48ch',
+    },
+    cityField: {
+      width: '48ch',
+    },
+    stateZipField: {
+      width: '22.7ch',
+    },
+    businessField: {
+      width: '31.25ch',
+    }
+  }));
+  const states = [
+    {
+      value: '',
+      lable: 'Choose State...'
+    },
+    {
+      value: 'AL',
+      label: 'Alabama'
+    },
+    {
+      value: 'AK',
+      label: 'Alaska'
+    },
+    {
+      value: 'AZ',
+      label: 'Arizona'
+    },
+    {
+      value: 'AR',
+      label: 'Arkansas'
+    },
+    {
+      value: 'CA',
+      label: 'California'
+    },
+    {
+      value: 'CO',
+      label: 'Colorado'
+    },
+    {
+      value: 'CT',
+      label: 'Connecticut'
+    },
+    {
+      value: 'DE',
+      label: 'Delaware'
+    },
+    {
+      value: 'FL',
+      label: 'Florida'
+    },
+    {
+      value: 'GA',
+      label: 'Georgia'
+    },
+    {
+      value: 'HI',
+      label: 'Hawaii'
+    },
+    {
+      value: 'ID',
+      label: 'Idaho'
+    },
+    {
+      value: 'IL',
+      label: 'Illinois'
+    },
+    {
+      value: 'IA',
+      label: 'Indiana'
+    },
+    {
+      value: 'IO',
+      label: 'Iowa'
+    },
+    {
+      value: 'KS',
+      label: 'Kansas'
+    },
+    {
+      value: 'KY',
+      label: 'Kentucky'
+    },
+    {
+      value: 'LA',
+      label: 'Louisiana'
+    },
+    {
+      value: 'ME',
+      label: 'Maine'
+    },
+    {
+      value: 'MD',
+      label: 'Maryland'
+    },
+    {
+      value: 'MA',
+      label: 'Massachusetts'
+    },
+    {
+      value: 'MI',
+      label: 'Michigan'
+    },
+    {
+      value: 'MN',
+      label: 'Minnesota'
+    },
+    {
+      value: 'MS',
+      label: 'Mississippi'
+    },
+    {
+      value: 'MO',
+      label: 'Missouri'
+    },
+    {
+      value: 'MT',
+      label: 'Montana'
+    },
+    {
+      value: 'NE',
+      label: 'Nebraska'
+    },
+    {
+      value: 'NV',
+      label: 'Nevada'
+    },
+    {
+      value: 'NH',
+      label: 'New Hampshire'
+    },
+    {
+      value: 'NJ',
+      label: 'New Jersey'
+    },
+    {
+      value: 'NM',
+      label: 'New Mexico'
+    },
+    {
+      value: 'NY',
+      label: 'New York'
+    },
+    {
+      value: 'NC',
+      label: 'North Carolina'
+    },
+    {
+      value: 'ND',
+      label: 'North Dakota'
+    },
+    {
+      value: 'OH',
+      label: 'Ohio'
+    },
+    {
+      value: 'OK',
+      label: 'Oklahoma'
+    },
+    {
+      value: 'OR',
+      label: 'Oregon'
+    },
+    {
+      value: 'PA',
+      label: 'Pennsylvania'
+    },
+    {
+      value: 'PR',
+      label: 'Puerto Rico'
+    },
+    {
+      value: 'RI',
+      label: 'Rhode Island'
+    },
+    {
+      value: 'SC',
+      label: 'South Carolina'
+    },
+    {
+      value: 'SD',
+      label: 'South Dakota'
+    },
+    {
+      value: 'TN',
+      label: 'Tennessee'
+    },
+    {
+      value: 'TX',
+      label: 'Texas'
+    },
+    {
+      value: 'UT',
+      label: 'Utah'
+    },
+    {
+      value: 'VT',
+      label: 'Vermont'
+    },
+    {
+      value: 'VA',
+      label: 'Virginia'
+    },
+    {
+      value: 'WA',
+      label: 'Washington'
+    },
+    {
+      value: 'WV',
+      label: 'West Virginia'
+    },
+    {
+      value: 'WI',
+      label: 'Wisconsin'
+    },
+    {
+      value: 'WY',
+      label: 'Wyoming'
+    },
+  ];
+  const userRoles = [
+    {
+      value: '',
+      label: 'Choose Role',
+      disabled: true,
+    },
+    {
+      value: 'Regular Customer',
+      label: 'Regular Customer',
+      disabled: false,
+    },
+    {
+      value: 'Volunteer Handyman',
+      label: 'Volunteer Handyman',
+      disabled: false,
+    },
+  ];
+  const userSkills = [
+    {
+      value: 'Carpentry',
+      label: 'Carpentry',
+    },
+    {
+      value: 'Electrical',
+      label: 'Electrical',
+    },
+    {
+      value: 'Fencing',
+      label: 'Fencing',
+    },
+    {
+      value: 'Heating and Air',
+      label: 'Heating and Air',
+    },
+    {
+      value: 'Driveway',
+      label: 'Driveway',
+    },
+    {
+      value: 'Flooring',
+      label: 'Flooring'
+    },
+    {
+      value: 'Guttering',
+      label: 'Guttering',
+    },
+    {
+      value: 'Handyman',
+      label: 'Handyman',
+    },
+    {
+      value: 'Insulation',
+      label: 'Insulation',
+    },
+    {
+      value: 'Painting and Decorating',
+      label: 'Painting and Decorating',
+    },
+    {
+      value: 'Appliances',
+      label: 'Appliances',
+    },
+    {
+      value: 'Security Systems',
+      label: 'Security Systems',
+    },
+    {
+      value: 'Plumbing',
+      label: 'Plumbing',
+    },
+    {
+      value: 'Roofing',
+      label: 'Roofing',
+    },
+    {
+      value: 'Windows',
+      label: 'Windows',
+    },
+    {
+      value: 'Pool',
+      label: 'Pool',
+    },
+    {
+      value: 'Gardening and Landscaping',
+      label: 'Gardening and Landscaping',
+    },
+    
+  ]
 
   const SignIn = async (newUser) => {
     try {
@@ -55,405 +440,316 @@ const SignUpPage = (props) => {
       
       await app
         .auth()
-        .createUserWithEmailAndPassword(email, passwordOne)
-        .then((result) => {
-          const user = app.auth().currentUser;
+        .createUserWithEmailAndPassword(newUser.email, newUser.password)
+        .then(async (result) => {
+          const user = await app.auth().currentUser;
+          axios.post("http://localhost:5000/users/create", newUser);
           return user.updateProfile({
-            displayName: name,
+            displayName: newUser.name,
           });
-        });
-      
-      
-      // eslint-disable-next-line react/prop-types
-      props.history.push(ROUTES.HOME);
+          
+        });      
+      window.location = ROUTES.HOME;
     } catch (error) {
       alert(error);
     }
   };
-    // eslint-disable-next-line react/prop-types
-  
+  setTimeout(function() {
+    setCardAnimation("");
+  }, 700);
+  const classes = useStyles();
+  const newClasses = formStyles();
 
-  const _next = () => {
-    let tempStep = currentStep;
-    // If the current step is 1, then add one to it
-    tempStep = tempStep >= 2 ? 2 : tempStep + 1;
-    setCurrentStep(tempStep);
-    setIsClicked(!isClicked)
-  };
-
-  const nextButton = () => {
-    let tempStep = currentStep;
-    if (tempStep < 2) {
-      return (
-        <button className="btn btn-primary" type="button" onClick={_next}>
-          Continue
-        </button>
-      );
-    }
-    return null;
-  };
 
   return (
-    <React.Fragment>
-      <div className="sign-up">
-        <h1>Sign Up</h1>
-        <form onSubmit={handleSignUp}>
-          <NormalSignUp
-            currentStep={currentStep}
-            setVol={setVol}
-            isVol={isVol}
-            name={name}
-            setName={setName}
-            email={email}
-            setEmail={setEmail}
-            passwordOne={passwordOne}
-            setPasswordOne={setPasswordOne}
-            passwordTwo={passwordTwo}
-            setPasswordTwo={setPasswordTwo}
-            addressOne={addressOne}
-            setAddressOne={setAddressOne}
-            addressTwo={addressTwo}
-            setAddressTwo={setAddressTwo}
-            city={city}
-            setCity={setCity}
-            state={state}
-            setState={setState}
-            zip={zip}
-            setZip={setZip}
-            role={role}
-            setRole={setRole}
-            isClicked={isClicked}
-            setIsClicked={setIsClicked}
-          />
-          <SignUpVol
-            currentStep={currentStep}
-            setIsInvalid={setIsInvalid}
-            isInvalid={isInvalid}
-            skills={skills}
-            setSkills={setSkills}
-            businessName={businessName}
-            setBusinessName={setBusinessName}
-            businessWebsite={businessWebsite}
-            setBusinessWebsite={setBusinessWebsite}
-          />
-          {nextButton()}
-        </form>
-      </div>
-    </React.Fragment>
+    <Modal
+    {...props}
+    size="lg"
+    aria-labelledby="contained-modal-title-vcenter"
+    centered
+    >
+      <GridContainer justify="center">
+        <GridItem xs={12} sm={12} md={12}>
+          <Card className={classes[cardAnimaton]}>
+            <form className={classes.form} onSubmit={formik.handleSubmit}>
+              <CardHeader color="info" className={classes.cardHeader}>
+                <h2>Sign Up</h2>
+                <div className={classes.socialLine}> 
+                  
+                <p>Already have an account? <Link to="#" onClick={() => props.CloseSignUp(false)}>Sign in here!</Link></p>
+              </div>
+              </CardHeader>
+              <p className={classes.divider}>Sign Up to get help from local volunteers. Want to be a volunteer? Choose a volunteer role when signing up!</p>
+              <CardBody>
+              <GridItem>
+                <div className={newClasses.root}>
+                  <div>
+                    <FormControl className={clsx(newClasses.margin, newClasses.textField)}>
+                      <InputLabel htmlFor="standard-adornment-name">Full Name *</InputLabel>
+                      <Input
+                        id="name"
+                        name="name"
+                        value={formik.values.name}
+                        onChange={formik.handleChange}
+                        required={true}
+                        endAdornment={
+                          <InputAdornment position="end">
+                            <AccountCircle>
+                            </AccountCircle>
+                          </InputAdornment>
+                        }
+                        aria-describedby="standard-user-helper-text"
+                        inputProps={{
+                          'aria-label': 'Full Name',
+                        }}
+                      />
+                    </FormControl>
+                    <FormControl className={clsx(newClasses.margin, newClasses.textField)}>
+                      <InputLabel htmlFor="standard-adornment-email">Email *</InputLabel>
+                      <Input
+                        id="email"
+                        name="email"
+                        value={formik.values.email}
+                        onChange={formik.handleChange}
+                        required={true}
+                        endAdornment={
+                          <InputAdornment position="end">
+                            <Email />
+                          </InputAdornment>
+                        }
+                      />
+                    </FormControl>
+                  </div>
+                  <div>
+                  <FormControl className={clsx(newClasses.margin, newClasses.textField)}>
+                      <InputLabel htmlFor="standard-adornment-password">Password *</InputLabel>
+                      <Input
+                        id="password"
+                        value={password}
+                        onChange={(e) => setPasswrod(e.target.value)}
+                        required={true}
+                        inputProps={{
+                          type: "password",
+                        }}
+                        endAdornment={
+                          <InputAdornment position="end">
+                            <LockIcon />
+                          </InputAdornment>
+                        }
+                      />
+                    </FormControl>
+                    <FormControl className={clsx(newClasses.margin, newClasses.textField)}>
+                      <InputLabel htmlFor="standard-adornment-password">Confirm Password *</InputLabel>
+                      <Input
+                        name="passwordTwo"
+                        id="standard-adornment-passwordTwo"
+                        value={confirmPassword}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
+                        required={true}
+                        inputProps={{
+                          type: "password",
+                        }}
+                        endAdornment={
+                          <InputAdornment position="end">
+                            <LockIcon />
+                          </InputAdornment>
+                        }
+                      />
+                    </FormControl>
+                  </div>
+                  <div>
+                    <FormControl className={clsx(newClasses.margin, newClasses.textField)}>
+                      <InputLabel htmlFor="standard-adornment-addressOne">Address *</InputLabel>
+                      <Input
+                        id="addressOne"
+                        name="addressOne"
+                        value={formik.values.addressOne}
+                        onChange={formik.handleChange}
+                        required={true}
+                        endAdornment={
+                          <InputAdornment position="end">
+                            <HomeIcon />
+                          </InputAdornment>
+                        }
+                      />
+                    </FormControl>
+                  </div>
+                  <div>
+                    <FormControl className={clsx(newClasses.margin, newClasses.textField)}>
+                      <InputLabel htmlFor="standard-adornment-addressOne">Address 2</InputLabel>
+                      <Input
+                        id="addressTwo"
+                        name="addressTwo"
+                        value={formik.values.addressTwo}
+                        onChange={formik.handleChange}
+                        endAdornment={
+                          <InputAdornment position="end">
+                            <HomeIcon />
+                          </InputAdornment>
+                        }
+                      />
+                    </FormControl>
+                  </div>
+                  <div>
+                    <FormControl className={clsx(newClasses.margin, newClasses.cityField)}>
+                      <InputLabel htmlFor="standard-adornment-city">City</InputLabel>
+                      <Input
+                        name="city"
+                        id="city"
+                        value={formik.values.city}
+                        onChange={formik.handleChange}
+                        endAdornment={
+                          <InputAdornment position="end">
+                            <LocationCityIcon />
+                          </InputAdornment>
+                        }
+                      />
+                    </FormControl >
+                    <FormControl className={clsx(newClasses.margin, newClasses.stateZipField)}>
+                      <TextField
+                        name="state"
+                        id="state"
+                        select
+                        label="State"
+                        value={formik.values.state}
+                        onChange={formik.handleChange}
+                        required={true}
+                        SelectProps={{
+                          // native: true,
+                        }}>
+                          {states.map((option) => (
+                            <MenuItem key={option.value} value={option.value}>
+                              {option.label}
+                            </MenuItem>
+                          ))}
+                      </TextField>
+                    </FormControl>
+                    <FormControl className={clsx(newClasses.margin, newClasses.stateZipField)}>
+                      <InputLabel htmlFor="standard-adornment-zip">Zip Code *</InputLabel>
+                      <Input
+                        name="zip"
+                        id="zip"
+                        value={formik.values.zip}
+                        onChange={formik.handleChange}
+                        endAdornment={
+                          <InputAdornment position="end">
+                            <PinDropIcon />
+                          </InputAdornment>
+                        }
+                      />
+                    </FormControl >
+                  </div>
+                  <div>
+                    <FormControl className={clsx(newClasses.margin, newClasses.cityField)}>
+                      <TextField
+                        name="role"
+                        id="role"
+                        select
+                        label="Role"
+                        value={formik.values.role}
+                        onChange={formik.handleChange}
+                        required={true}
+                        SelectProps={{
+                          // native: true,
+                        }}
+                      >
+                        {userRoles.map((option1) => (
+                          <MenuItem key={option1.value} value={option1.value} disabled={option1.disabled}>
+                            {option1.label}
+                          </MenuItem>
+                        ))}
+                      </TextField>
+                    </FormControl>
+                  
+                    {formik.values.role === "Volunteer Handyman" && 
+                      //Checks to see what role the user is and will display this if user is selects handyman
+                      <>
+                        <FormControl className={clsx(newClasses.margin, newClasses.cityField)}>
+                          <TextField
+                            name="skills"
+                            id="skills"
+                            select
+                            label="Skills"
+                            value={formik.values.skills}
+                            onChange={formik.handleChange}
+                            SelectProps={{
+                              // native: true,
+                            }}
+                          >
+                            {userSkills.map((option2) => (
+                              <MenuItem key={option2.value} value={option2.value} disabled={option2.disabled}>
+                                {option2.label}
+                              </MenuItem>
+                            ))}
+                          </TextField>
+                        </FormControl>
+                        <div>
+                          <FormControl className={clsx(newClasses.margin, newClasses.businessField)}>
+                            <FormLabel component="legend" required={true} /*disabled={checkVol}*/>Do You Own a Business?</FormLabel>
+                            <RadioGroup row aria-label="position" name="position" defaultValue="top">
+                              <FormControlLabel
+                                value="yes"
+                                control={<Radio color="primary" />}
+                                label="Yes"
+                                //labelPlacement="top"
+                                //disabled={checkVol}
+                              />
+                              <FormControlLabel
+                                value="no"
+                                control={<Radio color="primary" />}
+                                label="No"
+                                //labelPlacement="top"
+                                //disabled={checkVol}
+                              />
+                            </RadioGroup>
+                          </FormControl>
+                          <FormControl className={clsx(newClasses.margin, newClasses.businessField)}>
+                            <InputLabel htmlFor="standard-adornment-businessName">Business Name</InputLabel>
+                            <Input
+                              id="businessName"
+                              name="businessName"
+                              value={formik.values.businessName}
+                              onChange={formik.handleChange}
+                              endAdornment={
+                                <InputAdornment position="end">
+                                  <BusinessIcon />
+                                </InputAdornment>
+                              }
+                            />
+                          </FormControl>
+                          <FormControl className={clsx(newClasses.margin, newClasses.businessField)}>
+                            <InputLabel htmlFor="standard-adornment-businessWebsite">Business Website</InputLabel>
+                            <Input
+                              id="businessWebsite"
+                              name="businessWebsite"
+                              value={formik.values.businessWebsite}
+                              onChange={formik.handleChange}
+                              endAdornment={
+                                <InputAdornment position="end">
+                                  <WebIcon />
+                                </InputAdornment>
+                              }
+                            />
+                          </FormControl>
+                        </div>
+                        </> 
+                    }
+                  </div>
+                </div>
+                </GridItem>
+              </CardBody>
+              <CardFooter className={classes.cardFooter}>
+                <Button simple color="info" size="lg" type="submit">
+                  Sign Up
+                </Button>
+              </CardFooter>
+            </form>
+          </Card>
+        </GridItem>
+      </GridContainer>
+    </Modal>
   );
 };
-
-const NormalSignUp = (props) => {
-  if (props.currentStep < 1) {
-    return null;
-  }
-  const checkVol = (e) => {
-    console.log(e.target.value);
-    props.setVol(e.target.value);
-    props.setRole(e.target.value)
-    if (props.isVol === "volunteer Handyman" && props.isClicked) {
-      props.setCurrentStep(2);
-    }
-  };
-
-  const checkEmail = (e) => {
-    props.setEmail(e.target.value);
-  }
-
-  return (
-    <div>
-      <div className="form-group">
-        <label htmlFor="inputName">Name *</label>
-        <input
-          name="name"
-          value={props.name}
-          onChange={(e) => props.setName(e.target.value)}
-          type="text"
-          placeholder="Full Name"
-          className="form-control"
-          id="inputName"
-        />
-      </div>
-      <div className="form-group">
-        <label htmlFor="inputEmail4">Email *</label>
-        <input
-          name="email"
-          value={props.email}
-          onChange={checkEmail/*(e) => props.setEmail(e.target.value)*/}
-          type="email"
-          placeholder="Email Address"
-          className="form-control"
-          id="inputEmail4"
-        />
-      </div>
-      <div className="form-row">
-        <div className="form-group col-md-6">
-          <label htmlFor="inputPassword4">Password *</label>
-          <input
-            name="passwordOne"
-            value={props.passwordOne}
-            onChange={(e) => props.setPasswordOne(e.target.value)}
-            type="password"
-            placeholder="Password"
-            className="form-control"
-            id="inputPassword4"
-          />
-        </div>
-        <div className="form-group col-md-6">
-          <label htmlFor="inputPassword5">Confirm Password *</label>
-          <input
-            name="passwordTwo"
-            value={props.passwordTwo}
-            onChange={(e) => props.setPasswordTwo(e.target.value)}
-            type="password"
-            placeholder="Re-enter Password"
-            className="form-control"
-            id="inputPassword5"
-          />
-        </div>
-      </div>
-      <div className="form-group">
-        <label htmlFor="inputAddress1">Address *</label>
-        <input
-          name="addressOne"
-          value={props.addressOne}
-          onChange={(e) => props.setAddressOne(e.target.value)}
-          type="text"
-          placeholder="1234 Main St"
-          className="form-control"
-          id="inputAddress1"
-        />
-      </div>
-      <div className="form-group">
-        <label htmlFor="inputAddress2">Address 2</label>
-        <input
-          name="addressTwo"
-          value={props.addressTwo}
-          onChange={(e) => props.setAddressTwo(e.target.value)}
-          type="text"
-          placeholder="Apartment, studio, or floor"
-          className="form-control"
-          id="inputAddress2"
-        />
-      </div>
-      <div className="form-row">
-        <div className="form-group col-md-6">
-          <label htmlFor="inputCity">City *</label>
-          <input
-            name="city"
-            value={props.city}
-            onChange={(e) => props.setCity(e.target.value)}
-            type="text"
-            className="form-control"
-            id="inputCity"
-          />
-        </div>
-        <div className="form-group col-md-4">
-          <label htmlFor="inputState">State *</label>
-          <select
-            id="inputState"
-            className="form-control"
-            name="state" value={props.state} onChange={(e) => props.setState(e.target.value)}
-          >
-            <option defaultValue>Choose...</option>
-            <option value="AL">Alabama</option>
-            <option value="AK">Alaska</option>
-            <option value="AZ">Arizona</option>
-            <option value="AR">Arkansas</option>
-            <option value="CA">California</option>
-            <option value="CO">Colorado</option>
-            <option value="CT">Connecticut</option>
-            <option value="DE">Delaware</option>
-            <option value="DC">District Of Columbia</option>
-            <option value="FL">Florida</option>
-            <option value="GA">Georgia</option>
-            <option value="HI">Hawaii</option>
-            <option value="ID">Idaho</option>
-            <option value="IL">Illinois</option>
-            <option value="IN">Indiana</option>
-            <option value="IA">Iowa</option>
-            <option value="KS">Kansas</option>
-            <option value="KY">Kentucky</option>
-            <option value="LA">Louisiana</option>
-            <option value="ME">Maine</option>
-            <option value="MD">Maryland</option>
-            <option value="MA">Massachusetts</option>
-            <option value="MI">Michigan</option>
-            <option value="MN">Minnesota</option>
-            <option value="MS">Mississippi</option>
-            <option value="MO">Missouri</option>
-            <option value="MT">Montana</option>
-            <option value="NE">Nebraska</option>
-            <option value="NV">Nevada</option>
-            <option value="NH">New Hampshire</option>
-            <option value="NJ">New Jersey</option>
-            <option value="NM">New Mexico</option>
-            <option value="NY">New York</option>
-            <option value="NC">North Carolina</option>
-            <option value="ND">North Dakota</option>
-            <option value="OH">Ohio</option>
-            <option value="OK">Oklahoma</option>
-            <option value="OR">Oregon</option>
-            <option value="PA">Pennsylvania</option>
-            <option value="RI">Rhode Island</option>
-            <option value="SC">South Carolina</option>
-            <option value="SD">South Dakota</option>
-            <option value="TN">Tennessee</option>
-            <option value="TX">Texas</option>
-            <option value="UT">Utah</option>
-            <option value="VT">Vermont</option>
-            <option value="VA">Virginia</option>
-            <option value="WA">Washington</option>
-            <option value="WV">West Virginia</option>
-            <option value="WI">Wisconsin</option>
-            <option value="WY">Wyoming</option>
-          </select>
-        </div>
-        <div className="form-group col-md-2">
-          <label htmlFor="inputZip">Zip *</label>
-          <input
-            name="zip"
-            value={props.zip}
-            onChange={(e) => props.setZip(e.target.value)}
-            type="text"
-            className="form-control"
-            id="inputZip"
-          />
-        </div>
-      </div>
-      <div className="form-row">
-        <div className="form-group col-md-6">
-          <label htmlFor="inputRole">User Role *</label>
-          <select
-            id="inputRole"
-            className="form-control"
-            name="role"
-            value={props.role} onChange={checkVol}
-          >
-            <option defaultValue>Chose role...</option>
-            <option value="Regular Customer">Regular Customer</option>
-            <option value="volunteer Driver">Volunteer Driver</option>
-            <option value="volunteer Handyman">Volunteer Handyman</option>
-          </select>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const SignUpVol = (props) => {
-  // Makes sure the extra volunteer info doesn't need to be shown if the user isn't a volunteer
-  if (props.currentStep < 2) {
-    return null;
-  }
-
-  // Makes the other options about entering business info disabled if person selects No to having a personal business
-  const makeDisabled = (event) => {
-    if (event.target.value === "No") {
-      props.setIsInvalid(true);
-    } else {
-      props.setIsInvalid(false);
-    }
-  };
-
-  return (
-    <div>
-      <div className="form-row">
-        <div className="form-group col-md-2">
-          <label htmlFor="inputSkill">Skill *</label>
-          <select id="inputSkill" className="form-control" name="skill" value={props.skill} onChange={(e) => props.setSkills(e.target.value)}>
-            <option defaultValue>Choose Skill...</option>
-            <option>Carpentry</option>
-            <option>Electrical</option>
-            <option>Fencing</option>
-            <option>Heating and Air Conditioning</option>
-            <option>Driveway</option>
-            <option>Guttering</option>
-            <option>Handyman</option>
-            <option>Insulation</option>
-            <option>Painting and Decorating</option>
-            <option>Locksmith</option>
-            <option>Appliances</option>
-            <option>Security Systems</option>
-            <option>Plumbing</option>
-            <option>Roofing</option>
-            <option>Windows</option>
-            <option>Pool</option>
-            <option>Gardening and Landscaping</option>
-          </select>
-        </div>
-      </div>
-      <div className="form-row">
-        <label htmlFor="option1 option2">
-          Do you have a personal business? *
-        </label>
-      </div>
-      <div className="form-check form-check-inline">
-        <input
-          className="form-check-input"
-          type="radio"
-          name="inlineRadioOptions"
-          id="inlineRadioYes"
-          value="Yes"
-          onChange={makeDisabled}
-        />
-        <label className="form-check-lable" htmlFor="inlineRadioYes">
-          Yes
-        </label>
-      </div>
-      <div className="form-check form-check-inline">
-        <input
-          className="form-check-input"
-          type="radio"
-          name="inlineRadioOptions"
-          id="inlineRadioNo"
-          value="No"
-          onChange={makeDisabled}
-        />
-        <label className="form-check-lable" htmlFor="inlineRadioYes">
-          No
-        </label>
-      </div>
-      <div className="form-row">
-        <div className="form-group col-md-6">
-          <label htmlFor="business-name">Name of Business</label>
-          <input
-            name="business"
-            type="text"
-            placeholder="(Optional)"
-            className="form-control"
-            id="business"
-            disabled={props.isInvalid}
-            value={props.businessName}
-            onChange={(e) => props.setBusinessName(e.target.value)}
-          />
-        </div>
-        <div className="form-group col-md-6">
-          <label htmlFor="business-website">Business website</label>
-          <input
-            className="form-control"
-            name="website"
-            placeholder="(Optional)"
-            id="businessWeb"
-            disabled={props.isInvalid}
-            value={props.businessWebsite}
-            onChange={(e) => props.setBusinessWebsite(e.target.value)}
-          />
-        </div>
-      </div>
-      <button type="submit" className="btn btn-primary">
-        Finish Sign Up
-      </button>
-    </div>
-  );
-};
-
-// Gives users a link to sign up if they do not have an account already
-const SignUpLink = (props) => (
-  <p>
-    Don't have an account? <Link to={ROUTES.SIGN_UP} onClick={() => props.setShowModal(false)}>Sign Up</Link>
-  </p>
-);
 
 export default withRouter(SignUpPage);
-export { SignUpLink };
+//export { SignUpLink };
