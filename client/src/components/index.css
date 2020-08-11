@@ -17,6 +17,8 @@ body > #root > div {
 /* ### First row ### */
 .container {
   max-width: 1024px;
+  position: relative;
+  bottom: 0;
 }
 
 .new-container {
@@ -38,9 +40,15 @@ body > #root > div {
 }
 
 /*Community Board*/
+.community-board {
+  margin-top: 4em;
+}
+
 .post-editor {
   margin-top: 1em;
   margin-left: 1em;
+  margin-right: 1em;
+  position: relative;
 
 }
 
@@ -96,6 +104,10 @@ body > #root > div {
   color: rgb(90, 195, 199) !important;
 }
 
+.user-text {
+  color: white !important;
+}
+
 .signUp-text {
   color: white;
   font-weight: bold;
@@ -104,6 +116,10 @@ body > #root > div {
 .signIn-text {
   color: white;
   font-weight: bold;
+}
+
+.drp-text {
+  color: black;
 }
 
 #collasible-nav-dropdown {
@@ -162,7 +178,7 @@ display: inline-block;
   display: none;
   position: absolute;
   background-color: #f1f1f1;
-  min-width: 160px;
+  min-width: 180px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
 }
@@ -182,8 +198,24 @@ display: inline-block;
 .dropdown:hover .dropdown-content {display: block;}
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
+
+.dropdown:hover .dropbtn {background-color: #0f31a0;}
+
 .dropdown:hover .dropbtn {background-color: #289fbd;}
 
+.container {
+  width: 75%
+}
+
+
+.container {
+  width: 75%
+}
+
+
+.container {
+  width: 75%
+}
 
 
 
@@ -192,18 +224,10 @@ display: inline-block;
   margin-left: -21px;
 }
 
-/* Displaying listed jobs */
-.layout-content {
-  float: left;
-  margin-left: 20px;
-  width: 800px;
-}
-
-.layout-sidebar {
-  float: left;
-  margin-left: 20px;
-  width: 310px;
-  min-height: 1px;
+.container1 {
+    margin-right: auto;
+    margin-left: auto;
+    width: 988px;
 }
 
 .mb-panel {
@@ -222,6 +246,11 @@ display: inline-block;
   background-color: #007bff;
   color: #fff;
   position: relative;
+}
+
+.mb-row2 {
+  width: 100%;
+  margin-top: 10px;
 }
 
 .cont-body {
@@ -243,6 +272,10 @@ display: inline-block;
   margin: 0;
 }
 
+.task-taken {
+  margin-top: 20px;
+}
+
 .heading-large {
   margin-bottom: 30px;
   font-size: 30px;
@@ -262,11 +295,21 @@ h1 {
   padding: 0;
 }
 
+.table-wrapper {
+  max-height: 80vh;
+	overflow: auto;
+	scroll-behavior: smooth;
+}
+
 .posted-jobs_list-item {
   border: 0;
   margin: 0;
   padding: 0 0 10px;
   margin-bottom: 15px;
+}
+
+.card-question {
+  padding-bottom: 20px;
 }
 
 .card-head {
@@ -293,28 +336,45 @@ h1 {
 }
 
 .viewjob-header {
-  width: 100%;
-  margin-bottom: 20px;
+  width: 98%;
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 10px;
 }
 
-.edit-sidebar {
+.edit-sidebar1 {
   float: left;
   width: 316px;
   margin-right: 20px; 
 }
 
-.edit-commands {
-  width: 35%;
-  margin-right: 20px;
+.edit-sidebar2 {
+  margin: left;
+  float: left;
+  width: 316px;
+  margin-right: 20px; 
 }
 
 .viewjob-main {
   width: 600px;
-  
+  margin: right;
+}
+
+.layout-content {
+  float: left;
+  margin-left: 20px;
+  width: 652px;
+}
+
+.layout-sidebar {
+  float: left;
+  margin-left: 20px;
+  width: 316px;
+  min-height: 1px;
 }
 
 .right-marg {
-  width: 60%;
+  width: 780px;
   margin-right: 20px;
 }
 
@@ -328,54 +388,16 @@ h1 {
   background-position: center;
 } */
 
-.form-question-head {
-  padding-bottom: 20px;
-}
-
-.question {
-  margin-right: 4px;
-}
-
-.success {
-  padding-top: 25px;
-}
-.suc-header {
-  margin-bottom: 10px;
-}
-
-.lower {
-  margin-top: 15px;
-}
-
-.card-question {
-  padding-bottom: 20px;
-}
-
-.table-wrapper {
-  max-height: 480px;
-	overflow: auto;
-	scroll-behavior: smooth;
-}
-
-.mb-row2 {
-  width: 100%;
-  margin-top: 10px;
-}
-
-
 .profile-pic {
   width: 2em;
   height: 2em;
 }
 
-.footer {
+footer {
   color: white;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  margin-top: 3em;
+  /* margin-top: 3em; */
   background: #343944;
   box-shadow: 0 50vh 0 50vh;
-  height: 60px;
+  height: 100%;
   padding-top: 20px;
 }
