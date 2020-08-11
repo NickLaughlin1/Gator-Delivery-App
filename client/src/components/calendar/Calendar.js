@@ -230,7 +230,7 @@ const CalendarComponent = (props) => {
   return (
     <div>
       <div className="donk" >
-        <div> style={{marginTop: "10px"}}
+        <div style={{marginTop: "10px"}}> 
           <Calendar onChange={onChange} selectRange={true} value={date} />
         </div>
       </div>
