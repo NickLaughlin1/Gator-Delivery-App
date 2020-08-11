@@ -206,7 +206,10 @@ display: inline-block;
 .container {
   width: 75%
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
 
 .container {
   width: 75%
@@ -348,6 +351,7 @@ h1 {
   margin-right: 20px; 
 }
 
+<<<<<<< HEAD
 .edit-sidebar2 {
   margin: left;
   float: left;
@@ -371,6 +375,10 @@ h1 {
   margin-left: 20px;
   width: 316px;
   min-height: 1px;
+=======
+.viewjob-main {
+  width: 800px;
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
 }
 
 .right-marg {
@@ -395,7 +403,11 @@ h1 {
 
 footer {
   color: white;
+<<<<<<< HEAD
   /* margin-top: 3em; */
+=======
+  margin-top: 3em;
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
   background: #343944;
   box-shadow: 0 50vh 0 50vh;
   height: 100%;

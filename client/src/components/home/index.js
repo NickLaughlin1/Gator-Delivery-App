@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import * as ROUTES from "../../constants/routes";
 import * as firebase from "firebase/app";
 import TaskList from "../tasklist/TaskList";
+<<<<<<< HEAD
 import axios from 'axios';
   
 const Home = (props) => {
@@ -40,10 +41,14 @@ const Home = (props) => {
   if (role !== 'Regular Customer') {
     return null;
   }
+=======
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
 
+const Home = (props) => {
   return (
     <div>
       <h1></h1>
+<<<<<<< HEAD
       <div className='container1 page'>
         <div className='content'>
           <div className='row'>
@@ -56,6 +61,18 @@ const Home = (props) => {
                 </div>
               </div>
             <div className="layout-sidebar">
+=======
+      <div className="container page">
+        <div className="content">
+          <div className="row">
+            <div className="viewjob-main right-marg">
+              <div className="mb-panel posted-jobs" id="my-posted-jobs">
+                <h1 className="heading-large">My posted jobs</h1>
+                <TaskList />
+              </div>
+            </div>
+            <div className="edit-sidebar">
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
               <div className="mb-panel">
                 <div className="mb-panel_header">
                   <h3 className="heading-caps">Post a new job</h3>
@@ -72,7 +89,7 @@ const Home = (props) => {
                   </Link>
                 </div>
               </div>
-          </div>
+            </div>
           </div>
         </div>
       </div>

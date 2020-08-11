@@ -2,28 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import * as firebase from "firebase/app";
-import * as ROUTES from '../../constants/routes';
-import Modal from 'react-bootstrap/Modal'
-import DatePicker from 'react-datepicker';
-
-const PopUp = (props) => {
-    return(
-      <Modal show={props.show} onHide={props.handleClose}>
-          <Modal.Header closeButton>
-             <Modal.Title>Delete job</Modal.Title>
-           </Modal.Header>
-           <Modal.Body>Are you sure you want to delete this job?</Modal.Body>
-           <Modal.Footer>
-              <button className='btn btn-secondary' onClick={props.handleClose}>
-                  Close
-               </button>
-                <button className='btn btn-danger' onClick={props.handleDelete}>
-                    Yes, delete this job
-                </button>
-            </Modal.Footer>
-    </Modal>
-    );
-  };
+import * as ROUTES from "../../constants/routes";
 
 const PopUp1 = (props) => {
     return(
@@ -45,6 +24,7 @@ const PopUp1 = (props) => {
 };
 
 const ViewJob = (props) => {
+<<<<<<< HEAD
     const [task, setTask] = useState('');
     const [tasks, setTasks] = useState([]);
     const [headline, setHeadline] = useState('');
@@ -295,32 +275,125 @@ const Editing = (props) => {
     };
 
     
+=======
+  const [task, setTask] = useState("");
+  const [tasks, setTasks] = useState([]);
+  const [headline, setHeadline] = useState("");
+  const [date, setDate] = useState(new Date());
+  const [created, setCreated] = useState("");
+  const [email, setEmail] = useState("");
+  //const [editing, setEditing] = useState(false);
+  //const [selectedID, setSelectedID] = useState('');
 
-    return (
-        <form onSubmit={handleSubmit}>
-            <div class="form-group">
-                <label for="headline">Headline</label>
-                <input className="form-control" id="headline" value={props.headline} onChange={e => props.setHeadline(e.target.value)}></input>
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        //console.log("signed in");
+        //console.log(user.email);
+        setEmail(user.email);
+        let url = "http://localhost:5000/tasks/";
+        let search = url.concat(user.email);
+        //console.log(email);
+        //console.log(search);
+        axios
+          .get(search)
+          .then((response) => {
+            let tasks_list = response.data;
+            let curr_task = tasks_list.filter(
+              (t) => t._id === props.location.id
+            );
+            //console.log(curr_task[0].task);
+            setHeadline(curr_task[0].headline);
+            setTask(curr_task[0].task);
+            setDate(curr_task[0].date);
+            setCreated(curr_task[0].createdAt.substring(0, 10));
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+    });
+  }, []);
+
+  const handleDelete = (e) => {
+    //e.preventDefault();
+
+    let ID = props.location.id;
+    let url = "http://localhost:5000/tasks/";
+    let search = url.concat(ID);
+    console.log(search);
+
+    axios
+      .delete(search)
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    console.log("###########");
+
+    window.location = ROUTES.HOME;
+
+    setEmail("");
+    setHeadline("");
+    setTasks([]);
+    setTask("");
+    setDate(new Date());
+    setCreated("");
+  };
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
+
+  return (
+    <div className="container page">
+      <div className="content">
+        <div className="row">
+          <div className="viewjob-header">
+            <div className="mb-panel">
+              <h3 className="card-title">{headline}</h3>
+              <h5 className="card-text">Created on {created}</h5>
             </div>
-            <div class="form-group">
-                <label for="taskBody">Task details</label>
-                <input className="form-control" id="taskBody" value={props.task} onChange={e => props.setTask(e.target.value)}></input>
+          </div>
+          <div className="edit-sidebar">
+            <div className="mb-panel">
+              <div className="mb-panel-header">
+                <p className="cont-body">Edit job</p>
+                <a
+                  href="#"
+                  onClick={() => {
+                    handleDelete();
+                  }}
+                >
+                  Delete job
+                </a>
+              </div>
             </div>
-            <React.Fragment>
-            <div className="form-group card-question">
-                <label>When would you like the job done?</label>
-                <div>
-                    <DatePicker
-                        selected={props.date}
-                        onChange={props.setDate}
-                    />   
+          </div>
+          <div className="viewjob-main">
+            <div className="mb-panel">
+              <div className="card mb-3">
+                <div className="card-header bg-light card-head font-weight-bold">
+                  Job description
                 </div>
+                <div className="card-body">
+                  <p className="card-title">{task}</p>
+                </div>
+              </div>
             </div>
+<<<<<<< HEAD
             <button type="submit" class="btn btn-primary">Submit</button>
             </React.Fragment>  
             
         </form>
     );
+=======
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
 };
 
 export default ViewJob;
