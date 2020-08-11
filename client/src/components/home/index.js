@@ -8,6 +8,7 @@ import * as ROUTES from "../../constants/routes";
 import * as firebase from "firebase/app";
 import TaskList from "../tasklist/TaskList";
 <<<<<<< HEAD
+<<<<<<< HEAD
 import axios from 'axios';
   
 const Home = (props) => {
@@ -43,11 +44,14 @@ const Home = (props) => {
   }
 =======
 >>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
+=======
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
 
 const Home = (props) => {
   return (
     <div>
       <h1></h1>
+<<<<<<< HEAD
 <<<<<<< HEAD
       <div className='container1 page'>
         <div className='content'>
@@ -70,6 +74,16 @@ const Home = (props) => {
                 <h1 className="heading-large">My posted jobs</h1>
                 <TaskList />
               </div>
+=======
+      <div className="container page">
+        <div className="content">
+          <div className="row">
+            <div className="viewjob-main right-marg">
+              <div className="mb-panel posted-jobs" id="my-posted-jobs">
+                <h1 className="heading-large">My posted jobs</h1>
+                <TaskList />
+              </div>
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
             </div>
             <div className="edit-sidebar">
 >>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy

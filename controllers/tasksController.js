@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import mongoose from "mongoose";
 import Task from "../models/TaskModel.js";
 
@@ -66,6 +67,8 @@ export const update = (req,res) => {
       });
 };
 =======
+=======
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
 import mongoose from 'mongoose';
 import Task from '../models/TaskModel.js';
 
@@ -146,4 +149,7 @@ export const remove = (req,res) => {
  */
 //export const listingByID = (req, res, next, id) => {
 //};
+<<<<<<< HEAD
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
+=======
 >>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy

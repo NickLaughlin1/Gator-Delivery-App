@@ -1,11 +1,17 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
 /* This file is your server listingsRouter. 
    Trace the dependencies so you understand which files are connected and how data is passed between them
    For each route, make note of the sequence of requests called for each
 
 */
 
+<<<<<<< HEAD
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
+=======
 >>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
 import * as tasks from '../controllers/tasksController.js';
 import express from 'express'; //refers to Express the middleware helper for Node.js
@@ -15,9 +21,12 @@ tasksRouter.post('/add', tasks.create);
 tasksRouter.get('/:listingEmail', tasks.list);
 tasksRouter.delete('/:taskid', tasks.remove);
 <<<<<<< HEAD
+<<<<<<< HEAD
 tasksRouter.put('/:taskid', tasks.update);
 tasksRouter.get('/',tasks.fulllist);
 =======
+=======
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
 
 //tasksRouter.get('/:listingEmail', tasks.);
 /* 
@@ -35,6 +44,9 @@ tasksRouter.get('/',tasks.fulllist);
 //listingsRouter.get('/:listingId', listings.read);
 //listingsRouter.put('/:listingId', getCoordinates, listings.update);
 //listingsRouter.delete('/:listingId', listings.remove);
+<<<<<<< HEAD
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
+=======
 >>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
 
 export default tasksRouter;

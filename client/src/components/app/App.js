@@ -6,7 +6,10 @@ import * as ROUTES from "../../constants/routes";
 
 import LandingPage from "../../views/LandingPage/LandingPage.js";
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
 import SignUpPage from "../sign-up";
 import SignInPage from "../sign-in";
 import ReviewPage from "../reviews/Bored.js";
@@ -23,11 +26,15 @@ import Navbar1 from "../navbar/Navbar";
 // import TaskList from "../tasklist/TaskList";
 import CreateTask from "../createtask/CreateTask";
 <<<<<<< HEAD
+<<<<<<< HEAD
 import {PostBoard as PostBoard} from "../community/Board";
 import Board from '../community/Board';
 import Rored from '../reviews/Rored';
 import faq from '../faq/faq';
 import Delete from "../delete";
+=======
+import Board from "../community/Board";
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
 =======
 import Board from "../community/Board";
 >>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
@@ -50,11 +57,17 @@ const App = () => {
             <Navbar1 />
 
 <<<<<<< HEAD
+<<<<<<< HEAD
             <div className="body bg-gradient">
               <Route path={ROUTES.CREATE} component={CreateTask} />
               {/* <Route path={ROUTES.COMMUNITY} component={CommunityBoard} /> */}
               <Route path={ROUTES.DELETE} component={Delete} />
               <Route path={ROUTES.REVIEWS} component={Rored} />
+=======
+            <div className="body">
+              <Route path={ROUTES.CREATE} component={CreateTask} />
+              <Route path={ROUTES.COMMUNITY} component={Board} />
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
 =======
             <div className="body">
               <Route path={ROUTES.CREATE} component={CreateTask} />
@@ -66,6 +79,7 @@ const App = () => {
               <Route exact path={ROUTES.SIGN_UP} component={SignUpPage} />
               {/* <Route path={ROUTES.SIGN_IN} component={SignInPage} /> */}
               {/* <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} /> */}
+<<<<<<< HEAD
 <<<<<<< HEAD
               <Route exact path={ROUTES.HOME} component={HomePage} />
               <Route path={ROUTES.ACCOUNT} component={AccountPage} />
@@ -80,6 +94,17 @@ const App = () => {
             <Footer/>
           </div>
           
+=======
+              <Route path={ROUTES.HOME} component={HomePage} />
+              <Route path={ROUTES.ACCOUNT} component={AccountPage} />
+              <Route path={ROUTES.PROFILE_SETTINGS} component={AccountPage} />
+              <Route path={path.join("/job", ":id?")} component={ViewJob} />
+              <Route path={ROUTES.REVIEWS} component={ReviewPage} />
+              {/* <Route path={ROUTES.ADMIN} component={AdminPage} />   */}
+            </div>
+            <Footer />
+          </div>
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
 =======
               <Route path={ROUTES.HOME} component={HomePage} />
               <Route path={ROUTES.ACCOUNT} component={AccountPage} />

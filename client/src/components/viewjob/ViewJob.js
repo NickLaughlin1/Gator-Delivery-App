@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import * as firebase from "firebase/app";
 import * as ROUTES from "../../constants/routes";
+<<<<<<< HEAD
 
 const PopUp1 = (props) => {
     return(
@@ -345,6 +346,78 @@ const Editing = (props) => {
   };
 >>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
 
+=======
+
+const ViewJob = (props) => {
+  const [task, setTask] = useState("");
+  const [tasks, setTasks] = useState([]);
+  const [headline, setHeadline] = useState("");
+  const [date, setDate] = useState(new Date());
+  const [created, setCreated] = useState("");
+  const [email, setEmail] = useState("");
+  //const [editing, setEditing] = useState(false);
+  //const [selectedID, setSelectedID] = useState('');
+
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        //console.log("signed in");
+        //console.log(user.email);
+        setEmail(user.email);
+        let url = "http://localhost:5000/tasks/";
+        let search = url.concat(user.email);
+        //console.log(email);
+        //console.log(search);
+        axios
+          .get(search)
+          .then((response) => {
+            let tasks_list = response.data;
+            let curr_task = tasks_list.filter(
+              (t) => t._id === props.location.id
+            );
+            //console.log(curr_task[0].task);
+            setHeadline(curr_task[0].headline);
+            setTask(curr_task[0].task);
+            setDate(curr_task[0].date);
+            setCreated(curr_task[0].createdAt.substring(0, 10));
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+    });
+  }, []);
+
+  const handleDelete = (e) => {
+    //e.preventDefault();
+
+    let ID = props.location.id;
+    let url = "http://localhost:5000/tasks/";
+    let search = url.concat(ID);
+    console.log(search);
+
+    axios
+      .delete(search)
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    console.log("###########");
+
+    window.location = ROUTES.HOME;
+
+    setEmail("");
+    setHeadline("");
+    setTasks([]);
+    setTask("");
+    setDate(new Date());
+    setCreated("");
+  };
+
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
   return (
     <div className="container page">
       <div className="content">
@@ -375,6 +448,7 @@ const Editing = (props) => {
               <div className="card mb-3">
                 <div className="card-header bg-light card-head font-weight-bold">
                   Job description
+<<<<<<< HEAD
                 </div>
                 <div className="card-body">
                   <p className="card-title">{task}</p>
@@ -388,11 +462,22 @@ const Editing = (props) => {
         </form>
     );
 =======
+=======
+                </div>
+                <div className="card-body">
+                  <p className="card-title">{task}</p>
+                </div>
+              </div>
+            </div>
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
           </div>
         </div>
       </div>
     </div>
   );
+<<<<<<< HEAD
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
+=======
 >>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
 };
 

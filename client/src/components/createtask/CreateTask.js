@@ -7,6 +7,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import * as firebase from "firebase/app";
 <<<<<<< HEAD
+<<<<<<< HEAD
 import * as ROUTES from '../../constants/routes';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css"
@@ -102,6 +103,39 @@ const CreateTask = (props) => {
         // If the current step is 2 or 3, then subtract one on "previous" button click
         currStep = currStep <= 1 ? 1: currStep - 1
         setCurrentStep(currStep);
+=======
+import * as ROUTES from "../../constants/routes";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
+//https://css-tricks.com/the-magic-of-react-based-multi-step-forms/
+const CreateTask = (props) => {
+  const [currentStep, setCurrentStep] = useState(1);
+  const [email, setEmail] = useState("");
+  const [headline, setHeadline] = useState("");
+  const [trade, setTrade] = useState("");
+  const [task, setTask] = useState("");
+  const [date, setDate] = useState(new Date());
+
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged(function (user) {
+      if (user) {
+        //console.log("signed in");
+        //console.log(user.email);
+        setEmail(user.email);
+      }
+    });
+  }, []);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    let newSubmission = {
+      headline: headline,
+      task: task,
+      email: email,
+      date: date,
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
     };
 
   const handleDateChange = (date) => setDate(date);
@@ -184,6 +218,7 @@ const CreateTask = (props) => {
   const nextButton = () => {
     let currStep = currentStep;
 <<<<<<< HEAD
+<<<<<<< HEAD
     if(currStep < 5 && currStep > 0) {
       return (
         <button 
@@ -194,6 +229,8 @@ const CreateTask = (props) => {
       );
     };
 =======
+=======
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
     if (currStep < 4) {
       return (
         <button
@@ -205,11 +242,15 @@ const CreateTask = (props) => {
         </button>
       );
     }
+<<<<<<< HEAD
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
+=======
 >>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
     return null;
   };
 
   return (
+<<<<<<< HEAD
 <<<<<<< HEAD
       <React.Fragment>
         <div className='form-container'>
@@ -254,6 +295,8 @@ const CreateTask = (props) => {
   );
 }
 =======
+=======
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
     <React.Fragment>
       <div className="form-container">
         <h1>Post a job</h1>
@@ -276,6 +319,9 @@ const CreateTask = (props) => {
     </React.Fragment>
   );
 };
+<<<<<<< HEAD
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
+=======
 >>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
 
 const Step1 = (props) => {
@@ -284,6 +330,7 @@ const Step1 = (props) => {
   }
 
   return (
+<<<<<<< HEAD
 <<<<<<< HEAD
     <div className="form-group card-question">
 
@@ -332,6 +379,8 @@ const Step1 = (props) => {
             <div className='invalid-tooltip'>Please select an option</div>
           </div> 
 =======
+=======
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
     <div className="form-group">
       <label className="form-question" htmlFor="select-trade">
         What type of work do you need help with?
@@ -368,12 +417,16 @@ const Step1 = (props) => {
       </select>
       <div className="invalid-tooltip">Please select an option</div>
     </div>
+<<<<<<< HEAD
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
+=======
 >>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
   );
 };
 
 const Step2 = (props) => {
   if (props.currentStep < 2) {
+<<<<<<< HEAD
 <<<<<<< HEAD
     return null
   } 
@@ -392,17 +445,23 @@ const Step2 = (props) => {
           </div>
         </OverlayTrigger>
 =======
+=======
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
     return null;
   }
   return (
     <div className="form-group">
       <label>Describe the task in detail</label>
+<<<<<<< HEAD
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
+=======
 >>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
       <textarea
         className="form-control"
         id="task"
         name="task"
         type="text"
+<<<<<<< HEAD
 <<<<<<< HEAD
         placeholder="E.g. I need a new washing machine installed on the first floor, and the old washing machine disposed of."
         value={props.task}
@@ -411,10 +470,15 @@ const Step2 = (props) => {
         />
     </div>
 =======
+=======
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
         placeholder="I need a new washing machine installed on the first floor, and the old washing machine dispose of."
         value={props.task}
         onChange={(e) => props.setTask(e.target.value)}
       />
+<<<<<<< HEAD
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
+=======
 >>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
     </div>
   );
@@ -422,6 +486,7 @@ const Step2 = (props) => {
 
 const Step3 = (props) => {
   if (props.currentStep < 3) {
+<<<<<<< HEAD
 <<<<<<< HEAD
     return null
   } 
@@ -442,11 +507,16 @@ const Step3 = (props) => {
           </div>
         </OverlayTrigger>
 =======
+=======
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
     return null;
   }
   return (
     <div className="form-group">
       <label>Create a headline for your job</label>
+<<<<<<< HEAD
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
+=======
 >>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
       <input
         className="form-control"
@@ -454,16 +524,22 @@ const Step3 = (props) => {
         name="headline"
         type="text"
 <<<<<<< HEAD
+<<<<<<< HEAD
         placeholder="E.g. New washing machine installed"
         value={props.headline}
         onChange={e => props.setHeadline(e.target.value)}
         required='required'
         />
 =======
+=======
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
         placeholder="New washing machine installed"
         value={props.headline}
         onChange={(e) => props.setHeadline(e.target.value)}
       />
+<<<<<<< HEAD
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
+=======
 >>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
     </div>
   );
@@ -471,6 +547,7 @@ const Step3 = (props) => {
 
 const Step4 = (props) => {
   if (props.currentStep < 4) {
+<<<<<<< HEAD
 <<<<<<< HEAD
     return null
   } 
@@ -499,6 +576,8 @@ const Step4 = (props) => {
         />  
     </div>
 =======
+=======
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
     return null;
   }
   return (
