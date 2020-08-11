@@ -37,9 +37,7 @@ const Home = (props) => {
         });
       }, []);
 
-  /*if (role !== 'Regular Customer') {
-    return null;
-  }*/
+  
 
   return (
     <div>
