@@ -33,7 +33,16 @@ const AccountPage = (props) => {
             setSettings({
               "mysettings.general.name": res.data[0].name,
               "mysettings.general.email": res.data[0].email,
-              "mysettings.profile.role": res.data[0].role,
+              "mysettings.general.role": res.data[0].role,
+              "mysettings.general.addressOne": res.data[0].addressOne,
+              "mysettings.general.addressTwo": res.data[0].addressTwo,
+              "mysettings.general.addressOne": res.data[0].addressOne,
+              "mysettings.general.city": res.data[0].city,
+              "mysettings.general.state": res.data[0].state,
+              "mysettings.general.zip": res.data[0].zip,
+              "mysettings.general.role": res.data[0].role,
+              "mysettings.general.businessName": res.data[0].businessName,
+              "mysettings.general.businessWebsite": res.data[0].businessWebsite
               // "mysettings.profile.firstname": "Nicholas",
               // "mysettings.profile.lastname": "Laughlin",
             });
@@ -54,10 +63,10 @@ const AccountPage = (props) => {
       title: "General", // Title that is displayed as text in the menu
       url: "/settings/general", // Identifier (url-slug)
     },
-    {
-      title: "Profile",
-      url: "/settings/profile",
-    },
+    // {
+    //   title: "Profile",
+    //   url: "/settings/profile",
+    // },
   ];
 
   // Define one of your Settings pages
@@ -109,7 +118,7 @@ const AccountPage = (props) => {
               className="form-control"
               name="mysettings.general.name"
               placeholder="Name"
-              id="general.ame"
+              id="general.name"
               onChange={settingsChanged}
               defaultValue={settings["mysettings.general.name"]}
             />
@@ -121,24 +130,92 @@ const AccountPage = (props) => {
               className="form-control"
               name="mysettings.general.email"
               placeholder="Email"
-              id="general.ame"
+              id="general.email"
               onChange={settingsChanged}
               defaultValue={settings["mysettings.general.email"]}
             />
           </fieldset>
-        </SettingsPage>
-        <SettingsPage
-          handler="/settings/profile"
-          //   options={dynamicOptionsForProfilePage}
-        >
+          <fieldset className="form-group">
+            <label htmlFor="profileEmail">Address: </label>
+            <input
+              type="text"
+              className="form-control"
+              name="mysettings.general.addressOne"
+              placeholder="Address"
+              id="general.addressOne"
+              onChange={settingsChanged}
+              defaultValue={settings["mysettings.general.addressOne"]}
+            />
+          </fieldset>
+          <fieldset className="form-group">
+            <label htmlFor="profileEmail">Address 2: </label>
+            <input
+              type="text"
+              className="form-control"
+              name="mysettings.general.addressTwo"
+              placeholder="Address 2"
+              id="general.addressTwo"
+              onChange={settingsChanged}
+              defaultValue={settings["mysettings.general.addressTwo"]}
+            />
+          </fieldset>
+          <fieldset className="form-group">
+            <label htmlFor="profileEmail">City: </label>
+            <input
+              type="text"
+              className="form-control"
+              name="mysettings.general.city"
+              placeholder="City"
+              id="general.city"
+              onChange={settingsChanged}
+              defaultValue={settings["mysettings.general.city"]}
+            />
+          </fieldset>
+          <fieldset className="form-group">
+            <label htmlFor="profileEmail">State: </label>
+            <input
+              type="text"
+              className="form-control"
+              name="mysettings.general.state"
+              placeholder="State"
+              id="general.state"
+              onChange={settingsChanged}
+              defaultValue={settings["mysettings.general.state"]}
+            />
+          </fieldset>
+          <fieldset className="form-group">
+            <label htmlFor="profileEmail">Zip Code: </label>
+            <input
+              type="text"
+              className="form-control"
+              name="mysettings.general.zip"
+              placeholder="Zip"
+              id="general.zip"
+              onChange={settingsChanged}
+              defaultValue={settings["mysettings.general.zip"]}
+            />
+          </fieldset>
           <fieldset className="form-group">
             <label htmlFor="profileRole">Role: </label>
-            <select defaultValue={settings["mysettings.profile.role"]}>
-              <option>Customer</option>
+            <select defaultValue={settings["mysettings.general.role"]}>
+              <option>Regular Customer</option>
               <option>Volunteer Handyman</option>
-              <option>Volunteer Driver</option>
             </select>
           </fieldset>
+          {settings["mysettings.general.role"] == "Volunteer Handyman" &&
+          <fieldset className="form-group">
+            <label htmlFor="profileEmail">Skill: </label>
+            <input
+              type="text"
+              className="form-control"
+              name="mysettings.general.skill"
+              placeholder="Skill"
+              id="general.skill"
+              onChange={settingsChanged}
+              defaultValue={settings["mysettings.general.skill"]}
+            />
+          </fieldset>
+          }
         </SettingsPage>
       </SettingsContent>
     </SettingsPane>
