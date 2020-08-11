@@ -3,9 +3,9 @@ import express from 'express'; //refers to Express the middleware helper for Nod
 import {checkAuth} from '../authentication/authentication.js';
 const postsRouter = express.Router();
 
-postsRouter.post('/add', checkAuth, posts.create);
-postsRouter.get('/:postId', checkAuth, posts.list);
-postsRouter.put('/', checkAuth, posts.update);
+postsRouter.post('/add', posts.create);
+postsRouter.get('/:postId', posts.list);
+postsRouter.put('/', posts.update);
 postsRouter.get('/post/:postId', posts.read);
-postsRouter.delete('/:postId', checkAuth, posts.remove);
+postsRouter.delete('/:postId', posts.remove);
 export default postsRouter;
