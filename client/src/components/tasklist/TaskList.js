@@ -88,6 +88,7 @@ const TaskList = (props) => {
   }, []);
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Create a row for each task 
     
 
@@ -153,6 +154,59 @@ const List = (props) => {
       </ul>
     </div>
   );
+=======
+
+  // Create a row for each task
+
+  return (
+    <div>
+      <ul className="posted-jobs_list">
+        <List
+          tasks={tasks}
+          editing={editing}
+          setEditing={setEditing}
+          selectedID={selectedID}
+          setSelectedID={setSelectedID}
+        />
+      </ul>
+    </div>
+  );
+};
+
+const List = (props) => {
+  console.log(props.tasks);
+  if (props.tasks.length === 0) {
+    console.log("here");
+    return <p>No jobs posted</p>;
+  } else {
+    return props.tasks.map((currtask) => {
+      return (
+        <div className="card mb-3">
+          <Task task={currtask} key={currtask._id} />
+          <div className="card-body text-left">
+            <Link
+              to={{
+                pathname: "/job/" + currtask._id,
+                id: currtask._id,
+              }}
+              className="nav-link"
+            >
+              <button
+                type="button"
+                className="btn btn-success btn-sm"
+                onClick={() => {
+                  props.setSelectedID(currtask._id);
+                }}
+              >
+                View job
+              </button>
+            </Link>
+          </div>
+        </div>
+      );
+    });
+  }
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
 };
 
 const List = (props) => {

@@ -208,7 +208,10 @@ display: inline-block;
 }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
 =======
 >>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
 =======
@@ -356,6 +359,7 @@ h1 {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 .edit-sidebar2 {
   margin: left;
   float: left;
@@ -379,6 +383,10 @@ h1 {
   margin-left: 20px;
   width: 316px;
   min-height: 1px;
+=======
+.viewjob-main {
+  width: 800px;
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
 =======
 .viewjob-main {
   width: 800px;
@@ -413,8 +421,11 @@ footer {
   color: white;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   /* margin-top: 3em; */
 =======
+=======
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
 =======
 >>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
   margin-top: 3em;

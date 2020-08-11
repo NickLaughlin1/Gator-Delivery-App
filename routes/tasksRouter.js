@@ -1,6 +1,9 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
 =======
 >>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
 /* This file is your server listingsRouter. 
@@ -10,6 +13,9 @@
 */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
+=======
 >>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
 =======
 >>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
@@ -22,9 +28,12 @@ tasksRouter.get('/:listingEmail', tasks.list);
 tasksRouter.delete('/:taskid', tasks.remove);
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 tasksRouter.put('/:taskid', tasks.update);
 tasksRouter.get('/',tasks.fulllist);
 =======
+=======
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
 =======
 >>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
 
@@ -45,6 +54,9 @@ tasksRouter.get('/',tasks.fulllist);
 //listingsRouter.put('/:listingId', getCoordinates, listings.update);
 //listingsRouter.delete('/:listingId', listings.remove);
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
+=======
 >>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
 =======
 >>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy

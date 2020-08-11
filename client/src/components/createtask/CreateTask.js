@@ -8,6 +8,7 @@ import axios from "axios";
 import * as firebase from "firebase/app";
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import * as ROUTES from '../../constants/routes';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css"
@@ -147,6 +148,14 @@ import "react-datepicker/dist/react-datepicker.css";
 
 //https://css-tricks.com/the-magic-of-react-based-multi-step-forms/
 const CreateTask = (props) => {
+=======
+import * as ROUTES from "../../constants/routes";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
+//https://css-tricks.com/the-magic-of-react-based-multi-step-forms/
+const CreateTask = (props) => {
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
   const [currentStep, setCurrentStep] = useState(1);
   const [email, setEmail] = useState("");
   const [headline, setHeadline] = useState("");
@@ -193,6 +202,16 @@ const CreateTask = (props) => {
     currStep = currStep >= 4 ? 4 : currStep + 1;
     setCurrentStep(currStep);
   };
+<<<<<<< HEAD
+=======
+
+  const _prev = () => {
+    let currStep = currentStep;
+    // If the current step is 2 or 3, then subtract one on "previous" button click
+    currStep = currStep <= 1 ? 1 : currStep - 1;
+    setCurrentStep(currStep);
+  };
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
 
   const _prev = () => {
     let currStep = currentStep;
@@ -219,6 +238,7 @@ const CreateTask = (props) => {
     let currStep = currentStep;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     if(currStep < 5 && currStep > 0) {
       return (
         <button 
@@ -229,6 +249,8 @@ const CreateTask = (props) => {
       );
     };
 =======
+=======
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
 =======
 >>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
     if (currStep < 4) {
@@ -243,6 +265,9 @@ const CreateTask = (props) => {
       );
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
+=======
 >>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
 =======
 >>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
@@ -250,6 +275,7 @@ const CreateTask = (props) => {
   };
 
   return (
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
       <React.Fragment>
@@ -297,6 +323,8 @@ const CreateTask = (props) => {
 =======
 =======
 >>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
+=======
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
     <React.Fragment>
       <div className="form-container">
         <h1>Post a job</h1>
@@ -320,6 +348,9 @@ const CreateTask = (props) => {
   );
 };
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
+=======
 >>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
 =======
 >>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
@@ -330,6 +361,7 @@ const Step1 = (props) => {
   }
 
   return (
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     <div className="form-group card-question">
@@ -381,6 +413,8 @@ const Step1 = (props) => {
 =======
 =======
 >>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
+=======
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
     <div className="form-group">
       <label className="form-question" htmlFor="select-trade">
         What type of work do you need help with?
@@ -418,6 +452,9 @@ const Step1 = (props) => {
       <div className="invalid-tooltip">Please select an option</div>
     </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
+=======
 >>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
 =======
 >>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
@@ -426,6 +463,7 @@ const Step1 = (props) => {
 
 const Step2 = (props) => {
   if (props.currentStep < 2) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     return null
@@ -447,12 +485,17 @@ const Step2 = (props) => {
 =======
 =======
 >>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
+=======
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
     return null;
   }
   return (
     <div className="form-group">
       <label>Describe the task in detail</label>
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
+=======
 >>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
 =======
 >>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
@@ -461,6 +504,7 @@ const Step2 = (props) => {
         id="task"
         name="task"
         type="text"
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
         placeholder="E.g. I need a new washing machine installed on the first floor, and the old washing machine disposed of."
@@ -472,11 +516,16 @@ const Step2 = (props) => {
 =======
 =======
 >>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
+=======
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
         placeholder="I need a new washing machine installed on the first floor, and the old washing machine dispose of."
         value={props.task}
         onChange={(e) => props.setTask(e.target.value)}
       />
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
+=======
 >>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
 =======
 >>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
@@ -486,6 +535,7 @@ const Step2 = (props) => {
 
 const Step3 = (props) => {
   if (props.currentStep < 3) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     return null
@@ -509,12 +559,17 @@ const Step3 = (props) => {
 =======
 =======
 >>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
+=======
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
     return null;
   }
   return (
     <div className="form-group">
       <label>Create a headline for your job</label>
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
+=======
 >>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
 =======
 >>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
@@ -525,6 +580,7 @@ const Step3 = (props) => {
         type="text"
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         placeholder="E.g. New washing machine installed"
         value={props.headline}
         onChange={e => props.setHeadline(e.target.value)}
@@ -533,11 +589,16 @@ const Step3 = (props) => {
 =======
 =======
 >>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
+=======
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
         placeholder="New washing machine installed"
         value={props.headline}
         onChange={(e) => props.setHeadline(e.target.value)}
       />
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
+=======
 >>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
 =======
 >>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
@@ -547,6 +608,7 @@ const Step3 = (props) => {
 
 const Step4 = (props) => {
   if (props.currentStep < 4) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     return null
@@ -576,6 +638,8 @@ const Step4 = (props) => {
         />  
     </div>
 =======
+=======
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
 =======
 >>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
     return null;

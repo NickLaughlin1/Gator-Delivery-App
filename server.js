@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import path from 'path';
 import express from 'express';
 import mongoose from 'mongoose';
@@ -81,6 +82,8 @@ app.listen(PORT, () => console.log(`App now listening on port ${PORT}`));
 =======
 =======
 >>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
+=======
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
 import path from 'path';
 import express from 'express';
 import mongoose from 'mongoose';
@@ -148,6 +151,9 @@ if (process.env.NODE_ENV === 'production') {
 
 app.listen(PORT, () => console.log(`App now listening on port ${PORT}`));
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
+=======
 >>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
 =======
 >>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
