@@ -389,7 +389,7 @@ h1 {
 
 footer {
   color: white;
-  margin-top: 3em;
+  /* margin-top: 3em; */
   background: #343944;
   box-shadow: 0 50vh 0 50vh;
   height: 100%;
