@@ -61,7 +61,7 @@ const App = () => {
               <Route path={path.join("/job", ":id?")} component={ViewJob} />
 
               <Route path={path.join("/post", ":id?")} component={PostBoard} />
-              <Route path={ROUTES.REVIEWS} component={ReviewPage} />
+              {/* <Route path={ROUTES.REVIEWS} component={Rored} /> */}
               {/* <Route path={ROUTES.ADMIN} component={AdminPage} />   */}
               
             </div>
