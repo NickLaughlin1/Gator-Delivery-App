@@ -27,9 +27,7 @@ export const AuthProvider = ({ children }) => {
   }
 
   return (
-
     <AuthContext.Provider value={{ currentUser, axiosAuth, SignOut }}>
-
       {children}
     </AuthContext.Provider>
   );

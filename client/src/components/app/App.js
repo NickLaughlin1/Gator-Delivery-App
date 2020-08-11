@@ -33,6 +33,7 @@ import Calendar from "../calendar/Calendar";
 import ViewJob from "../viewjob/ViewJob";
 import path from "path";
 import 'semantic-ui-css/semantic.min.css'
+import "./style.scss";
 
 
 const App = () => {
@@ -43,7 +44,7 @@ const App = () => {
           <div className="c">
             <Navbar1 />
 
-            <div className="body">
+            <div className="body bg-gradient">
               <Route path={ROUTES.CREATE} component={CreateTask} />
               {/* <Route path={ROUTES.COMMUNITY} component={CommunityBoard} /> */}
               <Route path={ROUTES.DELETE} component={Delete} />
@@ -60,11 +61,13 @@ const App = () => {
               <Route path={path.join("/job", ":id?")} component={ViewJob} />
 
               <Route path={path.join("/post", ":id?")} component={PostBoard} />
-              <Route path={ROUTES.REVIEWS} component={ReviewPage} />
+              {/* <Route path={ROUTES.REVIEWS} component={Rored} /> */}
               {/* <Route path={ROUTES.ADMIN} component={AdminPage} />   */}
+              
             </div>
-            <Footer />
+            <Footer/>
           </div>
+          
         </Router>
       </AuthProvider>
     </div>

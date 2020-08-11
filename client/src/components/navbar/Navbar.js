@@ -18,7 +18,7 @@ const Navbar1 = () => {
     // <div className="header">
     //   {currentUser ? <NavAuth /> : <NavUnAuth />}
     // </div>
-    <Navbar collapseOnSelect expand="lg" bg="primary" fixed="top" className="navbar-dark nav-fix" style={{height: "6vh"}}>
+    <Navbar collapseOnSelect expand="lg" bg="primary" fixed="top" className="navbar-dark nav-fix" style={{height: "5.5vh"}}>
       <Link to={currentUser ? ROUTES.HOME : ROUTES.LANDING}>
         <Navbar.Brand>Home Order</Navbar.Brand>
       </Link>
@@ -26,12 +26,12 @@ const Navbar1 = () => {
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
-          <Link to="/create" className="nav-link nav-text">
-            {/* <Nav.Link className="nav-text">Create Job</Nav.Link> */}
-            Create Job
-          </Link>
           {currentUser &&
           <>
+            <Link to="/create" className="nav-link nav-text">
+            {/* <Nav.Link className="nav-text">Create Job</Nav.Link> */}
+              Create Job
+            </Link>
             <NavDropdown title="Social" id="collasible-nav-dropdown">
             <NavDropdown.Item tag={Link} /*href={ROUTES.REVIEWS}*/>
               <Link to={ROUTES.REVIEWS} className="drp-text">
@@ -89,14 +89,14 @@ const NavAuth = (props) => {
         />
         } id="collasible-nav-dropdown" alignRight>
         
-        <NavDropdown.Item>
+        {/* <NavDropdown.Item>
           <Link to={ROUTES.ACCOUNT} className="drp-text">
             General Settings
           </Link>
-        </NavDropdown.Item>
+        </NavDropdown.Item> */}
         <NavDropdown.Item>
-          <Link to={ROUTES.PROFILE_SETTINGS} className="drp-text">
-            Profile Settings
+          <Link to={ROUTES.ACCOUNT} className="drp-text">
+            Account Settings
           </Link>
         </NavDropdown.Item>
         <NavDropdown.Divider />
