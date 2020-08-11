@@ -296,7 +296,7 @@ h1 {
 }
 
 .table-wrapper {
-  max-height: 560px;
+  max-height: 80vh;
 	overflow: auto;
 	scroll-behavior: smooth;
 }

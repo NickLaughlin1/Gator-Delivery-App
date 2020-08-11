@@ -71,10 +71,10 @@ const Board = (props) => {
     };
 
     return(
-        <div>
-            <h1 class="display-3 community-board">Community Board</h1>
+        <div className="container table-wrapper" style={{backgroundColor: "white", padding: "20px", marginTop: "30px", borderRadius: "30px"}}>
+            <h1 className="display-3 community-board">Community Board</h1>
 
-            <h5> {mainPost.text} </h5>       
+            <h5 style={{marginLeft: "5px"}}> {mainPost.text} </h5>       
 
             <div className="card post-editor">
                 <div className="card-body">
@@ -85,12 +85,13 @@ const Board = (props) => {
                             <label for="exampleFormControlInput1">Ask a question</label>
                             <textarea className="form-control post-editor-input"
                                 value={post}
-                                onChange={e => setPost(e.target.value)}    
+                                onChange={e => setPost(e.target.value)}
+                                style={{borderRadius: "10px"}}    
                             />
                         </div>
 
                         <div className="form-group">
-                            <input type="submit" value="Submit Post" className="btn btn-primary" />
+                            <input type="submit" value="Submit Post" className="btn btn-primary" style={{borderRadius: "10px"}} />
                         </div>
                     </form>
                 </div>

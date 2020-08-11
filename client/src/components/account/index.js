@@ -24,7 +24,7 @@ const AccountPage = (props) => {
     const { currentUser } = useContext(AuthContext);
     useEffect(() => {
       if(currentUser) {
-        let url = "http://localhost:5000/users/" + currentUser.email;
+        let url = "/users/" + currentUser.email;
         try {
           axios.get(url).then((res) => {
             if(!res) {
@@ -103,6 +103,7 @@ const AccountPage = (props) => {
       index="/settings/general"
       settings={settings}
       onPaneLeave={leavePaneHandler}
+      style={{marginTop: "10px"}}
     >
       <SettingsMenu headline="Settings" />
       <SettingsContent
