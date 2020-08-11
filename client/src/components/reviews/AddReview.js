@@ -11,7 +11,7 @@ function AddReview(props) {
       mes: review,
     };
 
-    axios.post("http://localhost:5000/reviews/add", newReview);
+    axios.post("/reviews/add", newReview);
 
     window.location = "/vreviews";
     //setUser('');
