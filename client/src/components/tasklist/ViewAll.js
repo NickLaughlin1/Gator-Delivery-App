@@ -56,7 +56,7 @@ const ViewAll = (props) => {
         //console.log("signed in");
         //console.log(user.email);
         
-        let url = "/tasks/";
+        let url = "http://localhost:5000/tasks/";
         
         //console.log(email);
         //console.log(search);
