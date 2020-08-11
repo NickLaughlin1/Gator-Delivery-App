@@ -34,6 +34,12 @@ export const get = async (req, res) => {
   });
 };
 
+export const update = async (req, res) => {
+  let currUser = req.body;
+  User.findOneAndUpdate
+
+}
+
 export const remove = (req, res) => {
   let id = req.params.userId; // Mongo Id not the user Id from firebase
   User.findByIdAndRemove(id.toString(), function (err, user) {

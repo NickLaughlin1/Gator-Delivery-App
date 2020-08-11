@@ -718,7 +718,7 @@ const NormalSignUp = (props) => {
                             />
                           </FormControl>
                           <FormControl className={clsx(newClasses.margin, newClasses.businessField)}>
-                            <InputLabel htmlFor="standard-adornment-businessWebsite">Business Name</InputLabel>
+                            <InputLabel htmlFor="standard-adornment-businessWebsite">Business Website</InputLabel>
                             <Input
                               id="businessWebsite"
                               name="businessWebsite"

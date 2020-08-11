@@ -230,7 +230,7 @@ const CalendarComponent = (props) => {
   return (
     <div>
       <div className="donk">
-        <div>
+        <div style={{paddingTop: "10px"}}>
           <Calendar onChange={onChange} selectRange={true} value={date} />
         </div>
       </div>

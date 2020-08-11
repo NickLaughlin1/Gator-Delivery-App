@@ -38,26 +38,26 @@ const Rored = (props) => {
         
     };
     return(
-        <div>
-            <br></br>
+        <div className="container" style={{backgroundColor: "white", padding: "20px", marginTop: "30px", borderRadius: "30px"}}>
             <h1>Review Board</h1>
 
             <h3>Tell us how we did</h3>
             
-            <div className="card post-editor">
-                <div className="card-body">
+            <div className="card post-editor" style={{borderRadius: "30px"}}>
+                <div className="card-body" >
                     Post a Review
-                    <form onSubmit={createReview}>
-                        <div className="form-group">
+                    <form onSubmit={createReview} >
+                        <div className="form-group" >
                             <textarea className="form-control post-editor-input"
                                 value={review}
-                                onChange={e => setReview(e.target.value)}    
+                                onChange={e => setReview(e.target.value)} 
+                                style={{borderRadius: "10px"}}   
                             />
                         </div>
                         <div className="form-group">
                           <select
                           className="form-control"
-                          value={props.rate} onChange={e => setRate(e.target.value)}>
+                          value={props.rate} onChange={e => setRate(e.target.value)} style={{borderRadius: "10px"}}>
                             <option defaultValue>Rate Your Volunteer</option>
                             <option value="1">1 - Highly Dissatisfied</option>
                             <option value="2">2 - Slightly Dissatisfied</option>
