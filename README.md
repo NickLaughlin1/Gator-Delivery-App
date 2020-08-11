@@ -52,20 +52,20 @@ Any users can view account settings, such as their name, description, and other 
 
 Once logged in as any type of user, the navbar located at the top of the screen will be where any page can be accessed. 
 
-* You will see a "Create job" link where it will redirect you to the job submission form. Here, as a regular customer, you will enter the type of job you need done. You will also enter the details of your job and a short, one sentence title that will act as a headline which volunteers will see first when viewing the jobs. You will aslo enter your zipcode and the date you wish for the job to be completed.
+* You will see a "Create job" link where it will redirect you to the job submission form. Here, as a regular customer, you will enter the type of job you need done. You will also enter the details of your job and a short, one sentence title that will act as a headline which volunteers will see first when viewing the jobs. You will also enter your zipcode and the date you wish for the job to be completed.
 
 * You will be able to view a community board where you can ask other homeowners and volunteers any question you might have about your job.
 
 * You will be able to view the FAQ page to look at the most frequently asked questions.
 
-* You will also be able to view the review board, where you can see indiviudalized reviews on the volunteers who use HomeOrder.
+* You will also be able to view the review board, where you can see individualized reviews on the volunteers who use HomeOrder.
 
 ### API
 
 HomeOrder uses the following APIs:
 
 * Mongoose
-  * Connection with MongoDB Atlas databse
+  * Connection with MongoDB Atlas database
 * Google Firebase
   *  Store user account information
 * Axios
