@@ -1,77 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-import mongoose from "mongoose";
-import Task from "../models/TaskModel.js";
-
-/* Create a listing */
-export const create = async (req, res) => {
-  let newTask = new Task({
-    headline: req.body.headline,
-    task: req.body.task,
-    date: Date.parse(req.body.date),
-    email: req.body.email,
-    taken: req.body.taken
-  });
-
-  newTask.save(function (err) {
-    if (err) return res.status(400).send(err);
-    res.json(newTask);
-  });
-};
-
-/* Retreive all the directory listings */
-export const list = (req, res) => {
-  console.log('YEs');
-  let currEmail = req.params.listingEmail;
-  Task.find({ email: currEmail }).exec(function (err, task) {
-    if (err) return res.status(400).send(err);
-    res.json(task);
-  });
-};
-
-export const fulllist = (req, res) => {
-  console.log('HERE');
-  Task.find({taken: false}).exec(function (err, task) {
-    if (err) return res.status(400).send(err);
-    res.json(task);
-  });
-};
-
-export const remove = (req, res) => {
-  let ID = req.params.taskid;
-  Task.findByIdAndRemove(ID.toString(), function (err, task) {
-    if (err) return res.status(400).send(err);
-    if (!task) {
-      res.json({ error: "Task not found" });
-    } else {
-      res.json(task);
-    }
-  });
-};
-
-export const update = (req,res) => {
-
-    let update = {$set: {headline : req.body.headline,
-        task : req.body.task,
-        date : Date.parse(req.body.date)}};
-    let options = {returnOriginal: false};
-
-    let ID = req.params.taskid;
-    Task.findByIdAndUpdate(ID.toString(), update, options, function(err,listing) {
-        if (err) return res.status(400).send(err);
-        if (!listing) {
-            res.json({ error : "Id not found" });
-        } else {
-            res.json(listing);
-        }
-      });
-};
-=======
-=======
->>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
-=======
->>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
 import mongoose from 'mongoose';
 import Task from '../models/TaskModel.js';
 
@@ -114,6 +40,24 @@ export const remove = (req,res) => {
     });
 };
 
+export const update = (req,res) => {
+
+    let update = {$set: {headline : req.body.headline,
+        task : req.body.task,
+        date : req.body.datae}};
+    let options = {returnOriginal: false};
+
+    let ID = req.params.taskid;
+    Task.findByIdAndUpdate(ID.toString(), update, options, function(err,listing) {
+        if (err) return res.status(400).send(err);
+        if (!listing) {
+            res.json({ error : "Id not found" });
+        } else {
+            res.json(listing);
+        }
+      });
+};
+
 /* Show the current listing */
 //export const read = (req, res) => {
     /* send back the listing as json from the request */
@@ -145,17 +89,9 @@ export const remove = (req,res) => {
 
 /* 
   Middleware: find a listing by its ID, then pass it to the next request handler. 
-
   HINT: Find the listing using a mongoose query, 
         bind it to the request object as the property 'listing', 
         then finally call next
  */
 //export const listingByID = (req, res, next, id) => {
 //};
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
-=======
->>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
-=======
->>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy

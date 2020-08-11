@@ -6,18 +6,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import * as firebase from "firebase/app";
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 import * as ROUTES from '../../constants/routes';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css"
 import { Button, OverlayTrigger, Popover } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal'
 import Success from '../success'
-import moment from "moment-timezone";
-
-
 
 const PopUp = (props) => {
   return(
@@ -64,7 +58,7 @@ const CreateTask = (props) => {
           setCurrentStep(1);
         } 
       });
-    }, []);
+      }, []);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -73,11 +67,10 @@ const CreateTask = (props) => {
             headline: headline,
             task: task,
             email: email,
-            date: date,
-            taken: false
+            date: date
         };
         //console.log(newSubmission);
-        axios.post('/tasks/add', newSubmission); //may need to add the local host
+        axios.post('/tasks/add', newSubmission);
 
         //window.location = ROUTES.HOME;
         setCurrentStep(0);
@@ -104,123 +97,14 @@ const CreateTask = (props) => {
         // If the current step is 2 or 3, then subtract one on "previous" button click
         currStep = currStep <= 1 ? 1: currStep - 1
         setCurrentStep(currStep);
-=======
-import * as ROUTES from "../../constants/routes";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-
-//https://css-tricks.com/the-magic-of-react-based-multi-step-forms/
-const CreateTask = (props) => {
-  const [currentStep, setCurrentStep] = useState(1);
-  const [email, setEmail] = useState("");
-  const [headline, setHeadline] = useState("");
-  const [trade, setTrade] = useState("");
-  const [task, setTask] = useState("");
-  const [date, setDate] = useState(new Date());
-
-  useEffect(() => {
-    firebase.auth().onAuthStateChanged(function (user) {
-      if (user) {
-        //console.log("signed in");
-        //console.log(user.email);
-        setEmail(user.email);
-      }
-    });
-  }, []);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    let newSubmission = {
-      headline: headline,
-      task: task,
-      email: email,
-      date: date,
->>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
-    };
-
-  const handleDateChange = (date) => setDate(date);
-
-=======
-import * as ROUTES from "../../constants/routes";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-
-//https://css-tricks.com/the-magic-of-react-based-multi-step-forms/
-const CreateTask = (props) => {
-=======
-import * as ROUTES from "../../constants/routes";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-
-//https://css-tricks.com/the-magic-of-react-based-multi-step-forms/
-const CreateTask = (props) => {
->>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
-  const [currentStep, setCurrentStep] = useState(1);
-  const [email, setEmail] = useState("");
-  const [headline, setHeadline] = useState("");
-  const [trade, setTrade] = useState("");
-  const [task, setTask] = useState("");
-  const [date, setDate] = useState(new Date());
-
-  useEffect(() => {
-    firebase.auth().onAuthStateChanged(function (user) {
-      if (user) {
-        //console.log("signed in");
-        //console.log(user.email);
-        setEmail(user.email);
-      }
-    });
-  }, []);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    let newSubmission = {
-      headline: headline,
-      task: task,
-      email: email,
-      date: date,
     };
     //console.log(newSubmission);
-    axios.post("http://localhost:5000/tasks/add", newSubmission);
-
-    window.location = ROUTES.HOME;
-    setCurrentStep(1);
-    setEmail("");
-    setHeadline("");
-    setTrade("");
-    setTask("");
-    setDate(new Date());
-  };
+   
 
   const handleDateChange = (date) => setDate(date);
 
-  const _next = () => {
-    let currStep = currentStep;
-    // If the current step is 1 or 2, then add one on "next" button click
-    currStep = currStep >= 4 ? 4 : currStep + 1;
-    setCurrentStep(currStep);
-  };
-<<<<<<< HEAD
-=======
+  
 
-  const _prev = () => {
-    let currStep = currentStep;
-    // If the current step is 2 or 3, then subtract one on "previous" button click
-    currStep = currStep <= 1 ? 1 : currStep - 1;
-    setCurrentStep(currStep);
-  };
->>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
-
-  const _prev = () => {
-    let currStep = currentStep;
-    // If the current step is 2 or 3, then subtract one on "previous" button click
-    currStep = currStep <= 1 ? 1 : currStep - 1;
-    setCurrentStep(currStep);
-  };
-
->>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
   // eslint-disable-next-line no-unused-vars
   const previousButton = () => {
     let currStep = currentStep;
@@ -231,140 +115,87 @@ const CreateTask = (props) => {
         </button>
       );
     }
-    return null;
   };
-
-  const nextButton = () => {
-    let currStep = currentStep;
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    if(currStep < 5 && currStep > 0) {
-      return (
-        <button 
-          className="btn btn-danger btn-lg btn-block" 
-          type="button" onClick={_next}>
-            Next step
-        </button>        
-      );
+      
+    const nextButton = () => {
+      let currStep = currentStep;
+      if(currStep < 5 && currStep > 0) {
+        return (
+          <button 
+            className="btn btn-danger btn-lg btn-block" 
+            type="button" onClick={_next}>
+              Next step
+          </button>        
+        );
+      };
+      return null;
     };
-=======
-=======
->>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
-=======
->>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
-    if (currStep < 4) {
-      return (
-        <button
-          className="btn btn-danger btn-lg btn-block"
-          type="button"
-          onClick={_next}
-        >
-          Next step
-        </button>
-      );
-    }
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
-=======
->>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
-=======
->>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
-    return null;
-  };
 
-  return (
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-      <React.Fragment>
-        <div className='form-container'>
-          <h1>Post a job</h1>              
-          <form onSubmit={handleSubmit}>
-              <Step1 
-              currentStep={currentStep} 
-              setTrade={setTrade}
-              trade={trade}
-              />
-              <Step2 
-              currentStep={currentStep} 
-              setTask={setTask}
-              task={task}
-              />
-              <Step3
-              currentStep={currentStep} 
-              setHeadline={setHeadline}
-              headline={headline}
-              />
-              <Step4
-              currentStep={currentStep} 
-              setZip={setZip}
-              zip={zip}
-              />
-              <Step5 
-              currentStep={currentStep} 
-              setDate={handleDateChange}
-              date={date}
-              handleShow={handleShow}
-              />
-              <PopUp
-                  show={show}
-                  handleClose={handleClose}/>
-              <Success
-                added={added}
+    return (
+        <React.Fragment>
+          <div className='form-container'>
+            <h1>Post a job</h1>              
+            <form onSubmit={handleSubmit}>
+                <Step1 
+                currentStep={currentStep} 
+                setTrade={setTrade}
+                trade={trade}
                 />
-              {nextButton()} 
-          </form>
-        </div>
-      </React.Fragment>
-  );
-}
-=======
-=======
->>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
-=======
->>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
-    <React.Fragment>
-      <div className="form-container">
-        <h1>Post a job</h1>
-        <form onSubmit={handleSubmit}>
-          <Step1 currentStep={currentStep} setTrade={setTrade} trade={trade} />
-          <Step2 currentStep={currentStep} setTask={setTask} task={task} />
-          <Step3
-            currentStep={currentStep}
-            setHeadline={setHeadline}
-            headline={headline}
-          />
-          <Step4
-            currentStep={currentStep}
-            setDate={handleDateChange}
-            date={date}
-          />
-          {nextButton()}
-        </form>
-      </div>
-    </React.Fragment>
-  );
+                <Step2 
+                currentStep={currentStep} 
+                setTask={setTask}
+                task={task}
+                />
+                <Step3
+                currentStep={currentStep} 
+                setHeadline={setHeadline}
+                headline={headline}
+                />
+                <Step4
+                currentStep={currentStep} 
+                setZip={setZip}
+                zip={zip}
+                />
+                <Step5 
+                currentStep={currentStep} 
+                setDate={handleDateChange}
+                date={date}
+                handleShow={handleShow}
+                />
+                <PopUp
+                    show={show}
+                    handleClose={handleClose}/>
+                <Success
+                  added={added}
+                  />
+                {nextButton()} 
+            </form>
+          </div>
+        </React.Fragment>
+    );
+
+
 };
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
-=======
->>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
-=======
->>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
+
+const popoverRight = (
+  <Popover id="popover-basic">
+    
+    <Popover.Content>
+      This is simple popover example right side.
+    </Popover.Content>
+  </Popover>
+); 
 
 const Step1 = (props) => {
   if (props.currentStep < 1) {
     return null;
   }
 
-  return (
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <div className="form-group card-question">
+    
+
+    return (
+        
+        <div className="form-group card-question">
 
             
             <label for='select-trade'>What type of work do you need help with?</label>
@@ -410,281 +241,138 @@ const Step1 = (props) => {
             </select>
             <div className='invalid-tooltip'>Please select an option</div>
           </div> 
-=======
-=======
->>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
-=======
->>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
-    <div className="form-group">
-      <label className="form-question" htmlFor="select-trade">
-        What type of work do you need help with?
-      </label>
-      <select
-        className="custom-select"
-        id="select-trade"
-        name="select-trade"
-        value={props.trade}
-        onChange={(e) => props.setTrade(e.target.value)}
-        required="required"
-      >
-        <option selected disabled value="">
-          Choose a category
-        </option>
-        <option>Carpentry</option>
-        <option>Electrical</option>
-        <option>Fencing</option>
-        <option>Heating and Air Conditioning</option>
-        <option>Driveway</option>
-        <option>Guttering</option>
-        <option>Handyman</option>
-        <option>Insulation</option>
-        <option>Painting and Decorating</option>
-        <option>Locksmith</option>
-        <option>Appliances</option>
-        <option>Security Systems</option>
-        <option>Plumbing</option>
-        <option>Roofing</option>
-        <option>Windows</option>
-        <option>Pool</option>
-        <option>Gardening and Landscaping</option>
-        <option>I'm not sure what to pick</option>
-      </select>
-      <div className="invalid-tooltip">Please select an option</div>
-    </div>
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
-=======
->>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
-=======
->>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
-  );
+    );
 };
 
 const Step2 = (props) => {
-  if (props.currentStep < 2) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    return null
-  } 
-  return(
-    <div className='form-question card-question'>
-    <div className="form-group">
-      <label>Describe the job in detail</label>
-        <OverlayTrigger trigger="hover" placement="right" overlay={
-            <Popover id="popover-basic">
-              <Popover.Content>
-                Describe in as much detail as possible the job you need completed.
-              </Popover.Content>
-            </Popover>}>
-          <div className='float-right'>
-            <a className='btn btn-outline-info btn-sm'>Explain more</a>
-          </div>
-        </OverlayTrigger>
-=======
-=======
->>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
-=======
->>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
-    return null;
-  }
-  return (
-    <div className="form-group">
-      <label>Describe the task in detail</label>
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
-=======
->>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
-=======
->>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
-      <textarea
-        className="form-control"
-        id="task"
-        name="task"
-        type="text"
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-        placeholder="E.g. I need a new washing machine installed on the first floor, and the old washing machine disposed of."
-        value={props.task}
-        onChange={e => props.setTask(e.target.value)}
-        required='required'
-        />
-    </div>
-=======
-=======
->>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
-=======
->>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
-        placeholder="I need a new washing machine installed on the first floor, and the old washing machine dispose of."
-        value={props.task}
-        onChange={(e) => props.setTask(e.target.value)}
-      />
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
-=======
->>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
-=======
->>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
-    </div>
-  );
-};
-
-const Step3 = (props) => {
-  if (props.currentStep < 3) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    return null
-  } 
-  return(
-    
-    <div className="form-group card-question">
-      <label>
-        <div className='question'>Create a title for your job</div>
-      </label>
-      <OverlayTrigger trigger="hover" placement="right" overlay={
-            <Popover id="popover-basic">
-              <Popover.Content>
-                Create a short title that summarizes the job you need completed. It should be about one sentence. This is what the volunteers will see first about your job.
-              </Popover.Content>
-            </Popover>}>
-          <div className='float-right'>
-            <a className='btn btn-outline-info btn-sm'>Explain more</a>
-          </div>
-        </OverlayTrigger>
-=======
-=======
->>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
-=======
->>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
-    return null;
-  }
-  return (
-    <div className="form-group">
-      <label>Create a headline for your job</label>
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
-=======
->>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
-=======
->>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
-      <input
-        className="form-control"
-        id="headline"
-        name="headline"
-        type="text"
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-        placeholder="E.g. New washing machine installed"
-        value={props.headline}
-        onChange={e => props.setHeadline(e.target.value)}
-        required='required'
-        />
-=======
-=======
->>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
-=======
->>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
-        placeholder="New washing machine installed"
-        value={props.headline}
-        onChange={(e) => props.setHeadline(e.target.value)}
-      />
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
-=======
->>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
-=======
->>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
-    </div>
-  );
-};
-
-const Step4 = (props) => {
-  if (props.currentStep < 4) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    return null
-  } 
-  return(
-    <React.Fragment>
-    <div className="form-group card-question">
-      <label>What is your zipcode?</label>
-      <OverlayTrigger trigger="hover" placement="right" overlay={
-            <Popover id="popover-basic">
-              <Popover.Content>
-                Please provide your zipcode so we can find you volunteers in your area.
-              </Popover.Content>
-            </Popover>}>
-          <div className='float-right'>
-            <a className='btn btn-outline-info btn-sm'>Explain more</a>
-          </div>
-        </OverlayTrigger>
-      <input
-        className="form-control"
-        id="zip"
-        name="zip"
-        placeholder="E.g. 32607"
-        value={props.zip}
-        onChange={e => props.setZip(e.target.value)}
-        required='required'
-        />  
-    </div>
-=======
-=======
->>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
-=======
->>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
-    return null;
-  }
-  return (
-    <React.Fragment>
+    if (props.currentStep < 2) {
+      return null
+    } 
+    return(
+      <div className='form-question card-question'>
       <div className="form-group">
-        <label>When would you like the task done?</label>
-        <DatePicker selected={props.date} onChange={props.setDate} />
+        <label>Describe the job in detail</label>
+          <OverlayTrigger trigger="hover" placement="right" overlay={
+              <Popover id="popover-basic">
+                <Popover.Content>
+                  Describe in as much detail as possible the job you need completed.
+                </Popover.Content>
+              </Popover>}>
+            <div className='float-right'>
+              <a className='btn btn-outline-info btn-sm'>Explain more</a>
+            </div>
+          </OverlayTrigger>
+        <textarea
+          className="form-control"
+          id="task"
+          name="task"
+          type="text"
+          placeholder="E.g. I need a new washing machine installed on the first floor, and the old washing machine disposed of."
+          value={props.task}
+          onChange={e => props.setTask(e.target.value)}
+          required='required'
+          />
+      </div>
+      </div>
+    );
+  };
+
+  const Step3 = (props) => {
+    if (props.currentStep < 3) {
+      return null
+    } 
+    return(
+      
+      <div className="form-group card-question">
+        <label>
+          <div className='question'>Create a title for your job</div>
+        </label>
+        <OverlayTrigger trigger="hover" placement="right" overlay={
+              <Popover id="popover-basic">
+                <Popover.Content>
+                  Create a short title that summarizes the job you need completed. It should be about 1 sentence. This is what the volunteers will see first about your job.
+                </Popover.Content>
+              </Popover>}>
+            <div className='float-right'>
+              <a className='btn btn-outline-info btn-sm'>Explain more</a>
+            </div>
+          </OverlayTrigger>
+        <input
+          className="form-control"
+          id="headline"
+          name="headline"
+          type="text"
+          placeholder="E.g. New washing machine installed"
+          value={props.headline}
+          onChange={e => props.setHeadline(e.target.value)}
+          required='required'
+          />
+      </div>
+    );
+  };
+
+  const Step4 = (props) => {
+    if (props.currentStep < 4) {
+      return null
+    } 
+    return(
+      <React.Fragment>
+      <div className="form-group card-question">
+        <label>What is your zipcode?</label>
+        <OverlayTrigger trigger="hover" placement="right" overlay={
+              <Popover id="popover-basic">
+                <Popover.Content>
+                  Please provide your zipcode so we can find you volunteers in your area.
+                </Popover.Content>
+              </Popover>}>
+            <div className='float-right'>
+              <a className='btn btn-outline-info btn-sm'>Explain more</a>
+            </div>
+          </OverlayTrigger>
+        <input
+          className="form-control"
+          id="zip"
+          name="zip"
+
+          placeholder="E.g. 32607"
+          value={props.zip}
+          onChange={e => props.setZip(e.target.value)}
+          required='required'
+          />  
+      </div>
+      </React.Fragment>
+    );
+  };
+  
+const Step5 = (props) => {
+    if (props.currentStep < 5) {
+      return null
+    } 
+    return(
+      <React.Fragment>
+      <div className="form-group card-question">
+        <label>When would you like the job done?</label>
+        <div>
+        <OverlayTrigger trigger="hover" placement="right" overlay={
+              <Popover id="popover-basic">
+                <Popover.Content>
+                  Choose the date that you would like your job to be completed.
+                </Popover.Content>
+              </Popover>}>
+            <div className='float-right'>
+              <a className='btn btn-outline-info btn-sm'>Explain more</a>
+            </div>
+          </OverlayTrigger>
+        <DatePicker
+          selected={props.date}
+          onChange={props.setDate}
+          required='required'   
+        />   
+      </div>
       </div>
       <button className="btn btn-success btn-block">Submit task</button>
->>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
     </React.Fragment>
   );
 };
-
-const Step5 = (props) => {
-  if (props.currentStep < 5) {
-    return null
-  } 
-  return(
-    <React.Fragment>
-    <div className="form-group card-question">
-      <label>When would you like the job done?</label>
-      <div>
-      <OverlayTrigger trigger="hover" placement="right" overlay={
-            <Popover id="popover-basic">
-              <Popover.Content>
-                Choose the date that you would like your job to be completed.
-              </Popover.Content>
-            </Popover>}>
-          <div className='float-right'>
-            <a className='btn btn-outline-info btn-sm'>Explain more</a>
-          </div>
-        </OverlayTrigger>
-      <DatePicker
-        selected={props.date}
-        onChange={props.setDate}
-        required='required'   
-      />   
-    </div>
-    </div>
-    <button className="btn btn-success btn-block">Submit task</button>
-    </React.Fragment>
-  );
-}
 
 export default CreateTask;

@@ -7,100 +7,37 @@ import { Link } from "react-router-dom";
 import * as ROUTES from "../../constants/routes";
 import * as firebase from "firebase/app";
 import TaskList from "../tasklist/TaskList";
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-import axios from 'axios';
+import Modal from 'react-bootstrap/Modal'
   
 const Home = (props) => {
 
-  const [role, setRole] = useState('');
-    useEffect(() => {
-        firebase.auth().onAuthStateChanged((user) => {
-          if (user) {
-            console.log("signed in");
-            console.log(user.email);
-            //setEmail(user.email);
-            let url = "http://localhost:5000/users/";
-            let search = url.concat(user.email);
-            //console.log(email);
-            console.log(search);
-            axios
-              .get(search)
-              .then((response) => {
-                  let r = response.data[0].role;
-                    console.log('USERS STATUS: ', r);
-                    setRole(r);
-              })
-              .catch((error) => {
-                console.log('ISSUES');
-                console.log(error);
-              });
-          }
-        });
-      }, []);
+  const [show, setShow] = useState(false)
 
-  if (role !== 'Regular Customer') {
-    return null;
-  }
-=======
->>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
-=======
->>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
-=======
->>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
-const Home = (props) => {
   return (
     <div>
       <h1></h1>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-      <div className='container1 page'>
+      <div className='container page'>
         <div className='content'>
           <div className='row'>
-              <div className='layout-content'>
+              <div className='viewjob-main right-marg'>
                 <div className='mb-panel posted-jobs' id='my-posted-jobs'>
                   <h1 className='heading-large'>
                     My posted jobs
-                  </h1>                
-                      <TaskList/>
+                  </h1>
+                  
+                    
+                      <TaskList
+                      handleShow={handleShow}
+                      setShow={setShow}/>
+                    
+                  
                 </div>
               </div>
-            <div className="layout-sidebar">
-=======
-      <div className="container page">
-        <div className="content">
-          <div className="row">
-            <div className="viewjob-main right-marg">
-              <div className="mb-panel posted-jobs" id="my-posted-jobs">
-                <h1 className="heading-large">My posted jobs</h1>
-                <TaskList />
-              </div>
-=======
-      <div className="container page">
-        <div className="content">
-          <div className="row">
-            <div className="viewjob-main right-marg">
-              <div className="mb-panel posted-jobs" id="my-posted-jobs">
-                <h1 className="heading-large">My posted jobs</h1>
-                <TaskList />
-              </div>
->>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
-=======
-      <div className="container page">
-        <div className="content">
-          <div className="row">
-            <div className="viewjob-main right-marg">
-              <div className="mb-panel posted-jobs" id="my-posted-jobs">
-                <h1 className="heading-large">My posted jobs</h1>
-                <TaskList />
-              </div>
->>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
-            </div>
+            
             <div className="edit-sidebar">
->>>>>>> parent of 8695466... Merge pull request #45 from beaubakken/master_deploy
               <div className="mb-panel">
                 <div className="mb-panel_header">
                   <h3 className="heading-caps">Post a new job</h3>
@@ -117,7 +54,7 @@ const Home = (props) => {
                   </Link>
                 </div>
               </div>
-            </div>
+          </div>
           </div>
         </div>
       </div>
