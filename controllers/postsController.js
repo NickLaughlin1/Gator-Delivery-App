@@ -4,8 +4,6 @@ import mongoose from 'mongoose';
 export const create = async (req, res) => {
 
     await Post.findById({_id: req.body.replyTo}).exec(async function (err, post) {
-
-
         if (err) return res.status(400).send(err);
 
         if (!post.repliable) return res.status(403).send("post cannot be replied to");
@@ -14,7 +12,7 @@ export const create = async (req, res) => {
         let newPost = new Post({
             text: req.body.text,
             date: currDate,
-            user: req.user.uid,
+            // user: req.user.uid,
             repliable: req.body.replyTo === "5f1a297a5e28d64e6c283ea0",
             replyTo: mongoose.Types.ObjectId(req.body.replyTo),
             edited: false
@@ -28,10 +26,8 @@ export const create = async (req, res) => {
     });
 };
 
-// filter _id: replyTo
 /* Retreive all the posts*/
 export const list = (req, res) => {
-    //console.log("list");
   Post.find({replyTo: mongoose.Types.ObjectId(req.params.postId)}).exec(function (err, post) {
     if (err) return res.status(400).send(err);
     res.json(post);
