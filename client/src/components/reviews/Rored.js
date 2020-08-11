@@ -38,7 +38,7 @@ const Rored = (props) => {
         
     };
     return(
-        <div className="container" style={{backgroundColor: "white", padding: "20px", marginTop: "30px", borderRadius: "30px"}}>
+        <div className="container table-wrapper" style={{backgroundColor: "white", padding: "20px", marginTop: "30px", borderRadius: "30px"}}>
             <h1>Review Board</h1>
 
             <h3>Tell us how we did</h3>
