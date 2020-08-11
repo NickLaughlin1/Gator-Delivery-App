@@ -22,8 +22,14 @@ export const AuthProvider = ({ children }) => {
     }).then(res).catch(err);
   };
 
+  const SignOut = async () => {
+    await app.auth().signOut();
+  }
+
   return (
-    <AuthContext.Provider value={{ currentUser, axiosAuth }}>
+
+    <AuthContext.Provider value={{ currentUser, axiosAuth, SignOut }}>
+
       {children}
     </AuthContext.Provider>
   );

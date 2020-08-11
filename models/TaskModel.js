@@ -9,7 +9,8 @@ const taskSchema = new mongoose.Schema({
   headline: {type: String, required: true},
   task: {type: String, required: true},
   date: {type: Date, required: true},
-  email: {type: String, require: true}
+  email: {type: String, require: true},
+  taken: {type: Boolean, require: true}
 }, {
   timestamps: true,
 });

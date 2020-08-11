@@ -25,11 +25,31 @@ const PopUp = (props) => {
     );
   };
 
+const PopUp1 = (props) => {
+    return(
+      <Modal show={props.show} onHide={props.handleClose}>
+          <Modal.Header closeButton>
+             <Modal.Title>Edit job</Modal.Title>
+           </Modal.Header>
+           <Modal.Body>Do you want to save your changes to your job?</Modal.Body>
+           <Modal.Footer>
+              <button className='btn btn-secondary' onClick={props.handleClose}>
+                  No
+               </button>
+                <button className='btn btn-success' onClick={props.handleSubmit}>
+                    Yes, save changes
+                </button>
+            </Modal.Footer>
+    </Modal>
+    );
+};
+
 const ViewJob = (props) => {
     const [task, setTask] = useState('');
     const [tasks, setTasks] = useState([]);
     const [headline, setHeadline] = useState('');
     const [date, setDate] = useState(new Date());
+    const [datestring, setDatestring] = useState('');
     const [freshdate, setFreshdate] = useState(new Date());
     const [created, setCreated] = useState('');
     const [email, setEmail] = useState('');
@@ -41,6 +61,8 @@ const ViewJob = (props) => {
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+    ;
 
     useEffect(() => {
         firebase.auth().onAuthStateChanged(user => {
@@ -56,12 +78,15 @@ const ViewJob = (props) => {
             .then(response => {
                 let tasks_list = response.data;
                 let curr_task = tasks_list.filter(t => t._id === props.location.id);
-                //console.log(curr_task[0].task);
+                console.log('DATE TO BE COMPLETED: ', curr_task[0].date.substring(0,10));
                 setTaskID(props.location.id);
                 setHeadline(curr_task[0].headline);
                 setTask(curr_task[0].task);
-                setDate(curr_task[0].date);
+                setDatestring(curr_task[0].date.substring(0,10));
                 setCreated(curr_task[0].createdAt.substring(0,10));
+                //let newdate = curr_task[0].createdAt
+                //setFreshdate(newdate);
+                setDate(curr_task[0].date.toDate());
                 
             })
             .catch((error) => {
@@ -81,7 +106,7 @@ const ViewJob = (props) => {
         let ID = taskID;
         let url = '/tasks/';
         let search = url.concat(ID);
-        console.log(search);
+        console.log('SERACH TERM:',search);
       
         axios.delete(search)
             .then(res => {
@@ -99,6 +124,7 @@ const ViewJob = (props) => {
         setHeadline('');
         setTasks([]);
         setTask('');
+        setDatestring('');
         setDate(new Date());
         setCreated('');
     };
@@ -111,19 +137,54 @@ const ViewJob = (props) => {
         setEditing(true);
     };
 
-    const handleDateChange = date => setFreshdate(date);
+    const handleDateChange = date => {
+        let newdate = date.toString();
+        console.log('IN DATE CHANGE: ', newdate.substring(0,10));    
+             
+        setDate(date);
+        setDatestring(newdate.substring(0,10));
+    };
 
+    const convert = (d) => {
+        let day1 = d.substring(8,9);
+        let day2 = d.substring(9,10);
+        let day = Number(day2);
+        if (day1 === '1') {
+            day = day + 10;
+        } else if (day1 === '2') {
+            day = day + 20;
+        };
+        //console.log('LAST DIGIT', day);
+        if (day === 1) {
+            day = 31;
+        } else {
+            day = day - 1;
+        };
+        let nnew = day.toString();
+        //console.log(nnew);
+        if (nnew.length === 1) {
+            let z = '0';
+            nnew = z.concat(day);
+        }
+        let yearmonth = datestring.substring(0,8);
+        let newdate = yearmonth.concat(nnew);
+        //console.log(newdate);
+        return newdate;
+    };
+
+    
     return (
-        <div className='container page'>
+        <div className='container1 page'>
             <div className='content'>
                 <div className='row'>
+                    
                     <div className='viewjob-header'>
                         <div className='mb-panel'>
                             <h3 className='card-title'>{headline}</h3>
                             <h5 className='card-text'>Created on {created}</h5>
                         </div>
                     </div>
-                    <div className='edit-sidebar'>
+                    <div className='layout-sidebar'>
                         <div className='mb-panel'>
                             <div className='mb-panel-header'>
                                 <div className='mb-row1'> 
@@ -142,11 +203,13 @@ const ViewJob = (props) => {
                             </div>
                         </div>
                     </div>
-                    <div className='viewjob-main right-marg'>
+                    <div className='layout-content'>
                         <div className='mb-panel'>
                             <Display
                                 editing={editing}
                                 task={task}
+                                datestring={datestring}
+                                convert={convert}
                             />
                             <Editing
                                 editing={editing}
@@ -156,14 +219,16 @@ const ViewJob = (props) => {
                                 setHeadline={setHeadline}
                                 task={task}
                                 ID={taskID}
-                                date={freshdate}
+                                datestring={datestring}
+                                date={date}
                                 setDate={handleDateChange}
+                                setDatestring={setDatestring}
                                 task={task}
                                 setTask={setTask}
                             />
                         </div>
-                    </div>
                     
+                    </div>
                 </div>
               
             </div>
@@ -183,18 +248,22 @@ const Display = (props) => {
             <div className='card-header bg-light card-head font-weight-bold'>Job description</div>
             <div className='card-body'>
                 <p className='card-title'>{props.task}</p> 
+                <p className='card-title'>Date to be completed: {props.datestring}</p> 
             </div>
         </div>
     );
 };
 
 const Editing = (props) => {
+   
     if (props.editing === false) {
         return null;
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        console.log('NEW SET DATE: ', props.date);
 
         let newSubmission = {
             headline: props.headline,
@@ -204,6 +273,8 @@ const Editing = (props) => {
         };
         //console.log(newSubmission);
         //axios.put('/tasks/', newSubmission);
+
+        
 
         let id = props.ID;
         let url = '/tasks/';
@@ -219,10 +290,11 @@ const Editing = (props) => {
             })
 
             props.setEditing(false);
-            props.setDate(new Date());
+            //props.setDatestring('');
+            //props.setDate(new Date());
     };
 
-    //console.log(props.ID);
+    
 
     return (
         <form onSubmit={handleSubmit}>
@@ -246,6 +318,7 @@ const Editing = (props) => {
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
             </React.Fragment>  
+            
         </form>
     );
 };

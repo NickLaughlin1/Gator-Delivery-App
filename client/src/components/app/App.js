@@ -12,7 +12,6 @@ import HomePage from '../userhomepage';
 import AccountPage from '../account';
 import AdminPage from '../admin';
 import LandingPage from "../../views/LandingPage/LandingPage.js";
-import ReviewPage from "../reviews/Bored.js";
 import Footer from "..//Footer/Footer.js";
 // import PasswordForgetPage from "../password-forgot";
 
@@ -25,9 +24,9 @@ import Navbar1 from "../navbar/Navbar";
 import CreateTask from "../createtask/CreateTask";
 import {PostBoard as PostBoard} from "../community/Board";
 import Board from '../community/Board';
-import Bored from '../reviews/Bored';
+import Rored from '../reviews/Rored';
 import faq from '../faq/faq';
-import Delete from '../delete'
+import Delete from "../delete";
 // import Bored from "../reviews/Bored";
 //npm install react-calendar or yarn add react-calendar
 import Calendar from "../calendar/Calendar";
@@ -47,6 +46,8 @@ const App = () => {
             <div className="body">
               <Route path={ROUTES.CREATE} component={CreateTask} />
               {/* <Route path={ROUTES.COMMUNITY} component={CommunityBoard} /> */}
+              <Route path={ROUTES.DELETE} component={Delete} />
+              <Route path={ROUTES.REVIEWS} component={Rored} />
               <Route path={ROUTES.CALENDAR} component={Calendar} />
               <Route path={ROUTES.FAQ} component={faq} />
               <Route exact path={ROUTES.LANDING} component={LandingPage} />
@@ -57,6 +58,7 @@ const App = () => {
               <Route path={ROUTES.ACCOUNT} component={AccountPage} />
               <Route path={ROUTES.PROFILE_SETTINGS} component={AccountPage} />
               <Route path={path.join("/job", ":id?")} component={ViewJob} />
+
               <Route path={path.join("/post", ":id?")} component={PostBoard} />
               <Route path={ROUTES.REVIEWS} component={ReviewPage} />
               {/* <Route path={ROUTES.ADMIN} component={AdminPage} />   */}
