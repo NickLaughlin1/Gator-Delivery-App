@@ -440,7 +440,7 @@ const NormalSignUp = (props) => {
       
       await app
         .auth()
-        .createUserWithEmailAndPassword(newUser.email, newUser.password)
+        .createUserWithEmailAndPassword(newUser.email, password)
         .then(async (result) => {
           const user = await app.auth().currentUser;
           axios.post("/users/create", newUser);
