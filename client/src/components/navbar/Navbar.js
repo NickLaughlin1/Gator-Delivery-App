@@ -18,7 +18,7 @@ const Navbar1 = () => {
     // <div className="header">
     //   {currentUser ? <NavAuth /> : <NavUnAuth />}
     // </div>
-    <Navbar collapseOnSelect expand="lg" bg="primary" fixed="top" className="navbar-dark nav-fix" style={{height: "5.5vh"}}>
+    <Navbar collapseOnSelect expand="lg" bg="primary" fixed="top" className="navbar-dark nav-fix" style={{height: "5.7vh"}}>
       <Link to={currentUser ? ROUTES.HOME : ROUTES.LANDING}>
         <Navbar.Brand>Home Order</Navbar.Brand>
       </Link>

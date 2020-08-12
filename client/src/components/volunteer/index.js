@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import * as firebase from "firebase/app";
 import ViewTasks from "../tasklist/ViewAll.js";
 import axios from 'axios';
+import "../index.css";
   
 const VolHome = (props) => {
 
@@ -36,23 +37,22 @@ const VolHome = (props) => {
   }
 
   return (
-    <div>
-      <h1></h1>
-      <div className='container1 page'>
-        <div className='content'>
-          <div className='row'>
-              <div className='layout-content'>
-                <div className='mb-panel posted-jobs' id='my-posted-jobs'>
-                  <h1 className='heading-large'>
-                    Available jobs
-                  </h1>         
-                      <ViewTasks/>     
-              </div>
+      <>
+      <br></br>
+      <div className='container'>
+        <div className='content' >
+          <div style={{margin: "auto", width: "70%"}}>
+            <div className='mb-panel posted-jobs listed-jobs' id='my-posted-jobs' style={{borderRadius: "30px", margin: "auto"}}>
+              <h1 className='heading-large'>
+                Available jobs
+              </h1>         
+                  <ViewTasks/>     
           </div>
+          
         </div>
       </div>
       </div>
-    </div>
+      </>
   );
 };
 

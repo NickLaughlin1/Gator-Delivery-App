@@ -158,7 +158,13 @@ display: inline-block;
   display: flex;
   justify-content: center;
 }
-/* Dropdown Button */
+
+.listed-jobs {
+  display: flex;
+  border-radius: 30px;
+  flex-direction: column;
+}
+/* Drodown Button */
 .dropbtn {
   background-color: #007bff;
   color: white;
