@@ -5,7 +5,7 @@
 export default {
   db: {
     uri:
-      //place the URI of your mongo database here.
+      "mongodb+srv://user:test@cen3031-summer-2020-jqavu.mongodb.net/<dbname>?retryWrites=true&w=majority",//place the URI of your mongo database here.
   },
   port: 5000,
 };
