@@ -17,7 +17,7 @@
     "formik": "^2.1.5",
     "history": "4.10.1",
     "mdbreact": "^4.27.0",
-    "moment": "2.26.0",
+    "moment": "2.29.2",
     "moment-timezone": "^0.5.31",
     "node-sass": "4.14.1",
     "nouislider": "14.5.0",
